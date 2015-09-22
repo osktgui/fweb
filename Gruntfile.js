@@ -478,16 +478,19 @@ module.exports = function (grunt) {
 
       },
 
+
       // Inject component sass into main.scss
       sass: {
         options: {
           transform: function(filePath) {
             console.log(filePath);
-            filePath = filePath.replace('app/styles/', '');
-            filePath = filePath.replace('app/styles/components/', '');
-            filePath = filePath.replace('app/styles/general/', '');
-            filePath = filePath.replace('app/styles/pages/', '');
+            filePath = filePath.replace('client/app/styles/', '');
+            filePath = filePath.replace('client/app/styles/components/', '');
+            filePath = filePath.replace('client/app/styles/general/', '');
+            filePath = filePath.replace('client/app/styles/pages/', '');
             return '@import \'.' + filePath + '\';';
+
+            return filePath
           },
           starttag: '// injector:sass',
           endtag: '// endinjector:sass'

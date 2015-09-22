@@ -1,7 +1,12 @@
 
 <div class="landing-contact-section">
   <div class="common-conteiner align-right">
-    <div class="landing-main-menu"><a href="#" class="landing-main-menu-item">Blog</a><a href="#" class="landing-main-menu-item">Contáctenos</a><a href="#" class="landing-main-menu-item">Login</a><a href="#" class="landing-main-menu-item button">Registro</a></div>
+    <div class="landing-main-menu">
+      <div class="landing-main-menu-item"><a href="#">Blog</a></div>
+      <div class="landing-main-menu-item"><a href="#">Contáctenos</a></div>
+      <div class="landing-main-menu-item"><a href="#">Login</a></div>
+      <div class="landing-main-menu-item button"><a href="#">Registro</a></div>
+    </div>
   </div>
   <div class="landing-logo"><i></i></div>
   <div class="common-conteiner align-right">
@@ -9,14 +14,17 @@
       <div class="landing-form-title">Inicia tu cita en línea gratuita </div>
       <input type="text" name="land-name" placeholder="Nombres y Apellidos" class="landing-form-input"/>
       <div class="landing-form-contact-way">
-        <div class="landing-form-contact-way-text">Elige el método de contacto :</div>
-        <div class="landing-form-contact-way-options"><a href="#" class="call-button">Llamada Telefónica<i></i></a>
-          <div class="landing-form-contact-way-options-text">ó</div><a href="#" class="skype-button">Skype<i></i></a>
+        <div class="landing-form-contact-way-text">Elige el método de contacto: </div>
+        <div class="landing-form-contact-way-options"><a href="javascript:void(0)" ng-click="llamada=true; skype=false" ng-class="{active: llamada}" class="button-to-contact call-button">Llamada Telefónica<i></i></a>
+          <div class="landing-form-contact-way-options-text">ó</div><a href="javascript:void(0)" ng-click="llamada=false; skype=true" ng-class="{active: skype}" class="button-to-contact skype-button">Skype<i></i></a>
         </div>
       </div>
+      <div ng-show="llamada || skype" class="input-vertical-space"></div>
+      <input type="text" name="land-phone" placeholder="Número de Celular" ng-show="llamada" class="landing-form-input"/>
+      <input type="text" name="land-phone" placeholder="Correo Electrónico" ng-show="skype" class="landing-form-input"/>
+      <div ng-show="llamada || skype" class="input-vertical-space"></div>
       <div class="landing-form-terms-conditions">
-        <div class="landing-rbtn"><i></i></div>
-        <div class="landing-form-terms-conditions-text">Acepta los terminos y condiciones *</div>
+        <div ng-click="terminos= !terminos;" class="landing-rbtn"><i ng-class="{active: terminos}"></i></div><a href="#" class="landing-form-terms-conditions-text">Acepta los terminos y condiciones *</a>
       </div>
       <div class="landing-form-button"><a href="#" class="landing-primary-button">Reservar tu cita</a></div>
     </form>
@@ -59,8 +67,21 @@
 <div class="landing-video-section">
   <div class="landing-video-play">Ver video<i></i></div>
 </div>
-<div class="landing-footer-bg"></div>
-
-
-
-
+<div class="landing-footer-bg">
+  <div class="landing-footer-column">
+    <div class="landing-footer-teamrequest">¿Quieres formar parte de nuestro equipo de psicólogos?</div><a href="#" class="landing-footer-teamrequest-btn">Conocer mas</a>
+  </div>
+  <div class="landing-footer-column">
+    <div class="landing-footer-menu"><a href="#" class="landing-footer-menu-item">Nosotros</a><a href="#" class="landing-footer-menu-item">Contáctenos</a><a href="#" class="landing-footer-menu-item">Blog</a></div>
+    <form name="landingFooterForm">
+      <div class="landing-footer-form-info">Ingresa  tu correo para mantenernos conectados</div>
+      <input type="text" class="landing-footer-form-input"/>
+    </form>
+    <div class="landing-footer-social"><a href="#" class="social-icon facebook"><i></i></a><a href="#" class="social-icon twitter"><i></i></a><a href="#" class="social-icon youtube"><i></i></a></div>
+    <div class="landing-footer-copyright">© Filium 2015. Todos los derechos reservados.</div>
+  </div>
+  <div class="landing-footer-column">
+    <div class="landing-footer-phone-info">Linea Abierta para atención psicologica</div>
+    <div class="landing-footer-phone-number">(01) 9238183<i></i></div>
+  </div>
+</div>

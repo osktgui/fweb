@@ -1,28 +1,36 @@
 .landing-contact-section
 	.common-conteiner.align-right
 		.landing-main-menu
-			a(href="#").landing-main-menu-item Blog
-			a(href="#").landing-main-menu-item Contáctenos
-			a(href="#").landing-main-menu-item Login
-			a(href="#").landing-main-menu-item.button Registro
+			.landing-main-menu-item
+				a(href="#") Blog
+			.landing-main-menu-item
+				a(href="#") Contáctenos
+			.landing-main-menu-item
+				a(href="#") Login
+			.landing-main-menu-item.button
+				a(href="#") Registro
 	.landing-logo
 		i
 	.common-conteiner.align-right
 		form.landing-form
 			.landing-form-title Inicia tu cita en línea gratuita 
-			input.landing-form-input(type="text" name="land-name" placeholder="Nombres y Apellidos")
+			input.landing-form-input(type="text" name="land-name" placeholder="Nombres y Apellidos" )
 			.landing-form-contact-way
-				.landing-form-contact-way-text Elige el método de contacto :
+				.landing-form-contact-way-text Elige el método de contacto: 
 				.landing-form-contact-way-options
-					a(href="#").call-button Llamada Telefónica
+					a(href="javascript:void(0)" ng-click="llamada=true; skype=false" ng-class="{active: llamada}").button-to-contact.call-button Llamada Telefónica
 						i
 					.landing-form-contact-way-options-text ó
-					a(href="#").skype-button Skype
+					a(href="javascript:void(0)" ng-click="llamada=false; skype=true" ng-class="{active: skype}").button-to-contact.skype-button Skype
 						i
+			.input-vertical-space(ng-show="llamada || skype")
+			input.landing-form-input(type="text" name="land-phone" placeholder="Número de Celular" ng-show="llamada" )
+			input.landing-form-input(type="text" name="land-phone" placeholder="Correo Electrónico" ng-show="skype")
+			.input-vertical-space(ng-show="llamada || skype")
 			.landing-form-terms-conditions
-				.landing-rbtn
-					i
-				.landing-form-terms-conditions-text Acepta los terminos y condiciones *
+				.landing-rbtn(ng-click="terminos= !terminos;")
+					i(ng-class="{active: terminos}")
+				a(href="#").landing-form-terms-conditions-text Acepta los terminos y condiciones *
 			.landing-form-button
 				a(href="#").landing-primary-button Reservar tu cita
 	.common-conteiner
@@ -63,10 +71,29 @@
 	.landing-video-play Ver video
 		i
 .landing-footer-bg
-//- .landing-footer
-
-
-
+	.landing-footer-column
+		.landing-footer-teamrequest ¿Quieres formar parte de nuestro equipo de psicólogos?
+		a(href="#").landing-footer-teamrequest-btn Conocer mas
+	.landing-footer-column
+		.landing-footer-menu
+			a(href="#").landing-footer-menu-item Nosotros
+			a(href="#").landing-footer-menu-item Contáctenos
+			a(href="#").landing-footer-menu-item Blog
+		form(name="landingFooterForm")
+			.landing-footer-form-info Ingresa  tu correo para mantenernos conectados
+			input(type="text").landing-footer-form-input
+		.landing-footer-social
+			a(href="#").social-icon.facebook
+				i
+			a(href="#").social-icon.twitter
+				i
+			a(href="#").social-icon.youtube
+				i
+		.landing-footer-copyright © Filium 2015. Todos los derechos reservados.
+	.landing-footer-column
+		.landing-footer-phone-info Linea Abierta para atención psicologica
+		.landing-footer-phone-number (01) 9238183
+			i
 
 
 

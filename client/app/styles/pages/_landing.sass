@@ -10,7 +10,7 @@
 	display: inline-block
 	margin-bottom: -55px
 	position: relative
-	z-index: -1
+	z-index: 0
 .landing-main-menu-item
 	min-width: 88px
 	display: inline-block
@@ -19,9 +19,13 @@
 	font-size: 14px
 	font-weight: 400
 	line-height: 30px
-	&:hover,&:active,&:link,&:visited
-		text-decoration: none
-		color: #9c9c9c
+	transition: all .3s
+	a
+		&:hover,&:active,&:link,&:visited
+			text-decoration: none
+			color: #9c9c9c
+		&:hover
+			color: #797979
 	&.button
 		background-color: #31c5be
 		border-radius: 10px
@@ -29,6 +33,12 @@
 		font-size: 16px
 		line-height: 30px
 		font-weight: 400
+		a
+			&:hover,&:active,&:link,&:visited
+				text-decoration: none
+				color: white
+		&:hover
+			background-color: #2DA29D
 .landing-logo
 	width: 100%
 	display: inline-block
@@ -97,10 +107,10 @@
 	font-weight: 400
 	line-height: 30px
 	margin-bottom: 10px
-.call-button
-	width: 174px
+.button-to-contact
 	height: 30px
-	background-color: #535a64
+	opacity: 0.21
+	background-color: black
 	border-radius: 12px
 	text-shadow: 0.5px 0.9px 0 rgba(50, 50, 50, 0.48)
 	font-family: OpenSans
@@ -109,7 +119,12 @@
 	line-height: 30px
 	display: inline-block
 	position: relative
-	padding-left: 20px
+	padding-left: 30px
+	padding-right: 9px
+	&.active
+		background-color: #535a64
+		opacity: 1
+.call-button
 	i
 		background-image: url("../../images/assets/phone-icon.png")
 		width: 18px
@@ -121,28 +136,7 @@
 	&:hover,&:active,&:link,&:visited
 		text-decoration: none
 		color: #f2f2f2
-.landing-form-contact-way-options-text
-	color: #777
-	font-family: OpenSans
-	font-size: 12px
-	font-weight: 600
-	line-height: 15px
-	display: inline-block
-	margin-left: 3px
-	margin-right: 5px
 .skype-button
-	width: 85px
-	height: 30px
-	opacity: 0.21
-	background-color: black
-	border-radius: 12px
-	font-family: OpenSans
-	font-size: 14px
-	font-weight: 600
-	line-height: 30px
-	display: inline-block
-	position: relative
-	padding-left: 20px
 	i
 		background-image: url("../../images/assets/skype-icon.png")
 		width: 18px
@@ -154,6 +148,15 @@
 	&:hover,&:active,&:link,&:visited
 		text-decoration: none
 		color: white
+.landing-form-contact-way-options-text
+	color: #777
+	font-family: OpenSans
+	font-size: 12px
+	font-weight: 600
+	line-height: 15px
+	display: inline-block
+	margin-left: 3px
+	margin-right: 5px
 .landing-rbtn
 	display: inline-block
 	i
@@ -161,6 +164,11 @@
 		width: 11px
 		height: 11px
 		display: inline-block
+		cursor: hand
+		cursor: pointer
+		margin-right: 5px
+		&.active
+			background-image: url("../../images/assets/landing-rbtn-active.png")
 .landing-form-terms-conditions-text 
 	color: #777
 	font-family: OpenSans
@@ -334,7 +342,7 @@
 	width: 100%
 	padding-bottom: 22%
 	padding-top: 9%
-	margin-bottom: -140px
+	margin-bottom: -150px
 .landing-video-play
 	display: inline-block
 	text-align: center
@@ -356,12 +364,129 @@
 	background-image: url("../../images/landing-footer-bg.png")
 	background-repeat: no-repeat
 	background-size: cover
-	padding-bottom: 38%
-	background-color: white
-.landing-footer
+	display: inline-block
+	margin-bottom: -5px
 	width: 100%
-	height: 500px
-	background-color: #b1b6be
-
-
-	
+.landing-footer-column
+	width: 33.3%
+	color: white
+	font-family: OpenSans
+	font-size: 14px
+	font-weight: 600
+	line-height: 30px
+	text-align: center
+	float: left
+.landing-footer-teamrequest-btn
+	min-width: 108px
+	background-color: #31c5be
+	border-radius: 10px
+	color: white
+	font-family: OpenSans
+	font-size: 14px
+	font-weight: 600
+	line-height: 31px
+	text-align: center
+	display: inline-block
+	&:active, &:visited, &:link, &:hover
+		text-decoration: none
+		color: white
+.landing-footer-menu
+	display: inline-block
+	width: 70%
+	display: inline-block
+	width: 70%
+	padding-top: 7%
+	margin-bottom: 20%
+.landing-footer-menu-item
+	display: inline-block
+	width: 33%
+	font-family: OpenSans
+	font-size: 14px
+	font-weight: 400
+	line-height: 30px
+	&:active, &:hover, &:visited, &:link
+		text-decoration: none
+		color: white
+.landing-footer-form-info
+	color: white
+	font-family: OpenSans
+	font-size: 16px
+	font-weight: 400
+	line-height: 30px
+	text-align: center
+	display: inline-block
+	margin-bottom: 10px
+.landing-footer-form-input
+	width: 280px
+	height: 45px
+	opacity: 0.7
+	background-color: white
+	border: 1px solid #898d93
+	border-radius: 10px
+	display: inline-block
+	margin-bottom: 17%
+.landing-footer-social
+	display: inline-block
+	margin-bottom: 72px
+.social-icon
+	width: 70px
+	display: inline-block
+	margin-bottom: 90px
+.facebook
+	i
+		background-image: url("../../images/assets/facebook-icon.png")
+		width: 24px
+		height: 24px
+		display: inline-block
+.twitter
+	i
+		background-image: url("../../images/assets/twitter-icon.png")
+		width: 24px
+		height: 24px
+		display: inline-block
+.youtube
+	i
+		background-image: url("../../images/assets/youtube-icon.png")
+		width: 24px
+		height: 19px
+		display: inline-block
+.landing-footer-copyright
+	display: inline-block
+	width: 100%
+	color: white
+	font-family: OpenSans
+	font-size: 12px
+	font-weight: 400
+	line-height: 30px
+.landing-footer-phone-info
+	color: white
+	font-family: OpenSans
+	font-size: 14px
+	font-weight: 400
+	line-height: 25px
+	width: 100%
+	text-align: center
+	padding-top: 30px
+.landing-footer-phone-number
+	color: white
+	font-family: OpenSans
+	font-size: 21px
+	font-weight: 700
+	line-height: 36px
+	position: relative
+	display: inline-block
+	padding-left: 30px
+	i
+		background-image: url("../../images/assets/landing-phone-icon.png")
+		width: 21px
+		height: 21px
+		position: absolute
+		left: 0px
+		top: 8px
+.landing-footer-teamrequest
+	width: 100%
+	display: inline-block
+	padding-left: 20%
+	padding-right: 20%
+	padding-top: 40px
+	margin-bottom: 10px
