@@ -9,12 +9,13 @@
 				a(href="#") Login
 			.landing-main-menu-item.button
 				a(href="#") Registro
-	.landing-logo
-		i
+	.common-conteiner
+		.landing-logo
+			i
 	.common-conteiner.align-right
-		form.landing-form
+		form.landing-form(name="formLanding")
 			.landing-form-title Inicia tu cita en línea gratuita 
-			input.landing-form-input(type="text" name="land-name" placeholder="Nombres y Apellidos" )
+			input.landing-form-input(type="text" name="name" id="name" ng-model="landing.Name" placeholder="Nombres y Apellidos" ng-pattern="/^[A-Za-zÑñáéíóúÁÉÍÓÚ^ ]*$/" ng-class="{ error: (submitted || formLanding.name.$dirty) && formLanding.name.$invalid, success: formLanding.name.$valid }" required)
 			.landing-form-contact-way
 				.landing-form-contact-way-text Elige el método de contacto: 
 				.landing-form-contact-way-options
@@ -24,17 +25,17 @@
 					a(href="javascript:void(0)" ng-click="llamada=false; skype=true" ng-class="{active: skype}").button-to-contact.skype-button Skype
 						i
 			.input-vertical-space(ng-show="llamada || skype")
-			input.landing-form-input(type="text" name="land-phone" placeholder="Número de Celular" ng-show="llamada" )
-			input.landing-form-input(type="text" name="land-phone" placeholder="Correo Electrónico" ng-show="skype")
+			input.landing-form-input(type="text" name="land-phone" ng-model="landing.Phone" maxlength="9" placeholder="Número de Celular" ng-show="llamada" onlynumber)
+			input.landing-form-input(type="text" name="land-email" ng-model="landing.Email" placeholder="Correo Electrónico" ng-show="skype")
 			.input-vertical-space(ng-show="llamada || skype")
 			.landing-form-terms-conditions
 				.landing-rbtn(ng-click="terminos= !terminos;")
 					i(ng-class="{active: terminos}")
 				a(href="#").landing-form-terms-conditions-text Acepta los terminos y condiciones *
 			.landing-form-button
-				a(href="#").landing-primary-button Reservar tu cita
+				a(href="javascript:void(0)" ng-click="submitted=true").landing-primary-button Reservar tu cita {{submitted}}
 	.common-conteiner
-		.landing-invitation-message - Programa tu terapia psicológica en el momento más cómodo para tí
+		.landing-invitation-message - Programa tu terapia psicológica en el momento más cómodo para tí -
 .landing-phrase
 	.landing-phrase-content “Alguna veces he tenido que postergar mi visita al psicólogo porque el trabajo y el estudio me tienen la mayor parte del tiempo ocupada, pero ahora con Filium puedo seguir llevando mi terapia psicológica sin salir de casa, además evito el estrés del tráfico y los tiempos de desplazamiento”
 		i
@@ -46,11 +47,21 @@
 .landing-phrase-shadow
 .landing-caricature-section
 	.landing-caricature-section-title “ Bienestar emocional en cada situación de la vida ”
+	.landing-caricature-content-ask ¿Sabías que?
 	.landing-caricature-content
-		//- .landing-caricature-content-ask ¿Sabías que?
-		//- .landing-caricature-content-text1 La depresión, a nivel mundial, está clasificada  como la causa más importante de discapacidad en la salud humana?.
-		//- .landing-caricature-content-text2 Una de cada cuatro personas en el mundo padece alguna enfermedad mental a lo largo de su vida.
-	.landing-caricature-section-comment "No estás solo: Aprende y disfruta de cada momento de la vida, un psicólogo de Filium te ayudará a conseguir el bienestar emocional que todos necesitamos"
+		.landing-caricature-content-cloud
+			i
+		.landing-caricature-speakcloud-left
+			i
+			.landing-caricature-speakcloud-left-text La depresión, a nivel mundial, está clasificada  como la causa más importante de discapacidad en la salud humana?.
+		.landing-caricature-speakcloud-right
+			i
+				.landing-caricature-speakcloud-right-text Una de cada cuatro personas en el mundo padece alguna enfermedad mental a lo largo de su vida.
+		.landing-caricature-psychologist
+			i
+	.landing-message-pos-caricature "No estás solo: Aprende y disfruta de cada momento de la vida, un psicólogo de Filium te ayudará a conseguir el bienestar emocional que todos necesitamos"
+	.landing-caricature-content-cloud-right
+		i
 	.landing-only-logo
 		i
 	.landing-caricature-presentation-title Para ello nació Filium
@@ -70,15 +81,20 @@
 .landing-video-section
 	.landing-video-play Ver video
 		i
+
+//- Footer para pantalla grande
 .landing-footer-bg
 	.landing-footer-column
 		.landing-footer-teamrequest ¿Quieres formar parte de nuestro equipo de psicólogos?
 		a(href="#").landing-footer-teamrequest-btn Conocer mas
 	.landing-footer-column
 		.landing-footer-menu
-			a(href="#").landing-footer-menu-item Nosotros
-			a(href="#").landing-footer-menu-item Contáctenos
-			a(href="#").landing-footer-menu-item Blog
+			.landing-footer-menu-item
+				a(href="#") Nosotros
+			.landing-footer-menu-item
+				a(href="#") Contáctenos
+			.landing-footer-menu-item
+				a(href="#") Blog
 		form(name="landingFooterForm")
 			.landing-footer-form-info Ingresa  tu correo para mantenernos conectados
 			input(type="text").landing-footer-form-input
@@ -94,6 +110,34 @@
 		.landing-footer-phone-info Linea Abierta para atención psicologica
 		.landing-footer-phone-number (01) 9238183
 			i
+
+//- Footer para pantalla pequeña
+.landing-footer-bg-smart
+	.landing-footer-column
+		.landing-footer-menu
+			.landing-footer-menu-item
+				a(href="#") Nosotros
+			.landing-footer-menu-item
+				a(href="#") Contáctenos
+			.landing-footer-menu-item
+				a(href="#") Blog
+		.landing-footer-teamrequest ¿Quieres formar parte de nuestro equipo de psicólogos?
+		a(href="#").landing-footer-teamrequest-btn Conocer mas
+		.landing-footer-phone-info Linea Abierta para atención psicologica
+		.landing-footer-phone-number (01) 9238183
+			i
+		form(name="landingFooterForm")
+			.landing-footer-form-info Ingresa  tu correo para mantenernos conectados
+			input(type="text").landing-footer-form-input
+		.landing-footer-social
+			a(href="#").social-icon.facebook
+				i
+			a(href="#").social-icon.twitter
+				i
+			a(href="#").social-icon.youtube
+				i
+		.landing-footer-copyright © Filium 2015. Todos los derechos reservados.
+
 
 
 

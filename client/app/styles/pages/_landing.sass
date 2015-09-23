@@ -1,16 +1,26 @@
+.common-conteiner
+	width: 100%
+	display: inline-block
+	@media (max-width:$md)
+		text-align: center
 .landing-contact-section
 	width: 100%
 	background-image: url(../../images/landing-bg.png)
 	background-repeat: no-repeat
 	background-size: cover
-	padding-left: 55px
-	padding-right: 55px
+	padding-left: 5%
+	padding-right: 5%
 	padding-top: 12px
-	padding-bottom: 15%
+	padding-bottom: 14%
 	display: inline-block
 	margin-bottom: -55px
 	position: relative
 	z-index: 0
+	@media (max-width:$md)
+		background-image: none
+.landing-main-menu
+	@media (max-width:$md)
+		display: none
 .landing-main-menu-item
 	min-width: 88px
 	display: inline-block
@@ -43,7 +53,7 @@
 	width: 100%
 	display: inline-block
 	text-align: center
-	margin-bottom: 94px
+	margin-bottom: 10%
 	i
 		background-image: url("../../images/assets/filium-logo.png")
 		width: 261px
@@ -70,6 +80,8 @@
 	display: inline-block
 	text-align: center
 	margin-bottom: 140px
+	@media (max-width:$md)
+		margin-bottom: 0
 .landing-form-title
 	color: #4a00b3
 	font-family: OpenSans
@@ -95,8 +107,12 @@
 	padding-right: 10px
 	padding-left: 10px
 	outline: 0px
-	&:placeholder
-		color: #b1b6be
+	// &:placeholder
+	// 	color: #FAE8E8
+	// &.success
+	// 	background-color: blue
+	// &.error
+	// 	background-color: #F6CECE
 .landing-form-contact-way
 	padding-top: 10px
 	margin-bottom: 10px
@@ -180,27 +196,35 @@
 .landing-phrase
 	width: 100%
 	background-color: #31c5be
-	margin-bottom: -132px
+	margin-bottom: -10%
 	position: relative
 	z-index: 10
+	@media (max-width:$md)
+		display: none
 .landing-phrase-shadow
 	background-image: url("../../images/phrase-shadow.png")
 	width: 100%
-	height: 195px
 	background-size: cover
 	background-repeat: no-repeat
 	position: relative
 	z-index: 0
 	margin-bottom: 10px
+	padding-bottom: 14%
+	@media (max-width:$md)
+		display: none
 .landing-invitation-message
 	width: 100%
 	text-shadow: 0.9px 1.8px 4px rgba(0, 0, 0, 0.25)
 	color: white
 	font-family: OpenSans
-	font-size: 34px
+	font-size: 38px
 	font-weight: 600
 	line-height: 30px
 	text-align: center
+	@media (max-width:$xl)
+		font-size: 30px
+	@media (max-width:$md)
+		display: none
 .landing-phrase-content
 	width: 100%
 	max-width: 642px
@@ -245,7 +269,7 @@
 		display: inline-block
 		margin-bottom: 13px
 
-.landing-caricature-section
+
 
 .landing-caricature-section-title
 	width: 500px
@@ -260,38 +284,146 @@
 	display: inline-block
 	margin-bottom: 64px
 .landing-caricature-content
-	background-image: url("../../images/landing-caricature-bg.png")
-	background-size: cover
-	background-repeat: no-repeat
-	width: 90%
-	padding-bottom: 56%
 	display: inline-block
-	margin-left: 5%
-	margin-right: 5%
+	width: 100%
 	position: relative
-	margin-bottom: 32px
-.landing-caricature-content-ask
+	height: 700px
+.landing-caricature-content-cloud
+	width: 100%
+	display: inline-block
+	text-align: left
+	padding-left: 5%
 	position: absolute
-	width: 15%
+	i
+		background-image: url("../../images/assets/cloud.png")
+		width: 238px
+		height: 98px
+		display: inline-block
+	@media (max-width: $md)
+		padding-left: 0px
+		margin-left: -145px
+.landing-caricature-content-cloud-right
+	width: 100%
+	display: none
+	text-align: left
+	padding-left: 5%
+	position: relative
+	text-align: right
+	@media (max-width: $md)
+		display: inline-block
+		padding-left: 0px
+		margin-top: 30px
+		i
+			background-image: url("../../images/assets/half-cloud-left.png")
+			width: 55px
+			height: 45px
+			display: inline-block
+.landing-caricature-speakcloud-left
+	width: 100%
+	display: inline-block
+	text-align: left
+	padding-left: 5%
+	position: absolute
+	top: 180px
+	@media (max-width: $xl)
+		padding-left: 4%
+	@media (max-width: $md)
+		top: 570px
+	i
+		background-image: url("../../images/assets/speakcloud-left.png")
+		width: 309px
+		height: 309px
+		display: inline-block
+		margin-bottom: 15px
+.landing-caricature-speakcloud-left-text
+	color: #848a8f
+	font-family: OpenSans
+	font-size: 15px
+	font-weight: 400
+	width: 400px
+	padding-left: 20px
+	padding-right: 50px
+	text-align: center
+	@media (max-width: $lg)
+		padding-right: 90px
+	@media (max-width: $md)
+		display: none
+.landing-caricature-speakcloud-right
+	width: 100%
+	display: inline-block
+	text-align: right
+	padding-right: 4%
+	top: 40px
+	position: absolute
+	@media (max-width: $xxl)
+		padding-right: 3%
+	@media (max-width: $md)
+		top: 185px
+	i
+		background-image: url("../../images/assets/speakcloud-right.png")
+		width: 398px
+		height: 398px
+		display: inline-block
+		position: relative
+.landing-caricature-speakcloud-right-text
+	position: absolute
+	bottom: 80px
+	padding-left: 50px
+	padding-right: 55px
+	text-align: center
+	color: #848a8f
+	font-family: OpenSans
+	font-size: 15px
+	font-weight: 400
+	font-style: normal
+.landing-caricature-content-ask 
 	color: #63d4bd
 	font-family: OpenSans
-	font-size: 222%
+	font-size: 34px
 	font-weight: 400
 	line-height: 26px
-	top: 38%
-	left: 44%
-.landing-caricature-section-comment
+	position: relative
 	width: 100%
-	max-width: 750px
-	padding-left: 15px
-	padding-right: 15px
+	padding-top: 260px
+	margin-bottom: -260px
+	text-align: left
+	padding-left: 43%
+	@media (max-width: $xxl)
+		padding-left: 42%
+	@media (max-width: $xl)
+		padding-left: 40%
+	@media (max-width: $lg)
+		padding-left: 35%
+		padding-top: 190px
+		margin-bottom: -190px
+	@media (max-width: $md)
+		padding-top: 30px
+		margin-bottom: -130px
+.landing-caricature-psychologist
+	width: 100%
+	display: inline-block
+	position: relative
+	padding-top: 395px
+	i
+		background-image: url("../../images/assets/landing-psychologist.png")
+		width: 398px
+		height: 273px
+		display: inline-block
+	@media (max-width: $md)
+		padding-top: 890px
+		margin-bottom: 10px
+.landing-message-pos-caricature
 	color: #4a00b3
 	font-family: OpenSans
 	font-size: 21px
 	font-weight: 400
-	line-height: 30px
-	display: inline-block
-	margin-bottom: 80px
+	width: 100%
+	text-align: center
+	padding-right: 20%
+	padding-left: 20%
+	margin-bottom: 70px
+	@media (max-width: $md)
+		display: none
 .landing-only-logo
 	width: 100%
 	display: inline-block
@@ -301,6 +433,8 @@
 		width: 110px
 		height: 110px
 		display: inline-block
+	@media (max-width: $md)
+		padding-top: 28px
 .landing-caricature-presentation-title
 	width: 100%
 	text-align: center
@@ -311,11 +445,15 @@
 	line-height: 26px
 	margin-bottom: 54px
 .landing-caricature-presentation-content
-	width: 100%
+	width: 80%
+	margin-left: 10%
+	margin-right: 10%
 	min-height: 350px
 	background-image: url("../../images/landing-presentation-bg.png")
-	background-size: cover
+	background-size: contain
 	background-repeat: no-repeat
+	@media (max-width: $md)
+		background-image: none
 .landing-caricature-presentation-description
 	width: 100%
 	max-width: 570px
@@ -342,7 +480,10 @@
 	width: 100%
 	padding-bottom: 22%
 	padding-top: 9%
-	margin-bottom: -150px
+	margin-bottom: -12%
+	@media (max-width: $md)
+		margin-bottom: -14%
+		margin-top: 20px
 .landing-video-play
 	display: inline-block
 	text-align: center
@@ -360,13 +501,25 @@
 		display: inline-block
 		position: absolute
 		left: 0px
-.landing-footer-bg
+.landing-footer-bg,.landing-footer-bg-smart
 	background-image: url("../../images/landing-footer-bg.png")
 	background-repeat: no-repeat
 	background-size: cover
 	display: inline-block
 	margin-bottom: -5px
 	width: 100%
+	background-color: #afb4bc
+	@media (max-width: $md)
+		background-image: none
+
+.landing-footer-bg
+	@media (max-width: $md)
+		display: none
+.landing-footer-bg-smart
+	display: none
+	@media (max-width: $md)
+		display: inline-block
+
 .landing-footer-column
 	width: 33.3%
 	color: white
@@ -376,6 +529,9 @@
 	line-height: 30px
 	text-align: center
 	float: left
+	@media (max-width: $md)
+		float: none
+		width: 100%
 .landing-footer-teamrequest-btn
 	min-width: 108px
 	background-color: #31c5be
@@ -390,23 +546,26 @@
 	&:active, &:visited, &:link, &:hover
 		text-decoration: none
 		color: white
+	@media (max-width: $md)
+		margin-bottom: 40px
 .landing-footer-menu
 	display: inline-block
-	width: 70%
-	display: inline-block
-	width: 70%
+	width: 80%
 	padding-top: 7%
 	margin-bottom: 20%
+	@media (max-width: $md)
+		margin-bottom: 0px
 .landing-footer-menu-item
 	display: inline-block
-	width: 33%
-	font-family: OpenSans
-	font-size: 14px
-	font-weight: 400
-	line-height: 30px
-	&:active, &:hover, &:visited, &:link
-		text-decoration: none
-		color: white
+	width: 32%
+	a
+		font-family: OpenSans
+		font-size: 14px
+		font-weight: 400
+		line-height: 30px
+		&:active, &:hover, &:visited, &:link
+			text-decoration: none
+			color: white
 .landing-footer-form-info
 	color: white
 	font-family: OpenSans
@@ -416,6 +575,8 @@
 	text-align: center
 	display: inline-block
 	margin-bottom: 10px
+	@media (max-width: $md)
+		width: 100%
 .landing-footer-form-input
 	width: 280px
 	height: 45px
@@ -425,13 +586,15 @@
 	border-radius: 10px
 	display: inline-block
 	margin-bottom: 17%
+	color: black
+	text-align: center
+	font-size: 16px
 .landing-footer-social
 	display: inline-block
 	margin-bottom: 72px
 .social-icon
 	width: 70px
 	display: inline-block
-	margin-bottom: 90px
 .facebook
 	i
 		background-image: url("../../images/assets/facebook-icon.png")
@@ -455,9 +618,10 @@
 	width: 100%
 	color: white
 	font-family: OpenSans
-	font-size: 12px
+	font-size: 14px
 	font-weight: 400
 	line-height: 30px
+	margin-bottom: 12%
 .landing-footer-phone-info
 	color: white
 	font-family: OpenSans
@@ -483,6 +647,8 @@
 		position: absolute
 		left: 0px
 		top: 8px
+	@media (max-width: $md)
+		margin-bottom: 65px
 .landing-footer-teamrequest
 	width: 100%
 	display: inline-block
