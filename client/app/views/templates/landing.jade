@@ -15,7 +15,8 @@
 	.common-conteiner.align-right
 		form.landing-form(name="formLanding")
 			.landing-form-title Inicia tu cita en línea gratuita 
-			input.landing-form-input(type="text" name="name" id="name" ng-model="landing.Name" placeholder="Nombres y Apellidos" ng-pattern="/^[A-Za-zÑñáéíóúÁÉÍÓÚ^ ]*$/" ng-class="{ error: (submitted || formLanding.name.$dirty) && formLanding.name.$invalid, success: formLanding.name.$valid }" required)
+			.landing-form-group
+					input.landing-form-input(type="text" name="name" id="name" ng-model="landing.Name" placeholder="Nombres y Apellidos" ng-pattern="/^[A-Za-zÑñáéíóúÁÉÍÓÚ^ ]*$/" ng-class="{ error: (submitted || formLanding.name.$dirty) && formLanding.name.$invalid, success: formLanding.name.$valid }" required)
 			.landing-form-contact-way
 				.landing-form-contact-way-text Elige el método de contacto: 
 				.landing-form-contact-way-options
@@ -24,14 +25,27 @@
 					.landing-form-contact-way-options-text ó
 					a(href="javascript:void(0)" ng-click="llamada=false; skype=true" ng-class="{active: skype}").button-to-contact.skype-button Skype
 						i
-			.input-vertical-space(ng-show="llamada || skype")
-			input.landing-form-input(type="text" name="land-phone" ng-model="landing.Phone" maxlength="9" placeholder="Número de Celular" ng-show="llamada" onlynumber)
-			input.landing-form-input(type="text" name="land-email" ng-model="landing.Email" placeholder="Correo Electrónico" ng-show="skype")
-			.input-vertical-space(ng-show="llamada || skype")
+			.landing-form-group(ng-show="llamada")
+				input.landing-form-input(type="text" name="land-phone" ng-model="landing.Phone" maxlength="9" placeholder="Número de Celular"  onlynumber)
+			.space-vertical
+			.landing-form-group(ng-show="skype")
+				input.landing-form-input(type="text" name="land-email" ng-model="landing.Email" placeholder="Correo Electrónico" )
+			.space-vertical
+			.landing-form-group(ng-show="llamada || skype")
+				input.landing-form-input(type="datetime" name='land-date' id='land-date' ng-model="landing.Date" date-time  format="dd/MM/yyyy" min-view="date" view="date" placeholder="Elige la Fecha" readonly)
+			.space-vertical
+			.landing-form-group(ng-show="llamada || skype")
+				select.landing-form-input(type="text" name="land-schedule" id="land-schedule" ng-model="landing.Sechedule" placeholder="Correo Electrónico" )
+					option De 9:00 a.m. hasta 9:45 p.m.
+					option De 9:00 a.m. hasta 9:45 p.m.
+					option De 9:00 a.m. hasta 9:45 p.m.
 			.landing-form-terms-conditions
 				.landing-rbtn(ng-click="terminos= !terminos;")
 					i(ng-class="{active: terminos}")
-				a(href="#").landing-form-terms-conditions-text Acepta los terminos y condiciones *
+				.landing-form-terms-conditions-text
+					|Acepta los 
+					a(href="#") terminos y condiciones 
+					|*
 			.landing-form-button
 				a(href="javascript:void(0)" ng-click="submitted=true").landing-primary-button Reservar tu cita {{submitted}}
 	.common-conteiner

@@ -15,19 +15,18 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
+    'datePicker',
     'ngTouch'
   ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/landing.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        controller: 'LandingCtrl'
       })
       .when('/landing', {
         templateUrl: 'views/landing.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        controller: 'LandingCtrl'
       })
       .otherwise({
         redirectTo: '/'

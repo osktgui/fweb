@@ -14,19 +14,37 @@
   <div class="common-conteiner align-right">
     <form name="formLanding" class="landing-form">
       <div class="landing-form-title">Inicia tu cita en línea gratuita </div>
-      <input type="text" name="name" id="name" ng-model="landing.Name" placeholder="Nombres y Apellidos" ng-pattern="/^[A-Za-zÑñáéíóúÁÉÍÓÚ^ ]*$/" ng-class="{ error: (submitted || formLanding.name.$dirty) &amp;&amp; formLanding.name.$invalid, success: formLanding.name.$valid }" required="required" class="landing-form-input"/>
+      <div class="landing-form-group">
+        <input type="text" name="name" id="name" ng-model="landing.Name" placeholder="Nombres y Apellidos" ng-pattern="/^[A-Za-zÑñáéíóúÁÉÍÓÚ^ ]*$/" ng-class="{ error: (submitted || formLanding.name.$dirty) &amp;&amp; formLanding.name.$invalid, success: formLanding.name.$valid }" required="required" class="landing-form-input"/>
+      </div>
       <div class="landing-form-contact-way">
         <div class="landing-form-contact-way-text">Elige el método de contacto: </div>
         <div class="landing-form-contact-way-options"><a href="javascript:void(0)" ng-click="llamada=true; skype=false" ng-class="{active: llamada}" class="button-to-contact call-button">Llamada Telefónica<i></i></a>
           <div class="landing-form-contact-way-options-text">ó</div><a href="javascript:void(0)" ng-click="llamada=false; skype=true" ng-class="{active: skype}" class="button-to-contact skype-button">Skype<i></i></a>
         </div>
       </div>
-      <div ng-show="llamada || skype" class="input-vertical-space"></div>
-      <input type="text" name="land-phone" ng-model="landing.Phone" maxlength="9" placeholder="Número de Celular" ng-show="llamada" onlynumber="onlynumber" class="landing-form-input"/>
-      <input type="text" name="land-email" ng-model="landing.Email" placeholder="Correo Electrónico" ng-show="skype" class="landing-form-input"/>
-      <div ng-show="llamada || skype" class="input-vertical-space"></div>
+      <div ng-show="llamada" class="landing-form-group">
+        <input type="text" name="land-phone" ng-model="landing.Phone" maxlength="9" placeholder="Número de Celular" onlynumber="onlynumber" class="landing-form-input"/>
+      </div>
+      <div class="space-vertical"></div>
+      <div ng-show="skype" class="landing-form-group">
+        <input type="text" name="land-email" ng-model="landing.Email" placeholder="Correo Electrónico" class="landing-form-input"/>
+      </div>
+      <div class="space-vertical"></div>
+      <div ng-show="llamada || skype" class="landing-form-group">
+        <input type="datetime" name="land-date" id="land-date" ng-model="landing.Date" date-time="date-time" format="dd/MM/yyyy" min-view="date" view="date" placeholder="Elige la Fecha" readonly="readonly" class="landing-form-input"/>
+      </div>
+      <div class="space-vertical"></div>
+      <div ng-show="llamada || skype" class="landing-form-group">
+        <select type="text" name="land-schedule" id="land-schedule" ng-model="landing.Sechedule" placeholder="Correo Electrónico" class="landing-form-input">
+          <option>De 9:00 a.m. hasta 9:45 p.m.</option>
+          <option>De 9:00 a.m. hasta 9:45 p.m.</option>
+          <option>De 9:00 a.m. hasta 9:45 p.m.</option>
+        </select>
+      </div>
       <div class="landing-form-terms-conditions">
-        <div ng-click="terminos= !terminos;" class="landing-rbtn"><i ng-class="{active: terminos}"></i></div><a href="#" class="landing-form-terms-conditions-text">Acepta los terminos y condiciones *</a>
+        <div ng-click="terminos= !terminos;" class="landing-rbtn"><i ng-class="{active: terminos}"></i></div>
+        <div class="landing-form-terms-conditions-text">Acepta los <a href="#">terminos y condiciones </a>*</div>
       </div>
       <div class="landing-form-button"><a href="javascript:void(0)" ng-click="submitted=true" class="landing-primary-button">Reservar tu cita {{submitted}}</a></div>
     </form>
