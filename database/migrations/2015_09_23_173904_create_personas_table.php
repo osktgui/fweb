@@ -35,7 +35,7 @@ class CreatePersonasTable extends Migration {
 				// Foreign Keys
 				$table->foreign('lugarNacimiento')->references('ubigeoId')->on('Ubigeo')->onDelete('cascade');
 				$table->foreign('lugarResidencia')->references('ubigeoId')->on('Ubigeo')->onDelete('cascade');
-				$table->foreign('sexoPersona')->references('sexoId')->on('Sexo')->onDelete('cascade');
+				$table->foreign('sexoPersona')->references('sexoId')->on('Sexos')->onDelete('cascade');
 				$table->foreign('tipoDocumento')->references('tipoDocumento')->on('TiposDocumento')->onDelete('cascade');
 
 			});

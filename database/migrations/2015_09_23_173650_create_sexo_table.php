@@ -10,7 +10,7 @@ class CreateSexoTable extends Migration {
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('Sexo', function (Blueprint $table) {
+		Schema::create('Sexos', function (Blueprint $table) {
 				$table->integer('sexoId');
 				$table->string('nombreSexo', 10);
 				$table->text('observacion');
@@ -31,6 +31,6 @@ class CreateSexoTable extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::drop('Sexo');
+		Schema::drop('Sexos');
 	}
 }

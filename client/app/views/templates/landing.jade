@@ -16,38 +16,38 @@
 		form.landing-form(name="formLanding")
 			.landing-form-title Inicia tu cita en línea gratuita 
 			.landing-form-group
-					input.landing-form-input(type="text" name="name" id="name" ng-model="landing.Name" placeholder="Nombres y Apellidos" ng-pattern="/^[A-Za-zÑñáéíóúÁÉÍÓÚ^ ]*$/" ng-class="{ error: (submitted || formLanding.name.$dirty) && formLanding.name.$invalid, success: formLanding.name.$valid }" required)
+					input.landing-form-input(type="text" name="land-name" id="land-name" ng-model="landing.names" placeholder="Nombres y Apellidos" ng-pattern="/^[A-Za-zÑñáéíóúÁÉÍÓÚ^ ]*$/" ng-change="rmvError('land-name')")
 			.landing-form-contact-way
-				.landing-form-contact-way-text Elige el método de contacto: 
+				.landing-form-contact-way-text#landing-form-contact-way-text Elige el método de contacto: 
 				.landing-form-contact-way-options
-					a(href="javascript:void(0)" ng-click="llamada=true; skype=false" ng-class="{active: llamada}").button-to-contact.call-button Llamada Telefónica
+					a(href="javascript:void(0)" ng-click="variable.llamada=true; variable.skype=false;rmvError('landing-form-contact-way-text')" ng-class="{active: variable.llamada}").button-to-contact.call-button Llamada Telefónica
 						i
 					.landing-form-contact-way-options-text ó
-					a(href="javascript:void(0)" ng-click="llamada=false; skype=true" ng-class="{active: skype}").button-to-contact.skype-button Skype
+					a(href="javascript:void(0)" ng-click="variable.llamada=false; variable.skype=true;rmvError('landing-form-contact-way-text')" ng-class="{active: variable.skype}").button-to-contact.variable.skype-button Skype
 						i
-			.landing-form-group(ng-show="llamada")
-				input.landing-form-input(type="text" name="land-phone" ng-model="landing.Phone" maxlength="9" placeholder="Número de Celular"  onlynumber)
+			.landing-form-group(ng-show="variable.llamada")
+				input.landing-form-input(type="text" name="land-phone" id="land-phone" ng-model="landing.phone" maxlength="9" placeholder="Número de Celular" ng-change="rmvError('land-phone')" onlynumber)
 			.space-vertical
-			.landing-form-group(ng-show="skype")
-				input.landing-form-input(type="text" name="land-email" ng-model="landing.Email" placeholder="Correo Electrónico" )
+			.landing-form-group(ng-show="variable.skype")
+				input.landing-form-input(type="text" name="land-email" id="land-email" ng-model="landing.email" placeholder="Correo Electrónico" ng-change="rmvError('land-phone')")
 			.space-vertical
-			.landing-form-group(ng-show="llamada || skype")
-				input.landing-form-input(type="datetime" name='land-date' id='land-date' ng-model="landing.Date" date-time  format="dd/MM/yyyy" min-view="date" view="date" placeholder="Elige la Fecha" readonly)
+			.landing-form-group(ng-show="variable.llamada || variable.skype")
+				input.landing-form-input(type="text" name='land-date' id='land-date' ng-model="landing.date"  format="dd/MM/yyyy" min-view="date" view="date" placeholder="Elige la Fecha"  date-time readonly) 
 			.space-vertical
-			.landing-form-group(ng-show="llamada || skype")
-				select.landing-form-input(type="text" name="land-schedule" id="land-schedule" ng-model="landing.Sechedule" placeholder="Correo Electrónico" )
-					option De 9:00 a.m. hasta 9:45 p.m.
+			.landing-form-group.schedule-hidden
+				select.landing-form-input.landing-select(type="text" name="land-schedule" id="land-schedule" ng-model="landing.schedule" placeholder="Correo Electrónico" ng-change="rmvError('land-schedule')")
+					option(value="" disabled) Horario de Consulta
 					option De 9:00 a.m. hasta 9:45 p.m.
 					option De 9:00 a.m. hasta 9:45 p.m.
 			.landing-form-terms-conditions
-				.landing-rbtn(ng-click="terminos= !terminos;")
-					i(ng-class="{active: terminos}")
-				.landing-form-terms-conditions-text
-					|Acepta los 
+				.landing-rbtn(ng-click="variable.terminos= !variable.terminos;rmvError('landing-terminos-condiciones');")
+					i(ng-class="{active: variable.terminos}")
+				.landing-form-terms-conditions-text#landing-terminos-condiciones
+					|Acepta los {{variable.terminos}}
 					a(href="#") terminos y condiciones 
 					|*
 			.landing-form-button
-				a(href="javascript:void(0)" ng-click="submitted=true").landing-primary-button Reservar tu cita {{submitted}}
+				a(href="javascript:void(0)" ng-click="reservarCita()").landing-primary-button Reservar tu cita
 	.common-conteiner
 		.landing-invitation-message - Programa tu terapia psicológica en el momento más cómodo para tí -
 .landing-phrase
