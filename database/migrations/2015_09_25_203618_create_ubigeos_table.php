@@ -3,15 +3,15 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateUbigeoTable extends Migration {
+class CreateUbigeosTable extends Migration {
 	/**
 	 * Run the migrations.
 	 *
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('Ubigeo', function (Blueprint $table) {
-				$table->integer('ubigeoId');
+		Schema::create('ubigeos', function (Blueprint $table) {
+				$table->increments('ubigeoId');
 				$table->string('codPais', 3);
 				$table->string('codDepartamento', 3);
 				$table->string('codProvincia', 3);
@@ -20,13 +20,7 @@ class CreateUbigeoTable extends Migration {
 				$table->string('nomDepartamento', 50);
 				$table->string('nomProvincia', 50);
 				$table->string('nomDistrito', 50);
-				$table->timestamp('fechaCreacion');
-				$table->string('usuarioCreacion', 10);
-				$table->timestamp('fechaModificacion')->nullable();
-				$table->string('usuarioModificacion', 10)->nullable();
-
-				// Primary Key
-				$table->primary('ubigeoId');
+				$table->timestamps();
 			});
 	}
 
@@ -36,6 +30,6 @@ class CreateUbigeoTable extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::drop('Ubigeo');
+		Schema::drop('ubigeos');
 	}
 }
