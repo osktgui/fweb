@@ -13,8 +13,12 @@ class CreateMaestrosTable extends Migration {
 		Schema::create('maestros', function (Blueprint $table) {
 				$table->increments('maestroId');
 				$table->string('nombreMaestro', 50);
-				$table->string('descripcionMaestro', 200);
-				$table->timestamps();
+				$table->string('descripcionMaestro', 200)->nullable();
+				// Auditoría
+				$table->string('created_by', 50);
+				$table->string('updated_by', 50)->nullable();
+				$table->nullableTimestamps();
+				// $table->timestamps();
 			});
 	}
 

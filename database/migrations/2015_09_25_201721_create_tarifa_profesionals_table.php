@@ -12,10 +12,13 @@ class CreateTarifaProfesionalsTable extends Migration {
 	public function up() {
 		Schema::create('tarifa_profesionals', function (Blueprint $table) {
 				$table->increments('tarifaProfesionalId');
-				$table->integer('personaId');
+				$table->integer('personaId')->unsigned();
 				$table->float('montoTarifa');
 				$table->integer('tipoMonedaId');
-				$table->timestamps();
+				// Auditoría
+				$table->string('created_by', 50);
+				$table->string('updated_by', 50)->nullable();
+				$table->nullableTimestamps();
 				// FK
 				$table->foreign('personaId')->references('personaId')->on('personas');
 			});

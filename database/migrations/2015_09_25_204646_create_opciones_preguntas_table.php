@@ -12,10 +12,12 @@ class CreateOpcionesPreguntasTable extends Migration {
 	public function up() {
 		Schema::create('opciones_preguntas', function (Blueprint $table) {
 				$table->increments('opcionesPreguntaId');
-				$table->integer('preguntasEncuestaId');
+				$table->integer('preguntasEncuestaId')->unsigned();
 				$table->text('texto');
-				$table->timestamps();
-
+				// Auditoría
+				$table->string('created_by', 50);
+				$table->string('updated_by', 50)->nullable();
+				$table->nullableTimestamps();
 				// FK
 				$table->foreign('preguntasEncuestaId')->references('preguntasEncuestaId')->on('preguntas_encuestas');
 			});

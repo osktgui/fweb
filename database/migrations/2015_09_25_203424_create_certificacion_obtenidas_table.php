@@ -12,12 +12,14 @@ class CreateCertificacionObtenidasTable extends Migration {
 	public function up() {
 		Schema::create('certificacion_obtenidas', function (Blueprint $table) {
 				$table->increments('certificacionObtenidaId');
-				$table->integer('personaId');
-				$table->text('descripcion');
+				$table->integer('personaId')->unsigned();
+				$table->text('descripcion')->nullable();
 				$table->string('tituloCertificacion', 50);
-				$table->integer('organizacionId');
-				$table->timestamps();
-
+				$table->integer('organizacionId')->unsigned();
+				// Auditoría
+				$table->string('created_by', 50);
+				$table->string('updated_by', 50)->nullable();
+				$table->nullableTimestamps();
 				// FK
 				$table->foreign('personaId')->references('personaId')->on('personas');
 				$table->foreign('organizacionId')->references('organizacionId')->on('organizacions');

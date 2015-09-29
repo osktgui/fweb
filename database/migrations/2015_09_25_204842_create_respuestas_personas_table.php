@@ -12,11 +12,13 @@ class CreateRespuestasPersonasTable extends Migration {
 	public function up() {
 		Schema::create('respuestas_personas', function (Blueprint $table) {
 				$table->increments('respuestaPersonaId');
-				$table->integer('personaId');
-				$table->integer('opcionesPreguntaId');
-				$table->text('descripcion');
-				$table->timestamps();
-
+				$table->integer('personaId')->unsigned();
+				$table->integer('opcionesPreguntaId')->unsigned();
+				$table->text('descripcion')->nullable();
+				// Auditoría
+				$table->string('created_by', 50);
+				$table->string('updated_by', 50)->nullable();
+				$table->nullableTimestamps();
 				// FK
 				$table->foreign('personaId')->references('personaId')->on('personas');
 				$table->foreign('opcionesPreguntaId')->references('opcionesPreguntaId')->on('opciones_preguntas');

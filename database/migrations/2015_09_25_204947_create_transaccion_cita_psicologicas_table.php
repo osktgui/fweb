@@ -12,12 +12,14 @@ class CreateTransaccionCitaPsicologicasTable extends Migration {
 	public function up() {
 		Schema::create('transaccion_cita_psicologicas', function (Blueprint $table) {
 				$table->increments('transaccionCitaPsicologicaId');
-				$table->integer('citaPsicologicaId');
-				$table->integer('transaccionId');
-				$table->string('observacion', 200);
+				$table->integer('citaPsicologicaId')->unsigned();
+				$table->integer('transaccionId')->unsigned();
+				$table->string('observacion', 200)->nullable();
 				$table->boolean('valida');
-				$table->timestamps();
-
+				// Auditoría
+				$table->string('created_by', 50);
+				$table->string('updated_by', 50)->nullable();
+				$table->nullableTimestamps();
 				// FK
 				$table->foreign('citaPsicologicaId')->references('citaPsicologicaId')->on('cita_psicologicas');
 				$table->foreign('transaccionId')->references('transaccionId')->on('transaccions');

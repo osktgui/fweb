@@ -20,7 +20,10 @@ class CreateUbigeosTable extends Migration {
 				$table->string('nomDepartamento', 50);
 				$table->string('nomProvincia', 50);
 				$table->string('nomDistrito', 50);
-				$table->timestamps();
+				// Auditoría
+				$table->string('created_by', 50);
+				$table->string('updated_by', 50)->nullable();
+				$table->nullableTimestamps();
 			});
 	}
 

@@ -14,8 +14,11 @@ class CreateMaestroDetallesTable extends Migration {
 				$table->increments('maestroDetalleId');
 				$table->integer('maestroId');
 				$table->string('nombreMaestroDetalle', 50);
-				$table->string('descripcionMaestroDetalle', 200);
-				$table->timestamps();
+				$table->string('descripcionMaestroDetalle', 200)->nullable();
+				// Auditoría
+				$table->string('created_by', 50);
+				$table->string('updated_by', 50)->nullable();
+				$table->nullableTimestamps();
 				// FK
 				$table->foreign('maestroId')->references('maestroId')->on('maestros');
 			});

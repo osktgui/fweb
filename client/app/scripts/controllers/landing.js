@@ -10,6 +10,9 @@
 angular.module('filiumApp')
 
   .controller('LandingCtrl',function ($scope, $window) {
+
+
+
   	$scope.landing = {}
   	$scope.variable = {}
   	// Show schedule input when the date is selected
@@ -40,6 +43,34 @@ angular.module('filiumApp')
   		angular.element('#land-schedule').val('');
   		angular.element('#land-schedule').addClass('landing-select');
   		angular.element('#land-date').removeClass('error');
+      angular.element('#land-schedule').empty();
+      angular.element('#land-schedule').append('<option value disabled>Horario de Consulta</option>');
+      var params={};            
+      params['fechaCita']=angular.element('#land-date').val();
+      $window.alert( params['fechaCita']);
+      $.ajax({
+        data : params,
+        type: "GET",
+        url: "leerHorariosDisponibles",
+        dataType: "json",
+        success : function(data) 
+        {   
+          angular.element('land-schedule').empty();
+          // $window.alert(data[0]['horarioDisponibleId']);
+          $.each(data,function(id,item){
+            // var time = new Date(item.hora);
+            // $window.alert(time.getHours);
+            var _horario='A las '+timeFormat(item.hora);
+            angular.element('#land-schedule').append('<option value="'+item.horarioDisponibleId+'">'+_horario+'</option>');
+          })
+        },
+        error: function() 
+        {       
+          $window.alert("Error");
+
+        }
+      });
+
   	}
   	// Function to show inputs error
   	function setError(inputId){angular.element('#'+inputId).addClass('error');v_continuar=false;}
@@ -49,6 +80,45 @@ angular.module('filiumApp')
      };
     // Function reservarCita()  
     function reservarCita(){
-     	$window.alert("ReservarCita");
+      $window.alert("Antes");
+      var params={};            
+      params['nombre']=$scope.landing.names;   
+      if($scope.variable.llamada) params['metodoContacto']='llamada';   
+      else if($scope.variable.skype) params['metodoContacto']='skype';   
+      params['celular']=$scope.landing.phone;   
+      params['correo']=$scope.landing.email;    
+      params['horario']=$scope.landing.schedule;   
+      $.ajax({
+        data : params,
+        type: "GET",
+        url: "registrarLead",
+        dataType: "text",
+        success : function(data) 
+        {   
+          $window.alert(data);
+        },
+        error: function() 
+        {       
+          $window.alert("Error");             
+        }
+      });    	
      }
+    // Function time 12 h
+    function timeFormat(time){
+      var hora=parseInt(time.substring(0, 2));
+      var minuto=time.substring(3, 5);
+      var _m=' a.m.';
+      if (hora>12){
+        hora=hora-12;
+        _m=' p.m.';
+      }
+      if(hora<10){
+        return ('0'+hora+":"+minuto+_m);
+      }
+      else
+      {
+        return (hora+":"+minuto+_m);
+      }
+    }
+
   });

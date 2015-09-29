@@ -12,11 +12,13 @@ class CreateConocimientoIdiomasTable extends Migration {
 	public function up() {
 		Schema::create('conocimiento_idiomas', function (Blueprint $table) {
 				$table->increments('conocimientoIdiomaId');
-				$table->integer('personaId');
+				$table->integer('personaId')->unsigned();
 				$table->integer('idiomaId');
 				$table->integer('nivelIdiomaId');
-				$table->timestamps();
-
+				// Auditoría
+				$table->string('created_by', 50);
+				$table->string('updated_by', 50)->nullable();
+				$table->nullableTimestamps();
 				// FK
 				$table->foreign('personaId')->references('personaId')->on('personas');
 			});

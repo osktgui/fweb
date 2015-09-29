@@ -12,10 +12,12 @@ class CreatePreguntasEncuestasTable extends Migration {
 	public function up() {
 		Schema::create('preguntas_encuestas', function (Blueprint $table) {
 				$table->increments('preguntasEncuestaId');
-				$table->integer('encuestaId');
+				$table->integer('encuestaId')->unsigned();
 				$table->text('texto');
-				$table->timestamps();
-
+				// Auditoría
+				$table->string('created_by', 50);
+				$table->string('updated_by', 50)->nullable();
+				$table->nullableTimestamps();
 				// FK
 				$table->foreign('encuestaId')->references('encuestaId')->on('encuestas');
 			});

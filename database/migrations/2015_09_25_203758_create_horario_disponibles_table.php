@@ -11,11 +11,15 @@ class CreateHorarioDisponiblesTable extends Migration {
 	 */
 	public function up() {
 		Schema::create('horario_disponibles', function (Blueprint $table) {
-				$table->increments('horadioDisponibleId');
-				$table->integer('personaId');
-				$table->dateTime('fechaHora');
-				$table->timestamps();
-
+				$table->increments('horarioDisponibleId');
+				$table->integer('personaId')->unsigned();
+				$table->date('fecha');
+				$table->time('hora');
+				$table->boolean('disponible');
+				// Auditoría
+				$table->string('created_by', 50);
+				$table->string('updated_by', 50)->nullable();
+				$table->nullableTimestamps();
 				// FK
 				$table->foreign('personaId')->references('personaId')->on('personas');
 			});

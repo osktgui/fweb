@@ -12,12 +12,14 @@ class CreateHabilidadPersonalsTable extends Migration {
 	public function up() {
 		Schema::create('habilidad_personals', function (Blueprint $table) {
 				$table->increments('habilidadPersonalId');
-				$table->integer('personalId');
+				$table->integer('personaId')->unsigned();
 				$table->integer('habilidadId');
-				$table->timestamps();
-
+				// Auditoría
+				$table->string('created_by', 50);
+				$table->string('updated_by', 50)->nullable();
+				$table->nullableTimestamps();
 				// FK
-				$table->foreign('personalId')->references('personalId')->on('personas');
+				$table->foreign('personaId')->references('personaId')->on('personas');
 			});
 	}
 

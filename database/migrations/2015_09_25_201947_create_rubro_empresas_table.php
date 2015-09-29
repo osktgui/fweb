@@ -12,9 +12,12 @@ class CreateRubroEmpresasTable extends Migration {
 	public function up() {
 		Schema::create('rubro_empresas', function (Blueprint $table) {
 				$table->increments('rubroEmpresaId');
-				$table->integer('organizacionId');
+				$table->integer('organizacionId')->unsigned();
 				$table->integer('rubroId');
-				$table->timestamps();
+				// Auditoría
+				$table->string('created_by', 50);
+				$table->string('updated_by', 50)->nullable();
+				$table->nullableTimestamps();
 				// FK
 				$table->foreign('organizacionId')->references('organizacionId')->on('organizacions');
 			});

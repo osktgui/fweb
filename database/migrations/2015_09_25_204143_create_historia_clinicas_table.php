@@ -12,13 +12,15 @@ class CreateHistoriaClinicasTable extends Migration {
 	public function up() {
 		Schema::create('historia_clinicas', function (Blueprint $table) {
 				$table->increments('historiaId');
-				$table->integer('psicologoId');
-				$table->integer('pacienteId');
-				$table->integer('citaPsicologicaId');
+				$table->integer('psicologoId')->unsigned();
+				$table->integer('pacienteId')->unsigned();
+				$table->integer('citaPsicologicaId')->unsigned();
 				$table->date('fechaHistoria');
 				$table->text('descripcion');
-				$table->timestamps();
-
+				// Auditoría
+				$table->string('created_by', 50);
+				$table->string('updated_by', 50)->nullable();
+				$table->nullableTimestamps();
 				// FK
 				$table->foreign('psicologoId')->references('personaId')->on('personas');
 				$table->foreign('pacienteId')->references('personaId')->on('personas');

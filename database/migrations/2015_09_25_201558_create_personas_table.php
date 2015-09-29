@@ -11,27 +11,31 @@ class CreatePersonasTable extends Migration {
 	 */
 	public function up() {
 		Schema::create('personas', function (Blueprint $table) {
-				$table->increments('personasId');
-				$table->string('nombres', 100);
-				$table->string('apellidos', 100);
-				$table->integer('tipoDocumentoId');
-				$table->string('numeroDocumento', 15);
-				$table->integer('sexoId');
-				$table->integer('codPaisNacimiento');
-				$table->integer('codDepartamentoNacimiento');
-				$table->integer('codProvinciaNacimiento');
-				$table->integer('codDistritoNacimiento');
-				$table->integer('codPaisResidencia');
-				$table->integer('codDepartamentoResidencia');
-				$table->integer('codProvinciaResidencia');
-				$table->integer('codDistritoResidencia');
-				$table->string('direccion', 100);
-				$table->string('telefonoMovil', 20);
-				$table->string('telefonoFijo', 20);
-				$table->string('codColegioProfesional', 20);
-				$table->text('fotoRuta');
+				$table->increments('personaId');
+				$table->string('nombrePersona', 200);
+				$table->integer('tipoDocumentoId')->nullable();
+				$table->string('numeroDocumento', 15)->nullable();
+				$table->integer('sexoId')->nullable();
+				$table->integer('codPaisNacimiento')->nullable();
+				$table->integer('codDepartamentoNacimiento')->nullable();
+				$table->integer('codProvinciaNacimiento')->nullable();
+				$table->integer('codDistritoNacimiento')->nullable();
+				$table->integer('codPaisResidencia')->nullable();
+				$table->integer('codDepartamentoResidencia')->nullable();
+				$table->integer('codProvinciaResidencia')->nullable();
+				$table->integer('codDistritoResidencia')->nullable();
+				$table->string('direccion', 100)->nullable();
+				$table->string('skypeId', 100)->nullable();
+				$table->string('correoElectronico', 100)->nullable();
+				$table->string('telefonoMovil', 20)->nullable();
+				$table->string('telefonoFijo', 20)->nullable();
+				$table->string('codColegioProfesional', 20)->nullable();
+				$table->text('fotoRuta')->nullable();
 				$table->integer('tipoRegistroId');
-				$table->timestamps();
+				// Auditoría
+				$table->string('created_by', 50);
+				$table->string('updated_by', 50)->nullable();
+				$table->nullableTimestamps();
 			});
 	}
 

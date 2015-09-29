@@ -12,16 +12,18 @@ class CreateFormacionProfesionalsTable extends Migration {
 	public function up() {
 		Schema::create('formacion_profesionals', function (Blueprint $table) {
 				$table->increments('formacionProfesionalId');
-				$table->integer('personaId');
-				$table->integer('organizacionId');
+				$table->integer('personaId')->unsigned();
+				$table->integer('organizacionId')->unsigned();
 				$table->integer('gradoAcademicoId');
 				$table->string('nombreCarrera', 100);
-				$table->string('nombreMencion', 100);
+				$table->string('nombreMencion', 100)->nullable();
 				$table->date('fechaInicio');
-				$table->date('fechaFin');
-				$table->string('comentario', 200);
-				$table->timestamps();
-
+				$table->date('fechaFin')->nullable();
+				$table->string('comentario', 200)->nullable();
+				// Auditoría
+				$table->string('created_by', 50);
+				$table->string('updated_by', 50)->nullable();
+				$table->nullableTimestamps();
 				// FK
 				$table->foreign('personaId')->references('personaId')->on('personas');
 				$table->foreign('organizacionId')->references('organizacionId')->on('organizacions');

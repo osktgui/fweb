@@ -12,15 +12,18 @@ class CreateUsuariosTable extends Migration {
 	public function up() {
 		Schema::create('usuarios', function (Blueprint $table) {
 				$table->increments('usuarioId');
-				$table->integer('personaId');
-				$table->string('skypeId', 50);
-				$table->string('correoElectronico', 50);
+				$table->integer('personaId')->unsigned();
+				$table->string('nombreUsuario', 100);
 				$table->text('contrasena');
-				$table->dateTime('ultimaSesion');
+				$table->dateTime('ultimaSesion')->nullable();
 				$table->boolean('bloqueado');
-				$table->timestamps();
+				// Auditoría
+				$table->string('created_by', 50);
+				$table->string('updated_by', 50)->nullable();
+				$table->nullableTimestamps();
 				// FK
 				$table->foreign('personaId')->references('personaId')->on('personas');
+				;
 			});
 	}
 

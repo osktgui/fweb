@@ -12,10 +12,13 @@ class CreateEncuestasTable extends Migration {
 	public function up() {
 		Schema::create('encuestas', function (Blueprint $table) {
 				$table->increments('encuestaId');
-				$table->date('fechaInicioEncuesta');
-				$table->date('fechaFinEncuesta');
+				$table->date('fechaInicioEncuesta')->nullable();
+				$table->date('fechaFinEncuesta')->nullable();
 				$table->boolean('activaEncuesta');
-				$table->timestamps();
+				// Auditoría
+				$table->string('created_by', 50);
+				$table->string('updated_by', 50)->nullable();
+				$table->nullableTimestamps();
 			});
 	}
 

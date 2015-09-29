@@ -12,7 +12,7 @@ class CreateTransaccionsTable extends Migration {
 	public function up() {
 		Schema::create('transaccions', function (Blueprint $table) {
 				$table->increments('transaccionId');
-				$table->integer('personaId');
+				$table->integer('personaId')->unsigned();
 				$table->integer('bancoId');
 				$table->integer('metodoPagoId');
 				$table->float('monto');
@@ -20,8 +20,10 @@ class CreateTransaccionsTable extends Migration {
 				$table->text('archivoComprobante');
 				$table->boolean('extornado');
 				$table->string('nOperacion', 40);
-				$table->timestamps();
-
+				// Auditoría
+				$table->string('created_by', 50);
+				$table->string('updated_by', 50)->nullable();
+				$table->nullableTimestamps();
 				// FK
 				$table->foreign('personaId')->references('personaId')->on('personas');
 			});
