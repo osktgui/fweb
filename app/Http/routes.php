@@ -124,7 +124,7 @@ Route::get('/consultarCitasPsicologicas', function () {
 			})->export('xls');
 	});
 Route::get('/consultasPsicologos', function () {
-		echo "Seleccione al Psicólogo<br>";
+		echo "Seleccione al Psicólogo<br><br>";
 		echo '<form action="consultarCitasPsicologicas" method="get">';
 		echo '<select name="codigoPsicologo">';
 		$rolUsuarios = RolUsuario::where('rolId', '=', '9')->get();
