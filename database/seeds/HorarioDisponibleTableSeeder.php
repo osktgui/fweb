@@ -14,21 +14,61 @@ class HorarioDisponibleTableSeeder extends Seeder {
 		DB::table('horario_disponibles')->insert([
 				'personaId'  => 1,
 				'fecha'      => '2015-09-30',
-				'hora'       => '16:30',
+				'hora'       => '16:00',
 				'disponible' => true,
 				'created_by' => 'Sistema'
 			]);
+		DB::table('horario_disponibles')->insert([
+				'personaId'  => 1,
+				'fecha'      => '2015-09-30',
+				'hora'       => '17:00',
+				'disponible' => true,
+				'created_by' => 'Sistema'
+			]);
+		DB::table('horario_disponibles')->insert([
+				'personaId'  => 1,
+				'fecha'      => '2015-09-30',
+				'hora'       => '18:00',
+				'disponible' => true,
+				'created_by' => 'Sistema'
+			]);
+
 		DB::table('horario_disponibles')->insert([
 				'personaId'  => 2,
 				'fecha'      => '2015-09-30',
-				'hora'       => '16:30',
+				'hora'       => '10:00',
+				'disponible' => true,
+				'created_by' => 'Sistema'
+			]);DB::table('horario_disponibles')->insert([
+				'personaId'  => 2,
+				'fecha'      => '2015-09-30',
+				'hora'       => '11:00',
+				'disponible' => true,
+				'created_by' => 'Sistema'
+			]);DB::table('horario_disponibles')->insert([
+				'personaId'  => 2,
+				'fecha'      => '2015-09-30',
+				'hora'       => '12:00',
 				'disponible' => true,
 				'created_by' => 'Sistema'
 			]);
+
 		DB::table('horario_disponibles')->insert([
 				'personaId'  => 3,
 				'fecha'      => '2015-09-30',
-				'hora'       => '10:30',
+				'hora'       => '11:00',
+				'disponible' => true,
+				'created_by' => 'Sistema'
+			]);DB::table('horario_disponibles')->insert([
+				'personaId'  => 3,
+				'fecha'      => '2015-09-30',
+				'hora'       => '12:00',
+				'disponible' => true,
+				'created_by' => 'Sistema'
+			]);DB::table('horario_disponibles')->insert([
+				'personaId'  => 3,
+				'fecha'      => '2015-09-30',
+				'hora'       => '13:00',
 				'disponible' => true,
 				'created_by' => 'Sistema'
 			]);

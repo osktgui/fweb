@@ -12,7 +12,7 @@ class PersonaTableSeeder extends Seeder {
 		DB::table('personas')->delete();
 		// Piscólogos de Prueba
 		DB::table('personas')->insert([
-				'nombrePersona'         => 'José Antonio Rios',
+				'nombrePersona'         => 'José Rios',
 				'tipoDocumentoId'       => 1,
 				'numeroDocumento'       => '12345678',
 				'sexoId'                => 3,

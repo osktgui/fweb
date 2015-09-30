@@ -1,3 +1,5 @@
+.landing-contact-bg
+	.landing-contact-bg-2
 .landing-contact-section
 	.common-conteiner.align-right
 		.landing-main-menu
@@ -29,7 +31,10 @@
 				input.landing-form-input(type="text" name="land-phone" id="land-phone" ng-model="landing.phone" maxlength="9" placeholder="Número de Celular" ng-change="rmvError('land-phone')" onlynumber)
 			.space-vertical
 			.landing-form-group(ng-show="variable.skype")
-				input.landing-form-input(type="text" name="land-email" id="land-email" ng-model="landing.email" placeholder="Correo Electrónico" ng-change="rmvError('land-phone')")
+				input.landing-form-input(type="text" name="land-skype" id="land-skype" ng-model="landing.skype" placeholder="Usuario de Skype" ng-change="rmvError('land-skype')")
+			.space-vertical
+			.landing-form-group(ng-show="variable.llamada || variable.skype")
+				input.landing-form-input(type="text" name="land-email" id="land-email" ng-model="landing.email" placeholder="Correo Electrónico" ng-change="rmvError('land-email')")
 			.space-vertical
 			.landing-form-group(ng-show="variable.llamada || variable.skype")
 				input.landing-form-input(type="text" name='land-date' id='land-date' ng-model="landing.date"  format="dd/MM/yyyy" min-view="date" view="date" placeholder="Elige la Fecha"  date-time readonly) 
@@ -43,7 +48,7 @@
 				.landing-rbtn(ng-click="variable.terminos= !variable.terminos;rmvError('landing-terminos-condiciones');")
 					i(ng-class="{active: variable.terminos}")
 				.landing-form-terms-conditions-text#landing-terminos-condiciones
-					|Acepta los {{variable.terminos}}
+					|Acepta los
 					a(href="#") terminos y condiciones 
 					|*
 			.landing-form-button

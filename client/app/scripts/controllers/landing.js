@@ -13,6 +13,8 @@ angular.module('filiumApp')
 
 
 
+
+
   	$scope.landing = {}
   	$scope.variable = {}
   	// Show schedule input when the date is selected
@@ -27,7 +29,8 @@ angular.module('filiumApp')
   		if (angular.isUndefined($scope.landing.names)) setError('land-name');
   		if (!$scope.variable.llamada && !$scope.variable.skype) setError('landing-form-contact-way-text');
   		if (angular.isUndefined($scope.landing.phone) && $scope.variable.llamada) setError('land-phone');
-  		if (angular.isUndefined($scope.landing.email) && $scope.variable.skype) setError('land-email');
+  		if (angular.isUndefined($scope.landing.skype) && $scope.variable.skype) setError('land-skype');
+      if (angular.isUndefined($scope.landing.email) && ($scope.variable.llamada || $scope.variable.skype)) setError('land-email');
   		if (angular.isUndefined($scope.landing.date) && ($scope.variable.llamada || $scope.variable.skype)) setError('land-date');
   		if (angular.isUndefined($scope.landing.schedule) && !angular.isUndefined($scope.landing.date)) setError('land-schedule');
   		if(v_continuar)
@@ -47,7 +50,6 @@ angular.module('filiumApp')
       angular.element('#land-schedule').append('<option value disabled>Horario de Consulta</option>');
       var params={};            
       params['fechaCita']=angular.element('#land-date').val();
-      $window.alert( params['fechaCita']);
       $.ajax({
         data : params,
         type: "GET",
@@ -56,12 +58,11 @@ angular.module('filiumApp')
         success : function(data) 
         {   
           angular.element('land-schedule').empty();
-          // $window.alert(data[0]['horarioDisponibleId']);
           $.each(data,function(id,item){
-            // var time = new Date(item.hora);
-            // $window.alert(time.getHours);
-            var _horario='A las '+timeFormat(item.hora);
-            angular.element('#land-schedule').append('<option value="'+item.horarioDisponibleId+'">'+_horario+'</option>');
+            if(horarioRepetido(item.hora) && item.disponible){
+              var _horario=timeFormat(item.hora);
+              angular.element('#land-schedule').append('<option value="'+item.horarioDisponibleId+'">'+_horario+'</option>');              
+            }
           })
         },
         error: function() 
@@ -80,14 +81,16 @@ angular.module('filiumApp')
      };
     // Function reservarCita()  
     function reservarCita(){
-      $window.alert("Antes");
       var params={};            
       params['nombre']=$scope.landing.names;   
       if($scope.variable.llamada) params['metodoContacto']='llamada';   
       else if($scope.variable.skype) params['metodoContacto']='skype';   
       params['celular']=$scope.landing.phone;   
+      params['skype']=$scope.landing.skype;   
       params['correo']=$scope.landing.email;    
       params['horario']=$scope.landing.schedule;   
+
+
       $.ajax({
         data : params,
         type: "GET",
@@ -95,30 +98,70 @@ angular.module('filiumApp')
         dataType: "text",
         success : function(data) 
         {   
-          $window.alert(data);
+          if (data=="LeadRegistrado"){
+            $window.alert("Se ha registrado satisfactoriamente.");
+            // window.location.href = "/";
+          }
+          else{
+
+          }
         },
         error: function() 
         {       
-          $window.alert("Error");             
+            $window.alert("Lo sentimos, el horario acaba de ser reservado.");
         }
       });    	
-     }
+    }
     // Function time 12 h
     function timeFormat(time){
-      var hora=parseInt(time.substring(0, 2));
-      var minuto=time.substring(3, 5);
-      var _m=' a.m.';
-      if (hora>12){
-        hora=hora-12;
-        _m=' p.m.';
+      var hour_i=parseInt(time.substring(0, 2));
+      var minute_i=parseInt(time.substring(3, 5));
+      var totalMinutes_i = (hour_i*60)+minute_i;
+      var totalMinutes_f = totalMinutes_i+45;
+      var hour_f = parseInt(totalMinutes_f/60);
+      var minute_f = totalMinutes_f%60;
+      return 'De '+ formatHour12(hour_i)+':'+dosCifras(minute_i)+' '+meridian(hour_i)+' hasta '+ formatHour12(hour_f)+':'+dosCifras(minute_f)+' '+meridian(hour_f);
+      function meridian(hour_i){
+        if (hour_i>12) return 'p.m.';
+        else return 'a.m.';
       }
-      if(hora<10){
-        return ('0'+hora+":"+minuto+_m);
+      function formatHour12(hour_i){
+        if (hour_i>12) hour_i=hour_i-12;
+        return dosCifras(hour_i);
       }
-      else
-      {
-        return (hora+":"+minuto+_m);
+      function dosCifras(number){
+        if (number<10) return '0' + number;
+        else return number;
       }
     }
-
+    // Función que evita listar horarios repetidos
+    var horariosListados =[];
+    function horarioRepetido(time){
+      var hour=parseInt(time.substring(0, 2));
+      var minute=parseInt(time.substring(3, 5));
+      var totalMinutes = (hour*60)+minute;
+      for(var i=0;i<horariosListados.length;i++)
+      {
+        if(totalMinutes==horariosListados[i]){
+          return false;
+          break;
+        }
+      }
+      horariosListados.push(totalMinutes);
+      return true;
+    }
+    // To change the background image in landing
+    var myVar = setInterval(myTimer, 8000);
+    var opacar = true
+    function myTimer() {
+        if (opacar) {
+          angular.element('.landing-contact-bg-2').css('opacity','0');
+          opacar = false
+        }
+        else
+        {
+          angular.element('.landing-contact-bg-2').css('opacity','1');
+          opacar = true
+        }
+    }
   });

@@ -1,4 +1,7 @@
 
+<div class="landing-contact-bg">
+  <div class="landing-contact-bg-2"></div>
+</div>
 <div class="landing-contact-section">
   <div class="common-conteiner align-right">
     <div class="landing-main-menu">
@@ -28,7 +31,11 @@
       </div>
       <div class="space-vertical"></div>
       <div ng-show="variable.skype" class="landing-form-group">
-        <input type="text" name="land-email" id="land-email" ng-model="landing.email" placeholder="Correo Electrónico" ng-change="rmvError('land-phone')" class="landing-form-input"/>
+        <input type="text" name="land-skype" id="land-skype" ng-model="landing.skype" placeholder="Usuario de Skype" ng-change="rmvError('land-skype')" class="landing-form-input"/>
+      </div>
+      <div class="space-vertical"></div>
+      <div ng-show="variable.llamada || variable.skype" class="landing-form-group">
+        <input type="text" name="land-email" id="land-email" ng-model="landing.email" placeholder="Correo Electrónico" ng-change="rmvError('land-email')" class="landing-form-input"/>
       </div>
       <div class="space-vertical"></div>
       <div ng-show="variable.llamada || variable.skype" class="landing-form-group">
@@ -44,7 +51,7 @@
       </div>
       <div class="landing-form-terms-conditions">
         <div ng-click="variable.terminos= !variable.terminos;rmvError('landing-terminos-condiciones');" class="landing-rbtn"><i ng-class="{active: variable.terminos}"></i></div>
-        <div id="landing-terminos-condiciones" class="landing-form-terms-conditions-text">Acepta los {{variable.terminos}}<a href="#">terminos y condiciones </a>*</div>
+        <div id="landing-terminos-condiciones" class="landing-form-terms-conditions-text">Acepta los<a href="#">terminos y condiciones </a>*</div>
       </div>
       <div class="landing-form-button"><a href="javascript:void(0)" ng-click="reservarCita()" class="landing-primary-button">Reservar tu cita</a></div>
     </form>
