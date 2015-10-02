@@ -1,2 +1,1 @@
-web: node web.js
-web: vendor/bin/heroku-php-apache2 public
+web: vendor/bin/heroku-hhvm-nginx public
