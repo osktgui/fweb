@@ -64,12 +64,23 @@ return [
 			'strict'    => false,
 		],
 
+		// 'pgsql'     => [
+		// 	'driver'   => 'pgsql',
+		// 	'host'     => env('DB_HOST', 'localhost'),
+		// 	'database' => env('DB_DATABASE', 'filium'),
+		// 	'username' => env('DB_USERNAME', 'filium'),
+		// 	'password' => env('DB_PASSWORD', '123456'),
+		// 	'charset'  => 'utf8',
+		// 	'prefix'   => '',
+		// 	'schema'   => 'public',
+		// ],
+
 		'pgsql'     => [
 			'driver'   => 'pgsql',
-			'host'     => env('DB_HOST', 'localhost'),
-			'database' => env('DB_DATABASE', 'filium'),
-			'username' => env('DB_USERNAME', 'filium'),
-			'password' => env('DB_PASSWORD', '123456'),
+			'host'     => env('DB_HOST', 'ec2-54-204-25-54.compute-1.amazonaws.com'),
+			'database' => env('DB_DATABASE', 'db2hnlne4qqku'),
+			'username' => env('DB_USERNAME', 'bkouabnpsalayg'),
+			'password' => env('DB_PASSWORD', 'obXON_hgsww6pOGppnaYAQsvnR'),
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',
