@@ -22,7 +22,7 @@ use App\Usuario;
 Route::get('/',
 
 function () {
-		return ("Ejemplo");
+		include ("index.php");
 	});
 Route::get('/registrarLead', function () {
 		// Obtención de Parámetros
