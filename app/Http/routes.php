@@ -157,7 +157,7 @@ Route::post('/prueba', function () {
 	});
 
 Route::get('/leerHorariosDisponibles', function () {
-		$_fechaFiltro = date('Y-m-d', strtotime(str_replace('/', '-', $_GET['fechaCita'])));
+		$_fechaFiltro = date('Y-m-d', strtotime($_GET['fechaCita']));
 		$horarioDisponible = HorarioDisponible::where('fecha', '=', $_fechaFiltro)->get();
 		return Response::json($horarioDisponible);
 	});
