@@ -21,7 +21,7 @@
         <input type="text" name="landName" id="landName" ng-model="landing.names" placeholder="Nombres y Apellidos" maxlength="50" ng-class="{error: landingSubmit &amp;&amp; formLanding.landName.$invalid}" names="names" required="required" class="landing-form-input"/>
       </div>
       <div class="landing-form-contact-way">
-        <div id="landing-form-contact-way-text" class="landing-form-contact-way-text">Elige el método de contacto: {{mostrarHorarios}}</div>
+        <div id="landing-form-contact-way-text" class="landing-form-contact-way-text">Elige el método de contacto:</div>
         <div class="landing-form-contact-way-options"><a href="javascript:void(0)" ng-click="variable.llamada=true; variable.skype=false;" ng-class="{active: variable.llamada}" class="button-to-contact call-button">Llamada Telefónica<i></i></a>
           <div class="landing-form-contact-way-options-text">ó</div><a href="javascript:void(0)" ng-click="variable.llamada=false; variable.skype=true;" ng-class="{active: variable.skype}" class="button-to-contact variable skype-button">Skype<i></i></a>
         </div>
@@ -37,19 +37,19 @@
       <div ng-show="variable.llamada || variable.skype" class="landing-form-group">
         <input type="text" name="landEmail" id="landEmail" ng-model="landing.email" placeholder="Correo Electrónico" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" ng-class="{error: landingSubmit &amp;&amp; formLanding.landEmail.$invalid}" required="required" class="landing-form-input"/>
       </div>
-      <div class="space-vertical"></div>
+      <div ng-init="loadHorarios=false" class="space-vertical"></div>
       <div ng-show="variable.llamada || variable.skype" class="landing-form-group">
-        <input type="text" name="landDate" id="landDate" ng-model="landing.date" format="dd/MM/yyyy" min-view="date" view="date" placeholder="Elige la Fecha" ng-blur="cargarHorarios()" ng-class="{error: landingSubmit &amp;&amp; formLanding.landDate.$invalid}" date-time="date-time" readonly="readonly" required="required" class="landing-form-input"/>
+        <input type="text" name="landDate" id="landDate" ng-model="landing.date" format="dd/MM/yyyy" ng-init="showSchedule=false" placeholder="Elige la Fecha" ng-blur="showSchedule=true" ng-class="{error: landingSubmit &amp;&amp; !showSchedule}" readonly="readonly" class="landing-form-input"/>
       </div>
       <div class="space-vertical"></div>
-      <div ng-show="formLanding.landDate.$valid" class="landing-form-group">
-        <select type="text" name="landSchedule" id="landSchedule" ng-model="landing.schedule" placeholder="Correo Electrónico" ng-class="{error: landingSubmit &amp;&amp; formLanding.landSchedule.$invalid, succes: formLanding.landSchedule.$valid}" required="required" class="landing-form-input landing-select">
-          <option value="" disabled="disabled">Horario de Consulta</option>
+      <div ng-show="showSchedule" class="landing-form-group">
+        <select type="text" name="landSchedule" id="landSchedule" ng-model="landing.schedule" ng-class="{error: landingSubmit &amp;&amp; formLanding.landSchedule.$invalid, succes: formLanding.landSchedule.$valid}" required="required" class="landing-form-input landing-select">
+          <option value="" disabled="disabled">Cargando...</option>
         </select>
       </div>
       <div class="landing-form-terms-conditions">
         <div ng-click="variable.terminos= !variable.terminos;rmvError('landing-terminos-condiciones');" class="landing-rbtn"><i ng-class="{active: variable.terminos}"></i></div>
-        <div id="landing-terminos-condiciones" class="landing-form-terms-conditions-text">Acepta los <a href="#">términos y condiciones </a>*</div>
+        <div id="landing-terminos-condiciones" class="landing-form-terms-conditions-text">Acepta los<a href="#">términos y condiciones </a>*</div>
       </div>
       <div class="landing-form-button"><a href="javascript:void(0)" ng-click="reservarCita(formLanding);landingSubmit=true;" class="landing-primary-button">Reservar tu cita</a></div>
     </form>
@@ -148,7 +148,9 @@
         <h4 id="myModalLabel" class="modal-title popup-header-title">¡Muy bien! Tu cita ha sido reservada.</h4>
       </div>
       <div class="modal-body">¡Felicidades {{landing.names}}, ahora eres parte de Filium! Pronto nos pondrémos en contacto contigo. Toda la información de la cita será enviada al correo registrado: {{landing.email}}</div>
-      <div class="modal-footer"><a href="javascript:location.reload();" ng-click="" class="landing-primary-button landing-popup-button">Aceptar</a></div>
+      <div class="modal-footer">
+        <button type="button" ng-click="reloadRoute()" class="landing-primary-button landing-popup-button">Aceptar</button>
+      </div>
     </div>
   </div>
 </div>
@@ -156,10 +158,50 @@
   <div role="document" class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 id="myModalLabel" class="modal-title popup-header-title">Lo sentimos, no pudimos reservar la cita.</h4>
+        <h4 id="myModalLabel" class="modal-title popup-header-title">No se pudo reservar la cita.</h4>
       </div>
       <div class="modal-body">Lo sentimos, alguien más acaba de reservar el horario seleccionado, elige otro horario para continuar.</div>
-      <div class="modal-footer"><a href="javascript:location.reload();" ng-click="" class="landing-primary-button landing-popup-button">Aceptar</a></div>
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="landing-primary-button landing-popup-button">Aceptar</button>
+      </div>
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  var availableDates = ["1-10-2015","30-9-2015"];
+  function available(date) {
+   dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
+   if ($.inArray(dmy, availableDates) != -1) {
+    return [true, "","Available"];
+   } else {
+    return [false,"","unAvailable"];
+   }
+   
+  }
+  $.noConflict();
+  $('#landDate').datepicker({ beforeShowDay: available });
+  
+  $.datepicker.regional['es'] = {
+   closeText: 'Cerrar',
+   prevText: '<Ant',
+   nextText: 'Sig>',
+   currentText: 'Hoy',
+   monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+   monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+   dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+   dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+   dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+   weekHeader: 'Sm',
+   dateFormat: 'dd/mm/yy',
+   firstDay: 1,
+   isRTL: false,
+   showMonthAfterYear: false,
+   yearSuffix: ''
+  };
+  $.datepicker.setDefaults($.datepicker.regional['es']);
+  
+  
+  
+  
+  
+</script>});

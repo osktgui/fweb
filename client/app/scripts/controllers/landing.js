@@ -12,16 +12,20 @@ angular.module('filiumApp')
   .controller('LandingCtrl',function ($rootScope, $scope, $window,filiumServices) {
   	$scope.landing = {};
   	$scope.variable = {};
-
-    $scope.cargarHorarios = function(){
+    $('#landDate').change(function() { 
       var params={};            
       params.fechaCita=angular.element('#landDate').val();
+       // window.alert(params.fechaCita);
+      angular.element('#landSchedule').empty();
+      angular.element("#landSchedule").prop('disabled', 'disabled');
+      angular.element('#landSchedule').append('<option value="" disabled selected>Cargando horarios ...</option>'); 
       filiumServices.getHorarios(params).then(function(response){
+        angular.element('#landSchedule').empty();
+        angular.element("#landSchedule").removeAttr('disabled');
+        angular.element('#landSchedule').append('<option value="" disabled selected>Horarios Disponibles</option>'); 
         // Limpiamos el arreglo que se encarga de limpiar los horarios que se repiten
         horariosListados =[];
         // Se llena el combo box de horarios disponibles
-        angular.element('#landSchedule').empty();
-        angular.element('#landSchedule').append('<option value="" disabled selected>Horario de Consulta</option>'); 
         angular.element.each(response,function(id,item){
             if(horarioRepetido(item.hora) && item.disponible){
               var _horario=timeFormat(item.hora);
@@ -29,8 +33,12 @@ angular.module('filiumApp')
             }
           });
       });
-    };
+    });
 
+
+  $('#landDate').datepicker({
+     onSelect: function(dateText) { window.alert(dateText); }
+  });
 
     $scope.reservarCita = function(form){
       if(form.$invalid){
@@ -50,13 +58,16 @@ angular.module('filiumApp')
         params.correo=$scope.landing.email;    
         params.horario=$scope.landing.schedule; 
         filiumServices.saveCita(params).then(function(response){
-          if (response==='LeadRegistrado'){angular.element('#SuccessModal').modal();}
+          if (response==='LeadRegistrado'){angular.element('#SuccessModal').modal({keyboard: false,backdrop: 'static'});}
           else if (response==='HorarioNoDisponible'){angular.element('#ErrorModal').modal();}
-           
         });
       }
     };
 
+
+    $scope.reloadRoute = function() {
+       $window.location.reload();
+    }
 
     // Function time 12 h
     function timeFormat(time){
@@ -109,4 +120,6 @@ angular.module('filiumApp')
     }
     var myVar = setInterval(myTimer, 8000);
     var opacar = true;
+  
+
   });
