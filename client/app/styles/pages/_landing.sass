@@ -52,6 +52,8 @@
 		background-image: none
 		height: initial
 		padding-bottom: 90px
+		padding-left: 20px
+		padding-right: 20px
 .landing-main-menu
 	@media (max-width:$md)
 		display: none
@@ -123,7 +125,6 @@
 	height: 33px
 	font-size: 16px
 .landing-form
-	min-width: 470px
 	display: inline-block
 	text-align: center
 	@media (max-width:$md)
@@ -137,6 +138,10 @@
 	width: 100%
 	text-align: center
 	margin-bottom: 10px
+	@media (max-width:$sm)
+		font-size: 25px
+		line-height: 30px
+		margin-bottom: 25px
 .landing-form-input
 	min-width: 310px
 	height: 45px
@@ -159,11 +164,17 @@
 	&.succes
 		text-indent: 0px
 		color: black
+	@media (max-width:$md)
+		min-width: 100%
+	@media (max-width:$sm)
+		width: 250px
 .landing-select
 	color: #A9ADBE
 	text-indent: 40px
 	option
 		color: black
+	@media (max-width:$sm)
+		text-indent: 20px
 .landing-form-contact-way
 	margin-bottom: 10px
 .landing-form-contact-way-options
@@ -337,7 +348,8 @@
 		display: inline-block
 		margin-bottom: 13px
 
-
+.landing-caricature-section
+	overflow: hidden
 
 .landing-caricature-section-title
 	width: 500px
@@ -352,7 +364,7 @@
 	display: inline-block
 	margin-bottom: 64px
 	@media (max-width:$sm)
-		width: 380px
+		width: 100%
 		line-height: inherit
 		padding-top: 15px
 		padding-bottom: 15px
@@ -391,6 +403,8 @@
 			width: 55px
 			height: 45px
 			display: inline-block
+	@media (max-width: $sm)
+		margin-top: 30px
 .landing-caricature-speakcloud-left
 	width: 100%
 	display: inline-block
@@ -408,6 +422,14 @@
 		height: 309px
 		display: inline-block
 		margin-bottom: 15px
+		background-repeat: no-repeat
+	@media (max-width: $sm)
+		top: 370px
+		i
+			background-image: url("../../images/assets/speakcloud-left-small.png")
+			background-repeat: no-repeat
+			width: 108px
+			height: 108px
 .landing-caricature-speakcloud-left-text
 	color: #848a8f
 	font-family: Open Sans
@@ -438,6 +460,13 @@
 		height: 398px
 		display: inline-block
 		position: relative
+	@media (max-width: $sm)
+		top: 155px
+		i
+			background-image: url("../../images/assets/speakcloud-right-small.png")
+			background-repeat: no-repeat
+			width: 224px
+			height: 232px
 .landing-caricature-speakcloud-right-text
 	position: absolute
 	bottom: 80px
@@ -449,6 +478,8 @@
 	font-size: 15px
 	font-weight: 400
 	font-style: normal
+	@media (max-width: $sm)
+		display: none
 .landing-caricature-content-ask 
 	color: #63d4bd
 	font-family: Open Sans
@@ -472,6 +503,8 @@
 	@media (max-width: $md)
 		padding-top: 30px
 		margin-bottom: -130px
+	@media (max-width: $sm)
+		padding-left: 20%
 .landing-caricature-psychologist
 	width: 100%
 	display: inline-block
@@ -485,6 +518,13 @@
 	@media (max-width: $md)
 		padding-top: 890px
 		margin-bottom: 10px
+	@media (max-width: $sm)
+		padding-top: 488px
+		i
+			background-image: url("../../images/assets/landing-psychologist-small.png")
+			width: 261px
+			height: 191px
+			background-repeat: no-repeat
 .landing-message-pos-caricature
 	color: #4a00b3
 	font-family: Open Sans
@@ -508,6 +548,8 @@
 		display: inline-block
 	@media (max-width: $md)
 		padding-top: 28px
+	@media (max-width: $sm)
+		padding-top: 0px
 .landing-caricature-presentation-title
 	width: 100%
 	text-align: center
@@ -517,6 +559,9 @@
 	font-weight: 400
 	line-height: 26px
 	margin-bottom: 54px
+	@media (max-width: $sm)
+		font-size: 27px
+		line-height: 30px
 .landing-caricature-presentation-content
 	width: 80%
 	margin-left: 10%
@@ -557,6 +602,8 @@
 	@media (max-width: $md)
 		margin-bottom: -14%
 		margin-top: 20px
+	@media (max-width: $sm)
+		margin-bottom: -16%
 .landing-video-play
 	display: inline-block
 	text-align: center

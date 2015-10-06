@@ -147,7 +147,18 @@
       <div class="modal-header">
         <h4 id="myModalLabel" class="modal-title popup-header-title">¡Muy bien! Tu cita ha sido reservada.</h4>
       </div>
-      <div class="modal-body">¡Felicidades {{landing.names}}, ahora eres parte de Filium, pronto nos pondremos en contacto contigo. Toda la información de la cita será enviada a este correo: {{landing.email}}</div>
+      <div class="modal-body">¡Felicidades {{landing.names}}, ahora eres parte de Filium! Pronto nos pondrémos en contacto contigo. Toda la información de la cita será enviada al correo registrado: {{landing.email}}</div>
+      <div class="modal-footer"><a href="javascript:location.reload();" ng-click="" class="landing-primary-button landing-popup-button">Aceptar</a></div>
+    </div>
+  </div>
+</div>
+<div id="ErrorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" class="modal fade">
+  <div role="document" class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="myModalLabel" class="modal-title popup-header-title">Lo sentimos, no pudimos reservar la cita.</h4>
+      </div>
+      <div class="modal-body">Lo sentimos, alguien más acaba de reservar el horario seleccionado, elige otro horario para continuar.</div>
       <div class="modal-footer"><a href="javascript:location.reload();" ng-click="" class="landing-primary-button landing-popup-button">Aceptar</a></div>
     </div>
   </div>
