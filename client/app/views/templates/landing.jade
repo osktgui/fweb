@@ -37,7 +37,7 @@
 				input.landing-form-input(type="text", name="landEmail", id="landEmail", ng-model="landing.email", placeholder="Correo Electrónico", ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\\.[a-z.]{2,5}$/", ng-class="{error: landingSubmit && formLanding.landEmail.$invalid}",required)
 			.space-vertical
 			.landing-form-group(ng-show="variable.llamada || variable.skype")
-				input.landing-form-input(type="text", name='landDate', id='landDate', ng-model="landing.date",  format="dd/MM/yyyy", min-view="date", view="date", placeholder="Elige la Fecha", ng-blur="cargarHorarios()",ng-class="{error: landingSubmit && formLanding.landDate.$invalid}", date-time ,readonly, required) 
+				input.landing-form-input(type="text", name='landDate', id='landDate', ng-model="landing.date",  format="dd/MM/yyyy", min-view="date", view="date", placeholder="Elige la Fecha", ng-blur="cargarHorarios()", ng-change="cargarHorarios()",ng-class="{error: landingSubmit && formLanding.landDate.$invalid}", date-time ,readonly, required) 
 			.space-vertical
 			.landing-form-group(ng-show="formLanding.landDate.$valid")
 				select.landing-form-input.landing-select(type="text", name="landSchedule", id="landSchedule", ng-model="landing.schedule", placeholder="Correo Electrónico", ng-class="{error: landingSubmit && formLanding.landSchedule.$invalid, succes: formLanding.landSchedule.$valid}",required)

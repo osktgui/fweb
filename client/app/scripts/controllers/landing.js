@@ -17,6 +17,9 @@ angular.module('filiumApp')
       var params={};            
       params.fechaCita=angular.element('#landDate').val();
       filiumServices.getHorarios(params).then(function(response){
+        // Limpiamos el arreglo que se encarga de limpiar los horarios que se repiten
+        horariosListados =[];
+        // Se llena el combo box de horarios disponibles
         angular.element('#landSchedule').empty();
         angular.element('#landSchedule').append('<option value="" disabled selected>Horario de Consulta</option>'); 
         angular.element.each(response,function(id,item){
