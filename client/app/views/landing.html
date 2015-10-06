@@ -43,7 +43,7 @@
       </div>
       <div class="space-vertical"></div>
       <div ng-show="formLanding.landDate.$valid" class="landing-form-group">
-        <select type="text" name="landSchedule" id="landSchedule" ng-model="landing.schedule" placeholder="Correo Electrónico" ng-change="rmvError('land-schedule')" ng-class="{error: landingSubmit &amp;&amp; formLanding.landSchedule.$invalid, succes: formLanding.landSchedule.$valid}" required="required" class="landing-form-input landing-select">
+        <select type="text" name="landSchedule" id="landSchedule" ng-model="landing.schedule" placeholder="Correo Electrónico" ng-class="{error: landingSubmit &amp;&amp; formLanding.landSchedule.$invalid, succes: formLanding.landSchedule.$valid}" required="required" class="landing-form-input landing-select">
           <option value="" disabled="disabled">Horario de Consulta</option>
         </select>
       </div>
@@ -139,5 +139,16 @@
     </form>
     <div class="landing-footer-social"><a href="#" class="social-icon facebook"><i></i></a><a href="#" class="social-icon twitter"><i></i></a><a href="#" class="social-icon youtube"><i></i></a></div>
     <div class="landing-footer-copyright">© Filium 2015. Todos los derechos reservados.</div>
+  </div>
+</div>
+<div id="SuccessModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" class="modal fade">
+  <div role="document" class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="myModalLabel" class="modal-title popup-header-title">¡Muy bien! Tu cita ha sido reservada.</h4>
+      </div>
+      <div class="modal-body">¡Felicidades {{landing.names}}, ahora eres parte de Filium, pronto nos pondremos en contacto contigo. Toda la información de la cita será enviada a este correo: {{landing.email}}</div>
+      <div class="modal-footer"><a href="javascript:location.reload();" ng-click="" class="landing-primary-button landing-popup-button">Aceptar</a></div>
+    </div>
   </div>
 </div>

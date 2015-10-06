@@ -47,10 +47,12 @@ angular.module('filiumApp')
         params.correo=$scope.landing.email;    
         params.horario=$scope.landing.schedule; 
         filiumServices.saveCita(params).then(function(response){
-          window.alert(response);
+          if (response==='LeadRegistrado'){angular.element('#SuccessModal').modal();}
+          else if (response==='HorarioNoDisponible'){angular.element('#ErrorModal').modal();}
+           
         });
       }
-    }
+    };
 
 
     // Function time 12 h

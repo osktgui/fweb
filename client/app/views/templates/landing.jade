@@ -155,6 +155,22 @@
 				i
 		.landing-footer-copyright © Filium 2015. Todos los derechos reservados.
 
+div.modal.fade#SuccessModal(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+	div.modal-dialog.modal-md(role='document')
+		div.modal-content
+			div.modal-header
+				h4#myModalLabel.modal-title.popup-header-title ¡Muy bien! Tu cita ha sido reservada.
+			div.modal-body
+				| ¡Felicidades {{landing.names}}, ahora eres parte de Filium! Pronto nos pondrémos en contacto contigo. Toda la información de la cita será enviada al correo registrado: {{landing.email}}
+			div.modal-footer
+				a(href="javascript:location.reload();" ng-click="").landing-primary-button.landing-popup-button Aceptar
 
-
-
+div.modal.fade#ErrorModal(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+	div.modal-dialog.modal-md(role='document')
+		div.modal-content
+			div.modal-header
+				h4#myModalLabel.modal-title.popup-header-title Lo sentimos, no pudimos reservar la cita.
+			div.modal-body
+				| Lo sentimos, alguien más acaba de reservar el horario seleccionado, elige otro horario para continuar.
+			div.modal-footer
+				a(href="javascript:location.reload();" ng-click="").landing-primary-button.landing-popup-button Aceptar
