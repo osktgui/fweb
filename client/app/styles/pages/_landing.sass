@@ -275,6 +275,7 @@
 			color: red
 .landing-phrase
 	width: 100%
+	height: 230px
 	background-color: #31c5be
 	margin-bottom: -10%
 	position: relative
@@ -784,3 +785,20 @@
 	padding-right: 20%
 	padding-top: 40px
 	margin-bottom: 10px
+.carousel-indicators-landing
+	top: 201px
+	li
+		background-color: #2db3ac
+		box-shadow: 0.5px 0.9px 1px rgba(131, 255, 230, 0.61), inset 0.5px 0.9px 0 rgba(17, 118, 97, 0.35)
+		border: none
+		width: 8px
+		height: 8px
+		margin: 0
+		margin-left: 12px
+		&.active
+			background-color: white
+			width: 8px
+			height: 8px
+			margin-left: 12px
+	@media (max-width: $md)
+		display: none

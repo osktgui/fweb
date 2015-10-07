@@ -119,4 +119,6 @@ angular.module('filiumApp')
     var opacar = true;
   
 
+    jQuery.noConflict();
+    jQuery('#myCarousel').carousel({ interval: 2000 });
   });
