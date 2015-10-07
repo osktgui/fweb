@@ -162,6 +162,21 @@ Route::get('/leerHorariosDisponibles', function () {
 		return Response::json($horarioDisponible);
 	});
 
+Route::get('/leerDiasDisponibles', function () {
+		$diasDisponibles = HorarioDisponible::where('fecha', '>=', date("Ymd"))->get();
+		// $horarioDisponible = HorarioDisponible::all();
+		$listadoDias = array();
+		foreach ($diasDisponibles as $dias) {
+			array_push($listadoDias, $dias['fecha']);
+		}
+		return Response::json($listadoDias);
+	});
+
+Route::get('/reporteHorariosDisponibles', function () {
+		$horarioDisponible = HorarioDisponible::all();
+		return Response::json($horarioDisponible);
+	});
+
 Route::get('/registrarMaestro', function () {
 		$tipoDoc = new Maestro;
 		$tipoDoc->nombreMaestro = "Sexo";

@@ -12,7 +12,7 @@ angular.module('filiumApp')
   .controller('LandingCtrl',function ($rootScope, $scope, $window,filiumServices) {
   	$scope.landing = {};
   	$scope.variable = {};
-    $('#landDate').change(function() { 
+    $('#landDate').change(function() {
       var params={};            
       params.fechaCita=angular.element('#landDate').val();
        // window.alert(params.fechaCita);
@@ -36,9 +36,6 @@ angular.module('filiumApp')
     });
 
 
-  $('#landDate').datepicker({
-     onSelect: function(dateText) { window.alert(dateText); }
-  });
 
     $scope.reservarCita = function(form){
       if(form.$invalid){

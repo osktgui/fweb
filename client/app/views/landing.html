@@ -39,17 +39,17 @@
       </div>
       <div ng-init="loadHorarios=false" class="space-vertical"></div>
       <div ng-show="variable.llamada || variable.skype" class="landing-form-group">
-        <input type="text" name="landDate" id="landDate" ng-model="landing.date" format="dd/MM/yyyy" ng-init="showSchedule=false" placeholder="Elige la Fecha" ng-blur="showSchedule=true" ng-class="{error: landingSubmit &amp;&amp; !showSchedule}" readonly="readonly" class="landing-form-input"/>
+        <input type="text" name="landDate" id="landDate" ng-model="landing.date" format="dd/MM/yyyy" ng-init="showSchedule=false" ng-minlength="10" ng-maxlength="10" placeholder="Elige la Fecha" ng-blur="showSchedule=true" ng-class="{error: landingSubmit &amp;&amp; !showSchedule}" readonly="readonly" class="landing-form-input"/>
       </div>
       <div class="space-vertical"></div>
-      <div ng-show="showSchedule" class="landing-form-group">
+      <div ng-show="showSchedule &amp;&amp; formLanding.landDate.$valid" class="landing-form-group">
         <select type="text" name="landSchedule" id="landSchedule" ng-model="landing.schedule" ng-class="{error: landingSubmit &amp;&amp; formLanding.landSchedule.$invalid, succes: formLanding.landSchedule.$valid}" required="required" class="landing-form-input landing-select">
-          <option value="" disabled="disabled">Cargando...</option>
+          <option value="" disabled="disabled">Cargando horarios ...</option>
         </select>
       </div>
       <div class="landing-form-terms-conditions">
         <div ng-click="variable.terminos= !variable.terminos;rmvError('landing-terminos-condiciones');" class="landing-rbtn"><i ng-class="{active: variable.terminos}"></i></div>
-        <div id="landing-terminos-condiciones" class="landing-form-terms-conditions-text">Acepta los<a href="#">términos y condiciones </a>*</div>
+        <div id="landing-terminos-condiciones" class="landing-form-terms-conditions-text">Acepta los <a href="#">términos y condiciones </a>*</div>
       </div>
       <div class="landing-form-button"><a href="javascript:void(0)" ng-click="reservarCita(formLanding);landingSubmit=true;" class="landing-primary-button">Reservar tu cita</a></div>
     </form>
@@ -168,7 +168,35 @@
   </div>
 </div>
 <script type="text/javascript">
-  var availableDates = ["1-10-2015","30-9-2015"];
+  var diasDisponibles = [];
+  $('#landDate').attr('placeholder','Cargando días...');
+  $("#landDate").prop('disabled', 'disabled');
+  consultaDiasDisponibles();
+  function consultaDiasDisponibles(){
+   $.ajax({
+    type: "GET",
+    url: "leerDiasDisponibles",
+    dataType: "json",
+    success : function(data) 
+    {
+     $.each(data,function(id,item){
+      a = parseInt(item.substring(0,4));
+      m = parseInt(item.substring(5,7));
+      d = parseInt(item.substring(8,10));
+      fechaPush = d+'-'+m+'-'+a;
+      diasDisponibles.push(fechaPush);
+     })
+     $('#landDate').attr('placeholder','Elige la Fecha');
+     $("#landDate").removeAttr('disabled');
+    },
+    error: function() 
+    {
+    
+    }
+   });
+  }
+  
+  var availableDates = diasDisponibles;
   function available(date) {
    dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
    if ($.inArray(dmy, availableDates) != -1) {
@@ -202,6 +230,4 @@
   
   
   
-  
-  
-</script>});
+</script>

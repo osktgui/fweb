@@ -37,17 +37,16 @@
 				input.landing-form-input(type="text", name="landEmail", id="landEmail", ng-model="landing.email", placeholder="Correo Electrónico", ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\\.[a-z.]{2,5}$/", ng-class="{error: landingSubmit && formLanding.landEmail.$invalid}",required)
 			.space-vertical(ng-init="loadHorarios=false")
 			.landing-form-group(ng-show="variable.llamada || variable.skype") 
-				//- input.landing-form-input(type="text", name='landDate', id='landDate', ng-model="landing.date",  format="dd/MM/yyyy", min-date="01-10-2015", min-view="date", view="date", placeholder="Elige la Fecha", ng-blur="cargarHorarios()", ng-change="cargarHorarios()",ng-class="{error: landingSubmit && formLanding.landDate.$invalid}", date-time ,readonly, required) 
-				input.landing-form-input(type="text", name="landDate", id="landDate", ng-model="landing.date",  format="dd/MM/yyyy", ng-init="showSchedule=false", placeholder="Elige la Fecha", ng-blur="showSchedule=true", ng-class="{error: landingSubmit && !showSchedule}", readonly )
+				input.landing-form-input(type="text", name="landDate", id="landDate", ng-model="landing.date",  format="dd/MM/yyyy", ng-init="showSchedule=false", ng-minlength = '10', ng-maxlength = '10',placeholder="Elige la Fecha", ng-blur="showSchedule=true", ng-class="{error: landingSubmit && !showSchedule}", readonly )
 			.space-vertical 
-			.landing-form-group(ng-show="showSchedule") 
+			.landing-form-group(ng-show="showSchedule && formLanding.landDate.$valid") 
 				select.landing-form-input.landing-select(type="text", name="landSchedule", id="landSchedule", ng-model="landing.schedule", ng-class="{error: landingSubmit && formLanding.landSchedule.$invalid, succes: formLanding.landSchedule.$valid}",required)
-					option(value="" disabled) Cargando...
+					option(value="" disabled) Cargando horarios ...
 			.landing-form-terms-conditions
 				.landing-rbtn(ng-click="variable.terminos= !variable.terminos;rmvError('landing-terminos-condiciones');")
 					i(ng-class="{active: variable.terminos}")
 				.landing-form-terms-conditions-text#landing-terminos-condiciones
-					|Acepta los
+					|Acepta los 
 					a(href="#") términos y condiciones 
 					|*
 			.landing-form-button
@@ -180,7 +179,36 @@ div.modal.fade#ErrorModal(tabindex='-1', role='dialog', aria-labelledby='myModal
 
 
 script(type='text/javascript').
-	var availableDates = ["1-10-2015","30-9-2015"];
+	var diasDisponibles = [];
+	$('#landDate').attr('placeholder','Cargando días...');
+	$("#landDate").prop('disabled', 'disabled');
+	consultaDiasDisponibles();
+	function consultaDiasDisponibles(){
+		$.ajax({
+			type: "GET",
+			url: "leerDiasDisponibles",
+			dataType: "json",
+			success : function(data) 
+			{
+				$.each(data,function(id,item){
+					a = parseInt(item.substring(0,4));
+					m = parseInt(item.substring(5,7));
+					d = parseInt(item.substring(8,10));
+					fechaPush = d+'-'+m+'-'+a;
+					diasDisponibles.push(fechaPush);
+				})
+				$('#landDate').attr('placeholder','Elige la Fecha');
+				$("#landDate").removeAttr('disabled');
+			},
+			error: function() 
+			{
+
+			}
+		});
+		
+	}
+
+	var availableDates = diasDisponibles;
 	function available(date) {
 		dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
 		if ($.inArray(dmy, availableDates) != -1) {
@@ -214,6 +242,3 @@ script(type='text/javascript').
 
 
 
-
-
-});

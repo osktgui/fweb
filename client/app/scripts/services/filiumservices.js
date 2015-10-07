@@ -35,19 +35,13 @@ angular.module('filiumApp')
 			});
 			return (request.then(handleSuccess, handleError));
 		}
-
-
-
-  
-
-
-
-
-
-
-
-
-
+		function getDiasDisponibles(data){
+			var request = $http({
+				method: 'get',
+				url: 'leerDiasDisponibles',
+			});
+			return (request.then(handleSuccess, handleError));
+		}
 		//Métodos privados
     function handleError( response ) {
         if (
