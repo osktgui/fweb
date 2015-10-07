@@ -6,8 +6,5 @@ Homestead.json
 dist
 .tmp
 .sass-cache
-/client/app/
-package.json
-Gruntfile.js
-gulpfile.js
-bower.json
+/client/app/bower_components
+/public
