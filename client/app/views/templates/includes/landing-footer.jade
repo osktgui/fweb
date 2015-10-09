@@ -1,0 +1,75 @@
+//- Footer para pantalla grande
+.landing-footer-bg
+	.landing-footer-column
+		.landing-footer-teamrequest ¿Quieres formar parte de nuestro equipo de psicólogos?
+		a(href="#").landing-footer-teamrequest-btn Conocer mas
+	.landing-footer-column
+		.landing-footer-menu
+			.landing-footer-menu-item
+				a(href="{{hrefNosotros}}") Nosotros
+			.landing-footer-menu-item
+				a(href="{{hrefContactenos}}") Contáctenos
+			.landing-footer-menu-item
+				a(href="{{hrefBlog}}") Blog
+		form(name="landingFooterForm")
+			.landing-footer-form-info Ingresa  tu correo para mantenernos conectados
+			input(type="text").landing-footer-form-input
+		.landing-footer-social
+			a(href="{{hrefFacebook}}" target="_blank").social-icon.facebook
+				i
+			a(href="#").social-icon.twitter
+				i
+			a(href="#").social-icon.youtube
+				i
+		.landing-footer-copyright © Filium 2015. Todos los derechos reservados.
+	.landing-footer-column
+		.landing-footer-phone-info Linea Abierta para atención psicologica
+		.landing-footer-phone-number {{phoneFilium}}
+			i
+
+//- Footer para pantalla pequeña
+.landing-footer-bg-smart
+	.landing-footer-column
+		.landing-footer-menu
+			.landing-footer-menu-item
+				a(href="{{hrefNosotros}}") Nosotros
+			.landing-footer-menu-item
+				a(href="{{hrefContactenos}}") Contáctenos
+			.landing-footer-menu-item
+				a(href="{{hrefBlog}}") Blog
+		.landing-footer-teamrequest ¿Quieres formar parte de nuestro equipo de psicólogos?
+		a(href="#").landing-footer-teamrequest-btn Conocer mas
+		.landing-footer-phone-info Linea Abierta para atención psicologica
+		.landing-footer-phone-number {{phoneFilium}}
+			i
+		form(name="landingFooterForm")
+			.landing-footer-form-info Ingresa  tu correo para mantenernos conectados
+			input(type="text").landing-footer-form-input
+		.landing-footer-social
+			a(href="{{hrefFacebook}}" target="_blank").social-icon.facebook
+				i
+			a(href="#").social-icon.twitter
+				i
+			a(href="#").social-icon.youtube
+				i
+		.landing-footer-copyright © Filium 2015. Todos los derechos reservados.
+
+div.modal.fade#SuccessModal(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+	div.modal-dialog.modal-md(role='document')
+		div.modal-content
+			div.modal-header
+				h4#myModalLabel.modal-title.popup-header-title ¡Muy bien! Tu cita ha sido reservada.
+			div.modal-body
+				| ¡Felicidades {{landing.names}}, ahora eres parte de Filium! Pronto nos pondrémos en contacto contigo. Toda la información de la cita será enviada al correo registrado: {{landing.email}}
+			div.modal-footer
+				button.landing-primary-button.landing-popup-button(type="button" ng-click="reloadRoute()") Aceptar
+
+div.modal.fade#ErrorModal(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+	div.modal-dialog.modal-md(role='document')
+		div.modal-content
+			div.modal-header
+				h4#myModalLabel.modal-title.popup-header-title No se pudo reservar la cita.
+			div.modal-body
+				| Lo sentimos, alguien más acaba de reservar el horario seleccionado, elige otro horario para continuar.
+			div.modal-footer
+				button.landing-primary-button.landing-popup-button(type="button" data-dismiss="modal") Aceptar

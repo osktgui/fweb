@@ -1,0 +1,98 @@
+form.landing-form(name="formLanding")
+	.landing-form-title Inicia tu cita en línea gratuita 
+	.landing-form-group
+			input.landing-form-input(type="text", name="landName", id="landName", ng-model="landing.names", placeholder="Nombres y Apellidos", maxlength="50", ng-class="{error: landingSubmit && formLanding.landName.$invalid}", names, required)
+	.landing-form-contact-way
+		.landing-form-contact-way-text#landing-form-contact-way-text Elige el método de contacto:
+		.landing-form-contact-way-options
+			a(href="javascript:void(0)", ng-click="variable.llamada=true; variable.skype=false;", ng-class="{active: variable.llamada}").button-to-contact.call-button Llamada Telefónica
+				i
+			.landing-form-contact-way-options-text ó
+			a(href="javascript:void(0)", ng-click="variable.llamada=false; variable.skype=true;", ng-class="{active: variable.skype}").button-to-contact.variable.skype-button Skype
+				i
+	.landing-form-group(ng-show="variable.llamada")
+		input.landing-form-input(type="text", name="landPhone", id="landPhone", ng-model="landing.phone", maxlength="9", placeholder="Número de Celular",ng-required="variable.llamada", ng-class="{error: landingSubmit && formLanding.landPhone.$invalid}",telefono)
+	.space-vertical
+	.landing-form-group(ng-show="variable.skype")
+		input.landing-form-input(type="text", name="landSkype", id="landSkype", ng-model="landing.skype", maxlength="32", ng-minlength='6' placeholder="Usuario de Skype",ng-required="variable.skype",ng-class="{error: landingSubmit && formLanding.landSkype.$invalid}",skype)
+	.space-vertical
+	.landing-form-group(ng-show="variable.llamada || variable.skype")
+		input.landing-form-input(type="text", name="landEmail", id="landEmail", ng-model="landing.email", placeholder="Correo Electrónico", ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\\.[a-z.]{2,5}$/", ng-class="{error: landingSubmit && formLanding.landEmail.$invalid}",required)
+	.space-vertical(ng-init="loadHorarios=false")
+	.landing-form-group(ng-show="variable.llamada || variable.skype") 
+		input.landing-form-input(type="text", name="landDate", id="landDate", ng-model="landing.date",  format="dd/MM/yyyy", ng-init="showSchedule=false", ng-minlength = '10', ng-maxlength = '10',placeholder="Elige la Fecha", ng-blur="showSchedule=true", ng-class="{error: landingSubmit && !showSchedule}", readonly )
+	.space-vertical 
+	.landing-form-group(ng-show="showSchedule && formLanding.landDate.$valid") 
+		select.landing-form-input.landing-select(type="text", name="landSchedule", id="landSchedule", ng-model="landing.schedule", ng-class="{error: landingSubmit && formLanding.landSchedule.$invalid, succes: formLanding.landSchedule.$valid}",required)
+			option(value="" disabled) Cargando horarios ...
+	.landing-form-terms-conditions
+		.landing-rbtn(ng-click="variable.terminos= !variable.terminos;rmvError('landing-terminos-condiciones');")
+			i(ng-class="{active: variable.terminos}")
+		.landing-form-terms-conditions-text#landing-terminos-condiciones
+			|Acepta los 
+			a(href="#") términos y condiciones 
+			|*
+	.landing-form-button
+				a(href="javascript:void(0)" ng-click="reservarCita(formLanding);landingSubmit=true;").landing-primary-button Reservar tu cita
+
+script(type='text/javascript').
+	var diasDisponibles = [];
+	$('#landDate').attr('placeholder','Cargando días...');
+	$("#landDate").prop('disabled', 'disabled');
+	consultaDiasDisponibles();
+	function consultaDiasDisponibles(){
+		$.ajax({
+			type: "GET",
+			url: "leerDiasDisponibles",
+			dataType: "json",
+			success : function(data) 
+			{
+				$.each(data,function(id,item){
+					a = parseInt(item.substring(0,4));
+					m = parseInt(item.substring(5,7));
+					d = parseInt(item.substring(8,10));
+					fechaPush = d+'-'+m+'-'+a;
+					diasDisponibles.push(fechaPush);
+				})
+				$('#landDate').attr('placeholder','Elige la Fecha');
+				$("#landDate").removeAttr('disabled');
+			},
+			error: function() 
+			{
+
+			}
+		});
+		
+	}
+
+	var availableDates = diasDisponibles;
+	function available(date) {
+		dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
+		if ($.inArray(dmy, availableDates) != -1) {
+			return [true, "","Available"];
+		} else {
+			return [false,"","unAvailable"];
+		}
+
+	}
+	$.noConflict();
+	$('#landDate').datepicker({ beforeShowDay: available });
+
+	$.datepicker.regional['es'] = {
+		closeText: 'Cerrar',
+		prevText: '<Ant',
+		nextText: 'Sig>',
+		currentText: 'Hoy',
+		monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+		monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+		dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+		dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+		dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+		weekHeader: 'Sm',
+		dateFormat: 'dd/mm/yy',
+		firstDay: 1,
+		isRTL: false,
+		showMonthAfterYear: false,
+		yearSuffix: ''
+	};
+	$.datepicker.setDefaults($.datepicker.regional['es']);

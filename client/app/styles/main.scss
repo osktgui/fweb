@@ -4,8 +4,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // endbower
 
 // injector:sass
+@import './general/__variables.sass';
 @import './general/_general.sass';
-@import './pages/__variables.sass';
 @import './pages/_datepicker.sass';
 @import './pages/_landing.sass';
 // endinjector:sass

@@ -15,8 +15,14 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'datePicker',
-    'ngTouch'
+    'ngTouch',
+    'ui.bootstrap',
+    'ui.router',
+    'ui.utils',
+    'oc.lazyLoad',
+    'cfp.loadingBar',
+    'tmh.dynamicLocale',
+    'pascalprecht.translate'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -27,6 +33,13 @@ angular
       .when('/landing', {
         templateUrl: 'views/landing.html',
         controller: 'LandingCtrl'
+      })
+      .when('/landing-nosotros', {
+        templateUrl: 'views/landing-nosotros.html',
+        controller: 'LandingCtrl'
+      })
+      .when('/login', {
+        templateUrl: 'views/login.html'
       })
       .otherwise({
         redirectTo: '/'
