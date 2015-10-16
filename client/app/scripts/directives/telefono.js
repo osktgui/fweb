@@ -23,8 +23,7 @@ angular.module('filiumApp')
             return false;
           } 
           var transformedInput = /(\d)\1{8}/g.test(inputValue); 
-          var celularValido = /^9/.test(inputValue); 
-          modelCtrl.$setValidity('telefono', !transformedInput && celularValido && inputValue.length === 9);
+          modelCtrl.$setValidity('telefono', !transformedInput && inputValue.length > 5);
           return inputValue;        
 	      });
       }

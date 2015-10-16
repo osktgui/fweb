@@ -1,0 +1,6 @@
++form-header-cv("Habilidades","habilidadForm")
+	.layout-content
+		+controlFilium-select("Habilidad","habilidad","language","{selectActive: selectChangehabilidad,success: submittedHabilidad && habilidadForm.habilidad.$valid, error: submittedHabilidad && habilidadForm.habilidad.$invalid}","submittedHabilidad && habilidadForm.habilidad.$invalid")(required)
+	.button-container
+		a.fbtn.fbtn-primary.cancel(href="javascript:void(0)",ng-click="") Cancelar
+		a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedHabilidad=true") Guardar Cambios

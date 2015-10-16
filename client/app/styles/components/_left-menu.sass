@@ -1,0 +1,65 @@
+.content-user-data
+	width: 355px
+	height: 100%
+	position: absolute
+	top: 0
+	background-color: white
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25)
+	z-index: 5
+	padding-top: 134px
+	transition: all .6s
+	left: 0
+	@media (max-width:$lg)
+		left: -380px
+.user-photo
+	width: 100%
+	display: inline-block
+	text-align: center
+	margin-bottom: 10px
+	min-width: 350px
+	i
+		+sprite($user-photo)
+		display: inline-block
+.user-name
+	width: 100%
+	color: #535a64
+	font-family: inherit
+	font-size: 16px
+	font-weight: 700
+	line-height: 26px
+	display: inline-block
+	text-align: center
+	margin-bottom: 65px
+.user-options
+	width: 100%
+	display: inline-block
+	text-align: center
+.user-options-item
+	width: 100%
+	display: inline-block
+	text-align: center
+	padding-left: 56px
+	padding-right: 56px
+	color: #535a64
+	&:hover
+		background-color: #4a00b3
+		color: white
+.user-options-item-icon
+	width: 17%
+	display: inline-block
+	text-align: center
+	float: left
+	margin-top: 14px
+	i
+		display: inline-block
+.user-options-item-description
+	width: 81%
+	display: inline-block
+	text-align: left
+	padding-left: 10px
+	font-family: inherit
+	font-size: 13px
+	font-weight: 700
+	line-height: 43px
+
+

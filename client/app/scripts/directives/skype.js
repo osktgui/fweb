@@ -13,7 +13,7 @@ angular.module('filiumApp')
     	link: function(scope, element, attrs, modelCtrl) {
 	    	modelCtrl.$parsers.push(function (inputValue) {   
           if (inputValue === undefined) {
-          	modelCtrl.$setValidity('telefono', true);
+          	modelCtrl.$setValidity('skype', true);
           	return '';
           }
           var num = inputValue.replace(/[^A-Za-z0-9.]/g, ''); 

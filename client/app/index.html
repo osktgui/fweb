@@ -13,6 +13,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(./client/app) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel='stylesheet' href='bower_components/angular-datepicker/dist/angular-datepicker.css' />
     <link rel='stylesheet' href='bower_components/angular-loading-bar/build/loading-bar.css' />
     <link rel='stylesheet' href='bower_components/weather-icons/css/weather-icons.css' />
     <link rel='stylesheet' href='bower_components/weather-icons/css/weather-icons.min.css' />
@@ -43,7 +44,7 @@
 
     <!-- jQuery Packages -->
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <link href='//davidwalsh.name/demo/jquery-ui-css/custom-theme/jquery-ui-1.7.2.custom.css' rel='stylesheet' type='text/css'>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
 
@@ -74,6 +75,7 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-datepicker/dist/angular-datepicker.js"></script>
     <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
     <script src="bower_components/angular-translate/angular-translate.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
@@ -128,8 +130,6 @@
     <script src="bower_components/angular-ui-map/ui-map.js"></script>
     <script src="bower_components/select2/select2.js"></script>
     <script src="bower_components/ui-select/src/select3.js"></script>
-    <script src="bower_components/requirejs/require.js"></script>
-    <script src="bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.js"></script>
     <script src="bower_components/angularjs-toaster/toaster.js"></script>
     <script src="bower_components/angularjs-toaster/toaster.min.js"></script>
     <script src="bower_components/slimscroll/jquery.slimscroll.min.js"></script>
@@ -151,21 +151,15 @@
     <!-- endbuild -->
     <!-- build:js({.tmp,client/app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
+
+
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/about.js"></script>
     <script src="scripts/controllers/header.js"></script>
-    <script src="scripts/controllers/dashboard.js"></script>
-    <script src="scripts/controllers/cards.js"></script>
-
-    <script src="scripts/controllers/components/colors/colors.constant.js"></script>
-    <script src="scripts/controllers/components/colors/colors.run.js"></script>
-    <script src="scripts/controllers/components/colors/colors.service.js"></script>
 
 
-   <script src="scripts/controllers/components/charts/flot-chart-options.services.js"></script>
-   <script src="scripts/controllers/components/charts/flot-chart.controller.js"></script>
-   <script src="scripts/controllers/components/charts/flot-chart.directive.js"></script>
 
+   
     <script src="scripts/directives/onlynumber.js"></script>
     <script src="scripts/controllers/landing.js"></script>
     <script src="scripts/directives/names.js"></script>
@@ -173,7 +167,22 @@
     <script src="scripts/directives/skype.js"></script>
     <script src="scripts/services/pageconfig.js"></script>
     <script src="scripts/services/filiumservices.js"></script>
+    <script src="scripts/controllers/registropsicologos.js"></script>
+    <script src="scripts/directives/address.js"></script>
+    <script src="scripts/directives/cellphone.js"></script>
+    <script src="scripts/controllers/edicioncurriculum.js"></script>
+    <script src="scripts/services/formatdate.js"></script>
     <!-- endbuild -->
+
+            <script src="scripts/templates.js"></script>
+    <script src="scripts/controllers/dashboard.js"></script>
+    <script src="scripts/controllers/cards.js"></script>
+    <script src="scripts/controllers/components/colors/colors.constant.js"></script>
+    <script src="scripts/controllers/components/colors/colors.run.js"></script>
+    <script src="scripts/controllers/components/colors/colors.service.js"></script>
+   <script src="scripts/controllers/components/charts/flot-chart-options.services.js"></script>
+   <script src="scripts/controllers/components/charts/flot-chart.controller.js"></script>
+   <script src="scripts/controllers/components/charts/flot-chart.directive.js"></script>
 
 </body>
 </html>

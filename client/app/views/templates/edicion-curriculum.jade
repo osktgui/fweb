@@ -1,0 +1,15 @@
+include ./mixins/mixins-form.jade
+include ./includes/header-int.jade
+.body-container-filium.with-left-menu(ng-init="tab='estudios'")
+	include ./includes/left-menu.jade
+	//- Pestañas
+	.aux(ng-show="tab=='estudios'")
+		include ./includes/cv_estudios.jade
+	.aux(ng-show="tab=='experiencia'")
+		include ./includes/cv_experiencia.jade
+	.aux(ng-show="tab=='certificaciones'")
+		include ./includes/cv_certificaciones.jade
+	.aux(ng-show="tab=='idiomas'")
+		include ./includes/cv_idiomas.jade
+	.aux(ng-show="tab=='habilidades'")
+		include ./includes/cv_habilidades.jade

@@ -1,14 +1,16 @@
-[date-picker]
-	border: 1px solid #ccc
-	.now
-		background: #BCA9F5!important
-	.active
-		background: #4a00b3!important
-.container-filium
+body
+	font-family: Roboto,Helvetica,Arial,sans-serif!important
+// Consultorios:
+.body-container-filium
 	width: 100%
-	text-align: center
-.align-right
-	text-align: right
-.align-left
-	text-align: left
-	
+	height: 100%
+	position: absolute
+	top: 0
+	left: 0
+	z-index: 0
+	background-color: #f0f0f0
+.with-left-menu
+	padding-left: 355px
+	transition: all .6s
+	@media (max-width:$lg)
+		padding-left: 0px

@@ -1,0 +1,10 @@
++form-header-cv("Certificaciones","certificacionForm")
+	.layout-content
+		+controlFilium-text("Certificación","tituloCertificacion","job","{success: submittedCertificacion && certificacionForm.tituloCertificacion.$valid, error: submittedCertificacion && certificacionForm.tituloCertificacion.$invalid}","submittedCertificacion && certificacionForm.tituloCertificacion.$invalid")(names,required)
+	.layout-content
+		+controlFilium-select("Organización","organizacionCertif","certifCenter","{selectActive: selectChangeorganizacionCertif,success: submittedCertificacion && certificacionForm.organizacionCertif.$valid, error: submittedCertificacion && certificacionForm.organizacionCertif.$invalid}","submittedCertificacion && certificacionForm.organizacionCertif.$invalid")(required)
+	.layout-content
+		+controlFilium-textarea("Descripción","descripcionCertif","certifDescription","{success: submittedCertificacion && certificacionForm.descripcionCertif.$valid, error: submittedCertificacion && certificacionForm.descripcionCertif.$invalid}","submittedCertificacion && certificacionForm.descripcionCertif.$invalid")(names, required)
+	.button-container
+		a.fbtn.fbtn-primary.cancel(href="javascript:void(0)",ng-click="") Cancelar
+		a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedCertificacion=true") Guardar Cambios

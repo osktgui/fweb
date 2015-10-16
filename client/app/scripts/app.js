@@ -22,7 +22,8 @@ angular
     'oc.lazyLoad',
     'cfp.loadingBar',
     'tmh.dynamicLocale',
-    'pascalprecht.translate'
+    'pascalprecht.translate',
+    'datePicker'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -38,8 +39,16 @@ angular
         templateUrl: 'views/landing-nosotros.html',
         controller: 'LandingCtrl'
       })
-      .when('/login', {
-        templateUrl: 'views/login.html'
+      .when('/registro-psicologos', {
+        templateUrl: 'views/registro-psicologos.html',
+        controller: 'RegistropsicologosCtrl'
+      })
+      .when('/edicion-curriculum', {
+        templateUrl: 'views/edicion-curriculum.html',
+        controller: 'EdicioncurriculumCtrl'
+      })
+      .when('/controls', {
+        templateUrl: 'views/controls.html'
       })
       .otherwise({
         redirectTo: '/'

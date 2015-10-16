@@ -1,0 +1,36 @@
++form-header-cv("Formación Profesional","estudiosForm")
+	.container-cv(ng-show="mostrarForm")
+		.layout-content
+			+controlFilium-select("Centro de Estudios","centroEstudios","studyCenter","{selectActive: selectChangecentroEstudios,success: submittedProfessionalEducation && estudiosForm.centroEstudios.$valid, error: submittedProfessionalEducation && estudiosForm.centroEstudios.$invalid}","submittedProfessionalEducation && estudiosForm.centroEstudios.$invalid")(required)
+		.layout-content
+			+controlFilium-select("Grado Académico","gradoAcademico","academicDegree","{selectActive: selectChangegradoAcademico,success: submittedProfessionalEducation && estudiosForm.gradoAcademico.$valid, error: submittedProfessionalEducation && estudiosForm.gradoAcademico.$invalid}","submittedProfessionalEducation && estudiosForm.gradoAcademico.$invalid")(required)
+		.layout-content
+			+controlFilium-text("Nombre de la Carrera","nombreCarrera","careerName","{success: submittedProfessionalEducation && estudiosForm.nombreCarrera.$valid, error: submittedProfessionalEducation && estudiosForm.nombreCarrera.$invalid}","submittedProfessionalEducation && estudiosForm.nombreCarrera.$invalid")(names,required)
+		.layout-content
+			.layout-2-3.padding-2-3
+				+controlFilium-text("Nombre de la Mención","nombreMencion","mentionName","{success: submittedProfessionalEducation && estudiosForm.nombreMencion.$valid, error: submittedProfessionalEducation && estudiosForm.nombreMencion.$invalid}","submittedProfessionalEducation && estudiosForm.nombreMencion.$invalid")(ng-disabled="vMencion",ng-required="!vMencion")
+			.layout-dateIF-last.padding-datedateIF-last
+				+controlFilium-check("Incluir Mención","checkMencion","checkMen","vMencion=false","vMencion=!vMencion")
+		.layout-content
+			.layout-dateIF.padding-dateIF
+				+controlFilium-date("Fecha de Inicio","fechaInicio","startDate","{success: submittedProfessionalEducation && estudiosForm.fechaInicio.$valid, error: submittedProfessionalEducation && estudiosForm.fechaInicio.$invalid}","submittedProfessionalEducation && estudiosForm.fechaInicio.$invalid")(required)
+			.layout-dateIF.padding-dateIF
+				+controlFilium-date("Fecha de Fin","fechaFin","endDate","{success: submittedProfessionalEducation && estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation && estudiosForm.fechaFin.$invalid}","submittedProfessionalEducation && estudiosForm.fechaFin.$invalid")(ng-disabled="!estudiandoActual",ng-required="estudiandoActual")
+			.layout-dateIF-last.padding-datedateIF-last
+				+controlFilium-check("Estudiando Actualmente","checkEstudianto","checkEst","estudiandoActual=false","estudiandoActual=!estudiandoActual")
+		.layout-content
+			+controlFilium-textarea("Comentarios","Comentarios","studyComments","{success: submittedProfessionalEducation && estudiosForm.Comentarios.$valid, error: submittedProfessionalEducation && estudiosForm.Comentarios.$invalid}","submittedProfessionalEducation && estudiosForm.Comentarios.$invalid")(names)
+		.button-container
+			a.fbtn.fbtn-primary.cancel(href="javascript:void(0)",ng-click="mostrarForm=false") Cancelar
+			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedProfessionalEducation=true") Guardar Cambios
+	.itemcv-container
+		.itemcv(ng-repeat="matrizEstudio in matrizEstudios")
+			.itemcv-info
+				.itemcv-title {{matrizEstudio.institucion}}
+				.itemcv-descripion(ng-show="matrizEstudio.activMencion") {{matrizEstudio.grado}} - {{matrizEstudio.nomCarrera}} - {{matrizEstudio.nomMencion}}
+				.itemcv-descripion(ng-show="!matrizEstudio.activMencion") {{matrizEstudio.grado}} - {{matrizEstudio.nomCarrera}}
+				.itemcv-descripion(ng-show="matrizEstudio.activFechaFin") {{matrizEstudio.fecInicio}} - {{matrizEstudio.fecFin}}
+				.itemcv-descripion(ng-show="!matrizEstudio.activFechaFin") {{matrizEstudio.fecInicio}} - Presente
+			.itemcv-image
+				a(href="javascript:void(0)" ng-click="editarEstudios(matrizEstudio)") Editar
+				a(href="javascript:void(0)") Eliminar

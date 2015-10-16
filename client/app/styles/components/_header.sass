@@ -1,0 +1,82 @@
+.header-filium
+	background-color: #4a00b3
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.31)
+	height: 64px
+	position: relative
+	z-index: 100
+.logo-filium
+	padding-top: 5px!important
+	padding-left: 40px!important
+	i
+		+sprite($logo-header)
+		display: inline-block
+.menu-items-content
+	@media (min-width: 768px)
+		display: inline-block!important
+.menu-item
+	a
+		color: black
+		&:hover, &:active, &:visited, &:link
+			color: black
+			text-decoration: none
+	@media (min-width: 768px)
+		a
+			color: white
+			&:hover, &:active, &:visited, &:link
+				color: white
+				text-decoration: none
+.dropdown-filium
+	a
+		color: black
+		&:hover, &:active, &:visited, &:link
+			color: black
+			text-decoration: none
+	@media (min-width: 768px)
+		position: absolute
+		right: 130px
+		top: 13px
+		a
+			color: white
+			&:hover, &:active, &:visited, &:link
+				color: white
+				text-decoration: none
+				display: flex
+				line-height: 32px
+			i
+				+sprite($user-header)
+				display: inline-block
+				margin-left: 10px
+.menu-usuario
+	background-color: white
+	position: absolute
+	left: -102px
+	top: 40px
+.menu-usuario-items
+	color: #535a64!important
+	font-family: inherit!important
+	font-size: 13px!important
+	font-weight: 700!important
+	line-height: 43px!important
+	&:before
+		background-color: black
+		width: 10px
+		height: 10px
+		display: inline-block
+.menu-usuario-icon
+	padding-top: 14px
+	margin-right: 21px
+	j
+		display: inline-block
+		float: left
+.icon-datosusuario
+	+sprite($user-item-1)
+.icon-perfilusuario
+	+sprite($user-item-2)
+.icon-calendariocitas
+	+sprite($user-item-3)
+.icon-cambiarcontrasena
+	+sprite($user-item-4)
+.icon-cerrarsesion
+	+sprite($user-item-5)
+.menu-usuario-description
+	display: inline-block

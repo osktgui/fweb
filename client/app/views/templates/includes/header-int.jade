@@ -1,0 +1,50 @@
+nav.navbar.topnavbar.header-filium(role='navigation', ng-controller="HeaderNavController")
+  .btn-offset
+    button(type="button", btn-layer-morph="", target="#layer-search", ripple="").btn.btn-info.btn-circle.btn-lg.shadow-z1
+      em.fa.fa-search
+  .navbar-header(ng-class="app.theme.brand")
+    //- Logo
+    a.navbar-brand.logo-filium(ui-sref='app.dashboard') 
+      i
+    //- Mobile buttons
+    .mobile-toggles
+      //- Button to show/hide the header menu on mobile. Visible on mobile only.
+      a(href='', ng-click="toggleHeaderMenu()").menu-toggle.pull-left
+        em.fa.fa-navicon.fa-fw
+  //- END navbar header
+
+  //- START Nav wrapper
+  .nav-wrapper.collapse.navbar-collapse(collapse="headerMenuCollapsed" style="text-align:center; padding-right: 160px")
+    .menu-items-content
+      //- START Left navbar
+      ul.nav.navbar-nav
+        li.menu-item
+          a(href='javascript:void(0)') Blog
+        li.menu-item
+          a(href='javascript:void(0)') Contáctenos
+        li.menu-item
+          a(href='javascript:void(0)') Logout
+    .dropdown.dropdown-filium(dropdown="")
+      a.dropdown-toggle(href='', dropdown-toggle="") José Rios
+        i
+      ul.dropdown-menu.menu-usuario
+        li: a.menu-usuario-items(href="javascript:void(0)")
+          .menu-usuario-icon
+            j.icon-datosusuario
+          .menu-usuario-description Datos de usuario
+        li: a.menu-usuario-items(href="javascript:void(0)")
+          .menu-usuario-icon
+            j.icon-perfilusuario
+          .menu-usuario-description Perfil de usuario
+        li: a.menu-usuario-items(href="javascript:void(0)")
+          .menu-usuario-icon
+            j.icon-calendariocitas
+          .menu-usuario-description Calendario de citas
+        li: a.menu-usuario-items(href="javascript:void(0)")
+          .menu-usuario-icon
+            j.icon-cambiarcontrasena
+          .menu-usuario-description Cambiar contraseña
+        li: a.menu-usuario-items(href="javascript:void(0)")
+          .menu-usuario-icon
+            j.icon-cerrarsesion
+          .menu-usuario-description Cerrar sesión

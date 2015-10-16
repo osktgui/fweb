@@ -1,0 +1,56 @@
+mixin form-header(title,formName)
+	.form-filium-container
+		form.form-filium(name=formName)
+			.form-filium-title= title
+			.form-content
+				block
+mixin form-header-cv(title,formName)
+	.form-filium-container
+		form.form-filium(name=formName)
+			.tabs-container
+				a(href="javascript:void(0)" ng-click="tab='estudios'" ng-class="{active: tab=='estudios'}").tab-item Estudios
+				a(href="javascript:void(0)" ng-click="tab='experiencia'" ng-class="{active: tab=='experiencia'}").tab-item Experiencia
+				a(href="javascript:void(0)" ng-click="tab='certificaciones'" ng-class="{active: tab=='certificaciones'}").tab-item Certificaciones
+				a(href="javascript:void(0)" ng-click="tab='idiomas'" ng-class="{active: tab=='idiomas'}").tab-item Idiomas
+				a(href="javascript:void(0)" ng-click="tab='habilidades'" ng-class="{active: tab=='habilidades'}").tab-item Habilidades
+			.form-filium-title= title
+				a.fbtn.fbtn-add(href="javascript:void(0)",ng-click="mostrarForm=true") Agregar
+			.form-content
+				block
+mixin controlFilium-text(text,nameControl,modelControl,ngClass,errorMessageCondition)
+	.control-container
+		label(for=nameControl, ng-class=ngClass)= text
+		input(type="text", placeholder="Ingrese "+text,name=nameControl, id=nameControl, ng-model=modelControl, ng-class=ngClass).filium-control&attributes(attributes)
+		if errorMessageCondition
+			.errorMessage(ng-class=ngClass, ng-show=errorMessageCondition) Valor no válido
+mixin controlFilium-date(text,nameControl,modelControl,ngClass,errorMessageCondition)
+	.control-container
+		label(for=nameControl, ng-class=ngClass)= text
+		input(type="datetime", placeholder="Seleccione "+text,name=nameControl, id=nameControl, ng-model="date", ng-class=ngClass,format="dd/MM/yyyy", min-view="date", view="date",date-time).filium-control&attributes(attributes)
+		if errorMessageCondition
+			.errorMessage(ng-class=ngClass, ng-show=errorMessageCondition) Valor no válido
+mixin controlFilium-textarea(text,nameControl,modelControl,ngClass,errorMessageCondition)
+	.control-container
+		label.label-textarea(for=nameControl, ng-class=ngClass)= text
+		textarea(type="text", placeholder="Ingrese "+text,name=nameControl, id=nameControl, ng-model=modelControl, ng-class=ngClass).filium-control&attributes(attributes)
+		if errorMessageCondition
+			.errorMessage(ng-class=ngClass, ng-show=errorMessageCondition) Valor no válido
+
+mixin controlFilium-check(text,nameControl,modelControl,ngInit,ngClick,ngClass,errorMessageCondition)
+	.checkbox.c-checkbox.needsclick
+		label.needsclick.filium-checkbox(ng-init=ngClick)
+			input.needsclick(type="checkbox",name=nameControl, id=nameControl, ng-model=modelControl, ng-class=ngClass, ng-click=ngClick)
+			span.fa.fa-check
+			= text
+
+mixin controlFilium-select(text,nameControl,modelControl,ngClass,errorMessageCondition)
+	.control-container
+		label(for=nameControl, ng-class=ngClass)= text 
+		select(type="text" name=nameControl, id=nameControl, ng-model=modelControl, ng-click="selectChange"+nameControl+"=true", ng-class=ngClass).filium-control&attributes(attributes)
+			option(value="", selectFilium, default, selected).option-placeholder= "Seleccione "+text
+			option(value="1") Opción 1
+			option(value="2") Opción 2
+			option(value="3") Opción 3
+			block
+		if errorMessageCondition
+			.errorMessage(ng-class=ngClass, ng-show=errorMessageCondition) Valor no válido

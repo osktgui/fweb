@@ -1,0 +1,52 @@
+include ./mixins/mixins-form.jade
+include ./includes/header-int.jade
+.body-container-filium.with-left-menu
+	include ./includes/left-menu.jade
+	+form-header("Registro de Psicólogo","registroForm")
+		.layout-content
+			+controlFilium-text("Nombres y Apellidos","nombrePersona","personName","{success: submitted && registroForm.nombrePersona.$valid, error: submitted && registroForm.nombrePersona.$invalid}","submitted && registroForm.nombrePersona.$invalid")(ng-minlength = '8',maxlength="50",names,required)
+		.layout-content
+			.layout-1-2.padding-1-2
+				+controlFilium-select("Tipo de Documento","tipoDocumento","documentType","{selectActive: selectChangetipoDocumento,success: submitted && registroForm.tipoDocumento.$valid, error: submitted && registroForm.tipoDocumento.$invalid}","submitted && registroForm.tipoDocumento.$invalid")(required)
+			.layout-1-2.padding-1-2
+				+controlFilium-text("Número de Documento","numeroDocumento","documentNumber","{success: submitted && registroForm.numeroDocumento.$valid, error: submitted && registroForm.numeroDocumento.$invalid}","submitted && registroForm.numeroDocumento.$invalid")(ng-minlength = '8',maxlength="15",onlynumber,required)
+		.layout-content
+			.layout-1-2.padding-1-2
+				+controlFilium-select("Sexo","sexo","sex","{selectActive: selectChangesexo,success: submitted && registroForm.sexo.$valid, error: submitted && registroForm.sexo.$invalid}","submitted && registroForm.sexo.$invalid")(required)
+			.layout-1-2.padding-1-2
+				+controlFilium-text("Número CPsP ","numeroCpsp","cpspNumber","{success: submitted && registroForm.numeroCpsp.$valid, error: submitted && registroForm.numeroCpsp.$invalid}","submitted && registroForm.numeroCpsp.$invalid")(maxlength="5",onlynumber,required)
+		.layout-content
+			.layout-1-2.padding-1-2
+				+controlFilium-select("País de Nacimiento","paisNacimiento","countryBirth","{selectActive: selectChangepaisNacimiento,success: submitted && registroForm.paisNacimiento.$valid, error: submitted && registroForm.paisNacimiento.$invalid}","submitted && registroForm.paisNacimiento.$invalid")(required)
+			.layout-1-2.padding-1-2
+				+controlFilium-select("Departamento de Nacimiento","departamentoNacimiento","departmentBirth","{selectActive: selectChangedepartamentoNacimiento,success: submitted && registroForm.departamentoNacimiento.$valid, error: submitted && registroForm.departamentoNacimiento.$invalid}","submitted && registroForm.departamentoNacimiento.$invalid")(required)
+		.layout-content
+			.layout-1-2.padding-1-2
+				+controlFilium-select("Provincia de Nacimiento","provinciaNacimiento","provinceBirth","{selectActive: selectChangeprovinciaNacimiento,success: submitted && registroForm.provinciaNacimiento.$valid, error: submitted && registroForm.provinciaNacimiento.$invalid}","submitted && registroForm.provinciaNacimiento.$invalid")(required)
+			.layout-1-2.padding-1-2
+				+controlFilium-select("Distrito de Nacimiento","distritoNacimiento","districtBirth","{selectActive: selectChangedistritoNacimiento,success: submitted && registroForm.distritoNacimiento.$valid, error: submitted && registroForm.distritoNacimiento.$invalid}","submitted && registroForm.distritoNacimiento.$invalid")(required)
+		.layout-content
+			.layout-1-2.padding-1-2
+				+controlFilium-select("País de Residencia","paisResidencia","countryReside","{selectActive: selectChangepaisResidencia,success: submitted && registroForm.paisResidencia.$valid, error: submitted && registroForm.paisResidencia.$invalid}","submitted && registroForm.paisResidencia.$invalid")(required)
+			.layout-1-2.padding-1-2
+				+controlFilium-select("Departamento de Residencia","departamentoResidencia","departmentReside","{selectActive: selectChangedepartamentoResidencia,success: submitted && registroForm.departamentoResidencia.$valid, error: submitted && registroForm.departamentoResidencia.$invalid}","submitted && registroForm.departamentoResidencia.$invalid")(required)
+		.layout-content
+			.layout-1-2.padding-1-2
+				+controlFilium-select("Provincia de Residencia","provinciaResidencia","provinceReside","{selectActive: selectChangeprovinciaResidencia,success: submitted && registroForm.provinciaResidencia.$valid, error: submitted && registroForm.provinciaResidencia.$invalid}","submitted && registroForm.provinciaResidencia.$invalid")(required)
+			.layout-1-2.padding-1-2
+				+controlFilium-select("Distrito de Residencia","distritoResidencia","districtReside","{selectActive: selectChangedistritoResidencia,success: submitted && registroForm.distritoResidencia.$valid, error: submitted && registroForm.distritoResidencia.$invalid}","submitted && registroForm.distritoResidencia.$invalid")(required)
+		.layout-content
+			+controlFilium-text("Dirección","direccionPersona","address","{success: submitted && registroForm.direccionPersona.$valid, error: submitted && registroForm.direccionPersona.$invalid}","submitted && registroForm.direccionPersona.$invalid")(address,required)
+		.layout-content
+			.layout-1-2.padding-1-2
+				+controlFilium-text("Teléfono Móvil","celularPersona","cellPhone","{success: submitted && registroForm.celularPersona.$valid, error: submitted && registroForm.celularPersona.$invalid}","submitted && registroForm.celularPersona.$invalid")(maxlength="9",cellphone,required)
+			.layout-1-2.padding-1-2
+				+controlFilium-text("Teléfono Fijo","telefonoPersona","Phone","{success: submitted && registroForm.telefonoPersona.$valid, error: submitted && registroForm.telefonoPersona.$invalid}","submitted && registroForm.telefonoPersona.$invalid")(maxlength="9",telefono,required)
+		.layout-content
+			.layout-1-2.padding-1-2
+				+controlFilium-text("Correo Electrónico","correoPersona","email","{success: submitted && registroForm.correoPersona.$valid, error: submitted && registroForm.correoPersona.$invalid}","submitted && registroForm.correoPersona.$invalid")(ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\\.[a-z.]{2,5}$/",required)
+			.layout-1-2.padding-1-2
+				+controlFilium-text("Skype Id","idSkype","skype","{success: submitted && registroForm.idSkype.$valid, error: submitted && registroForm.idSkype.$invalid}","submitted && registroForm.idSkype.$invalid")(required)
+		.button-container
+			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submitted=true") Registrar
+

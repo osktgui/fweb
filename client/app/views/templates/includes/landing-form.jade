@@ -11,7 +11,7 @@ form.landing-form(name="formLanding")
 			a(href="javascript:void(0)", ng-click="variable.llamada=false; variable.skype=true;", ng-class="{active: variable.skype}").button-to-contact.variable.skype-button Skype
 				i
 	.landing-form-group(ng-show="variable.llamada")
-		input.landing-form-input(type="text", name="landPhone", id="landPhone", ng-model="landing.phone", maxlength="9", placeholder="Número de Celular",ng-required="variable.llamada", ng-class="{error: landingSubmit && formLanding.landPhone.$invalid}",telefono)
+		input.landing-form-input(type="text", name="landPhone", id="landPhone", ng-model="landing.phone", maxlength="9", placeholder="Número de Celular",ng-required="variable.llamada", ng-class="{error: landingSubmit && formLanding.landPhone.$invalid}",cellphone)
 	.space-vertical
 	.landing-form-group(ng-show="variable.skype")
 		input.landing-form-input(type="text", name="landSkype", id="landSkype", ng-model="landing.skype", maxlength="32", ng-minlength='6' placeholder="Usuario de Skype",ng-required="variable.skype",ng-class="{error: landingSubmit && formLanding.landSkype.$invalid}",skype)
