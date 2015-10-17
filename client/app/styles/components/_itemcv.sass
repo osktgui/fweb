@@ -6,6 +6,8 @@
 	font-size: 14px
 	font-weight: 700
 	display: inline-block
+	em
+		margin-right: 5px
 .itemcv-descripion
 	width: 100%
 	text-align: left
@@ -21,9 +23,41 @@
 	padding-top: 15px
 	padding-bottom: 15px
 .itemcv-info
-	width: 79%
+	width: 74%
 	display: table-cell
 .itemcv-image
-	width: 19%
+	width: 26%
 	height: 10px
 	display: table-cell
+	vertical-align: middle
+.itemcv-option
+	font-family: inherit
+	font-size: 14px
+	font-weight: 500
+	line-height: 30px
+	margin-right: 45px
+	position: relative
+	i
+		position: absolute
+		top: 0px
+		margin-left: 6px
+		display: inline-block
+	&:hover, &:active, &:link, &:visited
+		text-decoration: none
+	&.edit
+		color: #9c9c9c
+		i
+			+sprite($cv-item-edit)
+	&.remove
+		color: #e96969
+		i
+			+sprite($cv-item-remove)
+	&:hover
+		&.edit
+			color: #828282
+			i
+				+sprite($cv-item-edit-active)
+		&.remove
+			color: #cf5757
+			i
+				+sprite($cv-item-remove-active)

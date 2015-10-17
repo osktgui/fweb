@@ -50,17 +50,23 @@
   <div class="content-user-data">
     <div class="user-photo"><i></i></div>
     <div class="user-name">Jose Antonio Rios Monterrey</div>
-    <div class="user-options"><a href="javascript:void(0)" class="user-options-item">
+    <div class="user-options"><a href="javascript:void(0)" ng-click="formularioActivo='DatosUsuario'" ng-class="{active: formularioActivo=='DatosUsuario'}" class="user-options-item">
         <div class="user-options-item-icon"><i class="icon-datosusuario"></i></div>
-        <div class="user-options-item-description">Datos de usuario</div></a><a href="javascript:void(0)" class="user-options-item">
+        <div class="user-options-item-description">Datos de usuario</div></a><a href="javascript:void(0)" ng-click="formularioActivo='PerfilUsuario'" ng-class="{active: formularioActivo=='PerfilUsuario'}" class="user-options-item">
         <div class="user-options-item-icon"><i class="icon-perfilusuario"></i></div>
-        <div class="user-options-item-description">Perfil de usuario</div></a><a href="javascript:void(0)" class="user-options-item">
+        <div class="user-options-item-description">Perfil de usuario</div></a><a href="javascript:void(0)" ng-click="formularioActivo='RegistrarPsicologo'" ng-class="{active: formularioActivo=='RegistrarPsicologo'}" class="user-options-item">
+        <div class="user-options-item-icon"><i class="icon-datosusuario"></i></div>
+        <div class="user-options-item-description">Registrar Psicólogo</div></a><a href="javascript:void(0)" ng-click="formularioActivo='EditarCV'" ng-class="{active: formularioActivo=='EditarCV'}" class="user-options-item">
+        <div class="user-options-item-icon"><i class="icon-perfilusuario"></i></div>
+        <div class="user-options-item-description">Editar CV</div></a><a href="javascript:void(0)" ng-click="formularioActivo='CalendarioCitas'" ng-class="{active: formularioActivo=='CalendarioCitas'}" class="user-options-item">
         <div class="user-options-item-icon"><i class="icon-calendariocitas"></i></div>
-        <div class="user-options-item-description">Calendario de citas</div></a><a href="javascript:void(0)" class="user-options-item">
+        <div class="user-options-item-description">Calendario de citas</div></a>
+      <div class="user-options-separate"></div><a href="javascript:void(0)" ng-click="formularioActivo='CambiarContrasena'" ng-class="{active: formularioActivo=='CambiarContrasena'}" class="user-options-item">
         <div class="user-options-item-icon"><i class="icon-cambiarcontrasena"></i></div>
-        <div class="user-options-item-description">Cambiar contraseña</div></a><a href="javascript:void(0)" class="user-options-item">
+        <div class="user-options-item-description">Cambiar contraseña</div></a><a href="javascript:void(0)" ng-click="formularioActivo='CerrarSesion'" ng-class="{active: formularioActivo=='CerrarSesion'}" class="user-options-item">
         <div class="user-options-item-icon"><i class="icon-cerrarsesion"></i></div>
-        <div class="user-options-item-description">Cerrar sesión</div></a></div>
+        <div class="user-options-item-description">Cerrar sesión</div></a>
+    </div>
   </div>
   <div class="form-filium-container">
     <form name="registroForm" class="form-filium">

@@ -1,0 +1,201 @@
+
+<div class="form-filium-container">
+  <form name="registroForm" class="form-filium">
+    <div class="form-filium-title">Registro de Psicólogo</div>
+    <div class="form-content">
+      <div class="layout-content">
+        <div class="control-container">
+          <label for="nombrePersona" ng-class="{success: submitted &amp;&amp; registroForm.nombrePersona.$valid, error: submitted &amp;&amp; registroForm.nombrePersona.$invalid}">Nombres y Apellidos</label>
+          <input type="text" placeholder="Ingrese Nombres y Apellidos" name="nombrePersona" id="nombrePersona" ng-model="personName" ng-class="{success: submitted &amp;&amp; registroForm.nombrePersona.$valid, error: submitted &amp;&amp; registroForm.nombrePersona.$invalid}" class="filium-control" ng-minlength="8" maxlength="50" names="names" required="required"/>
+          <div ng-class="{success: submitted &amp;&amp; registroForm.nombrePersona.$valid, error: submitted &amp;&amp; registroForm.nombrePersona.$invalid}" ng-show="submitted &amp;&amp; registroForm.nombrePersona.$invalid" class="errorMessage">Valor no válido</div>
+        </div>
+      </div>
+      <div class="layout-content">
+        <div class="layout-1-2 padding-1-2">
+          <div class="control-container">
+            <label for="tipoDocumento" ng-class="{selectActive: selectChangetipoDocumento,success: submitted &amp;&amp; registroForm.tipoDocumento.$valid, error: submitted &amp;&amp; registroForm.tipoDocumento.$invalid}">Tipo de Documento</label>
+            <select type="text" name="tipoDocumento" id="tipoDocumento" ng-model="documentType" ng-click="selectChangetipoDocumento=true" ng-class="{selectActive: selectChangetipoDocumento,success: submitted &amp;&amp; registroForm.tipoDocumento.$valid, error: submitted &amp;&amp; registroForm.tipoDocumento.$invalid}" class="filium-control" required="required">
+              <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Tipo de Documento</option>
+              <option value="1">Opción 1</option>
+              <option value="2">Opción 2</option>
+              <option value="3">Opción 3</option>
+            </select>
+            <div ng-class="{selectActive: selectChangetipoDocumento,success: submitted &amp;&amp; registroForm.tipoDocumento.$valid, error: submitted &amp;&amp; registroForm.tipoDocumento.$invalid}" ng-show="submitted &amp;&amp; registroForm.tipoDocumento.$invalid" class="errorMessage">Valor no válido</div>
+          </div>
+        </div>
+        <div class="layout-1-2 padding-1-2">
+          <div class="control-container">
+            <label for="numeroDocumento" ng-class="{success: submitted &amp;&amp; registroForm.numeroDocumento.$valid, error: submitted &amp;&amp; registroForm.numeroDocumento.$invalid}">Número de Documento</label>
+            <input type="text" placeholder="Ingrese Número de Documento" name="numeroDocumento" id="numeroDocumento" ng-model="documentNumber" ng-class="{success: submitted &amp;&amp; registroForm.numeroDocumento.$valid, error: submitted &amp;&amp; registroForm.numeroDocumento.$invalid}" class="filium-control" ng-minlength="8" maxlength="15" onlynumber="onlynumber" required="required"/>
+            <div ng-class="{success: submitted &amp;&amp; registroForm.numeroDocumento.$valid, error: submitted &amp;&amp; registroForm.numeroDocumento.$invalid}" ng-show="submitted &amp;&amp; registroForm.numeroDocumento.$invalid" class="errorMessage">Valor no válido</div>
+          </div>
+        </div>
+      </div>
+      <div class="layout-content">
+        <div class="layout-1-2 padding-1-2">
+          <div class="control-container">
+            <label for="sexo" ng-class="{selectActive: selectChangesexo,success: submitted &amp;&amp; registroForm.sexo.$valid, error: submitted &amp;&amp; registroForm.sexo.$invalid}">Sexo</label>
+            <select type="text" name="sexo" id="sexo" ng-model="sex" ng-click="selectChangesexo=true" ng-class="{selectActive: selectChangesexo,success: submitted &amp;&amp; registroForm.sexo.$valid, error: submitted &amp;&amp; registroForm.sexo.$invalid}" class="filium-control" required="required">
+              <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Sexo</option>
+              <option value="1">Opción 1</option>
+              <option value="2">Opción 2</option>
+              <option value="3">Opción 3</option>
+            </select>
+            <div ng-class="{selectActive: selectChangesexo,success: submitted &amp;&amp; registroForm.sexo.$valid, error: submitted &amp;&amp; registroForm.sexo.$invalid}" ng-show="submitted &amp;&amp; registroForm.sexo.$invalid" class="errorMessage">Valor no válido</div>
+          </div>
+        </div>
+        <div class="layout-1-2 padding-1-2">
+          <div class="control-container">
+            <label for="numeroCpsp" ng-class="{success: submitted &amp;&amp; registroForm.numeroCpsp.$valid, error: submitted &amp;&amp; registroForm.numeroCpsp.$invalid}">Número CPsP </label>
+            <input type="text" placeholder="Ingrese Número CPsP " name="numeroCpsp" id="numeroCpsp" ng-model="cpspNumber" ng-class="{success: submitted &amp;&amp; registroForm.numeroCpsp.$valid, error: submitted &amp;&amp; registroForm.numeroCpsp.$invalid}" class="filium-control" maxlength="5" onlynumber="onlynumber" required="required"/>
+            <div ng-class="{success: submitted &amp;&amp; registroForm.numeroCpsp.$valid, error: submitted &amp;&amp; registroForm.numeroCpsp.$invalid}" ng-show="submitted &amp;&amp; registroForm.numeroCpsp.$invalid" class="errorMessage">Valor no válido</div>
+          </div>
+        </div>
+      </div>
+      <div class="layout-content">
+        <div class="layout-1-2 padding-1-2">
+          <div class="control-container">
+            <label for="paisNacimiento" ng-class="{selectActive: selectChangepaisNacimiento,success: submitted &amp;&amp; registroForm.paisNacimiento.$valid, error: submitted &amp;&amp; registroForm.paisNacimiento.$invalid}">País de Nacimiento</label>
+            <select type="text" name="paisNacimiento" id="paisNacimiento" ng-model="countryBirth" ng-click="selectChangepaisNacimiento=true" ng-class="{selectActive: selectChangepaisNacimiento,success: submitted &amp;&amp; registroForm.paisNacimiento.$valid, error: submitted &amp;&amp; registroForm.paisNacimiento.$invalid}" class="filium-control" required="required">
+              <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione País de Nacimiento</option>
+              <option value="1">Opción 1</option>
+              <option value="2">Opción 2</option>
+              <option value="3">Opción 3</option>
+            </select>
+            <div ng-class="{selectActive: selectChangepaisNacimiento,success: submitted &amp;&amp; registroForm.paisNacimiento.$valid, error: submitted &amp;&amp; registroForm.paisNacimiento.$invalid}" ng-show="submitted &amp;&amp; registroForm.paisNacimiento.$invalid" class="errorMessage">Valor no válido</div>
+          </div>
+        </div>
+        <div class="layout-1-2 padding-1-2">
+          <div class="control-container">
+            <label for="departamentoNacimiento" ng-class="{selectActive: selectChangedepartamentoNacimiento,success: submitted &amp;&amp; registroForm.departamentoNacimiento.$valid, error: submitted &amp;&amp; registroForm.departamentoNacimiento.$invalid}">Departamento de Nacimiento</label>
+            <select type="text" name="departamentoNacimiento" id="departamentoNacimiento" ng-model="departmentBirth" ng-click="selectChangedepartamentoNacimiento=true" ng-class="{selectActive: selectChangedepartamentoNacimiento,success: submitted &amp;&amp; registroForm.departamentoNacimiento.$valid, error: submitted &amp;&amp; registroForm.departamentoNacimiento.$invalid}" class="filium-control" required="required">
+              <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Departamento de Nacimiento</option>
+              <option value="1">Opción 1</option>
+              <option value="2">Opción 2</option>
+              <option value="3">Opción 3</option>
+            </select>
+            <div ng-class="{selectActive: selectChangedepartamentoNacimiento,success: submitted &amp;&amp; registroForm.departamentoNacimiento.$valid, error: submitted &amp;&amp; registroForm.departamentoNacimiento.$invalid}" ng-show="submitted &amp;&amp; registroForm.departamentoNacimiento.$invalid" class="errorMessage">Valor no válido</div>
+          </div>
+        </div>
+      </div>
+      <div class="layout-content">
+        <div class="layout-1-2 padding-1-2">
+          <div class="control-container">
+            <label for="provinciaNacimiento" ng-class="{selectActive: selectChangeprovinciaNacimiento,success: submitted &amp;&amp; registroForm.provinciaNacimiento.$valid, error: submitted &amp;&amp; registroForm.provinciaNacimiento.$invalid}">Provincia de Nacimiento</label>
+            <select type="text" name="provinciaNacimiento" id="provinciaNacimiento" ng-model="provinceBirth" ng-click="selectChangeprovinciaNacimiento=true" ng-class="{selectActive: selectChangeprovinciaNacimiento,success: submitted &amp;&amp; registroForm.provinciaNacimiento.$valid, error: submitted &amp;&amp; registroForm.provinciaNacimiento.$invalid}" class="filium-control" required="required">
+              <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Provincia de Nacimiento</option>
+              <option value="1">Opción 1</option>
+              <option value="2">Opción 2</option>
+              <option value="3">Opción 3</option>
+            </select>
+            <div ng-class="{selectActive: selectChangeprovinciaNacimiento,success: submitted &amp;&amp; registroForm.provinciaNacimiento.$valid, error: submitted &amp;&amp; registroForm.provinciaNacimiento.$invalid}" ng-show="submitted &amp;&amp; registroForm.provinciaNacimiento.$invalid" class="errorMessage">Valor no válido</div>
+          </div>
+        </div>
+        <div class="layout-1-2 padding-1-2">
+          <div class="control-container">
+            <label for="distritoNacimiento" ng-class="{selectActive: selectChangedistritoNacimiento,success: submitted &amp;&amp; registroForm.distritoNacimiento.$valid, error: submitted &amp;&amp; registroForm.distritoNacimiento.$invalid}">Distrito de Nacimiento</label>
+            <select type="text" name="distritoNacimiento" id="distritoNacimiento" ng-model="districtBirth" ng-click="selectChangedistritoNacimiento=true" ng-class="{selectActive: selectChangedistritoNacimiento,success: submitted &amp;&amp; registroForm.distritoNacimiento.$valid, error: submitted &amp;&amp; registroForm.distritoNacimiento.$invalid}" class="filium-control" required="required">
+              <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Distrito de Nacimiento</option>
+              <option value="1">Opción 1</option>
+              <option value="2">Opción 2</option>
+              <option value="3">Opción 3</option>
+            </select>
+            <div ng-class="{selectActive: selectChangedistritoNacimiento,success: submitted &amp;&amp; registroForm.distritoNacimiento.$valid, error: submitted &amp;&amp; registroForm.distritoNacimiento.$invalid}" ng-show="submitted &amp;&amp; registroForm.distritoNacimiento.$invalid" class="errorMessage">Valor no válido</div>
+          </div>
+        </div>
+      </div>
+      <div class="layout-content">
+        <div class="layout-1-2 padding-1-2">
+          <div class="control-container">
+            <label for="paisResidencia" ng-class="{selectActive: selectChangepaisResidencia,success: submitted &amp;&amp; registroForm.paisResidencia.$valid, error: submitted &amp;&amp; registroForm.paisResidencia.$invalid}">País de Residencia</label>
+            <select type="text" name="paisResidencia" id="paisResidencia" ng-model="countryReside" ng-click="selectChangepaisResidencia=true" ng-class="{selectActive: selectChangepaisResidencia,success: submitted &amp;&amp; registroForm.paisResidencia.$valid, error: submitted &amp;&amp; registroForm.paisResidencia.$invalid}" class="filium-control" required="required">
+              <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione País de Residencia</option>
+              <option value="1">Opción 1</option>
+              <option value="2">Opción 2</option>
+              <option value="3">Opción 3</option>
+            </select>
+            <div ng-class="{selectActive: selectChangepaisResidencia,success: submitted &amp;&amp; registroForm.paisResidencia.$valid, error: submitted &amp;&amp; registroForm.paisResidencia.$invalid}" ng-show="submitted &amp;&amp; registroForm.paisResidencia.$invalid" class="errorMessage">Valor no válido</div>
+          </div>
+        </div>
+        <div class="layout-1-2 padding-1-2">
+          <div class="control-container">
+            <label for="departamentoResidencia" ng-class="{selectActive: selectChangedepartamentoResidencia,success: submitted &amp;&amp; registroForm.departamentoResidencia.$valid, error: submitted &amp;&amp; registroForm.departamentoResidencia.$invalid}">Departamento de Residencia</label>
+            <select type="text" name="departamentoResidencia" id="departamentoResidencia" ng-model="departmentReside" ng-click="selectChangedepartamentoResidencia=true" ng-class="{selectActive: selectChangedepartamentoResidencia,success: submitted &amp;&amp; registroForm.departamentoResidencia.$valid, error: submitted &amp;&amp; registroForm.departamentoResidencia.$invalid}" class="filium-control" required="required">
+              <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Departamento de Residencia</option>
+              <option value="1">Opción 1</option>
+              <option value="2">Opción 2</option>
+              <option value="3">Opción 3</option>
+            </select>
+            <div ng-class="{selectActive: selectChangedepartamentoResidencia,success: submitted &amp;&amp; registroForm.departamentoResidencia.$valid, error: submitted &amp;&amp; registroForm.departamentoResidencia.$invalid}" ng-show="submitted &amp;&amp; registroForm.departamentoResidencia.$invalid" class="errorMessage">Valor no válido</div>
+          </div>
+        </div>
+      </div>
+      <div class="layout-content">
+        <div class="layout-1-2 padding-1-2">
+          <div class="control-container">
+            <label for="provinciaResidencia" ng-class="{selectActive: selectChangeprovinciaResidencia,success: submitted &amp;&amp; registroForm.provinciaResidencia.$valid, error: submitted &amp;&amp; registroForm.provinciaResidencia.$invalid}">Provincia de Residencia</label>
+            <select type="text" name="provinciaResidencia" id="provinciaResidencia" ng-model="provinceReside" ng-click="selectChangeprovinciaResidencia=true" ng-class="{selectActive: selectChangeprovinciaResidencia,success: submitted &amp;&amp; registroForm.provinciaResidencia.$valid, error: submitted &amp;&amp; registroForm.provinciaResidencia.$invalid}" class="filium-control" required="required">
+              <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Provincia de Residencia</option>
+              <option value="1">Opción 1</option>
+              <option value="2">Opción 2</option>
+              <option value="3">Opción 3</option>
+            </select>
+            <div ng-class="{selectActive: selectChangeprovinciaResidencia,success: submitted &amp;&amp; registroForm.provinciaResidencia.$valid, error: submitted &amp;&amp; registroForm.provinciaResidencia.$invalid}" ng-show="submitted &amp;&amp; registroForm.provinciaResidencia.$invalid" class="errorMessage">Valor no válido</div>
+          </div>
+        </div>
+        <div class="layout-1-2 padding-1-2">
+          <div class="control-container">
+            <label for="distritoResidencia" ng-class="{selectActive: selectChangedistritoResidencia,success: submitted &amp;&amp; registroForm.distritoResidencia.$valid, error: submitted &amp;&amp; registroForm.distritoResidencia.$invalid}">Distrito de Residencia</label>
+            <select type="text" name="distritoResidencia" id="distritoResidencia" ng-model="districtReside" ng-click="selectChangedistritoResidencia=true" ng-class="{selectActive: selectChangedistritoResidencia,success: submitted &amp;&amp; registroForm.distritoResidencia.$valid, error: submitted &amp;&amp; registroForm.distritoResidencia.$invalid}" class="filium-control" required="required">
+              <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Distrito de Residencia</option>
+              <option value="1">Opción 1</option>
+              <option value="2">Opción 2</option>
+              <option value="3">Opción 3</option>
+            </select>
+            <div ng-class="{selectActive: selectChangedistritoResidencia,success: submitted &amp;&amp; registroForm.distritoResidencia.$valid, error: submitted &amp;&amp; registroForm.distritoResidencia.$invalid}" ng-show="submitted &amp;&amp; registroForm.distritoResidencia.$invalid" class="errorMessage">Valor no válido</div>
+          </div>
+        </div>
+      </div>
+      <div class="layout-content">
+        <div class="control-container">
+          <label for="direccionPersona" ng-class="{success: submitted &amp;&amp; registroForm.direccionPersona.$valid, error: submitted &amp;&amp; registroForm.direccionPersona.$invalid}">Dirección</label>
+          <input type="text" placeholder="Ingrese Dirección" name="direccionPersona" id="direccionPersona" ng-model="address" ng-class="{success: submitted &amp;&amp; registroForm.direccionPersona.$valid, error: submitted &amp;&amp; registroForm.direccionPersona.$invalid}" class="filium-control" address="address" required="required"/>
+          <div ng-class="{success: submitted &amp;&amp; registroForm.direccionPersona.$valid, error: submitted &amp;&amp; registroForm.direccionPersona.$invalid}" ng-show="submitted &amp;&amp; registroForm.direccionPersona.$invalid" class="errorMessage">Valor no válido</div>
+        </div>
+      </div>
+      <div class="layout-content">
+        <div class="layout-1-2 padding-1-2">
+          <div class="control-container">
+            <label for="celularPersona" ng-class="{success: submitted &amp;&amp; registroForm.celularPersona.$valid, error: submitted &amp;&amp; registroForm.celularPersona.$invalid}">Teléfono Móvil</label>
+            <input type="text" placeholder="Ingrese Teléfono Móvil" name="celularPersona" id="celularPersona" ng-model="cellPhone" ng-class="{success: submitted &amp;&amp; registroForm.celularPersona.$valid, error: submitted &amp;&amp; registroForm.celularPersona.$invalid}" class="filium-control" maxlength="9" cellphone="cellphone" required="required"/>
+            <div ng-class="{success: submitted &amp;&amp; registroForm.celularPersona.$valid, error: submitted &amp;&amp; registroForm.celularPersona.$invalid}" ng-show="submitted &amp;&amp; registroForm.celularPersona.$invalid" class="errorMessage">Valor no válido</div>
+          </div>
+        </div>
+        <div class="layout-1-2 padding-1-2">
+          <div class="control-container">
+            <label for="telefonoPersona" ng-class="{success: submitted &amp;&amp; registroForm.telefonoPersona.$valid, error: submitted &amp;&amp; registroForm.telefonoPersona.$invalid}">Teléfono Fijo</label>
+            <input type="text" placeholder="Ingrese Teléfono Fijo" name="telefonoPersona" id="telefonoPersona" ng-model="Phone" ng-class="{success: submitted &amp;&amp; registroForm.telefonoPersona.$valid, error: submitted &amp;&amp; registroForm.telefonoPersona.$invalid}" class="filium-control" maxlength="9" telefono="telefono" required="required"/>
+            <div ng-class="{success: submitted &amp;&amp; registroForm.telefonoPersona.$valid, error: submitted &amp;&amp; registroForm.telefonoPersona.$invalid}" ng-show="submitted &amp;&amp; registroForm.telefonoPersona.$invalid" class="errorMessage">Valor no válido</div>
+          </div>
+        </div>
+      </div>
+      <div class="layout-content">
+        <div class="layout-1-2 padding-1-2">
+          <div class="control-container">
+            <label for="correoPersona" ng-class="{success: submitted &amp;&amp; registroForm.correoPersona.$valid, error: submitted &amp;&amp; registroForm.correoPersona.$invalid}">Correo Electrónico</label>
+            <input type="text" placeholder="Ingrese Correo Electrónico" name="correoPersona" id="correoPersona" ng-model="email" ng-class="{success: submitted &amp;&amp; registroForm.correoPersona.$valid, error: submitted &amp;&amp; registroForm.correoPersona.$invalid}" class="filium-control" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required="required"/>
+            <div ng-class="{success: submitted &amp;&amp; registroForm.correoPersona.$valid, error: submitted &amp;&amp; registroForm.correoPersona.$invalid}" ng-show="submitted &amp;&amp; registroForm.correoPersona.$invalid" class="errorMessage">Valor no válido</div>
+          </div>
+        </div>
+        <div class="layout-1-2 padding-1-2">
+          <div class="control-container">
+            <label for="idSkype" ng-class="{success: submitted &amp;&amp; registroForm.idSkype.$valid, error: submitted &amp;&amp; registroForm.idSkype.$invalid}">Skype Id</label>
+            <input type="text" placeholder="Ingrese Skype Id" name="idSkype" id="idSkype" ng-model="skype" ng-class="{success: submitted &amp;&amp; registroForm.idSkype.$valid, error: submitted &amp;&amp; registroForm.idSkype.$invalid}" class="filium-control" required="required"/>
+            <div ng-class="{success: submitted &amp;&amp; registroForm.idSkype.$valid, error: submitted &amp;&amp; registroForm.idSkype.$invalid}" ng-show="submitted &amp;&amp; registroForm.idSkype.$invalid" class="errorMessage">Valor no válido</div>
+          </div>
+        </div>
+      </div>
+      <div class="button-container"><a href="javascript:void(0)" ng-click="submitted=true" class="fbtn fbtn-primary">Registrar</a></div>
+    </div>
+  </form>
+</div>

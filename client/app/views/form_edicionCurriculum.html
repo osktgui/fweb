@@ -46,25 +46,25 @@
     </div>
   </div>
 </nav>
-<div ng-init="tab='estudios'" class="body-container-filium with-left-menu">
+<div ng-init="tab='experiencia'" class="body-container-filium with-left-menu">
   <div class="content-user-data">
     <div class="user-photo"><i></i></div>
     <div class="user-name">Jose Antonio Rios Monterrey</div>
     <div class="user-options"><a href="javascript:void(0)" ng-click="formularioActivo='DatosUsuario'" ng-class="{active: formularioActivo=='DatosUsuario'}" class="user-options-item">
-        <div class="user-options-item-icon"><i class="icon-datosusuario"></i></div>
+        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='DatosUsuario'}" class="icon-datosusuario"></i></div>
         <div class="user-options-item-description">Datos de usuario</div></a><a href="javascript:void(0)" ng-click="formularioActivo='PerfilUsuario'" ng-class="{active: formularioActivo=='PerfilUsuario'}" class="user-options-item">
-        <div class="user-options-item-icon"><i class="icon-perfilusuario"></i></div>
+        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='PerfilUsuario'}" class="icon-perfilusuario"></i></div>
         <div class="user-options-item-description">Perfil de usuario</div></a><a href="javascript:void(0)" ng-click="formularioActivo='RegistrarPsicologo'" ng-class="{active: formularioActivo=='RegistrarPsicologo'}" class="user-options-item">
-        <div class="user-options-item-icon"><i class="icon-datosusuario"></i></div>
+        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='RegistrarPsicologo'}" class="icon-datosusuario"></i></div>
         <div class="user-options-item-description">Registrar Psicólogo</div></a><a href="javascript:void(0)" ng-click="formularioActivo='EditarCV'" ng-class="{active: formularioActivo=='EditarCV'}" class="user-options-item">
-        <div class="user-options-item-icon"><i class="icon-perfilusuario"></i></div>
+        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='EditarCV'}" class="icon-perfilusuario"></i></div>
         <div class="user-options-item-description">Editar CV</div></a><a href="javascript:void(0)" ng-click="formularioActivo='CalendarioCitas'" ng-class="{active: formularioActivo=='CalendarioCitas'}" class="user-options-item">
-        <div class="user-options-item-icon"><i class="icon-calendariocitas"></i></div>
+        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='CalendarioCitas'}" class="icon-calendariocitas"></i></div>
         <div class="user-options-item-description">Calendario de citas</div></a>
       <div class="user-options-separate"></div><a href="javascript:void(0)" ng-click="formularioActivo='CambiarContrasena'" ng-class="{active: formularioActivo=='CambiarContrasena'}" class="user-options-item">
-        <div class="user-options-item-icon"><i class="icon-cambiarcontrasena"></i></div>
+        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='CambiarContrasena'}" class="icon-cambiarcontrasena"></i></div>
         <div class="user-options-item-description">Cambiar contraseña</div></a><a href="javascript:void(0)" ng-click="formularioActivo='CerrarSesion'" ng-class="{active: formularioActivo=='CerrarSesion'}" class="user-options-item">
-        <div class="user-options-item-icon"><i class="icon-cerrarsesion"></i></div>
+        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='CerrarSesion'}" class="icon-cerrarsesion"></i></div>
         <div class="user-options-item-description">Cerrar sesión</div></a>
     </div>
   </div>
@@ -72,7 +72,7 @@
     <div class="form-filium-container">
       <form name="estudiosForm" class="form-filium">
         <div class="tabs-container"><a href="javascript:void(0)" ng-click="tab='estudios';mostrarForm=false" ng-class="{active: tab=='estudios'}" class="tab-item">Estudios</a><a href="javascript:void(0)" ng-click="tab='experiencia';mostrarForm=false" ng-class="{active: tab=='experiencia'}" class="tab-item">Experiencia</a><a href="javascript:void(0)" ng-click="tab='certificaciones';mostrarForm=false" ng-class="{active: tab=='certificaciones'}" class="tab-item">Certificaciones</a><a href="javascript:void(0)" ng-click="tab='idiomas';mostrarForm=false" ng-class="{active: tab=='idiomas'}" class="tab-item">Idiomas</a><a href="javascript:void(0)" ng-click="tab='habilidades';mostrarForm=false" ng-class="{active: tab=='habilidades'}" class="tab-item">Habilidades</a></div>
-        <div class="form-filium-title">Formación Profesional<a href="javascript:void(0)" ng-click="agregarEstudios();" class="fbtn fbtn-add">Agregar</a></div>
+        <div class="form-filium-title">Formación Profesional<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();" class="fbtn fbtn-add">Agregar</a></div>
         <div class="form-content">
           <div ng-show="mostrarForm" class="container-cv">
             <div class="layout-content">
@@ -158,13 +158,13 @@
           <div class="itemcv-container">
             <div ng-repeat="matrizEstudio in matrizEstudios" class="itemcv">
               <div class="itemcv-info">
-                <div class="itemcv-title"><em class="fa fa-book"></em>{{matrizEstudio.institucion}}</div>
-                <div ng-show="matrizEstudio.activMencion" class="itemcv-descripion">{{matrizEstudio.grado}} - {{matrizEstudio.nomCarrera}} - {{matrizEstudio.nomMencion}}</div>
-                <div ng-show="!matrizEstudio.activMencion" class="itemcv-descripion">{{matrizEstudio.grado}} - {{matrizEstudio.nomCarrera}}</div>
-                <div ng-show="matrizEstudio.activFechaFin" class="itemcv-descripion">{{matrizEstudio.fecInicio}} - {{matrizEstudio.fecFin}}</div>
-                <div ng-show="!matrizEstudio.activFechaFin" class="itemcv-descripion">{{matrizEstudio.fecInicio}} - Presente</div>
+                <div class="itemcv-title"><em class="fa fa-book"></em>{{matrizEstudio.organizacionName}}</div>
+                <div ng-show="matrizEstudio.incluirMencion" class="itemcv-descripion">{{matrizEstudio.gradoAcademicoName}} - {{matrizEstudio.nombreCarrera}} - {{matrizEstudio.nombreMencion}}</div>
+                <div ng-show="!matrizEstudio.incluirMencion" class="itemcv-descripion">{{matrizEstudio.gradoAcademicoName}} - {{matrizEstudio.nombreCarrera}}</div>
+                <div ng-show="matrizEstudio.estudiandoActualmente" class="itemcv-descripion">{{matrizEstudio.fechaInicio}} - {{matrizEstudio.fechaFin}}</div>
+                <div ng-show="!matrizEstudio.estudiandoActualmente" class="itemcv-descripion">{{matrizEstudio.fechaInicio}} - Presente</div>
               </div>
-              <div class="itemcv-image"><a href="javascript:void(0)" ng-click="editarEstudios(matrizEstudio)">Editar</a><a href="javascript:void(0)">Eliminar</a></div>
+              <div class="itemcv-image"><a href="javascript:void(0)" ng-click="editarEstudios(matrizEstudio)" class="itemcv-option edit">Editar<i></i></a><a href="javascript:void(0)" class="itemcv-option remove">Eliminar<i></i></a></div>
             </div>
           </div>
         </div>
@@ -175,51 +175,72 @@
     <div class="form-filium-container">
       <form name="laboralForm" class="form-filium">
         <div class="tabs-container"><a href="javascript:void(0)" ng-click="tab='estudios';mostrarForm=false" ng-class="{active: tab=='estudios'}" class="tab-item">Estudios</a><a href="javascript:void(0)" ng-click="tab='experiencia';mostrarForm=false" ng-class="{active: tab=='experiencia'}" class="tab-item">Experiencia</a><a href="javascript:void(0)" ng-click="tab='certificaciones';mostrarForm=false" ng-class="{active: tab=='certificaciones'}" class="tab-item">Certificaciones</a><a href="javascript:void(0)" ng-click="tab='idiomas';mostrarForm=false" ng-class="{active: tab=='idiomas'}" class="tab-item">Idiomas</a><a href="javascript:void(0)" ng-click="tab='habilidades';mostrarForm=false" ng-class="{active: tab=='habilidades'}" class="tab-item">Habilidades</a></div>
-        <div class="form-filium-title">Experiencia Laboral<a href="javascript:void(0)" ng-click="agregarEstudios();" class="fbtn fbtn-add">Agregar</a></div>
+        <div class="form-filium-title">Experiencia Laboral<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();" class="fbtn fbtn-add">Agregar</a></div>
         <div class="form-content">
-          <div class="layout-content">
-            <div class="control-container">
-              <label for="centroLaboral" ng-class="{selectActive: selectChangecentroLaboral,success: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$invalid}">Centro Laboral</label>
-              <select type="text" name="centroLaboral" id="centroLaboral" ng-model="workCenter" ng-click="selectChangecentroLaboral=true" ng-class="{selectActive: selectChangecentroLaboral,success: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$invalid}" class="filium-control" required="required">
-                <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Centro Laboral</option>
-                <option value="1">Opción 1</option>
-                <option value="2">Opción 2</option>
-                <option value="3">Opción 3</option>
-              </select>
-              <div ng-class="{selectActive: selectChangecentroLaboral,success: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.centroLaboral.$invalid" class="errorMessage">Valor no válido</div>
-            </div>
-          </div>
-          <div class="layout-content">
-            <div class="control-container">
-              <label for="nombreCargo" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$valid, error: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$invalid}">Nombre del Cargo</label>
-              <input type="text" placeholder="Ingrese Nombre del Cargo" name="nombreCargo" id="nombreCargo" ng-model="job" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$valid, error: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$invalid}" class="filium-control" names="names" required="required"/>
-              <div ng-class="{success: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$valid, error: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.nombreCargo.$invalid" class="errorMessage">Valor no válido</div>
-            </div>
-          </div>
-          <div class="layout-content">
-            <div class="control-container">
-              <label for="descripcionFunciones" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$valid, error: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$invalid}" class="label-textarea">Descripción</label>
-              <textarea type="text" placeholder="Ingrese Descripción" name="descripcionFunciones" id="descripcionFunciones" ng-model="jobDescription" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$valid, error: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$invalid}" class="filium-control" names="names" required="required"></textarea>
-              <div ng-class="{success: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$valid, error: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$invalid" class="errorMessage">Valor no válido</div>
-            </div>
-          </div>
-          <div class="layout-content">
-            <div class="layout-1-2 padding-1-2">
+          <div ng-show="mostrarForm" class="container-cv">
+            <div class="layout-content">
               <div class="control-container">
-                <label for="fechaInicio" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaInicio.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaInicio.$invalid}">Fecha de Inicio</label>
-                <input type="datetime" placeholder="Seleccione Fecha de Inicio" name="fechaInicio" id="fechaInicio" ng-model="date" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaInicio.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaInicio.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" class="filium-control" required="required"/>
-                <div ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaInicio.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaInicio.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.fechaInicio.$invalid" class="errorMessage">Valor no válido</div>
+                <label for="centroLaboral" ng-class="{selectActive: selectChangecentroLaboral,success: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$invalid}">Centro Laboral</label>
+                <select type="text" name="centroLaboral" id="centroLaboral" ng-model="workCenter" ng-click="selectChangecentroLaboral=true" ng-class="{selectActive: selectChangecentroLaboral,success: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$invalid}" class="filium-control" required="required">
+                  <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Centro Laboral</option>
+                  <option value="1">Opción 1</option>
+                  <option value="2">Opción 2</option>
+                  <option value="3">Opción 3</option>
+                </select>
+                <div ng-class="{selectActive: selectChangecentroLaboral,success: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.centroLaboral.$invalid" class="errorMessage">Valor no válido</div>
               </div>
             </div>
-            <div class="layout-1-2 padding-1-2">
+            <div class="layout-content">
               <div class="control-container">
-                <label for="fechaFin" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaFin.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaFin.$invalid}">Fecha de Fin</label>
-                <input type="datetime" placeholder="Seleccione Fecha de Fin" name="fechaFin" id="fechaFin" ng-model="date" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaFin.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaFin.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" class="filium-control"/>
-                <div ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaFin.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaFin.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.fechaFin.$invalid" class="errorMessage">Valor no válido</div>
+                <label for="nombreCargo" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$valid, error: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$invalid}">Nombre del Cargo</label>
+                <input type="text" placeholder="Ingrese Nombre del Cargo" name="nombreCargo" id="nombreCargo" ng-model="job" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$valid, error: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$invalid}" class="filium-control" names="names" required="required"/>
+                <div ng-class="{success: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$valid, error: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.nombreCargo.$invalid" class="errorMessage">Valor no válido</div>
               </div>
             </div>
+            <div class="layout-content">
+              <div class="control-container">
+                <label for="descripcionFunciones" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$valid, error: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$invalid}" class="label-textarea">Descripción</label>
+                <textarea type="text" placeholder="Ingrese Descripción" name="descripcionFunciones" id="descripcionFunciones" ng-model="jobDescription" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$valid, error: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$invalid}" class="filium-control" names="names" required="required"></textarea>
+                <div ng-class="{success: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$valid, error: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$invalid" class="errorMessage">Valor no válido</div>
+              </div>
+            </div>
+            <div class="layout-content">
+              <div class="layout-dateIF padding-dateIF">
+                <div class="control-container">
+                  <label for="fechaInicioLaboral" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$invalid}">Fecha de Inicio</label>
+                  <input type="datetime" placeholder="Seleccione Fecha de Inicio" name="fechaInicioLaboral" id="fechaInicioLaboral" ng-model="date" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" class="filium-control" required="required"/>
+                  <div ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$invalid" class="errorMessage">Valor no válido</div>
+                </div>
+              </div>
+              <div class="layout-dateIF padding-dateIF">
+                <div class="control-container">
+                  <label for="fechaFinLaboral" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$invalid}">Fecha de Fin</label>
+                  <input type="datetime" placeholder="Seleccione Fecha de Fin" name="fechaFinLaboral" id="fechaFinLaboral" ng-model="date" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" class="filium-control" ng-disabled="checkLab" ng-required="checkLab"/>
+                  <div ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$invalid" class="errorMessage">Valor no válido</div>
+                </div>
+              </div>
+              <div class="layout-dateIF-last padding-datedateIF-last">
+                <div class="checkbox c-checkbox needsclick">
+                  <label ng-init="laborandoActual=!laborandoActual" class="needsclick filium-checkbox">
+                    <input type="checkbox" name="checkLaborando" id="checkLaborando" ng-model="checkLab" ng-click="laborandoActual=!laborandoActual" class="needsclick"/><span class="fa fa-check"></span>Laborando Actualmente
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div ng-show="registrando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedLaboral=true" class="fbtn fbtn-primary">Registrar</a></div>
+            <div ng-show="editando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedLaboral=true" class="fbtn fbtn-primary">Guardar Cambios</a></div>
           </div>
-          <div class="button-container"><a href="javascript:void(0)" ng-click="" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedLaboral=true" class="fbtn fbtn-primary">Guardar Cambios</a></div>
+          <div class="itemcv-container">
+            <div ng-repeat="matrizLaboral in matrizLaborales" class="itemcv">
+              <div class="itemcv-info">
+                <div class="itemcv-title"><em class="fa fa-briefcase"></em>{{matrizLaboral.organizacionName}}</div>
+                <div class="itemcv-descripion">{{matrizLaboral.nombreCargo}}</div>
+                <div ng-show="!matrizLaboral.laborandoActualmente" class="itemcv-descripion">{{matrizLaboral.fechaInicio}} - {{matrizLaboral.fechaFin}}</div>
+                <div ng-show="matrizLaboral.laborandoActualmente" class="itemcv-descripion">{{matrizLaboral.fechaInicio}} - Presente</div>
+              </div>
+              <div class="itemcv-image"><a href="javascript:void(0)" ng-click="editarLabores(matrizLaboral)" class="itemcv-option edit">Editar<i></i></a><a href="javascript:void(0)" class="itemcv-option remove">Eliminar<i></i></a></div>
+            </div>
+          </div>
         </div>
       </form>
     </div>
@@ -228,7 +249,7 @@
     <div class="form-filium-container">
       <form name="certificacionForm" class="form-filium">
         <div class="tabs-container"><a href="javascript:void(0)" ng-click="tab='estudios';mostrarForm=false" ng-class="{active: tab=='estudios'}" class="tab-item">Estudios</a><a href="javascript:void(0)" ng-click="tab='experiencia';mostrarForm=false" ng-class="{active: tab=='experiencia'}" class="tab-item">Experiencia</a><a href="javascript:void(0)" ng-click="tab='certificaciones';mostrarForm=false" ng-class="{active: tab=='certificaciones'}" class="tab-item">Certificaciones</a><a href="javascript:void(0)" ng-click="tab='idiomas';mostrarForm=false" ng-class="{active: tab=='idiomas'}" class="tab-item">Idiomas</a><a href="javascript:void(0)" ng-click="tab='habilidades';mostrarForm=false" ng-class="{active: tab=='habilidades'}" class="tab-item">Habilidades</a></div>
-        <div class="form-filium-title">Certificaciones<a href="javascript:void(0)" ng-click="agregarEstudios();" class="fbtn fbtn-add">Agregar</a></div>
+        <div class="form-filium-title">Certificaciones<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();" class="fbtn fbtn-add">Agregar</a></div>
         <div class="form-content">
           <div class="layout-content">
             <div class="control-container">
@@ -265,7 +286,7 @@
     <div class="form-filium-container">
       <form name="laboralForm" class="form-filium">
         <div class="tabs-container"><a href="javascript:void(0)" ng-click="tab='estudios';mostrarForm=false" ng-class="{active: tab=='estudios'}" class="tab-item">Estudios</a><a href="javascript:void(0)" ng-click="tab='experiencia';mostrarForm=false" ng-class="{active: tab=='experiencia'}" class="tab-item">Experiencia</a><a href="javascript:void(0)" ng-click="tab='certificaciones';mostrarForm=false" ng-class="{active: tab=='certificaciones'}" class="tab-item">Certificaciones</a><a href="javascript:void(0)" ng-click="tab='idiomas';mostrarForm=false" ng-class="{active: tab=='idiomas'}" class="tab-item">Idiomas</a><a href="javascript:void(0)" ng-click="tab='habilidades';mostrarForm=false" ng-class="{active: tab=='habilidades'}" class="tab-item">Habilidades</a></div>
-        <div class="form-filium-title">Idiomas<a href="javascript:void(0)" ng-click="agregarEstudios();" class="fbtn fbtn-add">Agregar</a></div>
+        <div class="form-filium-title">Idiomas<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();" class="fbtn fbtn-add">Agregar</a></div>
         <div class="form-content">
           <div class="layout-content">
             <div class="layout-1-2 padding-1-2">
@@ -302,7 +323,7 @@
     <div class="form-filium-container">
       <form name="habilidadForm" class="form-filium">
         <div class="tabs-container"><a href="javascript:void(0)" ng-click="tab='estudios';mostrarForm=false" ng-class="{active: tab=='estudios'}" class="tab-item">Estudios</a><a href="javascript:void(0)" ng-click="tab='experiencia';mostrarForm=false" ng-class="{active: tab=='experiencia'}" class="tab-item">Experiencia</a><a href="javascript:void(0)" ng-click="tab='certificaciones';mostrarForm=false" ng-class="{active: tab=='certificaciones'}" class="tab-item">Certificaciones</a><a href="javascript:void(0)" ng-click="tab='idiomas';mostrarForm=false" ng-class="{active: tab=='idiomas'}" class="tab-item">Idiomas</a><a href="javascript:void(0)" ng-click="tab='habilidades';mostrarForm=false" ng-class="{active: tab=='habilidades'}" class="tab-item">Habilidades</a></div>
-        <div class="form-filium-title">Habilidades<a href="javascript:void(0)" ng-click="agregarEstudios();" class="fbtn fbtn-add">Agregar</a></div>
+        <div class="form-filium-title">Habilidades<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();" class="fbtn fbtn-add">Agregar</a></div>
         <div class="form-content">
           <div class="layout-content">
             <div class="control-container">

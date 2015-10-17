@@ -1,0 +1,619 @@
+
+<nav role="navigation" ng-controller="HeaderNavController" class="navbar topnavbar header-filium">
+  <div class="btn-offset">
+    <button type="button" btn-layer-morph="" target="#layer-search" ripple="" class="btn btn-info btn-circle btn-lg shadow-z1"><em class="fa fa-search"></em></button>
+  </div>
+  <div ng-class="app.theme.brand" class="navbar-header"><a ui-sref="app.dashboard" class="navbar-brand logo-filium"><i></i></a>
+    <div class="mobile-toggles"><a href="" ng-click="toggleHeaderMenu()" class="menu-toggle pull-left"><em class="fa fa-navicon fa-fw"></em></a>
+    </div>
+  </div>
+  <div collapse="headerMenuCollapsed" style="text-align:center; padding-right: 160px" class="nav-wrapper collapse navbar-collapse">
+    <div class="menu-items-content">
+      <ul class="nav navbar-nav">
+        <li class="menu-item"><a href="javascript:void(0)">Blog</a></li>
+        <li class="menu-item"><a href="javascript:void(0)">Contáctenos</a></li>
+        <li class="menu-item"><a href="javascript:void(0)">Logout</a></li>
+      </ul>
+    </div>
+    <div dropdown="" class="dropdown dropdown-filium"><a href="" dropdown-toggle="" class="dropdown-toggle">José Rios<i></i></a>
+      <ul class="dropdown-menu menu-usuario">
+        <li><a href="javascript:void(0)" class="menu-usuario-items">
+            <div class="menu-usuario-icon">
+              <j class="icon-datosusuario"></j>
+            </div>
+            <div class="menu-usuario-description">Datos de usuario</div></a></li>
+        <li><a href="javascript:void(0)" class="menu-usuario-items">
+            <div class="menu-usuario-icon">
+              <j class="icon-perfilusuario"></j>
+            </div>
+            <div class="menu-usuario-description">Perfil de usuario</div></a></li>
+        <li><a href="javascript:void(0)" class="menu-usuario-items">
+            <div class="menu-usuario-icon">
+              <j class="icon-calendariocitas"></j>
+            </div>
+            <div class="menu-usuario-description">Calendario de citas</div></a></li>
+        <li><a href="javascript:void(0)" class="menu-usuario-items">
+            <div class="menu-usuario-icon">
+              <j class="icon-cambiarcontrasena"></j>
+            </div>
+            <div class="menu-usuario-description">Cambiar contraseña</div></a></li>
+        <li><a href="javascript:void(0)" class="menu-usuario-items">
+            <div class="menu-usuario-icon">
+              <j class="icon-cerrarsesion"></j>
+            </div>
+            <div class="menu-usuario-description">Cerrar sesión</div></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div ng-init="formularioActivo='EditarCV'" class="body-container-filium with-left-menu">
+  <div class="content-user-data">
+    <div class="user-photo"><i></i></div>
+    <div class="user-name">Jose Antonio Rios Monterrey</div>
+    <div class="user-options"><a href="javascript:void(0)" ng-click="formularioActivo='DatosUsuario'" ng-class="{active: formularioActivo=='DatosUsuario'}" class="user-options-item">
+        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='DatosUsuario'}" class="icon-datosusuario"></i></div>
+        <div class="user-options-item-description">Datos de usuario</div></a><a href="javascript:void(0)" ng-click="formularioActivo='PerfilUsuario'" ng-class="{active: formularioActivo=='PerfilUsuario'}" class="user-options-item">
+        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='PerfilUsuario'}" class="icon-perfilusuario"></i></div>
+        <div class="user-options-item-description">Perfil de usuario</div></a><a href="javascript:void(0)" ng-click="formularioActivo='RegistrarPsicologo'" ng-class="{active: formularioActivo=='RegistrarPsicologo'}" class="user-options-item">
+        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='RegistrarPsicologo'}" class="icon-datosusuario"></i></div>
+        <div class="user-options-item-description">Registrar Psicólogo</div></a><a href="javascript:void(0)" ng-click="formularioActivo='EditarCV'" ng-class="{active: formularioActivo=='EditarCV'}" class="user-options-item">
+        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='EditarCV'}" class="icon-perfilusuario"></i></div>
+        <div class="user-options-item-description">Editar CV</div></a><a href="javascript:void(0)" ng-click="formularioActivo='CalendarioCitas'" ng-class="{active: formularioActivo=='CalendarioCitas'}" class="user-options-item">
+        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='CalendarioCitas'}" class="icon-calendariocitas"></i></div>
+        <div class="user-options-item-description">Calendario de citas</div></a>
+      <div class="user-options-separate"></div><a href="javascript:void(0)" ng-click="formularioActivo='CambiarContrasena'" ng-class="{active: formularioActivo=='CambiarContrasena'}" class="user-options-item">
+        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='CambiarContrasena'}" class="icon-cambiarcontrasena"></i></div>
+        <div class="user-options-item-description">Cambiar contraseña</div></a><a href="javascript:void(0)" ng-click="formularioActivo='CerrarSesion'" ng-class="{active: formularioActivo=='CerrarSesion'}" class="user-options-item">
+        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='CerrarSesion'}" class="icon-cerrarsesion"></i></div>
+        <div class="user-options-item-description">Cerrar sesión</div></a>
+    </div>
+  </div>
+  <div ng-show="formularioActivo=='EditarCV'" class="formularioActivo">
+    <nav role="navigation" ng-controller="HeaderNavController" class="navbar topnavbar header-filium">
+      <div class="btn-offset">
+        <button type="button" btn-layer-morph="" target="#layer-search" ripple="" class="btn btn-info btn-circle btn-lg shadow-z1"><em class="fa fa-search"></em></button>
+      </div>
+      <div ng-class="app.theme.brand" class="navbar-header"><a ui-sref="app.dashboard" class="navbar-brand logo-filium"><i></i></a>
+        <div class="mobile-toggles"><a href="" ng-click="toggleHeaderMenu()" class="menu-toggle pull-left"><em class="fa fa-navicon fa-fw"></em></a>
+        </div>
+      </div>
+      <div collapse="headerMenuCollapsed" style="text-align:center; padding-right: 160px" class="nav-wrapper collapse navbar-collapse">
+        <div class="menu-items-content">
+          <ul class="nav navbar-nav">
+            <li class="menu-item"><a href="javascript:void(0)">Blog</a></li>
+            <li class="menu-item"><a href="javascript:void(0)">Contáctenos</a></li>
+            <li class="menu-item"><a href="javascript:void(0)">Logout</a></li>
+          </ul>
+        </div>
+        <div dropdown="" class="dropdown dropdown-filium"><a href="" dropdown-toggle="" class="dropdown-toggle">José Rios<i></i></a>
+          <ul class="dropdown-menu menu-usuario">
+            <li><a href="javascript:void(0)" class="menu-usuario-items">
+                <div class="menu-usuario-icon">
+                  <j class="icon-datosusuario"></j>
+                </div>
+                <div class="menu-usuario-description">Datos de usuario</div></a></li>
+            <li><a href="javascript:void(0)" class="menu-usuario-items">
+                <div class="menu-usuario-icon">
+                  <j class="icon-perfilusuario"></j>
+                </div>
+                <div class="menu-usuario-description">Perfil de usuario</div></a></li>
+            <li><a href="javascript:void(0)" class="menu-usuario-items">
+                <div class="menu-usuario-icon">
+                  <j class="icon-calendariocitas"></j>
+                </div>
+                <div class="menu-usuario-description">Calendario de citas</div></a></li>
+            <li><a href="javascript:void(0)" class="menu-usuario-items">
+                <div class="menu-usuario-icon">
+                  <j class="icon-cambiarcontrasena"></j>
+                </div>
+                <div class="menu-usuario-description">Cambiar contraseña</div></a></li>
+            <li><a href="javascript:void(0)" class="menu-usuario-items">
+                <div class="menu-usuario-icon">
+                  <j class="icon-cerrarsesion"></j>
+                </div>
+                <div class="menu-usuario-description">Cerrar sesión</div></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div ng-init="tab='experiencia'" class="body-container-filium with-left-menu">
+      <div class="content-user-data">
+        <div class="user-photo"><i></i></div>
+        <div class="user-name">Jose Antonio Rios Monterrey</div>
+        <div class="user-options"><a href="javascript:void(0)" ng-click="formularioActivo='DatosUsuario'" ng-class="{active: formularioActivo=='DatosUsuario'}" class="user-options-item">
+            <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='DatosUsuario'}" class="icon-datosusuario"></i></div>
+            <div class="user-options-item-description">Datos de usuario</div></a><a href="javascript:void(0)" ng-click="formularioActivo='PerfilUsuario'" ng-class="{active: formularioActivo=='PerfilUsuario'}" class="user-options-item">
+            <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='PerfilUsuario'}" class="icon-perfilusuario"></i></div>
+            <div class="user-options-item-description">Perfil de usuario</div></a><a href="javascript:void(0)" ng-click="formularioActivo='RegistrarPsicologo'" ng-class="{active: formularioActivo=='RegistrarPsicologo'}" class="user-options-item">
+            <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='RegistrarPsicologo'}" class="icon-datosusuario"></i></div>
+            <div class="user-options-item-description">Registrar Psicólogo</div></a><a href="javascript:void(0)" ng-click="formularioActivo='EditarCV'" ng-class="{active: formularioActivo=='EditarCV'}" class="user-options-item">
+            <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='EditarCV'}" class="icon-perfilusuario"></i></div>
+            <div class="user-options-item-description">Editar CV</div></a><a href="javascript:void(0)" ng-click="formularioActivo='CalendarioCitas'" ng-class="{active: formularioActivo=='CalendarioCitas'}" class="user-options-item">
+            <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='CalendarioCitas'}" class="icon-calendariocitas"></i></div>
+            <div class="user-options-item-description">Calendario de citas</div></a>
+          <div class="user-options-separate"></div><a href="javascript:void(0)" ng-click="formularioActivo='CambiarContrasena'" ng-class="{active: formularioActivo=='CambiarContrasena'}" class="user-options-item">
+            <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='CambiarContrasena'}" class="icon-cambiarcontrasena"></i></div>
+            <div class="user-options-item-description">Cambiar contraseña</div></a><a href="javascript:void(0)" ng-click="formularioActivo='CerrarSesion'" ng-class="{active: formularioActivo=='CerrarSesion'}" class="user-options-item">
+            <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='CerrarSesion'}" class="icon-cerrarsesion"></i></div>
+            <div class="user-options-item-description">Cerrar sesión</div></a>
+        </div>
+      </div>
+      <div ng-show="tab=='estudios'" class="aux">
+            <div class="form-filium-container">
+              <form name="estudiosForm" class="form-filium">
+                <div class="tabs-container"><a href="javascript:void(0)" ng-click="tab='estudios';mostrarForm=false" ng-class="{active: tab=='estudios'}" class="tab-item">Estudios</a><a href="javascript:void(0)" ng-click="tab='experiencia';mostrarForm=false" ng-class="{active: tab=='experiencia'}" class="tab-item">Experiencia</a><a href="javascript:void(0)" ng-click="tab='certificaciones';mostrarForm=false" ng-class="{active: tab=='certificaciones'}" class="tab-item">Certificaciones</a><a href="javascript:void(0)" ng-click="tab='idiomas';mostrarForm=false" ng-class="{active: tab=='idiomas'}" class="tab-item">Idiomas</a><a href="javascript:void(0)" ng-click="tab='habilidades';mostrarForm=false" ng-class="{active: tab=='habilidades'}" class="tab-item">Habilidades</a></div>
+                <div class="form-filium-title">Formación Profesional<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();" class="fbtn fbtn-add">Agregar</a></div>
+                <div class="form-content">
+                  <div ng-show="mostrarForm" class="container-cv">
+                    <div class="layout-content">
+                          <div class="control-container">
+                            <label for="centroEstudios" ng-class="{selectActive: selectChangecentroEstudios,success: submittedProfessionalEducation &amp;&amp; estudiosForm.centroEstudios.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.centroEstudios.$invalid}">Centro de Estudios</label>
+                            <select type="text" name="centroEstudios" id="centroEstudios" ng-model="studyCenter" ng-click="selectChangecentroEstudios=true" ng-class="{selectActive: selectChangecentroEstudios,success: submittedProfessionalEducation &amp;&amp; estudiosForm.centroEstudios.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.centroEstudios.$invalid}" class="filium-control" required="required">
+                              <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Centro de Estudios</option>
+                              <option value="1">Opción 1</option>
+                              <option value="2">Opción 2</option>
+                              <option value="3">Opción 3</option>
+                            </select>
+                            <div ng-class="{selectActive: selectChangecentroEstudios,success: submittedProfessionalEducation &amp;&amp; estudiosForm.centroEstudios.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.centroEstudios.$invalid}" ng-show="submittedProfessionalEducation &amp;&amp; estudiosForm.centroEstudios.$invalid" class="errorMessage">Valor no válido</div>
+                          </div>
+                    </div>
+                    <div class="layout-content">
+                          <div class="control-container">
+                            <label for="gradoAcademico" ng-class="{selectActive: selectChangegradoAcademico,success: submittedProfessionalEducation &amp;&amp; estudiosForm.gradoAcademico.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.gradoAcademico.$invalid}">Grado Académico</label>
+                            <select type="text" name="gradoAcademico" id="gradoAcademico" ng-model="academicDegree" ng-click="selectChangegradoAcademico=true" ng-class="{selectActive: selectChangegradoAcademico,success: submittedProfessionalEducation &amp;&amp; estudiosForm.gradoAcademico.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.gradoAcademico.$invalid}" class="filium-control" required="required">
+                              <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Grado Académico</option>
+                              <option value="1">Opción 1</option>
+                              <option value="2">Opción 2</option>
+                              <option value="3">Opción 3</option>
+                            </select>
+                            <div ng-class="{selectActive: selectChangegradoAcademico,success: submittedProfessionalEducation &amp;&amp; estudiosForm.gradoAcademico.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.gradoAcademico.$invalid}" ng-show="submittedProfessionalEducation &amp;&amp; estudiosForm.gradoAcademico.$invalid" class="errorMessage">Valor no válido</div>
+                          </div>
+                    </div>
+                    <div class="layout-content">
+                          <div class="control-container">
+                            <label for="nombreCarrera" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.nombreCarrera.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.nombreCarrera.$invalid}">Nombre de la Carrera</label>
+                            <input type="text" placeholder="Ingrese Nombre de la Carrera" name="nombreCarrera" id="nombreCarrera" ng-model="careerName" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.nombreCarrera.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.nombreCarrera.$invalid}" class="filium-control" names="names" required="required"/>
+                            <div ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.nombreCarrera.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.nombreCarrera.$invalid}" ng-show="submittedProfessionalEducation &amp;&amp; estudiosForm.nombreCarrera.$invalid" class="errorMessage">Valor no válido</div>
+                          </div>
+                    </div>
+                    <div class="layout-content">
+                      <div class="layout-2-3 padding-2-3">
+                            <div class="control-container">
+                              <label for="nombreMencion" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.nombreMencion.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.nombreMencion.$invalid}">Nombre de la Mención</label>
+                              <input type="text" placeholder="Ingrese Nombre de la Mención" name="nombreMencion" id="nombreMencion" ng-model="mentionName" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.nombreMencion.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.nombreMencion.$invalid}" class="filium-control" ng-disabled="!vMencion" ng-required="vMencion"/>
+                              <div ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.nombreMencion.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.nombreMencion.$invalid}" ng-show="submittedProfessionalEducation &amp;&amp; estudiosForm.nombreMencion.$invalid" class="errorMessage">Valor no válido</div>
+                            </div>
+                      </div>
+                      <div class="layout-dateIF-last padding-datedateIF-last">
+                            <div class="checkbox c-checkbox needsclick">
+                              <label ng-init="vMencion=!vMencion" class="needsclick filium-checkbox">
+                                <input type="checkbox" name="checkMencion" id="checkMencion" ng-model="checkMen" ng-click="vMencion=!vMencion" class="needsclick"/><span class="fa fa-check"></span>Incluir Mención
+                              </label>
+                            </div>
+                      </div>
+                    </div>
+                    <div class="layout-content">
+                      <div class="layout-dateIF padding-dateIF">
+                            <div class="control-container">
+                              <label for="fechaInicio" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaInicio.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaInicio.$invalid}">Fecha de Inicio</label>
+                              <input type="datetime" placeholder="Seleccione Fecha de Inicio" name="fechaInicio" id="fechaInicio" ng-model="date" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaInicio.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaInicio.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" class="filium-control" required="required"/>
+                              <div ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaInicio.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaInicio.$invalid}" ng-show="submittedProfessionalEducation &amp;&amp; estudiosForm.fechaInicio.$invalid" class="errorMessage">Valor no válido</div>
+                            </div>
+                      </div>
+                      <div class="layout-dateIF padding-dateIF">
+                            <div class="control-container">
+                              <label for="fechaFin" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid}">Fecha de Fin</label>
+                              <input type="datetime" placeholder="Seleccione Fecha de Fin" name="fechaFin" id="fechaFin" ng-model="date" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" class="filium-control" ng-disabled="!estudiandoActual" ng-required="estudiandoActual"/>
+                              <div ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid}" ng-show="submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid" class="errorMessage">Valor no válido</div>
+                            </div>
+                      </div>
+                      <div class="layout-dateIF-last padding-datedateIF-last">
+                            <div class="checkbox c-checkbox needsclick">
+                              <label ng-init="estudiandoActual=!estudiandoActual" class="needsclick filium-checkbox">
+                                <input type="checkbox" name="checkEstudianto" id="checkEstudianto" ng-model="checkEst" ng-click="estudiandoActual=!estudiandoActual" class="needsclick"/><span class="fa fa-check"></span>Estudiando Actualmente
+                              </label>
+                            </div>
+                      </div>
+                    </div>
+                    <div class="layout-content">
+                          <div class="control-container">
+                            <label for="Comentarios" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.Comentarios.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.Comentarios.$invalid}" class="label-textarea">Comentarios</label>
+                            <textarea type="text" placeholder="Ingrese Comentarios" name="Comentarios" id="Comentarios" ng-model="studyComments" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.Comentarios.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.Comentarios.$invalid}" class="filium-control" names="names"></textarea>
+                            <div ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.Comentarios.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.Comentarios.$invalid}" ng-show="submittedProfessionalEducation &amp;&amp; estudiosForm.Comentarios.$invalid" class="errorMessage">Valor no válido</div>
+                          </div>
+                    </div>
+                    <div ng-show="registrando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedProfessionalEducation=true" class="fbtn fbtn-primary">Registrar</a></div>
+                    <div ng-show="editando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedProfessionalEducation=true" class="fbtn fbtn-primary">Guardar Cambios</a></div>
+                  </div>
+                  <div class="itemcv-container">
+                    <div ng-repeat="matrizEstudio in matrizEstudios" class="itemcv">
+                      <div class="itemcv-info">
+                        <div class="itemcv-title"><em class="fa fa-book"></em>{{matrizEstudio.organizacionName}}</div>
+                        <div ng-show="matrizEstudio.incluirMencion" class="itemcv-descripion">{{matrizEstudio.gradoAcademicoName}} - {{matrizEstudio.nombreCarrera}} - {{matrizEstudio.nombreMencion}}</div>
+                        <div ng-show="!matrizEstudio.incluirMencion" class="itemcv-descripion">{{matrizEstudio.gradoAcademicoName}} - {{matrizEstudio.nombreCarrera}}</div>
+                        <div ng-show="matrizEstudio.estudiandoActualmente" class="itemcv-descripion">{{matrizEstudio.fechaInicio}} - {{matrizEstudio.fechaFin}}</div>
+                        <div ng-show="!matrizEstudio.estudiandoActualmente" class="itemcv-descripion">{{matrizEstudio.fechaInicio}} - Presente</div>
+                      </div>
+                      <div class="itemcv-image"><a href="javascript:void(0)" ng-click="editarEstudios(matrizEstudio)" class="itemcv-option edit">Editar<i></i></a><a href="javascript:void(0)" class="itemcv-option remove">Eliminar<i></i></a></div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+      </div>
+      <div ng-show="tab=='experiencia'" class="aux">
+            <div class="form-filium-container">
+              <form name="laboralForm" class="form-filium">
+                <div class="tabs-container"><a href="javascript:void(0)" ng-click="tab='estudios';mostrarForm=false" ng-class="{active: tab=='estudios'}" class="tab-item">Estudios</a><a href="javascript:void(0)" ng-click="tab='experiencia';mostrarForm=false" ng-class="{active: tab=='experiencia'}" class="tab-item">Experiencia</a><a href="javascript:void(0)" ng-click="tab='certificaciones';mostrarForm=false" ng-class="{active: tab=='certificaciones'}" class="tab-item">Certificaciones</a><a href="javascript:void(0)" ng-click="tab='idiomas';mostrarForm=false" ng-class="{active: tab=='idiomas'}" class="tab-item">Idiomas</a><a href="javascript:void(0)" ng-click="tab='habilidades';mostrarForm=false" ng-class="{active: tab=='habilidades'}" class="tab-item">Habilidades</a></div>
+                <div class="form-filium-title">Experiencia Laboral<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();" class="fbtn fbtn-add">Agregar</a></div>
+                <div class="form-content">
+                  <div ng-show="mostrarForm" class="container-cv">
+                    <div class="layout-content">
+                          <div class="control-container">
+                            <label for="centroLaboral" ng-class="{selectActive: selectChangecentroLaboral,success: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$invalid}">Centro Laboral</label>
+                            <select type="text" name="centroLaboral" id="centroLaboral" ng-model="workCenter" ng-click="selectChangecentroLaboral=true" ng-class="{selectActive: selectChangecentroLaboral,success: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$invalid}" class="filium-control" required="required">
+                              <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Centro Laboral</option>
+                              <option value="1">Opción 1</option>
+                              <option value="2">Opción 2</option>
+                              <option value="3">Opción 3</option>
+                            </select>
+                            <div ng-class="{selectActive: selectChangecentroLaboral,success: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.centroLaboral.$invalid" class="errorMessage">Valor no válido</div>
+                          </div>
+                    </div>
+                    <div class="layout-content">
+                          <div class="control-container">
+                            <label for="nombreCargo" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$valid, error: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$invalid}">Nombre del Cargo</label>
+                            <input type="text" placeholder="Ingrese Nombre del Cargo" name="nombreCargo" id="nombreCargo" ng-model="job" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$valid, error: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$invalid}" class="filium-control" names="names" required="required"/>
+                            <div ng-class="{success: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$valid, error: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.nombreCargo.$invalid" class="errorMessage">Valor no válido</div>
+                          </div>
+                    </div>
+                    <div class="layout-content">
+                          <div class="control-container">
+                            <label for="descripcionFunciones" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$valid, error: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$invalid}" class="label-textarea">Descripción</label>
+                            <textarea type="text" placeholder="Ingrese Descripción" name="descripcionFunciones" id="descripcionFunciones" ng-model="jobDescription" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$valid, error: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$invalid}" class="filium-control" names="names" required="required"></textarea>
+                            <div ng-class="{success: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$valid, error: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$invalid" class="errorMessage">Valor no válido</div>
+                          </div>
+                    </div>
+                    <div class="layout-content">
+                      <div class="layout-dateIF padding-dateIF">
+                            <div class="control-container">
+                              <label for="fechaInicioLaboral" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$invalid}">Fecha de Inicio</label>
+                              <input type="datetime" placeholder="Seleccione Fecha de Inicio" name="fechaInicioLaboral" id="fechaInicioLaboral" ng-model="date" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" class="filium-control" required="required"/>
+                              <div ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$invalid" class="errorMessage">Valor no válido</div>
+                            </div>
+                      </div>
+                      <div class="layout-dateIF padding-dateIF">
+                            <div class="control-container">
+                              <label for="fechaFinLaboral" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$invalid}">Fecha de Fin</label>
+                              <input type="datetime" placeholder="Seleccione Fecha de Fin" name="fechaFinLaboral" id="fechaFinLaboral" ng-model="date" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" class="filium-control" ng-disabled="checkLab" ng-required="checkLab"/>
+                              <div ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$invalid" class="errorMessage">Valor no válido</div>
+                            </div>
+                      </div>
+                      <div class="layout-dateIF-last padding-datedateIF-last">
+                            <div class="checkbox c-checkbox needsclick">
+                              <label ng-init="laborandoActual=!laborandoActual" class="needsclick filium-checkbox">
+                                <input type="checkbox" name="checkLaborando" id="checkLaborando" ng-model="checkLab" ng-click="laborandoActual=!laborandoActual" class="needsclick"/><span class="fa fa-check"></span>Laborando Actualmente
+                              </label>
+                            </div>
+                      </div>
+                    </div>
+                    <div ng-show="registrando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedLaboral=true" class="fbtn fbtn-primary">Registrar</a></div>
+                    <div ng-show="editando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedLaboral=true" class="fbtn fbtn-primary">Guardar Cambios</a></div>
+                  </div>
+                  <div class="itemcv-container">
+                    <div ng-repeat="matrizLaboral in matrizLaborales" class="itemcv">
+                      <div class="itemcv-info">
+                        <div class="itemcv-title"><em class="fa fa-briefcase"></em>{{matrizLaboral.organizacionName}}</div>
+                        <div class="itemcv-descripion">{{matrizLaboral.nombreCargo}}</div>
+                        <div ng-show="!matrizLaboral.laborandoActualmente" class="itemcv-descripion">{{matrizLaboral.fechaInicio}} - {{matrizLaboral.fechaFin}}</div>
+                        <div ng-show="matrizLaboral.laborandoActualmente" class="itemcv-descripion">{{matrizLaboral.fechaInicio}} - Presente</div>
+                      </div>
+                      <div class="itemcv-image"><a href="javascript:void(0)" ng-click="editarLabores(matrizLaboral)" class="itemcv-option edit">Editar<i></i></a><a href="javascript:void(0)" class="itemcv-option remove">Eliminar<i></i></a></div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+      </div>
+      <div ng-show="tab=='certificaciones'" class="aux">
+            <div class="form-filium-container">
+              <form name="certificacionForm" class="form-filium">
+                <div class="tabs-container"><a href="javascript:void(0)" ng-click="tab='estudios';mostrarForm=false" ng-class="{active: tab=='estudios'}" class="tab-item">Estudios</a><a href="javascript:void(0)" ng-click="tab='experiencia';mostrarForm=false" ng-class="{active: tab=='experiencia'}" class="tab-item">Experiencia</a><a href="javascript:void(0)" ng-click="tab='certificaciones';mostrarForm=false" ng-class="{active: tab=='certificaciones'}" class="tab-item">Certificaciones</a><a href="javascript:void(0)" ng-click="tab='idiomas';mostrarForm=false" ng-class="{active: tab=='idiomas'}" class="tab-item">Idiomas</a><a href="javascript:void(0)" ng-click="tab='habilidades';mostrarForm=false" ng-class="{active: tab=='habilidades'}" class="tab-item">Habilidades</a></div>
+                <div class="form-filium-title">Certificaciones<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();" class="fbtn fbtn-add">Agregar</a></div>
+                <div class="form-content">
+                  <div class="layout-content">
+                        <div class="control-container">
+                          <label for="tituloCertificacion" ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$invalid}">Certificación</label>
+                          <input type="text" placeholder="Ingrese Certificación" name="tituloCertificacion" id="tituloCertificacion" ng-model="job" ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$invalid}" class="filium-control" names="names" required="required"/>
+                          <div ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$invalid}" ng-show="submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$invalid" class="errorMessage">Valor no válido</div>
+                        </div>
+                  </div>
+                  <div class="layout-content">
+                        <div class="control-container">
+                          <label for="organizacionCertif" ng-class="{selectActive: selectChangeorganizacionCertif,success: submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$invalid}">Organización</label>
+                          <select type="text" name="organizacionCertif" id="organizacionCertif" ng-model="certifCenter" ng-click="selectChangeorganizacionCertif=true" ng-class="{selectActive: selectChangeorganizacionCertif,success: submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$invalid}" class="filium-control" required="required">
+                            <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Organización</option>
+                            <option value="1">Opción 1</option>
+                            <option value="2">Opción 2</option>
+                            <option value="3">Opción 3</option>
+                          </select>
+                          <div ng-class="{selectActive: selectChangeorganizacionCertif,success: submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$invalid}" ng-show="submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$invalid" class="errorMessage">Valor no válido</div>
+                        </div>
+                  </div>
+                  <div class="layout-content">
+                        <div class="control-container">
+                          <label for="descripcionCertif" ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$invalid}" class="label-textarea">Descripción</label>
+                          <textarea type="text" placeholder="Ingrese Descripción" name="descripcionCertif" id="descripcionCertif" ng-model="certifDescription" ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$invalid}" class="filium-control" names="names" required="required"></textarea>
+                          <div ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$invalid}" ng-show="submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$invalid" class="errorMessage">Valor no válido</div>
+                        </div>
+                  </div>
+                  <div class="button-container"><a href="javascript:void(0)" ng-click="" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedCertificacion=true" class="fbtn fbtn-primary">Guardar Cambios</a></div>
+                </div>
+              </form>
+            </div>
+      </div>
+      <div ng-show="tab=='idiomas'" class="aux">
+            <div class="form-filium-container">
+              <form name="laboralForm" class="form-filium">
+                <div class="tabs-container"><a href="javascript:void(0)" ng-click="tab='estudios';mostrarForm=false" ng-class="{active: tab=='estudios'}" class="tab-item">Estudios</a><a href="javascript:void(0)" ng-click="tab='experiencia';mostrarForm=false" ng-class="{active: tab=='experiencia'}" class="tab-item">Experiencia</a><a href="javascript:void(0)" ng-click="tab='certificaciones';mostrarForm=false" ng-class="{active: tab=='certificaciones'}" class="tab-item">Certificaciones</a><a href="javascript:void(0)" ng-click="tab='idiomas';mostrarForm=false" ng-class="{active: tab=='idiomas'}" class="tab-item">Idiomas</a><a href="javascript:void(0)" ng-click="tab='habilidades';mostrarForm=false" ng-class="{active: tab=='habilidades'}" class="tab-item">Habilidades</a></div>
+                <div class="form-filium-title">Idiomas<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();" class="fbtn fbtn-add">Agregar</a></div>
+                <div class="form-content">
+                  <div class="layout-content">
+                    <div class="layout-1-2 padding-1-2">
+                          <div class="control-container">
+                            <label for="idioma" ng-class="{selectActive: selectChangeidioma,success: submittedIdioma &amp;&amp; laboralForm.idioma.$valid, error: submittedIdioma &amp;&amp; laboralForm.idioma.$invalid}">Idioma</label>
+                            <select type="text" name="idioma" id="idioma" ng-model="language" ng-click="selectChangeidioma=true" ng-class="{selectActive: selectChangeidioma,success: submittedIdioma &amp;&amp; laboralForm.idioma.$valid, error: submittedIdioma &amp;&amp; laboralForm.idioma.$invalid}" class="filium-control" required="required">
+                              <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Idioma</option>
+                              <option value="1">Opción 1</option>
+                              <option value="2">Opción 2</option>
+                              <option value="3">Opción 3</option>
+                            </select>
+                            <div ng-class="{selectActive: selectChangeidioma,success: submittedIdioma &amp;&amp; laboralForm.idioma.$valid, error: submittedIdioma &amp;&amp; laboralForm.idioma.$invalid}" ng-show="submittedIdioma &amp;&amp; laboralForm.idioma.$invalid" class="errorMessage">Valor no válido</div>
+                          </div>
+                    </div>
+                    <div class="layout-1-2 padding-1-2">
+                          <div class="control-container">
+                            <label for="nivelIdioma" ng-class="{selectActive: selectChangenivelIdioma,success: submittedIdioma &amp;&amp; laboralForm.nivelIdioma.$valid, error: submittedIdioma &amp;&amp; laboralForm.nivelIdioma.$invalid}">Nivel de Dominio</label>
+                            <select type="text" name="nivelIdioma" id="nivelIdioma" ng-model="languageLevel" ng-click="selectChangenivelIdioma=true" ng-class="{selectActive: selectChangenivelIdioma,success: submittedIdioma &amp;&amp; laboralForm.nivelIdioma.$valid, error: submittedIdioma &amp;&amp; laboralForm.nivelIdioma.$invalid}" class="filium-control" required="required">
+                              <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Nivel de Dominio</option>
+                              <option value="1">Opción 1</option>
+                              <option value="2">Opción 2</option>
+                              <option value="3">Opción 3</option>
+                            </select>
+                            <div ng-class="{selectActive: selectChangenivelIdioma,success: submittedIdioma &amp;&amp; laboralForm.nivelIdioma.$valid, error: submittedIdioma &amp;&amp; laboralForm.nivelIdioma.$invalid}" ng-show="submittedIdioma &amp;&amp; laboralForm.nivelIdioma.$invalid" class="errorMessage">Valor no válido</div>
+                          </div>
+                    </div>
+                  </div>
+                  <div class="button-container"><a href="javascript:void(0)" ng-click="" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedIdioma=true" class="fbtn fbtn-primary">Guardar Cambios</a></div>
+                </div>
+              </form>
+            </div>
+      </div>
+      <div ng-show="tab=='habilidades'" class="aux">
+            <div class="form-filium-container">
+              <form name="habilidadForm" class="form-filium">
+                <div class="tabs-container"><a href="javascript:void(0)" ng-click="tab='estudios';mostrarForm=false" ng-class="{active: tab=='estudios'}" class="tab-item">Estudios</a><a href="javascript:void(0)" ng-click="tab='experiencia';mostrarForm=false" ng-class="{active: tab=='experiencia'}" class="tab-item">Experiencia</a><a href="javascript:void(0)" ng-click="tab='certificaciones';mostrarForm=false" ng-class="{active: tab=='certificaciones'}" class="tab-item">Certificaciones</a><a href="javascript:void(0)" ng-click="tab='idiomas';mostrarForm=false" ng-class="{active: tab=='idiomas'}" class="tab-item">Idiomas</a><a href="javascript:void(0)" ng-click="tab='habilidades';mostrarForm=false" ng-class="{active: tab=='habilidades'}" class="tab-item">Habilidades</a></div>
+                <div class="form-filium-title">Habilidades<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();" class="fbtn fbtn-add">Agregar</a></div>
+                <div class="form-content">
+                  <div class="layout-content">
+                        <div class="control-container">
+                          <label for="habilidad" ng-class="{selectActive: selectChangehabilidad,success: submittedHabilidad &amp;&amp; habilidadForm.habilidad.$valid, error: submittedHabilidad &amp;&amp; habilidadForm.habilidad.$invalid}">Habilidad</label>
+                          <select type="text" name="habilidad" id="habilidad" ng-model="language" ng-click="selectChangehabilidad=true" ng-class="{selectActive: selectChangehabilidad,success: submittedHabilidad &amp;&amp; habilidadForm.habilidad.$valid, error: submittedHabilidad &amp;&amp; habilidadForm.habilidad.$invalid}" class="filium-control" required="required">
+                            <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Habilidad</option>
+                            <option value="1">Opción 1</option>
+                            <option value="2">Opción 2</option>
+                            <option value="3">Opción 3</option>
+                          </select>
+                          <div ng-class="{selectActive: selectChangehabilidad,success: submittedHabilidad &amp;&amp; habilidadForm.habilidad.$valid, error: submittedHabilidad &amp;&amp; habilidadForm.habilidad.$invalid}" ng-show="submittedHabilidad &amp;&amp; habilidadForm.habilidad.$invalid" class="errorMessage">Valor no válido</div>
+                        </div>
+                  </div>
+                  <div class="button-container"><a href="javascript:void(0)" ng-click="" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedHabilidad=true" class="fbtn fbtn-primary">Guardar Cambios</a></div>
+                </div>
+              </form>
+            </div>
+      </div>
+    </div>
+  </div>
+  <div ng-show="formularioActivo=='RegistrarPsicologo'" class="formularioActivo">
+        <div class="form-filium-container">
+          <form name="registroForm" class="form-filium">
+            <div class="form-filium-title">Registro de Psicólogo</div>
+            <div class="form-content">
+              <div class="layout-content">
+                    <div class="control-container">
+                      <label for="nombrePersona" ng-class="{success: submitted &amp;&amp; registroForm.nombrePersona.$valid, error: submitted &amp;&amp; registroForm.nombrePersona.$invalid}">Nombres y Apellidos</label>
+                      <input type="text" placeholder="Ingrese Nombres y Apellidos" name="nombrePersona" id="nombrePersona" ng-model="personName" ng-class="{success: submitted &amp;&amp; registroForm.nombrePersona.$valid, error: submitted &amp;&amp; registroForm.nombrePersona.$invalid}" class="filium-control" ng-minlength="8" maxlength="50" names="names" required="required"/>
+                      <div ng-class="{success: submitted &amp;&amp; registroForm.nombrePersona.$valid, error: submitted &amp;&amp; registroForm.nombrePersona.$invalid}" ng-show="submitted &amp;&amp; registroForm.nombrePersona.$invalid" class="errorMessage">Valor no válido</div>
+                    </div>
+              </div>
+              <div class="layout-content">
+                <div class="layout-1-2 padding-1-2">
+                      <div class="control-container">
+                        <label for="tipoDocumento" ng-class="{selectActive: selectChangetipoDocumento,success: submitted &amp;&amp; registroForm.tipoDocumento.$valid, error: submitted &amp;&amp; registroForm.tipoDocumento.$invalid}">Tipo de Documento</label>
+                        <select type="text" name="tipoDocumento" id="tipoDocumento" ng-model="documentType" ng-click="selectChangetipoDocumento=true" ng-class="{selectActive: selectChangetipoDocumento,success: submitted &amp;&amp; registroForm.tipoDocumento.$valid, error: submitted &amp;&amp; registroForm.tipoDocumento.$invalid}" class="filium-control" required="required">
+                          <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Tipo de Documento</option>
+                          <option value="1">Opción 1</option>
+                          <option value="2">Opción 2</option>
+                          <option value="3">Opción 3</option>
+                        </select>
+                        <div ng-class="{selectActive: selectChangetipoDocumento,success: submitted &amp;&amp; registroForm.tipoDocumento.$valid, error: submitted &amp;&amp; registroForm.tipoDocumento.$invalid}" ng-show="submitted &amp;&amp; registroForm.tipoDocumento.$invalid" class="errorMessage">Valor no válido</div>
+                      </div>
+                </div>
+                <div class="layout-1-2 padding-1-2">
+                      <div class="control-container">
+                        <label for="numeroDocumento" ng-class="{success: submitted &amp;&amp; registroForm.numeroDocumento.$valid, error: submitted &amp;&amp; registroForm.numeroDocumento.$invalid}">Número de Documento</label>
+                        <input type="text" placeholder="Ingrese Número de Documento" name="numeroDocumento" id="numeroDocumento" ng-model="documentNumber" ng-class="{success: submitted &amp;&amp; registroForm.numeroDocumento.$valid, error: submitted &amp;&amp; registroForm.numeroDocumento.$invalid}" class="filium-control" ng-minlength="8" maxlength="15" onlynumber="onlynumber" required="required"/>
+                        <div ng-class="{success: submitted &amp;&amp; registroForm.numeroDocumento.$valid, error: submitted &amp;&amp; registroForm.numeroDocumento.$invalid}" ng-show="submitted &amp;&amp; registroForm.numeroDocumento.$invalid" class="errorMessage">Valor no válido</div>
+                      </div>
+                </div>
+              </div>
+              <div class="layout-content">
+                <div class="layout-1-2 padding-1-2">
+                      <div class="control-container">
+                        <label for="sexo" ng-class="{selectActive: selectChangesexo,success: submitted &amp;&amp; registroForm.sexo.$valid, error: submitted &amp;&amp; registroForm.sexo.$invalid}">Sexo</label>
+                        <select type="text" name="sexo" id="sexo" ng-model="sex" ng-click="selectChangesexo=true" ng-class="{selectActive: selectChangesexo,success: submitted &amp;&amp; registroForm.sexo.$valid, error: submitted &amp;&amp; registroForm.sexo.$invalid}" class="filium-control" required="required">
+                          <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Sexo</option>
+                          <option value="1">Opción 1</option>
+                          <option value="2">Opción 2</option>
+                          <option value="3">Opción 3</option>
+                        </select>
+                        <div ng-class="{selectActive: selectChangesexo,success: submitted &amp;&amp; registroForm.sexo.$valid, error: submitted &amp;&amp; registroForm.sexo.$invalid}" ng-show="submitted &amp;&amp; registroForm.sexo.$invalid" class="errorMessage">Valor no válido</div>
+                      </div>
+                </div>
+                <div class="layout-1-2 padding-1-2">
+                      <div class="control-container">
+                        <label for="numeroCpsp" ng-class="{success: submitted &amp;&amp; registroForm.numeroCpsp.$valid, error: submitted &amp;&amp; registroForm.numeroCpsp.$invalid}">Número CPsP </label>
+                        <input type="text" placeholder="Ingrese Número CPsP " name="numeroCpsp" id="numeroCpsp" ng-model="cpspNumber" ng-class="{success: submitted &amp;&amp; registroForm.numeroCpsp.$valid, error: submitted &amp;&amp; registroForm.numeroCpsp.$invalid}" class="filium-control" maxlength="5" onlynumber="onlynumber" required="required"/>
+                        <div ng-class="{success: submitted &amp;&amp; registroForm.numeroCpsp.$valid, error: submitted &amp;&amp; registroForm.numeroCpsp.$invalid}" ng-show="submitted &amp;&amp; registroForm.numeroCpsp.$invalid" class="errorMessage">Valor no válido</div>
+                      </div>
+                </div>
+              </div>
+              <div class="layout-content">
+                <div class="layout-1-2 padding-1-2">
+                      <div class="control-container">
+                        <label for="paisNacimiento" ng-class="{selectActive: selectChangepaisNacimiento,success: submitted &amp;&amp; registroForm.paisNacimiento.$valid, error: submitted &amp;&amp; registroForm.paisNacimiento.$invalid}">País de Nacimiento</label>
+                        <select type="text" name="paisNacimiento" id="paisNacimiento" ng-model="countryBirth" ng-click="selectChangepaisNacimiento=true" ng-class="{selectActive: selectChangepaisNacimiento,success: submitted &amp;&amp; registroForm.paisNacimiento.$valid, error: submitted &amp;&amp; registroForm.paisNacimiento.$invalid}" class="filium-control" required="required">
+                          <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione País de Nacimiento</option>
+                          <option value="1">Opción 1</option>
+                          <option value="2">Opción 2</option>
+                          <option value="3">Opción 3</option>
+                        </select>
+                        <div ng-class="{selectActive: selectChangepaisNacimiento,success: submitted &amp;&amp; registroForm.paisNacimiento.$valid, error: submitted &amp;&amp; registroForm.paisNacimiento.$invalid}" ng-show="submitted &amp;&amp; registroForm.paisNacimiento.$invalid" class="errorMessage">Valor no válido</div>
+                      </div>
+                </div>
+                <div class="layout-1-2 padding-1-2">
+                      <div class="control-container">
+                        <label for="departamentoNacimiento" ng-class="{selectActive: selectChangedepartamentoNacimiento,success: submitted &amp;&amp; registroForm.departamentoNacimiento.$valid, error: submitted &amp;&amp; registroForm.departamentoNacimiento.$invalid}">Departamento de Nacimiento</label>
+                        <select type="text" name="departamentoNacimiento" id="departamentoNacimiento" ng-model="departmentBirth" ng-click="selectChangedepartamentoNacimiento=true" ng-class="{selectActive: selectChangedepartamentoNacimiento,success: submitted &amp;&amp; registroForm.departamentoNacimiento.$valid, error: submitted &amp;&amp; registroForm.departamentoNacimiento.$invalid}" class="filium-control" required="required">
+                          <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Departamento de Nacimiento</option>
+                          <option value="1">Opción 1</option>
+                          <option value="2">Opción 2</option>
+                          <option value="3">Opción 3</option>
+                        </select>
+                        <div ng-class="{selectActive: selectChangedepartamentoNacimiento,success: submitted &amp;&amp; registroForm.departamentoNacimiento.$valid, error: submitted &amp;&amp; registroForm.departamentoNacimiento.$invalid}" ng-show="submitted &amp;&amp; registroForm.departamentoNacimiento.$invalid" class="errorMessage">Valor no válido</div>
+                      </div>
+                </div>
+              </div>
+              <div class="layout-content">
+                <div class="layout-1-2 padding-1-2">
+                      <div class="control-container">
+                        <label for="provinciaNacimiento" ng-class="{selectActive: selectChangeprovinciaNacimiento,success: submitted &amp;&amp; registroForm.provinciaNacimiento.$valid, error: submitted &amp;&amp; registroForm.provinciaNacimiento.$invalid}">Provincia de Nacimiento</label>
+                        <select type="text" name="provinciaNacimiento" id="provinciaNacimiento" ng-model="provinceBirth" ng-click="selectChangeprovinciaNacimiento=true" ng-class="{selectActive: selectChangeprovinciaNacimiento,success: submitted &amp;&amp; registroForm.provinciaNacimiento.$valid, error: submitted &amp;&amp; registroForm.provinciaNacimiento.$invalid}" class="filium-control" required="required">
+                          <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Provincia de Nacimiento</option>
+                          <option value="1">Opción 1</option>
+                          <option value="2">Opción 2</option>
+                          <option value="3">Opción 3</option>
+                        </select>
+                        <div ng-class="{selectActive: selectChangeprovinciaNacimiento,success: submitted &amp;&amp; registroForm.provinciaNacimiento.$valid, error: submitted &amp;&amp; registroForm.provinciaNacimiento.$invalid}" ng-show="submitted &amp;&amp; registroForm.provinciaNacimiento.$invalid" class="errorMessage">Valor no válido</div>
+                      </div>
+                </div>
+                <div class="layout-1-2 padding-1-2">
+                      <div class="control-container">
+                        <label for="distritoNacimiento" ng-class="{selectActive: selectChangedistritoNacimiento,success: submitted &amp;&amp; registroForm.distritoNacimiento.$valid, error: submitted &amp;&amp; registroForm.distritoNacimiento.$invalid}">Distrito de Nacimiento</label>
+                        <select type="text" name="distritoNacimiento" id="distritoNacimiento" ng-model="districtBirth" ng-click="selectChangedistritoNacimiento=true" ng-class="{selectActive: selectChangedistritoNacimiento,success: submitted &amp;&amp; registroForm.distritoNacimiento.$valid, error: submitted &amp;&amp; registroForm.distritoNacimiento.$invalid}" class="filium-control" required="required">
+                          <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Distrito de Nacimiento</option>
+                          <option value="1">Opción 1</option>
+                          <option value="2">Opción 2</option>
+                          <option value="3">Opción 3</option>
+                        </select>
+                        <div ng-class="{selectActive: selectChangedistritoNacimiento,success: submitted &amp;&amp; registroForm.distritoNacimiento.$valid, error: submitted &amp;&amp; registroForm.distritoNacimiento.$invalid}" ng-show="submitted &amp;&amp; registroForm.distritoNacimiento.$invalid" class="errorMessage">Valor no válido</div>
+                      </div>
+                </div>
+              </div>
+              <div class="layout-content">
+                <div class="layout-1-2 padding-1-2">
+                      <div class="control-container">
+                        <label for="paisResidencia" ng-class="{selectActive: selectChangepaisResidencia,success: submitted &amp;&amp; registroForm.paisResidencia.$valid, error: submitted &amp;&amp; registroForm.paisResidencia.$invalid}">País de Residencia</label>
+                        <select type="text" name="paisResidencia" id="paisResidencia" ng-model="countryReside" ng-click="selectChangepaisResidencia=true" ng-class="{selectActive: selectChangepaisResidencia,success: submitted &amp;&amp; registroForm.paisResidencia.$valid, error: submitted &amp;&amp; registroForm.paisResidencia.$invalid}" class="filium-control" required="required">
+                          <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione País de Residencia</option>
+                          <option value="1">Opción 1</option>
+                          <option value="2">Opción 2</option>
+                          <option value="3">Opción 3</option>
+                        </select>
+                        <div ng-class="{selectActive: selectChangepaisResidencia,success: submitted &amp;&amp; registroForm.paisResidencia.$valid, error: submitted &amp;&amp; registroForm.paisResidencia.$invalid}" ng-show="submitted &amp;&amp; registroForm.paisResidencia.$invalid" class="errorMessage">Valor no válido</div>
+                      </div>
+                </div>
+                <div class="layout-1-2 padding-1-2">
+                      <div class="control-container">
+                        <label for="departamentoResidencia" ng-class="{selectActive: selectChangedepartamentoResidencia,success: submitted &amp;&amp; registroForm.departamentoResidencia.$valid, error: submitted &amp;&amp; registroForm.departamentoResidencia.$invalid}">Departamento de Residencia</label>
+                        <select type="text" name="departamentoResidencia" id="departamentoResidencia" ng-model="departmentReside" ng-click="selectChangedepartamentoResidencia=true" ng-class="{selectActive: selectChangedepartamentoResidencia,success: submitted &amp;&amp; registroForm.departamentoResidencia.$valid, error: submitted &amp;&amp; registroForm.departamentoResidencia.$invalid}" class="filium-control" required="required">
+                          <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Departamento de Residencia</option>
+                          <option value="1">Opción 1</option>
+                          <option value="2">Opción 2</option>
+                          <option value="3">Opción 3</option>
+                        </select>
+                        <div ng-class="{selectActive: selectChangedepartamentoResidencia,success: submitted &amp;&amp; registroForm.departamentoResidencia.$valid, error: submitted &amp;&amp; registroForm.departamentoResidencia.$invalid}" ng-show="submitted &amp;&amp; registroForm.departamentoResidencia.$invalid" class="errorMessage">Valor no válido</div>
+                      </div>
+                </div>
+              </div>
+              <div class="layout-content">
+                <div class="layout-1-2 padding-1-2">
+                      <div class="control-container">
+                        <label for="provinciaResidencia" ng-class="{selectActive: selectChangeprovinciaResidencia,success: submitted &amp;&amp; registroForm.provinciaResidencia.$valid, error: submitted &amp;&amp; registroForm.provinciaResidencia.$invalid}">Provincia de Residencia</label>
+                        <select type="text" name="provinciaResidencia" id="provinciaResidencia" ng-model="provinceReside" ng-click="selectChangeprovinciaResidencia=true" ng-class="{selectActive: selectChangeprovinciaResidencia,success: submitted &amp;&amp; registroForm.provinciaResidencia.$valid, error: submitted &amp;&amp; registroForm.provinciaResidencia.$invalid}" class="filium-control" required="required">
+                          <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Provincia de Residencia</option>
+                          <option value="1">Opción 1</option>
+                          <option value="2">Opción 2</option>
+                          <option value="3">Opción 3</option>
+                        </select>
+                        <div ng-class="{selectActive: selectChangeprovinciaResidencia,success: submitted &amp;&amp; registroForm.provinciaResidencia.$valid, error: submitted &amp;&amp; registroForm.provinciaResidencia.$invalid}" ng-show="submitted &amp;&amp; registroForm.provinciaResidencia.$invalid" class="errorMessage">Valor no válido</div>
+                      </div>
+                </div>
+                <div class="layout-1-2 padding-1-2">
+                      <div class="control-container">
+                        <label for="distritoResidencia" ng-class="{selectActive: selectChangedistritoResidencia,success: submitted &amp;&amp; registroForm.distritoResidencia.$valid, error: submitted &amp;&amp; registroForm.distritoResidencia.$invalid}">Distrito de Residencia</label>
+                        <select type="text" name="distritoResidencia" id="distritoResidencia" ng-model="districtReside" ng-click="selectChangedistritoResidencia=true" ng-class="{selectActive: selectChangedistritoResidencia,success: submitted &amp;&amp; registroForm.distritoResidencia.$valid, error: submitted &amp;&amp; registroForm.distritoResidencia.$invalid}" class="filium-control" required="required">
+                          <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Distrito de Residencia</option>
+                          <option value="1">Opción 1</option>
+                          <option value="2">Opción 2</option>
+                          <option value="3">Opción 3</option>
+                        </select>
+                        <div ng-class="{selectActive: selectChangedistritoResidencia,success: submitted &amp;&amp; registroForm.distritoResidencia.$valid, error: submitted &amp;&amp; registroForm.distritoResidencia.$invalid}" ng-show="submitted &amp;&amp; registroForm.distritoResidencia.$invalid" class="errorMessage">Valor no válido</div>
+                      </div>
+                </div>
+              </div>
+              <div class="layout-content">
+                    <div class="control-container">
+                      <label for="direccionPersona" ng-class="{success: submitted &amp;&amp; registroForm.direccionPersona.$valid, error: submitted &amp;&amp; registroForm.direccionPersona.$invalid}">Dirección</label>
+                      <input type="text" placeholder="Ingrese Dirección" name="direccionPersona" id="direccionPersona" ng-model="address" ng-class="{success: submitted &amp;&amp; registroForm.direccionPersona.$valid, error: submitted &amp;&amp; registroForm.direccionPersona.$invalid}" class="filium-control" address="address" required="required"/>
+                      <div ng-class="{success: submitted &amp;&amp; registroForm.direccionPersona.$valid, error: submitted &amp;&amp; registroForm.direccionPersona.$invalid}" ng-show="submitted &amp;&amp; registroForm.direccionPersona.$invalid" class="errorMessage">Valor no válido</div>
+                    </div>
+              </div>
+              <div class="layout-content">
+                <div class="layout-1-2 padding-1-2">
+                      <div class="control-container">
+                        <label for="celularPersona" ng-class="{success: submitted &amp;&amp; registroForm.celularPersona.$valid, error: submitted &amp;&amp; registroForm.celularPersona.$invalid}">Teléfono Móvil</label>
+                        <input type="text" placeholder="Ingrese Teléfono Móvil" name="celularPersona" id="celularPersona" ng-model="cellPhone" ng-class="{success: submitted &amp;&amp; registroForm.celularPersona.$valid, error: submitted &amp;&amp; registroForm.celularPersona.$invalid}" class="filium-control" maxlength="9" cellphone="cellphone" required="required"/>
+                        <div ng-class="{success: submitted &amp;&amp; registroForm.celularPersona.$valid, error: submitted &amp;&amp; registroForm.celularPersona.$invalid}" ng-show="submitted &amp;&amp; registroForm.celularPersona.$invalid" class="errorMessage">Valor no válido</div>
+                      </div>
+                </div>
+                <div class="layout-1-2 padding-1-2">
+                      <div class="control-container">
+                        <label for="telefonoPersona" ng-class="{success: submitted &amp;&amp; registroForm.telefonoPersona.$valid, error: submitted &amp;&amp; registroForm.telefonoPersona.$invalid}">Teléfono Fijo</label>
+                        <input type="text" placeholder="Ingrese Teléfono Fijo" name="telefonoPersona" id="telefonoPersona" ng-model="Phone" ng-class="{success: submitted &amp;&amp; registroForm.telefonoPersona.$valid, error: submitted &amp;&amp; registroForm.telefonoPersona.$invalid}" class="filium-control" maxlength="9" telefono="telefono" required="required"/>
+                        <div ng-class="{success: submitted &amp;&amp; registroForm.telefonoPersona.$valid, error: submitted &amp;&amp; registroForm.telefonoPersona.$invalid}" ng-show="submitted &amp;&amp; registroForm.telefonoPersona.$invalid" class="errorMessage">Valor no válido</div>
+                      </div>
+                </div>
+              </div>
+              <div class="layout-content">
+                <div class="layout-1-2 padding-1-2">
+                      <div class="control-container">
+                        <label for="correoPersona" ng-class="{success: submitted &amp;&amp; registroForm.correoPersona.$valid, error: submitted &amp;&amp; registroForm.correoPersona.$invalid}">Correo Electrónico</label>
+                        <input type="text" placeholder="Ingrese Correo Electrónico" name="correoPersona" id="correoPersona" ng-model="email" ng-class="{success: submitted &amp;&amp; registroForm.correoPersona.$valid, error: submitted &amp;&amp; registroForm.correoPersona.$invalid}" class="filium-control" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required="required"/>
+                        <div ng-class="{success: submitted &amp;&amp; registroForm.correoPersona.$valid, error: submitted &amp;&amp; registroForm.correoPersona.$invalid}" ng-show="submitted &amp;&amp; registroForm.correoPersona.$invalid" class="errorMessage">Valor no válido</div>
+                      </div>
+                </div>
+                <div class="layout-1-2 padding-1-2">
+                      <div class="control-container">
+                        <label for="idSkype" ng-class="{success: submitted &amp;&amp; registroForm.idSkype.$valid, error: submitted &amp;&amp; registroForm.idSkype.$invalid}">Skype Id</label>
+                        <input type="text" placeholder="Ingrese Skype Id" name="idSkype" id="idSkype" ng-model="skype" ng-class="{success: submitted &amp;&amp; registroForm.idSkype.$valid, error: submitted &amp;&amp; registroForm.idSkype.$invalid}" class="filium-control" required="required"/>
+                        <div ng-class="{success: submitted &amp;&amp; registroForm.idSkype.$valid, error: submitted &amp;&amp; registroForm.idSkype.$invalid}" ng-show="submitted &amp;&amp; registroForm.idSkype.$invalid" class="errorMessage">Valor no válido</div>
+                      </div>
+                </div>
+              </div>
+              <div class="button-container"><a href="javascript:void(0)" ng-click="submitted=true" class="fbtn fbtn-primary">Registrar</a></div>
+            </div>
+          </form>
+        </div>
+  </div>
+</div>

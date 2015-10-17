@@ -1,0 +1,8 @@
+include ./mixins/mixins-form.jade
+include ./includes/header-int.jade
+.body-container-filium.with-left-menu(ng-init="formularioActivo='EditarCV'")
+	include ./includes/left-menu.jade
+	.formularioActivo(ng-show="formularioActivo=='EditarCV'")
+		include ./form_edicionCurriculum.jade
+	.formularioActivo(ng-show="formularioActivo=='RegistrarPsicologo'")
+		include ./form_registroPsicologos.jade

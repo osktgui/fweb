@@ -8,7 +8,7 @@
 			+controlFilium-text("Nombre de la Carrera","nombreCarrera","careerName","{success: submittedProfessionalEducation && estudiosForm.nombreCarrera.$valid, error: submittedProfessionalEducation && estudiosForm.nombreCarrera.$invalid}","submittedProfessionalEducation && estudiosForm.nombreCarrera.$invalid")(names,required)
 		.layout-content
 			.layout-2-3.padding-2-3
-				+controlFilium-text("Nombre de la Mención","nombreMencion","mentionName","{success: submittedProfessionalEducation && estudiosForm.nombreMencion.$valid, error: submittedProfessionalEducation && estudiosForm.nombreMencion.$invalid}","submittedProfessionalEducation && estudiosForm.nombreMencion.$invalid")(ng-disabled="vMencion",ng-required="!vMencion")
+				+controlFilium-text("Nombre de la Mención","nombreMencion","mentionName","{success: submittedProfessionalEducation && estudiosForm.nombreMencion.$valid, error: submittedProfessionalEducation && estudiosForm.nombreMencion.$invalid}","submittedProfessionalEducation && estudiosForm.nombreMencion.$invalid")(ng-disabled="!vMencion",ng-required="vMencion")
 			.layout-dateIF-last.padding-datedateIF-last
 				+controlFilium-check("Incluir Mención","checkMencion","checkMen","vMencion=false","vMencion=!vMencion")
 		.layout-content
@@ -20,17 +20,27 @@
 				+controlFilium-check("Estudiando Actualmente","checkEstudianto","checkEst","estudiandoActual=false","estudiandoActual=!estudiandoActual")
 		.layout-content
 			+controlFilium-textarea("Comentarios","Comentarios","studyComments","{success: submittedProfessionalEducation && estudiosForm.Comentarios.$valid, error: submittedProfessionalEducation && estudiosForm.Comentarios.$invalid}","submittedProfessionalEducation && estudiosForm.Comentarios.$invalid")(names)
-		.button-container
+		.button-container(ng-show="registrando")
+			a.fbtn.fbtn-primary.cancel(href="javascript:void(0)",ng-click="mostrarForm=false") Cancelar
+			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedProfessionalEducation=true") Registrar
+		.button-container(ng-show="editando")
 			a.fbtn.fbtn-primary.cancel(href="javascript:void(0)",ng-click="mostrarForm=false") Cancelar
 			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedProfessionalEducation=true") Guardar Cambios
 	.itemcv-container
 		.itemcv(ng-repeat="matrizEstudio in matrizEstudios")
 			.itemcv-info
-				.itemcv-title {{matrizEstudio.institucion}}
-				.itemcv-descripion(ng-show="matrizEstudio.activMencion") {{matrizEstudio.grado}} - {{matrizEstudio.nomCarrera}} - {{matrizEstudio.nomMencion}}
-				.itemcv-descripion(ng-show="!matrizEstudio.activMencion") {{matrizEstudio.grado}} - {{matrizEstudio.nomCarrera}}
-				.itemcv-descripion(ng-show="matrizEstudio.activFechaFin") {{matrizEstudio.fecInicio}} - {{matrizEstudio.fecFin}}
-				.itemcv-descripion(ng-show="!matrizEstudio.activFechaFin") {{matrizEstudio.fecInicio}} - Presente
+				.itemcv-title
+					em.fa.fa-book
+					| {{matrizEstudio.organizacionName}}
+				.itemcv-descripion(ng-show="matrizEstudio.incluirMencion") {{matrizEstudio.gradoAcademicoName}} - {{matrizEstudio.nombreCarrera}} - {{matrizEstudio.nombreMencion}}
+				.itemcv-descripion(ng-show="!matrizEstudio.incluirMencion") {{matrizEstudio.gradoAcademicoName}} - {{matrizEstudio.nombreCarrera}}
+				.itemcv-descripion(ng-show="matrizEstudio.estudiandoActualmente") {{matrizEstudio.fechaInicio}} - {{matrizEstudio.fechaFin}}
+				.itemcv-descripion(ng-show="!matrizEstudio.estudiandoActualmente") {{matrizEstudio.fechaInicio}} - Presente
 			.itemcv-image
-				a(href="javascript:void(0)" ng-click="editarEstudios(matrizEstudio)") Editar
-				a(href="javascript:void(0)") Eliminar
+				a.itemcv-option.edit(href="javascript:void(0)" ng-click="editarEstudios(matrizEstudio)") Editar
+					i
+				a.itemcv-option.remove(href="javascript:void(0)") Eliminar
+					i
+
+
+

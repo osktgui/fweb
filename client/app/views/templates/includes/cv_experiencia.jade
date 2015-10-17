@@ -1,15 +1,35 @@
 +form-header-cv("Experiencia Laboral","laboralForm")
-	.layout-content
-		+controlFilium-select("Centro Laboral","centroLaboral","workCenter","{selectActive: selectChangecentroLaboral,success: submittedLaboral && laboralForm.centroLaboral.$valid, error: submittedLaboral && laboralForm.centroLaboral.$invalid}","submittedLaboral && laboralForm.centroLaboral.$invalid")(required)
-	.layout-content
-		+controlFilium-text("Nombre del Cargo","nombreCargo","job","{success: submittedLaboral && laboralForm.nombreCargo.$valid, error: submittedLaboral && laboralForm.nombreCargo.$invalid}","submittedLaboral && laboralForm.nombreCargo.$invalid")(names,required)
-	.layout-content
-		+controlFilium-textarea("Descripción","descripcionFunciones","jobDescription","{success: submittedLaboral && laboralForm.descripcionFunciones.$valid, error: submittedLaboral && laboralForm.descripcionFunciones.$invalid}","submittedLaboral && laboralForm.descripcionFunciones.$invalid")(names, required)
-	.layout-content
-		.layout-1-2.padding-1-2
-			+controlFilium-date("Fecha de Inicio","fechaInicio","startDate","{success: submittedLaboral && laboralForm.fechaInicio.$valid, error: submittedLaboral && laboralForm.fechaInicio.$invalid}","submittedLaboral && laboralForm.fechaInicio.$invalid")(required)
-		.layout-1-2.padding-1-2
-			+controlFilium-date("Fecha de Fin","fechaFin","endDate","{success: submittedLaboral && laboralForm.fechaFin.$valid, error: submittedLaboral && laboralForm.fechaFin.$invalid}","submittedLaboral && laboralForm.fechaFin.$invalid")()
-	.button-container
-		a.fbtn.fbtn-primary.cancel(href="javascript:void(0)",ng-click="") Cancelar
-		a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedLaboral=true") Guardar Cambios
+	.container-cv(ng-show="mostrarForm")
+		.layout-content
+			+controlFilium-select("Centro Laboral","centroLaboral","workCenter","{selectActive: selectChangecentroLaboral,success: submittedLaboral && laboralForm.centroLaboral.$valid, error: submittedLaboral && laboralForm.centroLaboral.$invalid}","submittedLaboral && laboralForm.centroLaboral.$invalid")(required)
+		.layout-content
+			+controlFilium-text("Nombre del Cargo","nombreCargo","job","{success: submittedLaboral && laboralForm.nombreCargo.$valid, error: submittedLaboral && laboralForm.nombreCargo.$invalid}","submittedLaboral && laboralForm.nombreCargo.$invalid")(names,required)
+		.layout-content
+			+controlFilium-textarea("Descripción","descripcionFunciones","jobDescription","{success: submittedLaboral && laboralForm.descripcionFunciones.$valid, error: submittedLaboral && laboralForm.descripcionFunciones.$invalid}","submittedLaboral && laboralForm.descripcionFunciones.$invalid")(names, required)
+		.layout-content
+			.layout-dateIF.padding-dateIF
+				+controlFilium-date("Fecha de Inicio","fechaInicioLaboral","startDate","{success: submittedLaboral && laboralForm.fechaInicioLaboral.$valid, error: submittedLaboral && laboralForm.fechaInicioLaboral.$invalid}","submittedLaboral && laboralForm.fechaInicioLaboral.$invalid")(required)
+			.layout-dateIF.padding-dateIF
+				+controlFilium-date("Fecha de Fin","fechaFinLaboral","endDate","{success: submittedLaboral && laboralForm.fechaFinLaboral.$valid, error: submittedLaboral && laboralForm.fechaFinLaboral.$invalid}","submittedLaboral && laboralForm.fechaFinLaboral.$invalid")(ng-disabled="checkLab",ng-required="checkLab")
+			.layout-dateIF-last.padding-datedateIF-last
+				+controlFilium-check("Laborando Actualmente","checkLaborando","checkLab","laborandoActual=false","laborandoActual=!laborandoActual")
+		.button-container(ng-show="registrando")
+			a.fbtn.fbtn-primary.cancel(href="javascript:void(0)",ng-click="mostrarForm=false") Cancelar
+			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedLaboral=true") Registrar
+		.button-container(ng-show="editando")
+			a.fbtn.fbtn-primary.cancel(href="javascript:void(0)",ng-click="mostrarForm=false") Cancelar
+			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedLaboral=true") Guardar Cambios
+	.itemcv-container
+		.itemcv(ng-repeat="matrizLaboral in matrizLaborales")
+			.itemcv-info
+				.itemcv-title
+					em.fa.fa-briefcase
+					| {{matrizLaboral.organizacionName}}
+				.itemcv-descripion {{matrizLaboral.nombreCargo}}
+				.itemcv-descripion(ng-show="!matrizLaboral.laborandoActualmente") {{matrizLaboral.fechaInicio}} - {{matrizLaboral.fechaFin}}
+				.itemcv-descripion(ng-show="matrizLaboral.laborandoActualmente") {{matrizLaboral.fechaInicio}} - Presente
+			.itemcv-image
+				a.itemcv-option.edit(href="javascript:void(0)" ng-click="editarLabores(matrizLaboral)") Editar
+					i
+				a.itemcv-option.remove(href="javascript:void(0)") Eliminar
+					i

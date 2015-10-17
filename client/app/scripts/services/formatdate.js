@@ -8,7 +8,7 @@
  * Service in the filiumApp.
  */
 angular.module('filiumApp')
-  .service('formatDate', function (pageConfig) {
+  .service('formatDate', function () {
     // AngularJS will instantiate a singleton by calling "new" on this function
     function getCompleteDate(date){
     	var anio=date.substring(0, 4);
@@ -33,8 +33,37 @@ angular.module('filiumApp')
     		case 12: return "Diciembre"; break;
     	}
     }
+    function getShortDate(date){
+        var lenDate=date.length;
+        var anio=date.substring(lenDate-4,lenDate);
+        var mes=getNumberTwoDigits(getShortMonth(date.slice(6,lenDate-9)));
+        var dia=getNumberTwoDigits(date.substring(0,2));
+        return dia+'/'+mes+"/"+anio;
+        // return '02/10/2015';
+    }
+    function getShortMonth(month){
+        switch(month){
+            case "Enero": return 1 ; break;
+            case "Febrero": return 2 ; break;
+            case "Marzo": return 3 ; break;
+            case "Abril": return 4 ; break;
+            case "Mayo": return 5 ; break;
+            case "Junio": return 6 ; break;
+            case "Julio": return 7 ; break;
+            case "Agosto": return 8 ; break;
+            case "Setiembre": return 9 ; break;
+            case "Octubre": return 10 ; break;
+            case "Noviembre": return 11 ; break;
+            case "Diciembre": return 12 ; break;
+        }
+    }
+    function getNumberTwoDigits(number){
+        if (number <10) {return '0'+number;}
+        else {return ''+number;}
+    }
 		return ({
-			getCompleteDate: getCompleteDate
+            getCompleteDate: getCompleteDate,
+			getShortDate: getShortDate
 		});
 
 

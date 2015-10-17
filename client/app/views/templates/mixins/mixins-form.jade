@@ -8,13 +8,13 @@ mixin form-header-cv(title,formName)
 	.form-filium-container
 		form.form-filium(name=formName)
 			.tabs-container
-				a(href="javascript:void(0)" ng-click="tab='estudios'" ng-class="{active: tab=='estudios'}").tab-item Estudios
-				a(href="javascript:void(0)" ng-click="tab='experiencia'" ng-class="{active: tab=='experiencia'}").tab-item Experiencia
-				a(href="javascript:void(0)" ng-click="tab='certificaciones'" ng-class="{active: tab=='certificaciones'}").tab-item Certificaciones
-				a(href="javascript:void(0)" ng-click="tab='idiomas'" ng-class="{active: tab=='idiomas'}").tab-item Idiomas
-				a(href="javascript:void(0)" ng-click="tab='habilidades'" ng-class="{active: tab=='habilidades'}").tab-item Habilidades
+				a(href="javascript:void(0)" ng-click="tab='estudios';mostrarForm=false" ng-class="{active: tab=='estudios'}").tab-item Estudios
+				a(href="javascript:void(0)" ng-click="tab='experiencia';mostrarForm=false" ng-class="{active: tab=='experiencia'}").tab-item Experiencia
+				a(href="javascript:void(0)" ng-click="tab='certificaciones';mostrarForm=false" ng-class="{active: tab=='certificaciones'}").tab-item Certificaciones
+				a(href="javascript:void(0)" ng-click="tab='idiomas';mostrarForm=false" ng-class="{active: tab=='idiomas'}").tab-item Idiomas
+				a(href="javascript:void(0)" ng-click="tab='habilidades';mostrarForm=false" ng-class="{active: tab=='habilidades'}").tab-item Habilidades
 			.form-filium-title= title
-				a.fbtn.fbtn-add(href="javascript:void(0)",ng-click="mostrarForm=true") Agregar
+				a.fbtn.fbtn-add(href="javascript:void(0)",ng-click="agregarEstudios();agregarLabores();") Agregar
 			.form-content
 				block
 mixin controlFilium-text(text,nameControl,modelControl,ngClass,errorMessageCondition)

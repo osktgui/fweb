@@ -17,6 +17,7 @@ class CreateExperienciaLaboralsTable extends Migration {
 				$table->string('nombreCargo', 50);
 				$table->text('descripcion')->nullable();
 				$table->date('fechaInicio');
+				$table->boolean('laborandoActualmente');
 				$table->date('fechaFin')->nullable();
 				// Auditoría
 				$table->string('created_by', 50);

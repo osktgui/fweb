@@ -31,6 +31,10 @@ angular
         templateUrl: 'views/landing.html',
         controller: 'LandingCtrl'
       })
+      .when('/consultorio', {
+        templateUrl: 'views/consultorio.html',
+        controller: 'ConsultorioCtrl'
+      })
       .when('/landing', {
         templateUrl: 'views/landing.html',
         controller: 'LandingCtrl'
@@ -38,14 +42,6 @@ angular
       .when('/landing-nosotros', {
         templateUrl: 'views/landing-nosotros.html',
         controller: 'LandingCtrl'
-      })
-      .when('/registro-psicologos', {
-        templateUrl: 'views/registro-psicologos.html',
-        controller: 'RegistropsicologosCtrl'
-      })
-      .when('/edicion-curriculum', {
-        templateUrl: 'views/edicion-curriculum.html',
-        controller: 'EdicioncurriculumCtrl'
       })
       .when('/controls', {
         templateUrl: 'views/controls.html'

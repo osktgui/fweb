@@ -3,23 +3,39 @@
 		i
 	.user-name Jose Antonio Rios Monterrey
 	.user-options
-		a(href="javascript:void(0)").user-options-item
+		//- Item de Mení -----------------------------------------------------------------------------------------------------------------
+		a(href="javascript:void(0)", ng-click="formularioActivo='DatosUsuario'",ng-class="{active: formularioActivo=='DatosUsuario'}").user-options-item
 			.user-options-item-icon
-				i.icon-datosusuario
+				i.icon-datosusuario(ng-class="{active: formularioActivo=='DatosUsuario'}")
 			.user-options-item-description Datos de usuario
-		a(href="javascript:void(0)").user-options-item
+		//- Item de Mení -----------------------------------------------------------------------------------------------------------------
+		a(href="javascript:void(0)", ng-click="formularioActivo='PerfilUsuario'",ng-class="{active: formularioActivo=='PerfilUsuario'}").user-options-item
 			.user-options-item-icon
-				i.icon-perfilusuario
+				i.icon-perfilusuario(ng-class="{active: formularioActivo=='PerfilUsuario'}")
 			.user-options-item-description Perfil de usuario
-		a(href="javascript:void(0)").user-options-item
+		//- Item de Mení -----------------------------------------------------------------------------------------------------------------
+		a(href="javascript:void(0)", ng-click="formularioActivo='RegistrarPsicologo'",ng-class="{active: formularioActivo=='RegistrarPsicologo'}").user-options-item
 			.user-options-item-icon
-				i.icon-calendariocitas
+				i.icon-datosusuario(ng-class="{active: formularioActivo=='RegistrarPsicologo'}")
+			.user-options-item-description Registrar Psicólogo
+		//- Item de Mení -----------------------------------------------------------------------------------------------------------------
+		a(href="javascript:void(0)", ng-click="formularioActivo='EditarCV'",ng-class="{active: formularioActivo=='EditarCV'}").user-options-item
+			.user-options-item-icon
+				i.icon-perfilusuario(ng-class="{active: formularioActivo=='EditarCV'}")
+			.user-options-item-description Editar CV
+		//- Item de Mení -----------------------------------------------------------------------------------------------------------------
+		a(href="javascript:void(0)", ng-click="formularioActivo='CalendarioCitas'",ng-class="{active: formularioActivo=='CalendarioCitas'}").user-options-item
+			.user-options-item-icon
+				i.icon-calendariocitas(ng-class="{active: formularioActivo=='CalendarioCitas'}")
 			.user-options-item-description Calendario de citas
-		a(href="javascript:void(0)").user-options-item
+		.user-options-separate
+		//- Item de Mení -----------------------------------------------------------------------------------------------------------------
+		a(href="javascript:void(0)", ng-click="formularioActivo='CambiarContrasena'",ng-class="{active: formularioActivo=='CambiarContrasena'}").user-options-item
 			.user-options-item-icon
-				i.icon-cambiarcontrasena
+				i.icon-cambiarcontrasena(ng-class="{active: formularioActivo=='CambiarContrasena'}")
 			.user-options-item-description Cambiar contraseña
-		a(href="javascript:void(0)").user-options-item
+		//- Item de Mení -----------------------------------------------------------------------------------------------------------------
+		a(href="javascript:void(0)", ng-click="formularioActivo='CerrarSesion'",ng-class="{active: formularioActivo=='CerrarSesion'}").user-options-item
 			.user-options-item-icon
-				i.icon-cerrarsesion
+				i.icon-cerrarsesion(ng-class="{active: formularioActivo=='CerrarSesion'}")
 			.user-options-item-description Cerrar sesión
