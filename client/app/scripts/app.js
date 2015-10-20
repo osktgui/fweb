@@ -46,6 +46,10 @@ angular
       .when('/controls', {
         templateUrl: 'views/controls.html'
       })
+      .when('/psicologoCita', {
+        templateUrl: 'views/psicologoCita.html',
+        controller: 'PsicologoCitaCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
