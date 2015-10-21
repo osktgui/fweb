@@ -452,8 +452,13 @@ module.exports = function (grunt) {
         }, {
           expand: true,
           cwd: '<%= yeoman.app %>',
+          src: 'fonts/*',
+          dest: '<%= yeoman.dist %>'
+        }, {
+          expand: true,
+          cwd: '<%= yeoman.app %>',
           src: 'static/styles/*.css',
-          dest: '<%= yeoman.dist %>/styles'
+          dest: '<%= yeoman.dist %>'
         }, {
           expand: true,
           cwd: '<%= yeoman.app %>',
@@ -463,6 +468,17 @@ module.exports = function (grunt) {
           expand: true,
           cwd: '<%= yeoman.app %>',
           src: '.htaccess',
+          dest: '<%= yeoman.dist %>'
+        }, {
+          expand: true,
+          cwd: '<%= yeoman.app %>',
+          src: 'scripts/controllers/**/*',
+          dest: '<%= yeoman.dist %>'
+        }
+        , {
+          expand: true,
+          cwd: '<%= yeoman.app %>',
+          src: 'scripts/templates.js*',
           dest: '<%= yeoman.dist %>'
         }]
       },

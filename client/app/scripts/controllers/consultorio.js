@@ -12,10 +12,7 @@ angular.module('filiumApp')
 
 
   // ---------------- Experiencia Laboral -----------------------------------------------
-
-
     $scope.editarLabores = function(labor){
-      // OJO!!! Con el tipo de datos que se está pasando
       $scope.submittedLaboral=false;
       $scope.mostrarForm=true;
       $scope.editando=true;
@@ -28,10 +25,7 @@ angular.module('filiumApp')
       $scope.checkLab= labor.laborandoActualmente;
       angular.element(".filium-control").addClass('selectActive');
     }
-
     $scope.agregarLabores = function(){
-      // OJO!!! Con el tipo de datos que se está pasando
-
       $scope.submittedLaboral=false;
       $scope.mostrarForm=true;
       $scope.editando=false;
@@ -45,7 +39,6 @@ angular.module('filiumApp')
       $scope.checkLab= false
       angular.element(".filium-control").removeClass('selectActive');
     }
-
     $scope.matrizLaborales = [{
       // Datos de Tabla específica
       experienciaLaboralId: '1',
@@ -87,7 +80,6 @@ angular.module('filiumApp')
 
   // ---------------- Formación Profesional -----------------------------------------------
     $scope.editarEstudios = function(estudio){
-      // OJO!!! Con el tipo de datos que se está pasando
       $scope.submittedProfessionalEducation=false;
       $scope.mostrarForm=true;
       $scope.editando=true;
@@ -104,7 +96,6 @@ angular.module('filiumApp')
     }
 
     $scope.agregarEstudios = function(){
-      // OJO!!! Con el tipo de datos que se está pasando
       $scope.submittedProfessionalEducation=false;
       $scope.mostrarForm=true;
       $scope.editando=false;
@@ -171,5 +162,162 @@ angular.module('filiumApp')
       organizacionName: 'Hardvard University',
       gradoAcademicoName: 'Doctorado'
     }];
+
+
+  // ---------------- Certificaciones -----------------------------------------------
+    $scope.editarCertificados = function(certificado){
+      $scope.submittedCertificacion=false;
+      $scope.mostrarForm=true;
+      $scope.editando=true;
+      $scope.registrando=false;
+
+      $scope.certifTitle=certificado.tituloCertificacion;
+      angular.element('#fechaCertif').val(formatDate.getShortDate(certificado.fechaCertificacion));
+      $scope.certifCenter=certificado.organizacionId;
+      $scope.certifDescription=certificado.descripcion;
+      angular.element(".filium-control").addClass('selectActive');
+    }
+    $scope.agregarCertificados = function(){
+      $scope.submittedCertificacion=false;
+      $scope.mostrarForm=true;
+      $scope.editando=false;
+      $scope.registrando=true;
+      $scope.certifTitle="";
+      angular.element('#fechaCertif').val("");
+      $scope.certifCenter="";
+      $scope.certifDescription="";
+      angular.element(".filium-control").removeClass('selectActive');
+    }
+
+
+    $scope.matrizCertificaciones = [{
+      // Datos de Tabla Específica
+      certificacionObtenidaId: '1',
+      personaId: '2',
+      tituloCertificacion: 'Experto en Diseño Web',
+      fechaCertificacion: formatDate.getCompleteDate('2012-12-31'),
+      organizacionId: '1',
+      descripcion: 'Experto en el diseño de Portales Web y Aplicaciones.',
+      // Datos de Tabla Maestra
+      organizacionName: 'Centro de Estudios Xurface'
+    },{
+      // Datos de Tabla Específica
+      certificacionObtenidaId: '1',
+      personaId: '2',
+      tituloCertificacion: 'Experto en Diseño Web',
+      fechaCertificacion: formatDate.getCompleteDate('2012-12-31'),
+      organizacionId: '1',
+      descripcion: 'Experto en el diseño de Portales Web y Aplicaciones.',
+      // Datos de Tabla Maestra
+      organizacionName: 'Centro de Estudios Xurface'
+    },{
+      // Datos de Tabla Específica
+      certificacionObtenidaId: '1',
+      personaId: '2',
+      tituloCertificacion: 'Experto en Diseño Web',
+      fechaCertificacion: formatDate.getCompleteDate('2012-12-31'),
+      organizacionId: '1',
+      descripcion: 'Experto en el diseño de Portales Web y Aplicaciones.',
+      // Datos de Tabla Maestra
+      organizacionName: 'Centro de Estudios Xurface'
+    }];
+
+  // ---------------- Idiomas -----------------------------------------------
+    $scope.editarIdiomas = function(idiomas){
+      $scope.submittedIdioma=false;
+      $scope.mostrarForm=true;
+      $scope.editando=true;
+      $scope.registrando=false;
+      $scope.lernedLanguage=idiomas.idiomaId;
+      $scope.languageLevel=idiomas.nivelIdiomaId;
+      angular.element(".filium-control").addClass('selectActive');
+    }
+    $scope.agregarIdiomas = function(){
+      $scope.submittedIdioma=false;
+      $scope.mostrarForm=true;
+      $scope.editando=false;
+      $scope.registrando=true;
+      $scope.lernedLanguage="";
+      $scope.languageLevel="";
+      angular.element(".filium-control").removeClass('selectActive');
+    }
+
+    $scope.matrizIdiomas = [{
+      // Datos de Tabla Específica
+      conocimientoIdiomaId: '1',
+      personaId: '2',
+      idiomaId: '2',
+      nivelIdiomaId: '3',
+      // Datos de Tabla Maestra
+      idiomaName: 'Inglés',
+      nivelIdiomaName: 'Avanzado'
+    },{
+      // Datos de Tabla Específica
+      conocimientoIdiomaId: '2',
+      personaId: '2',
+      idiomaId: '2',
+      nivelIdiomaId: '3',
+      // Datos de Tabla Maestra
+      idiomaName: 'Francés',
+      nivelIdiomaName: 'Avanzado'
+    },{
+      // Datos de Tabla Específica
+      conocimientoIdiomaId: '3',
+      personaId: '2',
+      idiomaId: '2',
+      nivelIdiomaId: '3',
+      // Datos de Tabla Maestra
+      idiomaName: 'Italiano',
+      nivelIdiomaName: 'Avanzado'
+    }];
+
+  // ---------------- Habilidades -----------------------------------------------
+    $scope.editarHabilidades = function(habilidad){
+      $scope.submittedHabilidad=false;
+      $scope.mostrarForm=true;
+      $scope.editando=true;
+      $scope.registrando=false;
+      $scope.abilityValue = habilidad.habilidadId;
+      $scope.abilitiesDescription = habilidad.descripcion;
+      angular.element(".filium-control").addClass('selectActive');
+    }
+    $scope.agregarHabilidades = function(){
+      $scope.submittedHabilidad=false;
+      $scope.mostrarForm=true;
+      $scope.editando=false;
+      $scope.registrando=true;
+      $scope.abilityValue = "";
+      $scope.abilitiesDescription = "";
+      angular.element(".filium-control").removeClass('selectActive');
+    }
+
+    $scope.matrizHabilidades = [{
+      // Datos de Tabla Específica
+      habilidadPersonalId: '1',
+      personaId: '2',
+      habilidadId: '3',
+      descripcion: 'Liderezgo y alta capacidad para el trabajo en equipo.',
+      // Datos de Tabla Maestra
+      habilidadName: 'Trabajo en Equipo'
+    },{
+      // Datos de Tabla Específica
+      habilidadPersonalId: '1',
+      personaId: '2',
+      habilidadId: '3',
+      descripcion: 'Liderezgo y alta capacidad para el trabajo en equipo.',
+      // Datos de Tabla Maestra
+      habilidadName: 'Trabajo en Equipo'
+    },{
+      // Datos de Tabla Específica
+      habilidadPersonalId: '1',
+      personaId: '2',
+      habilidadId: '3',
+      descripcion: 'Liderezgo y alta capacidad para el trabajo en equipo.',
+      // Datos de Tabla Maestra
+      habilidadName: 'Trabajo en Equipo'
+    }];
+
+
+
 
   });

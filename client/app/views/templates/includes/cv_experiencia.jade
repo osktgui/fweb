@@ -1,16 +1,16 @@
 +form-header-cv("Experiencia Laboral","laboralForm")
 	.container-cv(ng-show="mostrarForm")
-		.layout-content
+		.layout-content                                                        
 			+controlFilium-select("Centro Laboral","centroLaboral","workCenter","{selectActive: selectChangecentroLaboral,success: submittedLaboral && laboralForm.centroLaboral.$valid, error: submittedLaboral && laboralForm.centroLaboral.$invalid}","submittedLaboral && laboralForm.centroLaboral.$invalid")(required)
 		.layout-content
-			+controlFilium-text("Nombre del Cargo","nombreCargo","job","{success: submittedLaboral && laboralForm.nombreCargo.$valid, error: submittedLaboral && laboralForm.nombreCargo.$invalid}","submittedLaboral && laboralForm.nombreCargo.$invalid")(names,required)
+			+controlFilium-text("Nombre del Cargo","nombreCargo","job","{success: submittedLaboral && laboralForm.nombreCargo.$valid, error: submittedLaboral && laboralForm.nombreCargo.$invalid}","submittedLaboral && laboralForm.nombreCargo.$invalid")(alphanumeric,required)
 		.layout-content
-			+controlFilium-textarea("Descripción","descripcionFunciones","jobDescription","{success: submittedLaboral && laboralForm.descripcionFunciones.$valid, error: submittedLaboral && laboralForm.descripcionFunciones.$invalid}","submittedLaboral && laboralForm.descripcionFunciones.$invalid")(names, required)
+			+controlFilium-textarea("Descripción","descripcionFunciones","jobDescription","{success: submittedLaboral && laboralForm.descripcionFunciones.$valid, error: submittedLaboral && laboralForm.descripcionFunciones.$invalid}","submittedLaboral && laboralForm.descripcionFunciones.$invalid")(alphanumeric, required)
 		.layout-content
 			.layout-dateIF.padding-dateIF
-				+controlFilium-date("Fecha de Inicio","fechaInicioLaboral","startDate","{success: submittedLaboral && laboralForm.fechaInicioLaboral.$valid, error: submittedLaboral && laboralForm.fechaInicioLaboral.$invalid}","submittedLaboral && laboralForm.fechaInicioLaboral.$invalid")(required)
+				+controlFilium-date("Fecha de Inicio","fechaInicioLaboral","startDate","{success: submittedLaboral && laboralForm.fechaInicioLaboral.$valid, error: submittedLaboral && laboralForm.fechaInicioLaboral.$invalid}","submittedLaboral && laboralForm.fechaInicioLaboral.$invalid")(ng-required="!editando")
 			.layout-dateIF.padding-dateIF
-				+controlFilium-date("Fecha de Fin","fechaFinLaboral","endDate","{success: submittedLaboral && laboralForm.fechaFinLaboral.$valid, error: submittedLaboral && laboralForm.fechaFinLaboral.$invalid}","submittedLaboral && laboralForm.fechaFinLaboral.$invalid")(ng-disabled="checkLab",ng-required="checkLab")
+				+controlFilium-date("Fecha de Fin","fechaFinLaboral","endDate","{success: submittedLaboral && laboralForm.fechaFinLaboral.$valid, error: submittedLaboral && laboralForm.fechaFinLaboral.$invalid}","submittedLaboral && laboralForm.fechaFinLaboral.$invalid")(ng-disabled="checkLab",ng-required="!checkLab && !editando")
 			.layout-dateIF-last.padding-datedateIF-last
 				+controlFilium-check("Laborando Actualmente","checkLaborando","checkLab","laborandoActual=false","laborandoActual=!laborandoActual")
 		.button-container(ng-show="registrando")

@@ -1,9 +1,25 @@
-+form-header-cv("Idiomas","laboralForm")
-	.layout-content
++form-header-cv("Idiomas","idiomasForm")
+	.layout-content(ng-show="mostrarForm")
 		.layout-1-2.padding-1-2
-			+controlFilium-select("Idioma","idioma","language","{selectActive: selectChangeidioma,success: submittedIdioma && laboralForm.idioma.$valid, error: submittedIdioma && laboralForm.idioma.$invalid}","submittedIdioma && laboralForm.idioma.$invalid")(required)
+			+controlFilium-select("Idioma","idioma","lernedLanguage","{selectActive: selectChangeidioma,success: submittedIdioma && idiomasForm.idioma.$valid, error: submittedIdioma && idiomasForm.idioma.$invalid}","submittedIdioma && idiomasForm.idioma.$invalid")(required)
 		.layout-1-2.padding-1-2
-			+controlFilium-select("Nivel de Dominio","nivelIdioma","languageLevel","{selectActive: selectChangenivelIdioma,success: submittedIdioma && laboralForm.nivelIdioma.$valid, error: submittedIdioma && laboralForm.nivelIdioma.$invalid}","submittedIdioma && laboralForm.nivelIdioma.$invalid")(required)
-	.button-container
-		a.fbtn.fbtn-primary.cancel(href="javascript:void(0)",ng-click="") Cancelar
-		a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedIdioma=true") Guardar Cambios
+			+controlFilium-select("Nivel de Dominio","nivelIdioma","languageLevel","{selectActive: selectChangenivelIdioma,success: submittedIdioma && idiomasForm.nivelIdioma.$valid, error: submittedIdioma && idiomasForm.nivelIdioma.$invalid}","submittedIdioma && idiomasForm.nivelIdioma.$invalid")(required)
+		.button-container(ng-show="registrando")
+			a.fbtn.fbtn-primary.cancel(href="javascript:void(0)",ng-click="mostrarForm=false") Cancelar
+			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedIdioma=true") Registrar
+		.button-container(ng-show="editando")
+			a.fbtn.fbtn-primary.cancel(href="javascript:void(0)",ng-click="mostrarForm=false") Cancelar
+			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedIdioma=true") Guardar Cambios
+	.itemcv-container
+		.itemcv(ng-repeat="matrizIdioma in matrizIdiomas")
+			.itemcv-info
+				.itemcv-title
+					em.fa.fa-comments
+					| {{matrizIdioma.idiomaName}}
+				.itemcv-descripion Nivel {{matrizIdioma.nivelIdiomaName}}
+			.itemcv-image
+				a.itemcv-option.edit(href="javascript:void(0)" ng-click="editarIdiomas(matrizIdioma)") Editar
+					i
+				a.itemcv-option.remove(href="javascript:void(0)") Eliminar
+					i
+

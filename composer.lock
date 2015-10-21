@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "51b051dd1eb029f885de8148abe2c2bb",
-    "content-hash": "c3bed1c2d0a4910862572613bb856f61",
+    "hash": "9657d893b9c14ea8a043999e338c5d78",
+    "content-hash": "acab6715e4f801fbd046be8f50be1000",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -576,16 +576,16 @@
         },
         {
             "name": "maatwebsite/excel",
-            "version": "2.0.7",
+            "version": "2.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maatwebsite/Laravel-Excel.git",
-                "reference": "8657c9ae76fe95a9e7b936fa20eaa953de751347"
+                "reference": "145beff98389ca6ac0b6e037a6a5c5ca867c9f90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Excel/zipball/8657c9ae76fe95a9e7b936fa20eaa953de751347",
-                "reference": "8657c9ae76fe95a9e7b936fa20eaa953de751347",
+                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Excel/zipball/145beff98389ca6ac0b6e037a6a5c5ca867c9f90",
+                "reference": "145beff98389ca6ac0b6e037a6a5c5ca867c9f90",
                 "shasum": ""
             },
             "require": {
@@ -639,7 +639,7 @@
                 "import",
                 "laravel"
             ],
-            "time": "2015-08-20 15:23:00"
+            "time": "2015-10-08 17:09:52"
         },
         {
             "name": "monolog/monolog",

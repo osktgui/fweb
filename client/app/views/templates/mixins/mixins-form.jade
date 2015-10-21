@@ -14,7 +14,7 @@ mixin form-header-cv(title,formName)
 				a(href="javascript:void(0)" ng-click="tab='idiomas';mostrarForm=false" ng-class="{active: tab=='idiomas'}").tab-item Idiomas
 				a(href="javascript:void(0)" ng-click="tab='habilidades';mostrarForm=false" ng-class="{active: tab=='habilidades'}").tab-item Habilidades
 			.form-filium-title= title
-				a.fbtn.fbtn-add(href="javascript:void(0)",ng-click="agregarEstudios();agregarLabores();") Agregar
+				a.fbtn.fbtn-add(href="javascript:void(0)",ng-click="agregarEstudios();agregarLabores();agregarCertificados();agregarIdiomas();agregarHabilidades();") Agregar
 			.form-content
 				block
 mixin controlFilium-text(text,nameControl,modelControl,ngClass,errorMessageCondition)
@@ -26,7 +26,7 @@ mixin controlFilium-text(text,nameControl,modelControl,ngClass,errorMessageCondi
 mixin controlFilium-date(text,nameControl,modelControl,ngClass,errorMessageCondition)
 	.control-container
 		label(for=nameControl, ng-class=ngClass)= text
-		input(type="datetime", placeholder="Seleccione "+text,name=nameControl, id=nameControl, ng-model="date", ng-class=ngClass,format="dd/MM/yyyy", min-view="date", view="date",date-time).filium-control&attributes(attributes)
+		input(type="datetime", placeholder="Seleccione "+text,name=nameControl, id=nameControl, ng-model="date", ng-class=ngClass,format="dd/MM/yyyy", min-view="date", view="date",date-time,readonly).filium-control&attributes(attributes)
 		if errorMessageCondition
 			.errorMessage(ng-class=ngClass, ng-show=errorMessageCondition) Valor no válido
 mixin controlFilium-textarea(text,nameControl,modelControl,ngClass,errorMessageCondition)

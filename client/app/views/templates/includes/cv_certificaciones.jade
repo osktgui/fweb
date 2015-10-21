@@ -1,10 +1,30 @@
 +form-header-cv("Certificaciones","certificacionForm")
-	.layout-content
-		+controlFilium-text("Certificación","tituloCertificacion","job","{success: submittedCertificacion && certificacionForm.tituloCertificacion.$valid, error: submittedCertificacion && certificacionForm.tituloCertificacion.$invalid}","submittedCertificacion && certificacionForm.tituloCertificacion.$invalid")(names,required)
-	.layout-content
-		+controlFilium-select("Organización","organizacionCertif","certifCenter","{selectActive: selectChangeorganizacionCertif,success: submittedCertificacion && certificacionForm.organizacionCertif.$valid, error: submittedCertificacion && certificacionForm.organizacionCertif.$invalid}","submittedCertificacion && certificacionForm.organizacionCertif.$invalid")(required)
-	.layout-content
-		+controlFilium-textarea("Descripción","descripcionCertif","certifDescription","{success: submittedCertificacion && certificacionForm.descripcionCertif.$valid, error: submittedCertificacion && certificacionForm.descripcionCertif.$invalid}","submittedCertificacion && certificacionForm.descripcionCertif.$invalid")(names, required)
-	.button-container
-		a.fbtn.fbtn-primary.cancel(href="javascript:void(0)",ng-click="") Cancelar
-		a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedCertificacion=true") Guardar Cambios
+	.container-cv(ng-show="mostrarForm")
+		.layout-content
+			+controlFilium-text("Título","tituloCertificacion","certifTitle","{success: submittedCertificacion && certificacionForm.tituloCertificacion.$valid, error: submittedCertificacion && certificacionForm.tituloCertificacion.$invalid}","submittedCertificacion && certificacionForm.tituloCertificacion.$invalid")(alphanumeric,required)
+		.layout-content
+			+controlFilium-date("Fecha de Certificación","fechaCertif","certifDate","{success: submittedCertificacion && certificacionForm.fechaCertif.$valid, error: submittedCertificacion && certificacionForm.fechaCertif.$invalid}","submittedCertificacion && certificacionForm.fechaCertif.$invalid")(ng-disabled="!estudiandoActual",ng-required="estudiandoActual && !editando")
+		.layout-content
+			+controlFilium-select("Organización","organizacionCertif","certifCenter","{selectActive: selectChangeorganizacionCertif,success: submittedCertificacion && certificacionForm.organizacionCertif.$valid, error: submittedCertificacion && certificacionForm.organizacionCertif.$invalid}","submittedCertificacion && certificacionForm.organizacionCertif.$invalid")(required)
+		.layout-content
+			+controlFilium-textarea("Descripción","descripcionCertif","certifDescription","{success: submittedCertificacion && certificacionForm.descripcionCertif.$valid, error: submittedCertificacion && certificacionForm.descripcionCertif.$invalid}","submittedCertificacion && certificacionForm.descripcionCertif.$invalid")(alphanumeric)
+		.button-container(ng-show="registrando")
+			a.fbtn.fbtn-primary.cancel(href="javascript:void(0)",ng-click="mostrarForm=false") Cancelar
+			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedCertificacion=true") Registrar
+		.button-container(ng-show="editando")
+			a.fbtn.fbtn-primary.cancel(href="javascript:void(0)",ng-click="mostrarForm=false") Cancelar
+			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedCertificacion=true") Guardar Cambios
+
+	.itemcv-container
+		.itemcv(ng-repeat="matrizCertificacion in matrizCertificaciones")
+			.itemcv-info
+				.itemcv-title
+					em.fa.fa-list-alt
+					| {{matrizCertificacion.tituloCertificacion}}
+				.itemcv-descripion {{matrizCertificacion.organizacionName}}
+				.itemcv-descripion {{matrizCertificacion.fechaCertificacion}}
+			.itemcv-image
+				a.itemcv-option.edit(href="javascript:void(0)" ng-click="editarCertificados(matrizCertificacion)") Editar
+					i
+				a.itemcv-option.remove(href="javascript:void(0)") Eliminar
+					i
