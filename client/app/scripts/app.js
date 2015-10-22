@@ -23,7 +23,8 @@ angular
     'cfp.loadingBar',
     'tmh.dynamicLocale',
     'pascalprecht.translate',
-    'datePicker'
+    'datePicker',
+    'ui.calendar'
   ])
   .config(function ($routeProvider) {
     $routeProvider
