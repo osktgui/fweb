@@ -11,64 +11,52 @@
 |
  */
 
-use App\CitaPsicologica;
-use App\HorarioDisponible;
-
-use App\Persona;
-
-Route::get('/',
-
-function () {
-		return (view('welcome'));
-	});
-Route::get('/registrarLead', function () {
-		// Obtención de Parámetros
-		$_nombre = $_GET['nombre'];
-		$_metodoContacto = $_GET['metodoContacto'];
-		if ($_metodoContacto == 'llamada') {$_celular = $_GET['celular'];} else if ($_metodoContacto == 'skype') {$_skype = $_GET['skype'];}
-		$_correo = $_GET['correo'];
-		$_horario = $_GET['horario'];
-		// Comprobando disponibilidad de horario
-		$horarioDisponible = HorarioDisponible::find($_horario);
-		$_disponible = $horarioDisponible->disponible;
-
-		if ($_disponible) {
-			// Cambiando horario a "No Disponible"
-			$horarioDisponible->disponible = false;
-			$horarioDisponible->save();
-			// Obtención de id Psicólogo según horario
-			$_psicologo = $horarioDisponible->personaId;
-			// Inserción en tabla Persona
-			$persona = new Persona;
-			$persona->nombrePersona = $_nombre;
-			if ($_metodoContacto == 'llamada') {$persona->telefonoMovil = $_celular;} else if ($_metodoContacto == 'skype') {$persona->skypeId = $_skype;}
-			$persona->correoElectronico = $_correo;
-			$persona->tipoRegistroId = 1;
-			$persona->created_by = "Sistema";
-			$persona->save();
-			//	Obtención de id de Persona insertada
-			$_paciente = $persona->personaId;
-			// Inserción en tabla Cita
-			$citaPsicológica = new CitaPsicologica;
-			$citaPsicológica->psicologoId = $_psicologo;
-			$citaPsicológica->pacienteId = $_paciente;
-			$citaPsicológica->horarioDisponibleId = $_horario;
-			$citaPsicológica->estadoCitaId = 11;//Cita Reservada
-			$citaPsicológica->tipoCitaId = 15;//Cita Promocional-Landing
-			$citaPsicológica->observacion = "Cita reservada Landing Promocional.";
-			$citaPsicológica->created_by = "Sistema";
-			$citaPsicológica->save();
-			return ("LeadRegistrado");
-		} else {
-			return ("HorarioNoDisponible");
-		}
-	});
-
+// Cambiar a Post
+Route::get('/registrarLead', 'Lead@registroLead');
+// ------------------------- Consultas a la Data Maestra ----------------------
+Route::get('/getOrganizaciones', 'DataMaestra@getOrganizaciones');
+// ----------------------------------------------------------------------------
 Route::get('/consultarCitasPsicologicas', 'Reportes@reporteCitasPsicologicas');
 Route::get('/consultasPsicologos', 'Psicologos@consultarPsicologoReporteCitas');
 Route::get('/leerHorariosDisponibles', 'HorariosDisponibles@leerHorariosDisponibles');
 Route::get('/leerDiasDisponibles', 'HorariosDisponibles@leerDiasDisponibles');
 Route::get('/reporteHorariosDisponibles', 'HorariosDisponibles@reporteHorariosDisponibles');
+
+// ============================================= PRUEBAS =======================================================================
+
+Route::get('/TableMaestra', function () {
+		$data = DB::table('maestros')->get();
+
+		foreach ($data as $dat) {
+			echo ("Id de Maestro-> ".$dat->maestroId." | ");
+			echo ("-> ".$dat->nombreMaestro);
+			echo ("<br>");
+
+		}
+		echo ("<br><bt>");
+		$data = DB::table('maestro_detalles')->get();
+
+		foreach ($data as $dat) {
+			echo ("Id de Maestro Detalle-> ".$dat->maestroId." | ");
+			echo ("-> ".$dat->nombreMaestroDetalle);
+			echo ("<br>");
+
+		}
+		// return Response::json($data);
+	});
+
+Route::get('/TableMaestraDetalle', function () {
+		$data = DB::table('maestro_detalles')->get();
+
+		foreach ($data as $dat) {
+			echo ("Id de Maestro-> ".$dat->maestroId." | ");
+			echo ("-> ".$dat->nombreMaestroDetalle);
+			echo ("<br>");
+
+		}
+		// return Response::json($data);
+	});
+
 Route::post('foo/bar', function () {
 		return 'Hello World';
 	});

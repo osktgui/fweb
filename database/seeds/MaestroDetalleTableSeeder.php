@@ -99,6 +99,125 @@ class MaestroDetalleTableSeeder extends Seeder {
 				'descripcionMaestroDetalle' => 'La cita ha sido separada por el Landing Promocional.',
 				'created_by'                => 'Sistema'
 			]);
+		// Rubro Empresa
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 7,
+				'nombreMaestroDetalle'      => 'Tecnología',
+				'descripcionMaestroDetalle' => 'Desarrollo de los diferentes rubros relacionados a la tecnología.',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 7,
+				'nombreMaestroDetalle'      => 'Educación',
+				'descripcionMaestroDetalle' => 'Empresa o Institución dedica a impartir conocimientos.',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 7,
+				'nombreMaestroDetalle'      => 'Ventas',
+				'descripcionMaestroDetalle' => 'Empresa dedicada a la compra al por mayor y venta minoritaria de productos.',
+				'created_by'                => 'Sistema'
+			]);
+		// Tipo Código de Empresa
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 8,
+				'nombreMaestroDetalle'      => 'RUC',
+				'descripcionMaestroDetalle' => 'La Empresa se registra en la Base de Datos mediante su RUC',
+				'created_by'                => 'Sistema'
+			]);
+		// Grados Académicos
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 9,
+				'nombreMaestroDetalle'      => 'Título Técnico',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 9,
+				'nombreMaestroDetalle'      => 'Bachillerato',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 9,
+				'nombreMaestroDetalle'      => 'Título Profesional',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 9,
+				'nombreMaestroDetalle'      => 'Maestría',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 9,
+				'nombreMaestroDetalle'      => 'Doctorado',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		// Idiomas
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 10,
+				'nombreMaestroDetalle'      => 'Inglés',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 10,
+				'nombreMaestroDetalle'      => 'Francés',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 10,
+				'nombreMaestroDetalle'      => 'Italiano',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 10,
+				'nombreMaestroDetalle'      => 'Portugués',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 10,
+				'nombreMaestroDetalle'      => 'Chino',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		// NIvel de dominió del Idioma
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 11,
+				'nombreMaestroDetalle'      => 'Iniciación',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 11,
+				'nombreMaestroDetalle'      => 'Básico',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 11,
+				'nombreMaestroDetalle'      => 'Intermedio',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 11,
+				'nombreMaestroDetalle'      => 'Intermedio Avanzado',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 11,
+				'nombreMaestroDetalle'      => 'Avanzado',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
 	}
 }
 

@@ -21,7 +21,7 @@ class CreateOrganizacionsTable extends Migration {
 				$table->string('razonSocial', 100);
 				$table->string('nombreComercial', 100);
 				$table->string('telefonoEmpresa', 20);
-				$table->string('direccionEmpresa', 100);
+				$table->string('direccionEmpresa', 250);
 				// Auditoría
 				$table->string('created_by', 50);
 				$table->string('updated_by', 50)->nullable();

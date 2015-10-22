@@ -8,7 +8,7 @@
  * Controller of the filiumApp
  */
 angular.module('filiumApp')
-  .controller('ConsultorioCtrl', function ($scope,formatDate) {
+  .controller('ConsultorioCtrl', function ($scope,formatDate,DataMaestra) {
 
 
   // ---------------- Experiencia Laboral -----------------------------------------------
@@ -39,6 +39,18 @@ angular.module('filiumApp')
       $scope.checkLab= false
       angular.element(".filium-control").removeClass('selectActive');
     }
+
+    DataMaestra.getOrganizaciones().then(function(response){
+          // alert(response);
+          // $scope.studyCenterJson=response;
+          angular.forEach(response,function(item,id){
+            var obj = new Object();
+            obj.organizacionId= '1';
+            obj.organizacionName= 'Empresa';
+            $scope.studyCenterJson.push(obj);
+          })
+    });
+
     $scope.matrizLaborales = [{
       // Datos de Tabla específica
       experienciaLaboralId: '1',

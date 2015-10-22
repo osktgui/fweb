@@ -2,6 +2,7 @@
 	.container-cv(ng-show="mostrarForm")
 		.layout-content
 			+controlFilium-select("Centro de Estudios","centroEstudios","studyCenter","{selectActive: selectChangecentroEstudios,success: submittedProfessionalEducation && estudiosForm.centroEstudios.$valid, error: submittedProfessionalEducation && estudiosForm.centroEstudios.$invalid}","submittedProfessionalEducation && estudiosForm.centroEstudios.$invalid")(required)
+				option(ng-repeat="options in studyCenterJson" value="options.organizacionId") {{options.organizacionName}}
 		.layout-content
 			+controlFilium-select("Grado Académico","gradoAcademico","academicDegree","{selectActive: selectChangegradoAcademico,success: submittedProfessionalEducation && estudiosForm.gradoAcademico.$valid, error: submittedProfessionalEducation && estudiosForm.gradoAcademico.$invalid}","submittedProfessionalEducation && estudiosForm.gradoAcademico.$invalid")(required)
 		.layout-content
