@@ -136,9 +136,7 @@
                   <option value="1">Opción 1</option>
                   <option value="2">Opción 2</option>
                   <option value="3">Opción 3</option>
-                  <div ng-repeat="options in studyCenterJson" class="temp">
-                    <option value="options.organizacionId">{{options.organizacionName}}</option>
-                  </div>
+                  <option ng-repeat="options in studyCenterJson" value="options.organizacionId">{{options.organizacionName}}</option>
                 </select>
                 <div ng-class="{selectActive: selectChangecentroEstudios,success: submittedProfessionalEducation &amp;&amp; estudiosForm.centroEstudios.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.centroEstudios.$invalid}" ng-show="submittedProfessionalEducation &amp;&amp; estudiosForm.centroEstudios.$invalid" class="errorMessage">Valor no válido</div>
               </div>

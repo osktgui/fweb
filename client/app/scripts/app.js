@@ -23,7 +23,8 @@ angular
     'cfp.loadingBar',
     'tmh.dynamicLocale',
     'pascalprecht.translate',
-    'datePicker'
+    'datePicker',
+    'ui.calendar'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -45,6 +46,10 @@ angular
       })
       .when('/controls', {
         templateUrl: 'views/controls.html'
+      })
+      .when('/psicologoCita', {
+        templateUrl: 'views/psicologoCita.html',
+        controller: 'PsicologoCitaCtrl'
       })
       .otherwise({
         redirectTo: '/'

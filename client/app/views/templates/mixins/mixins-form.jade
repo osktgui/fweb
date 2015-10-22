@@ -54,3 +54,24 @@ mixin controlFilium-select(text,nameControl,modelControl,ngClass,errorMessageCon
 			block
 		if errorMessageCondition
 			.errorMessage(ng-class=ngClass, ng-show=errorMessageCondition) Valor no válido
+
+mixin controlFilium-select(text,nameControl,modelControl,ngClass,errorMessageCondition)
+	.control-container
+		label(for=nameControl, ng-class=ngClass)= text 
+		select(type="text" name=nameControl, id=nameControl, ng-model=modelControl, ng-click="selectChange"+nameControl+"=true", ng-class=ngClass).filium-control&attributes(attributes)
+			option(value="", selectFilium, default, selected).option-placeholder= "Seleccione "+text
+			option(value="1") Opción 1
+			option(value="2") Opción 2
+			option(value="3") Opción 3
+			block
+		if errorMessageCondition
+			.errorMessage(ng-class=ngClass, ng-show=errorMessageCondition) Valor no válido
+
+mixin controlFilium-select-empty(text,nameControl,modelControl,ngClass,errorMessageCondition)
+	.control-container
+		label(for=nameControl, ng-class=ngClass)= text 
+		select(type="text" name=nameControl, id=nameControl, ng-model=modelControl, ng-click="selectChange"+nameControl+"=true", ng-class=ngClass).filium-control&attributes(attributes)
+			option(value="", selectFilium, default, selected).option-placeholder= "Seleccione "+text
+			block
+		if errorMessageCondition
+			.errorMessage(ng-class=ngClass, ng-show=errorMessageCondition) Valor no válido
