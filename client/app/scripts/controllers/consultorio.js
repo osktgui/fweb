@@ -164,10 +164,10 @@ angular.module('filiumApp')
       params.comentario=$scope.studyComments+' ';
       params.created_by='Usuario';
       filiumServices.registrarFormacionProfesional(params).then(function(response){
-        if (response==='success'){alert("success");}
-        else{alert("error");}
+        if (response==='success'){alert('success');}
+        else{alert('error');}
       });
-    }
+    };
     $scope.editarEstudios = function(estudio){
       $scope.submittedProfessionalEducation=false;
       $scope.mostrarForm=true;
@@ -181,8 +181,8 @@ angular.module('filiumApp')
       angular.element('#fechaInicio').val(formatDate.getShortDate(estudio.fechaInicio));
       $scope.checkEst=!estudio.estudiandoActualmente;$scope.estudiandoActual=estudio.estudiandoActualmente;
       angular.element('#fechaFin').val(formatDate.getShortDate(estudio.fechaFin));
-      angular.element(".filium-control").addClass('selectActive');
-    }
+      angular.element('.filium-control').addClass('selectActive');
+    };
 
     $scope.agregarEstudios = function(){
       $scope.submittedProfessionalEducation=false;
@@ -198,7 +198,7 @@ angular.module('filiumApp')
       $scope.checkEst=false;$scope.estudiandoActual=true;
       angular.element('#fechaFin').val('');
       angular.element('.filium-control').removeClass('selectActive');
-    }
+    };
 
 
 
@@ -215,22 +215,22 @@ angular.module('filiumApp')
       angular.element('#fechaInicioLaboral').val(formatDate.getShortDate(labor.fechaInicio));
       angular.element('#fechaFinLaboral').val(formatDate.getShortDate(labor.fechaFin));
       $scope.checkLab= labor.laborandoActualmente;
-      angular.element(".filium-control").addClass('selectActive');
-    }
+      angular.element('.filium-control').addClass('selectActive');
+    };
     $scope.agregarLabores = function(){
       $scope.submittedLaboral=false;
       $scope.mostrarForm=true;
       $scope.editando=false;
       $scope.registrando=true;
 
-      $scope.workCenter= "";
-      $scope.job= "";
-      $scope.jobDescription= "";
-      angular.element('#fechaInicioLaboral').val("");
-      angular.element('#fechaFinLaboral').val("");
-      $scope.checkLab= false
-      angular.element(".filium-control").removeClass('selectActive');
-    }
+      $scope.workCenter= '';
+      $scope.job= '';
+      $scope.jobDescription= '';
+      angular.element('#fechaInicioLaboral').val('');
+      angular.element('#fechaFinLaboral').val('');
+      $scope.checkLab= false;
+      angular.element('.filium-control').removeClass('selectActive');
+    };
 
     $scope.matrizLaborales = [{
       // Datos de Tabla específica
@@ -283,19 +283,18 @@ angular.module('filiumApp')
       angular.element('#fechaCertif').val(formatDate.getShortDate(certificado.fechaCertificacion));
       $scope.certifCenter=certificado.organizacionId;
       $scope.certifDescription=certificado.descripcion;
-      angular.element(".filium-control").addClass('selectActive');
-    }
+      angular.element('.filium-control').addClass('selectActive');
+    };
     $scope.agregarCertificados = function(){
       $scope.submittedCertificacion=false;
       $scope.mostrarForm=true;
       $scope.editando=false;
-      $scope.registrando=true;
-      $scope.certifTitle="";
+      $scope.registrando='';
       angular.element('#fechaCertif').val("");
-      $scope.certifCenter="";
-      $scope.certifDescription="";
-      angular.element(".filium-control").removeClass('selectActive');
-    }
+      $scope.certifCenter='';
+      $scope.certifDescription='';
+      angular.element('.filium-control').removeClass('selectActive');
+    };
 
 
     $scope.matrizCertificaciones = [{
@@ -338,17 +337,17 @@ angular.module('filiumApp')
       $scope.registrando=false;
       $scope.lernedLanguage=idiomas.idiomaId;
       $scope.languageLevel=idiomas.nivelIdiomaId;
-      angular.element(".filium-control").addClass('selectActive');
-    }
+      angular.element('.filium-control').addClass('selectActive');
+    };
     $scope.agregarIdiomas = function(){
       $scope.submittedIdioma=false;
       $scope.mostrarForm=true;
       $scope.editando=false;
       $scope.registrando=true;
-      $scope.lernedLanguage="";
-      $scope.languageLevel="";
-      angular.element(".filium-control").removeClass('selectActive');
-    }
+      $scope.lernedLanguage='';
+      $scope.languageLevel='';
+      angular.element('.filium-control').removeClass('selectActive');
+    };
 
     $scope.matrizIdiomas = [{
       // Datos de Tabla Específica
@@ -387,17 +386,17 @@ angular.module('filiumApp')
       $scope.registrando=false;
       $scope.abilityValue = habilidad.habilidadId;
       $scope.abilitiesDescription = habilidad.descripcion;
-      angular.element(".filium-control").addClass('selectActive');
-    }
+      angular.element('.filium-control').addClass('selectActive');
+    };
     $scope.agregarHabilidades = function(){
       $scope.submittedHabilidad=false;
       $scope.mostrarForm=true;
       $scope.editando=false;
       $scope.registrando=true;
-      $scope.abilityValue = "";
-      $scope.abilitiesDescription = "";
-      angular.element(".filium-control").removeClass('selectActive');
-    }
+      $scope.abilityValue = '';
+      $scope.abilitiesDescription = '';
+      angular.element('.filium-control').removeClass('selectActive');
+    };
 
     $scope.matrizHabilidades = [{
       // Datos de Tabla Específica

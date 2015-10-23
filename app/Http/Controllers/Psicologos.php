@@ -20,7 +20,7 @@ class Psicologos extends Controller {
 			foreach ($usuarios as $usuario) {
 				$personas = Persona::where('personaId', '=', $usuario['personaId'])->get();
 				foreach ($personas as $persona) {
-					echo "<option value=".$persona['personaId'].">".$persona['nombrePersona']."</option>";
+					echo '<option value='.$persona['personaId'].'>'.$persona['nombrePersona'].'</option>';
 				}
 			}
 		}
