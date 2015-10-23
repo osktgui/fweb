@@ -86,7 +86,7 @@
           <div class="col-lg-6">
             <div class="control-container">
               <label for="horaInicio" ng-class="{ selectActive: selectChangehoraInicio ,success: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaInicio.$valid, error: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaInicio.$invalid}">Desde</label>
-              <select type="text" name="horaInicio" id="horaInicio" ng-model="horaInicio" ng-click="selectChangehoraInicio=true" ng-class="{ selectActive: selectChangehoraInicio ,success: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaInicio.$valid, error: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaInicio.$invalid}" class="filium-control" ng-options="hora.text for hora in horas track by hora.id" required="required">
+              <select type="text" name="horaInicio" id="horaInicio" ng-model="horaInicio" ng-click="selectChangehoraInicio=true" ng-class="{ selectActive: selectChangehoraInicio ,success: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaInicio.$valid, error: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaInicio.$invalid}" class="filium-control" required="required" ng-options="hora.text for hora in horas track by hora.id" ng-change="priComboSelected(horaInicio);">
                 <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Desde</option>
               </select>
               <div ng-class="{ selectActive: selectChangehoraInicio ,success: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaInicio.$valid, error: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaInicio.$invalid}" ng-show="submittedDisponibilidad &amp;&amp; disponibilidadForm.horaInicio.$invalid" class="errorMessage">Valor no válido</div>
@@ -95,8 +95,9 @@
           <div class="col-lg-6">
             <div class="control-container">
               <label for="horaFin" ng-class="{ selectActive: selectChangehoraFin ,success: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaFin.$valid, error: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaFin.$invalid}">Hasta</label>
-              <select type="text" name="horaFin" id="horaFin" ng-model="horaFin" ng-click="selectChangehoraFin=true" ng-class="{ selectActive: selectChangehoraFin ,success: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaFin.$valid, error: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaFin.$invalid}" class="filium-control" ng-options="hora.text for hora in horas track by hora.id" required="required">
+              <select type="text" name="horaFin" id="horaFin" ng-model="horaFin" ng-click="selectChangehoraFin=true" ng-class="{ selectActive: selectChangehoraFin ,success: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaFin.$valid, error: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaFin.$invalid}" class="filium-control" required="required">
                 <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Hasta</option>
+                <option ng-repeat="hora in horas track by hora.id" value="{{hora.id}}" ng-disabled="!hora.isinuse">{{hora.text}}</option>
               </select>
               <div ng-class="{ selectActive: selectChangehoraFin ,success: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaFin.$valid, error: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaFin.$invalid}" ng-show="submittedDisponibilidad &amp;&amp; disponibilidadForm.horaFin.$invalid" class="errorMessage">Valor no válido</div>
             </div>
@@ -112,25 +113,17 @@
                       <th class="text-center">#</th>
                       <th class="text-center">Hora Inicio</th>
                       <th class="text-center">Hora Fin</th>
-                      <th check-all="check-all">
-                        <div data-toggle="tooltip" data-title="Check All" class="checkbox c-checkbox">
-                          <label>
-                            <input type="checkbox" checked="true"/><span class="fa fa-check"></span>
-                          </label>
-                        </div>
-                      </th>
+                      <th class="text-center">Eliminar</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr ng-repeat="horario in horariosDisponibles track by horario.id">
+                    <tr ng-repeat="evento in eventosDia | orderBy:'+id' track by evento.identificador">
                       <td>{{ $index+1 }}</td>
-                      <td>{{ horario.hIni }}</td>
-                      <td>{{ horario.hFin }}</td>
+                      <td>{{ evento.hIni }}</td>
+                      <td>{{ evento.hFin }}</td>
                       <td>
-                        <div class="checkbox c-checkbox">
-                          <label>
-                            <input type="checkbox" checked="true"/><span class="fa fa-check"></span>
-                          </label>
+                        <div>
+                          <button ng-click="removeHorario(evento.identificador)" title="Delete" class="btn btn-sm btn-danger"><em class="fa fa-trash"></em></button>
                         </div>
                       </td>
                     </tr>
