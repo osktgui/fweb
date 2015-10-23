@@ -11,6 +11,9 @@ angular.module('filiumApp')
   .service('formatDate', function () {
     // AngularJS will instantiate a singleton by calling "new" on this function
     function getCompleteDate(date){
+        if(date===null){
+            return null;
+        }
     	var anio=date.substring(0, 4);
     	var mes=getCompleteMonth(date.substring(5, 7));
     	var dia=date.substring(8, 10);
@@ -41,6 +44,13 @@ angular.module('filiumApp')
         return dia+'/'+mes+"/"+anio;
         // return '02/10/2015';
     }
+    function getDmyToYmd(date){
+        var anio=date.substring(6,10);
+        var mes=date.substring(3,5);
+        var dia=date.substring(0, 2);
+        return anio+'/'+mes+'/'+dia;
+        // return '02/10/2015';
+    }
     function getShortMonth(month){
         switch(month){
             case "Enero": return 1 ; break;
@@ -57,6 +67,7 @@ angular.module('filiumApp')
             case "Diciembre": return 12 ; break;
         }
     }
+
     function getNumberTwoDigits(number){
         number = parseInt(number);
         if (number <10) {return '0'+number;}
@@ -64,7 +75,8 @@ angular.module('filiumApp')
     }
 		return ({
             getCompleteDate: getCompleteDate,
-			getShortDate: getShortDate
+			getShortDate: getShortDate,
+            getDmyToYmd: getDmyToYmd
 		});
 
 

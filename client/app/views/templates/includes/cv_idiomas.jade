@@ -1,9 +1,11 @@
 +form-header-cv("Idiomas","idiomasForm")
 	.layout-content(ng-show="mostrarForm")
 		.layout-1-2.padding-1-2
-			+controlFilium-select("Idioma","idioma","lernedLanguage","{selectActive: selectChangeidioma,success: submittedIdioma && idiomasForm.idioma.$valid, error: submittedIdioma && idiomasForm.idioma.$invalid}","submittedIdioma && idiomasForm.idioma.$invalid")(required)
+			+controlFilium-select-empty("Idioma","idioma","lernedLanguage","{selectActive: selectChangeidioma,success: submittedIdioma && idiomasForm.idioma.$valid, error: submittedIdioma && idiomasForm.idioma.$invalid}","submittedIdioma && idiomasForm.idioma.$invalid")(required)
+				option(ng-repeat="options in lernedLanguageJson" value="{{options.id}}") {{options.value}}
 		.layout-1-2.padding-1-2
-			+controlFilium-select("Nivel de Dominio","nivelIdioma","languageLevel","{selectActive: selectChangenivelIdioma,success: submittedIdioma && idiomasForm.nivelIdioma.$valid, error: submittedIdioma && idiomasForm.nivelIdioma.$invalid}","submittedIdioma && idiomasForm.nivelIdioma.$invalid")(required)
+			+controlFilium-select-empty("Nivel de Dominio","nivelIdioma","languageLevel","{selectActive: selectChangenivelIdioma,success: submittedIdioma && idiomasForm.nivelIdioma.$valid, error: submittedIdioma && idiomasForm.nivelIdioma.$invalid}","submittedIdioma && idiomasForm.nivelIdioma.$invalid")(required)
+				option(ng-repeat="options in languageLevelJson" value="{{options.id}}") {{options.value}}
 		.button-container(ng-show="registrando")
 			a.fbtn.fbtn-primary.cancel(href="javascript:void(0)",ng-click="mostrarForm=false") Cancelar
 			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedIdioma=true") Registrar

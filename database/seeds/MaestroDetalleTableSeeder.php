@@ -218,7 +218,93 @@ class MaestroDetalleTableSeeder extends Seeder {
 				'descripcionMaestroDetalle' => '.....',
 				'created_by'                => 'Sistema'
 			]);
+		// Habilidades Personales
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 12,
+				'nombreMaestroDetalle'      => 'Empatía',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 12,
+				'nombreMaestroDetalle'      => 'Liderazgo',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 12,
+				'nombreMaestroDetalle'      => 'Persuasión',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 12,
+				'nombreMaestroDetalle'      => 'Negociación',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 12,
+				'nombreMaestroDetalle'      => 'Racionalización',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 12,
+				'nombreMaestroDetalle'      => 'Argumentación',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 12,
+				'nombreMaestroDetalle'      => 'Iniciativa',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 12,
+				'nombreMaestroDetalle'      => 'Capacidadanalítica',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 12,
+				'nombreMaestroDetalle'      => 'Capacidaddesíntesis',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 12,
+				'nombreMaestroDetalle'      => 'Innovaciónycreatividad',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 12,
+				'nombreMaestroDetalle'      => 'Controldelestrés',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+		DB::table('maestro_detalles')->insert([
+				'maestroId'                 => 12,
+				'nombreMaestroDetalle'      => 'Trabajoenequipo',
+				'descripcionMaestroDetalle' => '.....',
+				'created_by'                => 'Sistema'
+			]);
+
 	}
 }
 
 ?>
+
+
+
+
+
+
+
+
+
+
+
+

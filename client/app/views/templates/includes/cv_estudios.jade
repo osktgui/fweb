@@ -1,10 +1,11 @@
 +form-header-cv("Formación Profesional","estudiosForm")
 	.container-cv(ng-show="mostrarForm")
 		.layout-content
-			+controlFilium-select("Centro de Estudios","centroEstudios","studyCenter","{selectActive: selectChangecentroEstudios,success: submittedProfessionalEducation && estudiosForm.centroEstudios.$valid, error: submittedProfessionalEducation && estudiosForm.centroEstudios.$invalid}","submittedProfessionalEducation && estudiosForm.centroEstudios.$invalid")(required)
-				option(ng-repeat="options in studyCenterJson" value="options.organizacionId") {{options.organizacionName}}
+			+controlFilium-select-empty("Centro de Estudios","centroEstudios","studyCenter","{selectActive: selectChangecentroEstudios,success: submittedProfessionalEducation && estudiosForm.centroEstudios.$valid, error: submittedProfessionalEducation && estudiosForm.centroEstudios.$invalid}","submittedProfessionalEducation && estudiosForm.centroEstudios.$invalid")(required)
+				option(ng-repeat="options in studyCenterJson" value="{{options.id}}") {{options.value}}
 		.layout-content
-			+controlFilium-select("Grado Académico","gradoAcademico","academicDegree","{selectActive: selectChangegradoAcademico,success: submittedProfessionalEducation && estudiosForm.gradoAcademico.$valid, error: submittedProfessionalEducation && estudiosForm.gradoAcademico.$invalid}","submittedProfessionalEducation && estudiosForm.gradoAcademico.$invalid")(required)
+			+controlFilium-select-empty("Grado Académico","gradoAcademico","academicDegree","{selectActive: selectChangegradoAcademico,success: submittedProfessionalEducation && estudiosForm.gradoAcademico.$valid, error: submittedProfessionalEducation && estudiosForm.gradoAcademico.$invalid}","submittedProfessionalEducation && estudiosForm.gradoAcademico.$invalid")(required)
+				option(ng-repeat="options in academicDegreeJson" value="{{options.id}}") {{options.value}}
 		.layout-content
 			+controlFilium-text("Nombre de la Carrera","nombreCarrera","careerName","{success: submittedProfessionalEducation && estudiosForm.nombreCarrera.$valid, error: submittedProfessionalEducation && estudiosForm.nombreCarrera.$invalid}","submittedProfessionalEducation && estudiosForm.nombreCarrera.$invalid")(names,required)
 		.layout-content
@@ -23,7 +24,7 @@
 			+controlFilium-textarea("Comentarios","Comentarios","studyComments","{success: submittedProfessionalEducation && estudiosForm.Comentarios.$valid, error: submittedProfessionalEducation && estudiosForm.Comentarios.$invalid}","submittedProfessionalEducation && estudiosForm.Comentarios.$invalid")(names)
 		.button-container(ng-show="registrando")
 			a.fbtn.fbtn-primary.cancel(href="javascript:void(0)",ng-click="mostrarForm=false") Cancelar
-			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedProfessionalEducation=true") Registrar
+			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedProfessionalEducation=true;guardarEstudios(estudiosForm)") Registrar
 		.button-container(ng-show="editando")
 			a.fbtn.fbtn-primary.cancel(href="javascript:void(0)",ng-click="mostrarForm=false") Cancelar
 			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedProfessionalEducation=true") Guardar Cambios

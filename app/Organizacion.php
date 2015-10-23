@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Organizacion extends Model {
 	protected $table      = 'organizacions';
 	protected $primaryKey = 'organizacionId';
+
 }
