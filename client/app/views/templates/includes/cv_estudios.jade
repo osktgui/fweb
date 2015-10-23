@@ -2,6 +2,7 @@
 	.container-cv(ng-show="mostrarForm")
 		.layout-content
 			+controlFilium-select("Centro de Estudios","centroEstudios","studyCenter","{selectActive: selectChangecentroEstudios,success: submittedProfessionalEducation && estudiosForm.centroEstudios.$valid, error: submittedProfessionalEducation && estudiosForm.centroEstudios.$invalid}","submittedProfessionalEducation && estudiosForm.centroEstudios.$invalid")(required)
+				option(ng-repeat="options in studyCenterJson" value="options.organizacionId") {{options.organizacionName}}
 		.layout-content
 			+controlFilium-select("Grado Académico","gradoAcademico","academicDegree","{selectActive: selectChangegradoAcademico,success: submittedProfessionalEducation && estudiosForm.gradoAcademico.$valid, error: submittedProfessionalEducation && estudiosForm.gradoAcademico.$invalid}","submittedProfessionalEducation && estudiosForm.gradoAcademico.$invalid")(required)
 		.layout-content
@@ -13,9 +14,9 @@
 				+controlFilium-check("Incluir Mención","checkMencion","checkMen","vMencion=false","vMencion=!vMencion")
 		.layout-content
 			.layout-dateIF.padding-dateIF
-				+controlFilium-date("Fecha de Inicio","fechaInicio","startDate","{success: submittedProfessionalEducation && estudiosForm.fechaInicio.$valid, error: submittedProfessionalEducation && estudiosForm.fechaInicio.$invalid}","submittedProfessionalEducation && estudiosForm.fechaInicio.$invalid")(required)
+				+controlFilium-date("Fecha de Inicio","fechaInicio","startDate","{success: submittedProfessionalEducation && estudiosForm.fechaInicio.$valid, error: submittedProfessionalEducation && estudiosForm.fechaInicio.$invalid}","submittedProfessionalEducation && estudiosForm.fechaInicio.$invalid")(ng-required="!editando")
 			.layout-dateIF.padding-dateIF
-				+controlFilium-date("Fecha de Fin","fechaFin","endDate","{success: submittedProfessionalEducation && estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation && estudiosForm.fechaFin.$invalid}","submittedProfessionalEducation && estudiosForm.fechaFin.$invalid")(ng-disabled="!estudiandoActual",ng-required="estudiandoActual")
+				+controlFilium-date("Fecha de Fin","fechaFin","endDate","{success: submittedProfessionalEducation && estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation && estudiosForm.fechaFin.$invalid}","submittedProfessionalEducation && estudiosForm.fechaFin.$invalid")(ng-disabled="!estudiandoActual",ng-required="estudiandoActual && !editando")
 			.layout-dateIF-last.padding-datedateIF-last
 				+controlFilium-check("Estudiando Actualmente","checkEstudianto","checkEst","estudiandoActual=false","estudiandoActual=!estudiandoActual")
 		.layout-content

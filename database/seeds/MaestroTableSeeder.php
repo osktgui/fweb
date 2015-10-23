@@ -40,6 +40,36 @@ class MaestroTableSeeder extends Seeder {
 				'descripcionMaestro' => 'Tipo de cita reservada, puede ser promocional, regular, gratuita.',
 				'created_by'         => 'Sistema'
 			]);
+		DB::table('maestros')->insert([
+				'nombreMaestro'      => 'RubroEmpresas',
+				'descripcionMaestro' => 'Rubro de la Empresa u Organización.',
+				'created_by'         => 'Sistema'
+			]);
+		DB::table('maestros')->insert([
+				'nombreMaestro'      => 'TipoCodigoEmpresa',
+				'descripcionMaestro' => 'Tipo de código con el cual se le registra a la Empresa en la Base de Datos.',
+				'created_by'         => 'Sistema'
+			]);
+		DB::table('maestros')->insert([
+				'nombreMaestro'      => 'GradoAcademico',
+				'descripcionMaestro' => 'Grado Académico para el registro de la Formación Profesional de los Psicólogos.',
+				'created_by'         => 'Sistema'
+			]);
+		DB::table('maestros')->insert([
+				'nombreMaestro'      => 'Idiomas',
+				'descripcionMaestro' => 'Idioma que registra el Psicólogo como caractéristica de su CV.',
+				'created_by'         => 'Sistema'
+			]);
+		DB::table('maestros')->insert([
+				'nombreMaestro'      => 'NivelIdiomas',
+				'descripcionMaestro' => 'Nivel de Dominio del Idioma registrado por el Psicólogo',
+				'created_by'         => 'Sistema'
+			]);
+		DB::table('maestros')->insert([
+				'nombreMaestro'      => 'Habilidades',
+				'descripcionMaestro' => 'Habilidades que registra el Psicólogo en su CV.',
+				'created_by'         => 'Sistema'
+			]);
 	}
 }
 

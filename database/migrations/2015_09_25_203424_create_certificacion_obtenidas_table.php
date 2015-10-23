@@ -13,9 +13,10 @@ class CreateCertificacionObtenidasTable extends Migration {
 		Schema::create('certificacion_obtenidas', function (Blueprint $table) {
 				$table->increments('certificacionObtenidaId');
 				$table->integer('personaId')->unsigned();
-				$table->text('descripcion')->nullable();
 				$table->string('tituloCertificacion', 50);
+				$table->date('fechaCertificacion');
 				$table->integer('organizacionId')->unsigned();
+				$table->text('descripcion')->nullable();
 				// Auditoría
 				$table->string('created_by', 50);
 				$table->string('updated_by', 50)->nullable();

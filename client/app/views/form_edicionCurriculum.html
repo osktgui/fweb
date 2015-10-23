@@ -47,32 +47,85 @@
   </div>
 </nav>
 <div ng-init="tab='experiencia'" class="body-container-filium with-left-menu">
-  <div class="content-user-data">
-    <div class="user-photo"><i></i></div>
-    <div class="user-name">Jose Antonio Rios Monterrey</div>
-    <div class="user-options"><a href="javascript:void(0)" ng-click="formularioActivo='DatosUsuario'" ng-class="{active: formularioActivo=='DatosUsuario'}" class="user-options-item">
-        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='DatosUsuario'}" class="icon-datosusuario"></i></div>
-        <div class="user-options-item-description">Datos de usuario</div></a><a href="javascript:void(0)" ng-click="formularioActivo='PerfilUsuario'" ng-class="{active: formularioActivo=='PerfilUsuario'}" class="user-options-item">
-        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='PerfilUsuario'}" class="icon-perfilusuario"></i></div>
-        <div class="user-options-item-description">Perfil de usuario</div></a><a href="javascript:void(0)" ng-click="formularioActivo='RegistrarPsicologo'" ng-class="{active: formularioActivo=='RegistrarPsicologo'}" class="user-options-item">
-        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='RegistrarPsicologo'}" class="icon-datosusuario"></i></div>
-        <div class="user-options-item-description">Registrar Psicólogo</div></a><a href="javascript:void(0)" ng-click="formularioActivo='EditarCV'" ng-class="{active: formularioActivo=='EditarCV'}" class="user-options-item">
-        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='EditarCV'}" class="icon-perfilusuario"></i></div>
-        <div class="user-options-item-description">Editar CV</div></a><a href="/#/psicologoCita" ng-click="formularioActivo='CalendarioCitas'" ng-class="{active: formularioActivo=='CalendarioCitas'}" class="user-options-item">
-        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='CalendarioCitas'}" class="icon-calendariocitas"></i></div>
-        <div class="user-options-item-description">Calendario de citas</div></a>
-      <div class="user-options-separate"></div><a href="javascript:void(0)" ng-click="formularioActivo='CambiarContrasena'" ng-class="{active: formularioActivo=='CambiarContrasena'}" class="user-options-item">
-        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='CambiarContrasena'}" class="icon-cambiarcontrasena"></i></div>
-        <div class="user-options-item-description">Cambiar contraseña</div></a><a href="javascript:void(0)" ng-click="formularioActivo='CerrarSesion'" ng-class="{active: formularioActivo=='CerrarSesion'}" class="user-options-item">
-        <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='CerrarSesion'}" class="icon-cerrarsesion"></i></div>
-        <div class="user-options-item-description">Cerrar sesión</div></a>
+  <div ng-show="tab=='experiencia'" class="aux">
+    <div class="form-filium-container">
+      <form name="laboralForm" class="form-filium">
+        <div class="tabs-container"><a href="javascript:void(0)" ng-click="tab='estudios';mostrarForm=false" ng-class="{active: tab=='estudios'}" class="tab-item">Estudios</a><a href="javascript:void(0)" ng-click="tab='experiencia';mostrarForm=false" ng-class="{active: tab=='experiencia'}" class="tab-item">Experiencia</a><a href="javascript:void(0)" ng-click="tab='certificaciones';mostrarForm=false" ng-class="{active: tab=='certificaciones'}" class="tab-item">Certificaciones</a><a href="javascript:void(0)" ng-click="tab='idiomas';mostrarForm=false" ng-class="{active: tab=='idiomas'}" class="tab-item">Idiomas</a><a href="javascript:void(0)" ng-click="tab='habilidades';mostrarForm=false" ng-class="{active: tab=='habilidades'}" class="tab-item">Habilidades</a></div>
+        <div class="form-filium-title">Experiencia Laboral<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();agregarCertificados();agregarIdiomas();agregarHabilidades();" class="fbtn fbtn-add">Agregar</a></div>
+        <div class="form-content">
+          <div ng-show="mostrarForm" class="container-cv">
+            <div class="layout-content">                                                       
+              <div class="control-container">
+                <label for="centroLaboral" ng-class="{selectActive: selectChangecentroLaboral,success: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$invalid}">Centro Laboral</label>
+                <select type="text" name="centroLaboral" id="centroLaboral" ng-model="workCenter" ng-click="selectChangecentroLaboral=true" ng-class="{selectActive: selectChangecentroLaboral,success: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$invalid}" class="filium-control" required="required">
+                  <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Centro Laboral</option>
+                  <option value="1">Opción 1</option>
+                  <option value="2">Opción 2</option>
+                  <option value="3">Opción 3</option>
+                </select>
+                <div ng-class="{selectActive: selectChangecentroLaboral,success: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.centroLaboral.$invalid" class="errorMessage">Valor no válido</div>
+              </div>
+            </div>
+            <div class="layout-content">
+              <div class="control-container">
+                <label for="nombreCargo" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$valid, error: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$invalid}">Nombre del Cargo</label>
+                <input type="text" placeholder="Ingrese Nombre del Cargo" name="nombreCargo" id="nombreCargo" ng-model="job" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$valid, error: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$invalid}" class="filium-control" alphanumeric="alphanumeric" required="required"/>
+                <div ng-class="{success: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$valid, error: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.nombreCargo.$invalid" class="errorMessage">Valor no válido</div>
+              </div>
+            </div>
+            <div class="layout-content">
+              <div class="control-container">
+                <label for="descripcionFunciones" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$valid, error: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$invalid}" class="label-textarea">Descripción</label>
+                <textarea type="text" placeholder="Ingrese Descripción" name="descripcionFunciones" id="descripcionFunciones" ng-model="jobDescription" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$valid, error: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$invalid}" class="filium-control" alphanumeric="alphanumeric" required="required"></textarea>
+                <div ng-class="{success: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$valid, error: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$invalid" class="errorMessage">Valor no válido</div>
+              </div>
+            </div>
+            <div class="layout-content">
+              <div class="layout-dateIF padding-dateIF">
+                <div class="control-container">
+                  <label for="fechaInicioLaboral" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$invalid}">Fecha de Inicio</label>
+                  <input type="datetime" placeholder="Seleccione Fecha de Inicio" name="fechaInicioLaboral" id="fechaInicioLaboral" ng-model="date" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" readonly="readonly" class="filium-control" ng-required="!editando"/>
+                  <div ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$invalid" class="errorMessage">Valor no válido</div>
+                </div>
+              </div>
+              <div class="layout-dateIF padding-dateIF">
+                <div class="control-container">
+                  <label for="fechaFinLaboral" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$invalid}">Fecha de Fin</label>
+                  <input type="datetime" placeholder="Seleccione Fecha de Fin" name="fechaFinLaboral" id="fechaFinLaboral" ng-model="date" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" readonly="readonly" class="filium-control" ng-disabled="checkLab" ng-required="!checkLab &amp;&amp; !editando"/>
+                  <div ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$invalid" class="errorMessage">Valor no válido</div>
+                </div>
+              </div>
+              <div class="layout-dateIF-last padding-datedateIF-last">
+                <div class="checkbox c-checkbox needsclick">
+                  <label ng-init="laborandoActual=!laborandoActual" class="needsclick filium-checkbox">
+                    <input type="checkbox" name="checkLaborando" id="checkLaborando" ng-model="checkLab" ng-click="laborandoActual=!laborandoActual" class="needsclick"/><span class="fa fa-check"></span>Laborando Actualmente
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div ng-show="registrando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedLaboral=true" class="fbtn fbtn-primary">Registrar</a></div>
+            <div ng-show="editando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedLaboral=true" class="fbtn fbtn-primary">Guardar Cambios</a></div>
+          </div>
+          <div class="itemcv-container">
+            <div ng-repeat="matrizLaboral in matrizLaborales" class="itemcv">
+              <div class="itemcv-info">
+                <div class="itemcv-title"><em class="fa fa-briefcase"></em>{{matrizLaboral.organizacionName}}</div>
+                <div class="itemcv-descripion">{{matrizLaboral.nombreCargo}}</div>
+                <div ng-show="!matrizLaboral.laborandoActualmente" class="itemcv-descripion">{{matrizLaboral.fechaInicio}} - {{matrizLaboral.fechaFin}}</div>
+                <div ng-show="matrizLaboral.laborandoActualmente" class="itemcv-descripion">{{matrizLaboral.fechaInicio}} - Presente</div>
+              </div>
+              <div class="itemcv-image"><a href="javascript:void(0)" ng-click="editarLabores(matrizLaboral)" class="itemcv-option edit">Editar<i></i></a><a href="javascript:void(0)" class="itemcv-option remove">Eliminar<i></i></a></div>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
   <div ng-show="tab=='estudios'" class="aux">
     <div class="form-filium-container">
       <form name="estudiosForm" class="form-filium">
         <div class="tabs-container"><a href="javascript:void(0)" ng-click="tab='estudios';mostrarForm=false" ng-class="{active: tab=='estudios'}" class="tab-item">Estudios</a><a href="javascript:void(0)" ng-click="tab='experiencia';mostrarForm=false" ng-class="{active: tab=='experiencia'}" class="tab-item">Experiencia</a><a href="javascript:void(0)" ng-click="tab='certificaciones';mostrarForm=false" ng-class="{active: tab=='certificaciones'}" class="tab-item">Certificaciones</a><a href="javascript:void(0)" ng-click="tab='idiomas';mostrarForm=false" ng-class="{active: tab=='idiomas'}" class="tab-item">Idiomas</a><a href="javascript:void(0)" ng-click="tab='habilidades';mostrarForm=false" ng-class="{active: tab=='habilidades'}" class="tab-item">Habilidades</a></div>
-        <div class="form-filium-title">Formación Profesional<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();" class="fbtn fbtn-add">Agregar</a></div>
+        <div class="form-filium-title">Formación Profesional<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();agregarCertificados();agregarIdiomas();agregarHabilidades();" class="fbtn fbtn-add">Agregar</a></div>
         <div class="form-content">
           <div ng-show="mostrarForm" class="container-cv">
             <div class="layout-content">
@@ -83,6 +136,7 @@
                   <option value="1">Opción 1</option>
                   <option value="2">Opción 2</option>
                   <option value="3">Opción 3</option>
+                  <option ng-repeat="options in studyCenterJson" value="options.organizacionId">{{options.organizacionName}}</option>
                 </select>
                 <div ng-class="{selectActive: selectChangecentroEstudios,success: submittedProfessionalEducation &amp;&amp; estudiosForm.centroEstudios.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.centroEstudios.$invalid}" ng-show="submittedProfessionalEducation &amp;&amp; estudiosForm.centroEstudios.$invalid" class="errorMessage">Valor no válido</div>
               </div>
@@ -126,14 +180,14 @@
               <div class="layout-dateIF padding-dateIF">
                 <div class="control-container">
                   <label for="fechaInicio" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaInicio.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaInicio.$invalid}">Fecha de Inicio</label>
-                  <input type="datetime" placeholder="Seleccione Fecha de Inicio" name="fechaInicio" id="fechaInicio" ng-model="date" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaInicio.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaInicio.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" class="filium-control" required="required"/>
+                  <input type="datetime" placeholder="Seleccione Fecha de Inicio" name="fechaInicio" id="fechaInicio" ng-model="date" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaInicio.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaInicio.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" readonly="readonly" class="filium-control" ng-required="!editando"/>
                   <div ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaInicio.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaInicio.$invalid}" ng-show="submittedProfessionalEducation &amp;&amp; estudiosForm.fechaInicio.$invalid" class="errorMessage">Valor no válido</div>
                 </div>
               </div>
               <div class="layout-dateIF padding-dateIF">
                 <div class="control-container">
                   <label for="fechaFin" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid}">Fecha de Fin</label>
-                  <input type="datetime" placeholder="Seleccione Fecha de Fin" name="fechaFin" id="fechaFin" ng-model="date" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" class="filium-control" ng-disabled="!estudiandoActual" ng-required="estudiandoActual"/>
+                  <input type="datetime" placeholder="Seleccione Fecha de Fin" name="fechaFin" id="fechaFin" ng-model="date" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" readonly="readonly" class="filium-control" ng-disabled="!estudiandoActual" ng-required="estudiandoActual &amp;&amp; !editando"/>
                   <div ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid}" ng-show="submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid" class="errorMessage">Valor no válido</div>
                 </div>
               </div>
@@ -171,150 +225,106 @@
       </form>
     </div>
   </div>
-  <div ng-show="tab=='experiencia'" class="aux">
-    <div class="form-filium-container">
-      <form name="laboralForm" class="form-filium">
-        <div class="tabs-container"><a href="javascript:void(0)" ng-click="tab='estudios';mostrarForm=false" ng-class="{active: tab=='estudios'}" class="tab-item">Estudios</a><a href="javascript:void(0)" ng-click="tab='experiencia';mostrarForm=false" ng-class="{active: tab=='experiencia'}" class="tab-item">Experiencia</a><a href="javascript:void(0)" ng-click="tab='certificaciones';mostrarForm=false" ng-class="{active: tab=='certificaciones'}" class="tab-item">Certificaciones</a><a href="javascript:void(0)" ng-click="tab='idiomas';mostrarForm=false" ng-class="{active: tab=='idiomas'}" class="tab-item">Idiomas</a><a href="javascript:void(0)" ng-click="tab='habilidades';mostrarForm=false" ng-class="{active: tab=='habilidades'}" class="tab-item">Habilidades</a></div>
-        <div class="form-filium-title">Experiencia Laboral<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();" class="fbtn fbtn-add">Agregar</a></div>
-        <div class="form-content">
-          <div ng-show="mostrarForm" class="container-cv">
-            <div class="layout-content">
-              <div class="control-container">
-                <label for="centroLaboral" ng-class="{selectActive: selectChangecentroLaboral,success: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$invalid}">Centro Laboral</label>
-                <select type="text" name="centroLaboral" id="centroLaboral" ng-model="workCenter" ng-click="selectChangecentroLaboral=true" ng-class="{selectActive: selectChangecentroLaboral,success: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$invalid}" class="filium-control" required="required">
-                  <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Centro Laboral</option>
-                  <option value="1">Opción 1</option>
-                  <option value="2">Opción 2</option>
-                  <option value="3">Opción 3</option>
-                </select>
-                <div ng-class="{selectActive: selectChangecentroLaboral,success: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.centroLaboral.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.centroLaboral.$invalid" class="errorMessage">Valor no válido</div>
-              </div>
-            </div>
-            <div class="layout-content">
-              <div class="control-container">
-                <label for="nombreCargo" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$valid, error: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$invalid}">Nombre del Cargo</label>
-                <input type="text" placeholder="Ingrese Nombre del Cargo" name="nombreCargo" id="nombreCargo" ng-model="job" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$valid, error: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$invalid}" class="filium-control" names="names" required="required"/>
-                <div ng-class="{success: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$valid, error: submittedLaboral &amp;&amp; laboralForm.nombreCargo.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.nombreCargo.$invalid" class="errorMessage">Valor no válido</div>
-              </div>
-            </div>
-            <div class="layout-content">
-              <div class="control-container">
-                <label for="descripcionFunciones" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$valid, error: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$invalid}" class="label-textarea">Descripción</label>
-                <textarea type="text" placeholder="Ingrese Descripción" name="descripcionFunciones" id="descripcionFunciones" ng-model="jobDescription" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$valid, error: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$invalid}" class="filium-control" names="names" required="required"></textarea>
-                <div ng-class="{success: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$valid, error: submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.descripcionFunciones.$invalid" class="errorMessage">Valor no válido</div>
-              </div>
-            </div>
-            <div class="layout-content">
-              <div class="layout-dateIF padding-dateIF">
-                <div class="control-container">
-                  <label for="fechaInicioLaboral" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$invalid}">Fecha de Inicio</label>
-                  <input type="datetime" placeholder="Seleccione Fecha de Inicio" name="fechaInicioLaboral" id="fechaInicioLaboral" ng-model="date" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" class="filium-control" required="required"/>
-                  <div ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.fechaInicioLaboral.$invalid" class="errorMessage">Valor no válido</div>
-                </div>
-              </div>
-              <div class="layout-dateIF padding-dateIF">
-                <div class="control-container">
-                  <label for="fechaFinLaboral" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$invalid}">Fecha de Fin</label>
-                  <input type="datetime" placeholder="Seleccione Fecha de Fin" name="fechaFinLaboral" id="fechaFinLaboral" ng-model="date" ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" class="filium-control" ng-disabled="checkLab" ng-required="checkLab"/>
-                  <div ng-class="{success: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$valid, error: submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$invalid}" ng-show="submittedLaboral &amp;&amp; laboralForm.fechaFinLaboral.$invalid" class="errorMessage">Valor no válido</div>
-                </div>
-              </div>
-              <div class="layout-dateIF-last padding-datedateIF-last">
-                <div class="checkbox c-checkbox needsclick">
-                  <label ng-init="laborandoActual=!laborandoActual" class="needsclick filium-checkbox">
-                    <input type="checkbox" name="checkLaborando" id="checkLaborando" ng-model="checkLab" ng-click="laborandoActual=!laborandoActual" class="needsclick"/><span class="fa fa-check"></span>Laborando Actualmente
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div ng-show="registrando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedLaboral=true" class="fbtn fbtn-primary">Registrar</a></div>
-            <div ng-show="editando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedLaboral=true" class="fbtn fbtn-primary">Guardar Cambios</a></div>
-          </div>
-          <div class="itemcv-container">
-            <div ng-repeat="matrizLaboral in matrizLaborales" class="itemcv">
-              <div class="itemcv-info">
-                <div class="itemcv-title"><em class="fa fa-briefcase"></em>{{matrizLaboral.organizacionName}}</div>
-                <div class="itemcv-descripion">{{matrizLaboral.nombreCargo}}</div>
-                <div ng-show="!matrizLaboral.laborandoActualmente" class="itemcv-descripion">{{matrizLaboral.fechaInicio}} - {{matrizLaboral.fechaFin}}</div>
-                <div ng-show="matrizLaboral.laborandoActualmente" class="itemcv-descripion">{{matrizLaboral.fechaInicio}} - Presente</div>
-              </div>
-              <div class="itemcv-image"><a href="javascript:void(0)" ng-click="editarLabores(matrizLaboral)" class="itemcv-option edit">Editar<i></i></a><a href="javascript:void(0)" class="itemcv-option remove">Eliminar<i></i></a></div>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
   <div ng-show="tab=='certificaciones'" class="aux">
     <div class="form-filium-container">
       <form name="certificacionForm" class="form-filium">
         <div class="tabs-container"><a href="javascript:void(0)" ng-click="tab='estudios';mostrarForm=false" ng-class="{active: tab=='estudios'}" class="tab-item">Estudios</a><a href="javascript:void(0)" ng-click="tab='experiencia';mostrarForm=false" ng-class="{active: tab=='experiencia'}" class="tab-item">Experiencia</a><a href="javascript:void(0)" ng-click="tab='certificaciones';mostrarForm=false" ng-class="{active: tab=='certificaciones'}" class="tab-item">Certificaciones</a><a href="javascript:void(0)" ng-click="tab='idiomas';mostrarForm=false" ng-class="{active: tab=='idiomas'}" class="tab-item">Idiomas</a><a href="javascript:void(0)" ng-click="tab='habilidades';mostrarForm=false" ng-class="{active: tab=='habilidades'}" class="tab-item">Habilidades</a></div>
-        <div class="form-filium-title">Certificaciones<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();" class="fbtn fbtn-add">Agregar</a></div>
+        <div class="form-filium-title">Certificaciones<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();agregarCertificados();agregarIdiomas();agregarHabilidades();" class="fbtn fbtn-add">Agregar</a></div>
         <div class="form-content">
-          <div class="layout-content">
-            <div class="control-container">
-              <label for="tituloCertificacion" ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$invalid}">Certificación</label>
-              <input type="text" placeholder="Ingrese Certificación" name="tituloCertificacion" id="tituloCertificacion" ng-model="job" ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$invalid}" class="filium-control" names="names" required="required"/>
-              <div ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$invalid}" ng-show="submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$invalid" class="errorMessage">Valor no válido</div>
+          <div ng-show="mostrarForm" class="container-cv">
+            <div class="layout-content">
+              <div class="control-container">
+                <label for="tituloCertificacion" ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$invalid}">Título</label>
+                <input type="text" placeholder="Ingrese Título" name="tituloCertificacion" id="tituloCertificacion" ng-model="certifTitle" ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$invalid}" class="filium-control" alphanumeric="alphanumeric" required="required"/>
+                <div ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$invalid}" ng-show="submittedCertificacion &amp;&amp; certificacionForm.tituloCertificacion.$invalid" class="errorMessage">Valor no válido</div>
+              </div>
+            </div>
+            <div class="layout-content">
+              <div class="control-container">
+                <label for="fechaCertif" ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.fechaCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.fechaCertif.$invalid}">Fecha de Certificación</label>
+                <input type="datetime" placeholder="Seleccione Fecha de Certificación" name="fechaCertif" id="fechaCertif" ng-model="date" ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.fechaCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.fechaCertif.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" readonly="readonly" class="filium-control" ng-disabled="!estudiandoActual" ng-required="estudiandoActual &amp;&amp; !editando"/>
+                <div ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.fechaCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.fechaCertif.$invalid}" ng-show="submittedCertificacion &amp;&amp; certificacionForm.fechaCertif.$invalid" class="errorMessage">Valor no válido</div>
+              </div>
+            </div>
+            <div class="layout-content">
+              <div class="control-container">
+                <label for="organizacionCertif" ng-class="{selectActive: selectChangeorganizacionCertif,success: submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$invalid}">Organización</label>
+                <select type="text" name="organizacionCertif" id="organizacionCertif" ng-model="certifCenter" ng-click="selectChangeorganizacionCertif=true" ng-class="{selectActive: selectChangeorganizacionCertif,success: submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$invalid}" class="filium-control" required="required">
+                  <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Organización</option>
+                  <option value="1">Opción 1</option>
+                  <option value="2">Opción 2</option>
+                  <option value="3">Opción 3</option>
+                </select>
+                <div ng-class="{selectActive: selectChangeorganizacionCertif,success: submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$invalid}" ng-show="submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$invalid" class="errorMessage">Valor no válido</div>
+              </div>
+            </div>
+            <div class="layout-content">
+              <div class="control-container">
+                <label for="descripcionCertif" ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$invalid}" class="label-textarea">Descripción</label>
+                <textarea type="text" placeholder="Ingrese Descripción" name="descripcionCertif" id="descripcionCertif" ng-model="certifDescription" ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$invalid}" class="filium-control" alphanumeric="alphanumeric"></textarea>
+                <div ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$invalid}" ng-show="submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$invalid" class="errorMessage">Valor no válido</div>
+              </div>
+            </div>
+            <div ng-show="registrando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedCertificacion=true" class="fbtn fbtn-primary">Registrar</a></div>
+            <div ng-show="editando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedCertificacion=true" class="fbtn fbtn-primary">Guardar Cambios</a></div>
+          </div>
+          <div class="itemcv-container">
+            <div ng-repeat="matrizCertificacion in matrizCertificaciones" class="itemcv">
+              <div class="itemcv-info">
+                <div class="itemcv-title"><em class="fa fa-list-alt"></em>{{matrizCertificacion.tituloCertificacion}}</div>
+                <div class="itemcv-descripion">{{matrizCertificacion.organizacionName}}</div>
+                <div class="itemcv-descripion">{{matrizCertificacion.fechaCertificacion}}</div>
+              </div>
+              <div class="itemcv-image"><a href="javascript:void(0)" ng-click="editarCertificados(matrizCertificacion)" class="itemcv-option edit">Editar<i></i></a><a href="javascript:void(0)" class="itemcv-option remove">Eliminar<i></i></a></div>
             </div>
           </div>
-          <div class="layout-content">
-            <div class="control-container">
-              <label for="organizacionCertif" ng-class="{selectActive: selectChangeorganizacionCertif,success: submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$invalid}">Organización</label>
-              <select type="text" name="organizacionCertif" id="organizacionCertif" ng-model="certifCenter" ng-click="selectChangeorganizacionCertif=true" ng-class="{selectActive: selectChangeorganizacionCertif,success: submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$invalid}" class="filium-control" required="required">
-                <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Organización</option>
-                <option value="1">Opción 1</option>
-                <option value="2">Opción 2</option>
-                <option value="3">Opción 3</option>
-              </select>
-              <div ng-class="{selectActive: selectChangeorganizacionCertif,success: submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$invalid}" ng-show="submittedCertificacion &amp;&amp; certificacionForm.organizacionCertif.$invalid" class="errorMessage">Valor no válido</div>
-            </div>
-          </div>
-          <div class="layout-content">
-            <div class="control-container">
-              <label for="descripcionCertif" ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$invalid}" class="label-textarea">Descripción</label>
-              <textarea type="text" placeholder="Ingrese Descripción" name="descripcionCertif" id="descripcionCertif" ng-model="certifDescription" ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$invalid}" class="filium-control" names="names" required="required"></textarea>
-              <div ng-class="{success: submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$valid, error: submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$invalid}" ng-show="submittedCertificacion &amp;&amp; certificacionForm.descripcionCertif.$invalid" class="errorMessage">Valor no válido</div>
-            </div>
-          </div>
-          <div class="button-container"><a href="javascript:void(0)" ng-click="" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedCertificacion=true" class="fbtn fbtn-primary">Guardar Cambios</a></div>
         </div>
       </form>
     </div>
   </div>
   <div ng-show="tab=='idiomas'" class="aux">
     <div class="form-filium-container">
-      <form name="laboralForm" class="form-filium">
+      <form name="idiomasForm" class="form-filium">
         <div class="tabs-container"><a href="javascript:void(0)" ng-click="tab='estudios';mostrarForm=false" ng-class="{active: tab=='estudios'}" class="tab-item">Estudios</a><a href="javascript:void(0)" ng-click="tab='experiencia';mostrarForm=false" ng-class="{active: tab=='experiencia'}" class="tab-item">Experiencia</a><a href="javascript:void(0)" ng-click="tab='certificaciones';mostrarForm=false" ng-class="{active: tab=='certificaciones'}" class="tab-item">Certificaciones</a><a href="javascript:void(0)" ng-click="tab='idiomas';mostrarForm=false" ng-class="{active: tab=='idiomas'}" class="tab-item">Idiomas</a><a href="javascript:void(0)" ng-click="tab='habilidades';mostrarForm=false" ng-class="{active: tab=='habilidades'}" class="tab-item">Habilidades</a></div>
-        <div class="form-filium-title">Idiomas<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();" class="fbtn fbtn-add">Agregar</a></div>
+        <div class="form-filium-title">Idiomas<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();agregarCertificados();agregarIdiomas();agregarHabilidades();" class="fbtn fbtn-add">Agregar</a></div>
         <div class="form-content">
-          <div class="layout-content">
+          <div ng-show="mostrarForm" class="layout-content">
             <div class="layout-1-2 padding-1-2">
               <div class="control-container">
-                <label for="idioma" ng-class="{selectActive: selectChangeidioma,success: submittedIdioma &amp;&amp; laboralForm.idioma.$valid, error: submittedIdioma &amp;&amp; laboralForm.idioma.$invalid}">Idioma</label>
-                <select type="text" name="idioma" id="idioma" ng-model="language" ng-click="selectChangeidioma=true" ng-class="{selectActive: selectChangeidioma,success: submittedIdioma &amp;&amp; laboralForm.idioma.$valid, error: submittedIdioma &amp;&amp; laboralForm.idioma.$invalid}" class="filium-control" required="required">
+                <label for="idioma" ng-class="{selectActive: selectChangeidioma,success: submittedIdioma &amp;&amp; idiomasForm.idioma.$valid, error: submittedIdioma &amp;&amp; idiomasForm.idioma.$invalid}">Idioma</label>
+                <select type="text" name="idioma" id="idioma" ng-model="lernedLanguage" ng-click="selectChangeidioma=true" ng-class="{selectActive: selectChangeidioma,success: submittedIdioma &amp;&amp; idiomasForm.idioma.$valid, error: submittedIdioma &amp;&amp; idiomasForm.idioma.$invalid}" class="filium-control" required="required">
                   <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Idioma</option>
                   <option value="1">Opción 1</option>
                   <option value="2">Opción 2</option>
                   <option value="3">Opción 3</option>
                 </select>
-                <div ng-class="{selectActive: selectChangeidioma,success: submittedIdioma &amp;&amp; laboralForm.idioma.$valid, error: submittedIdioma &amp;&amp; laboralForm.idioma.$invalid}" ng-show="submittedIdioma &amp;&amp; laboralForm.idioma.$invalid" class="errorMessage">Valor no válido</div>
+                <div ng-class="{selectActive: selectChangeidioma,success: submittedIdioma &amp;&amp; idiomasForm.idioma.$valid, error: submittedIdioma &amp;&amp; idiomasForm.idioma.$invalid}" ng-show="submittedIdioma &amp;&amp; idiomasForm.idioma.$invalid" class="errorMessage">Valor no válido</div>
               </div>
             </div>
             <div class="layout-1-2 padding-1-2">
               <div class="control-container">
-                <label for="nivelIdioma" ng-class="{selectActive: selectChangenivelIdioma,success: submittedIdioma &amp;&amp; laboralForm.nivelIdioma.$valid, error: submittedIdioma &amp;&amp; laboralForm.nivelIdioma.$invalid}">Nivel de Dominio</label>
-                <select type="text" name="nivelIdioma" id="nivelIdioma" ng-model="languageLevel" ng-click="selectChangenivelIdioma=true" ng-class="{selectActive: selectChangenivelIdioma,success: submittedIdioma &amp;&amp; laboralForm.nivelIdioma.$valid, error: submittedIdioma &amp;&amp; laboralForm.nivelIdioma.$invalid}" class="filium-control" required="required">
+                <label for="nivelIdioma" ng-class="{selectActive: selectChangenivelIdioma,success: submittedIdioma &amp;&amp; idiomasForm.nivelIdioma.$valid, error: submittedIdioma &amp;&amp; idiomasForm.nivelIdioma.$invalid}">Nivel de Dominio</label>
+                <select type="text" name="nivelIdioma" id="nivelIdioma" ng-model="languageLevel" ng-click="selectChangenivelIdioma=true" ng-class="{selectActive: selectChangenivelIdioma,success: submittedIdioma &amp;&amp; idiomasForm.nivelIdioma.$valid, error: submittedIdioma &amp;&amp; idiomasForm.nivelIdioma.$invalid}" class="filium-control" required="required">
                   <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Nivel de Dominio</option>
                   <option value="1">Opción 1</option>
                   <option value="2">Opción 2</option>
                   <option value="3">Opción 3</option>
                 </select>
-                <div ng-class="{selectActive: selectChangenivelIdioma,success: submittedIdioma &amp;&amp; laboralForm.nivelIdioma.$valid, error: submittedIdioma &amp;&amp; laboralForm.nivelIdioma.$invalid}" ng-show="submittedIdioma &amp;&amp; laboralForm.nivelIdioma.$invalid" class="errorMessage">Valor no válido</div>
+                <div ng-class="{selectActive: selectChangenivelIdioma,success: submittedIdioma &amp;&amp; idiomasForm.nivelIdioma.$valid, error: submittedIdioma &amp;&amp; idiomasForm.nivelIdioma.$invalid}" ng-show="submittedIdioma &amp;&amp; idiomasForm.nivelIdioma.$invalid" class="errorMessage">Valor no válido</div>
               </div>
             </div>
+            <div ng-show="registrando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedIdioma=true" class="fbtn fbtn-primary">Registrar</a></div>
+            <div ng-show="editando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedIdioma=true" class="fbtn fbtn-primary">Guardar Cambios</a></div>
           </div>
-          <div class="button-container"><a href="javascript:void(0)" ng-click="" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedIdioma=true" class="fbtn fbtn-primary">Guardar Cambios</a></div>
+          <div class="itemcv-container">
+            <div ng-repeat="matrizIdioma in matrizIdiomas" class="itemcv">
+              <div class="itemcv-info">
+                <div class="itemcv-title"><em class="fa fa-comments"></em>{{matrizIdioma.idiomaName}}</div>
+                <div class="itemcv-descripion">Nivel {{matrizIdioma.nivelIdiomaName}}</div>
+              </div>
+              <div class="itemcv-image"><a href="javascript:void(0)" ng-click="editarIdiomas(matrizIdioma)" class="itemcv-option edit">Editar<i></i></a><a href="javascript:void(0)" class="itemcv-option remove">Eliminar<i></i></a></div>
+            </div>
+          </div>
         </div>
       </form>
     </div>
@@ -323,21 +333,40 @@
     <div class="form-filium-container">
       <form name="habilidadForm" class="form-filium">
         <div class="tabs-container"><a href="javascript:void(0)" ng-click="tab='estudios';mostrarForm=false" ng-class="{active: tab=='estudios'}" class="tab-item">Estudios</a><a href="javascript:void(0)" ng-click="tab='experiencia';mostrarForm=false" ng-class="{active: tab=='experiencia'}" class="tab-item">Experiencia</a><a href="javascript:void(0)" ng-click="tab='certificaciones';mostrarForm=false" ng-class="{active: tab=='certificaciones'}" class="tab-item">Certificaciones</a><a href="javascript:void(0)" ng-click="tab='idiomas';mostrarForm=false" ng-class="{active: tab=='idiomas'}" class="tab-item">Idiomas</a><a href="javascript:void(0)" ng-click="tab='habilidades';mostrarForm=false" ng-class="{active: tab=='habilidades'}" class="tab-item">Habilidades</a></div>
-        <div class="form-filium-title">Habilidades<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();" class="fbtn fbtn-add">Agregar</a></div>
+        <div class="form-filium-title">Habilidades<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();agregarCertificados();agregarIdiomas();agregarHabilidades();" class="fbtn fbtn-add">Agregar</a></div>
         <div class="form-content">
-          <div class="layout-content">
-            <div class="control-container">
-              <label for="habilidad" ng-class="{selectActive: selectChangehabilidad,success: submittedHabilidad &amp;&amp; habilidadForm.habilidad.$valid, error: submittedHabilidad &amp;&amp; habilidadForm.habilidad.$invalid}">Habilidad</label>
-              <select type="text" name="habilidad" id="habilidad" ng-model="language" ng-click="selectChangehabilidad=true" ng-class="{selectActive: selectChangehabilidad,success: submittedHabilidad &amp;&amp; habilidadForm.habilidad.$valid, error: submittedHabilidad &amp;&amp; habilidadForm.habilidad.$invalid}" class="filium-control" required="required">
-                <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Habilidad</option>
-                <option value="1">Opción 1</option>
-                <option value="2">Opción 2</option>
-                <option value="3">Opción 3</option>
-              </select>
-              <div ng-class="{selectActive: selectChangehabilidad,success: submittedHabilidad &amp;&amp; habilidadForm.habilidad.$valid, error: submittedHabilidad &amp;&amp; habilidadForm.habilidad.$invalid}" ng-show="submittedHabilidad &amp;&amp; habilidadForm.habilidad.$invalid" class="errorMessage">Valor no válido</div>
+          <div ng-show="mostrarForm" class="layout-content">
+            <div class="layout-content">
+              <div class="control-container">
+                <label for="habilidad" ng-class="{selectActive: selectChangehabilidad,success: submittedHabilidad &amp;&amp; habilidadForm.habilidad.$valid, error: submittedHabilidad &amp;&amp; habilidadForm.habilidad.$invalid}">Habilidad</label>
+                <select type="text" name="habilidad" id="habilidad" ng-model="abilityValue" ng-click="selectChangehabilidad=true" ng-class="{selectActive: selectChangehabilidad,success: submittedHabilidad &amp;&amp; habilidadForm.habilidad.$valid, error: submittedHabilidad &amp;&amp; habilidadForm.habilidad.$invalid}" class="filium-control" required="required">
+                  <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Habilidad</option>
+                  <option value="1">Opción 1</option>
+                  <option value="2">Opción 2</option>
+                  <option value="3">Opción 3</option>
+                </select>
+                <div ng-class="{selectActive: selectChangehabilidad,success: submittedHabilidad &amp;&amp; habilidadForm.habilidad.$valid, error: submittedHabilidad &amp;&amp; habilidadForm.habilidad.$invalid}" ng-show="submittedHabilidad &amp;&amp; habilidadForm.habilidad.$invalid" class="errorMessage">Valor no válido</div>
+              </div>
+            </div>
+            <div class="layout-content">
+              <div class="control-container">
+                <label for="DescripcionHabilidades" ng-class="{success: submittedHabilidad &amp;&amp; habilidadForm.DescripcionHabilidades.$valid, error: submittedHabilidad &amp;&amp; habilidadForm.DescripcionHabilidades.$invalid}" class="label-textarea">Descripcion</label>
+                <textarea type="text" placeholder="Ingrese Descripcion" name="DescripcionHabilidades" id="DescripcionHabilidades" ng-model="abilitiesDescription" ng-class="{success: submittedHabilidad &amp;&amp; habilidadForm.DescripcionHabilidades.$valid, error: submittedHabilidad &amp;&amp; habilidadForm.DescripcionHabilidades.$invalid}" class="filium-control" alphanumeric="alphanumeric"></textarea>
+                <div ng-class="{success: submittedHabilidad &amp;&amp; habilidadForm.DescripcionHabilidades.$valid, error: submittedHabilidad &amp;&amp; habilidadForm.DescripcionHabilidades.$invalid}" ng-show="submittedHabilidad &amp;&amp; habilidadForm.DescripcionHabilidades.$invalid" class="errorMessage">Valor no válido</div>
+              </div>
+            </div>
+            <div ng-show="registrando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedHabilidad=true" class="fbtn fbtn-primary">Registrar</a></div>
+            <div ng-show="editando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedHabilidad=true" class="fbtn fbtn-primary">Guardar Cambios</a></div>
+          </div>
+          <div class="itemcv-container">
+            <div ng-repeat="matrizHabilidad in matrizHabilidades" class="itemcv">
+              <div class="itemcv-info">
+                <div class="itemcv-title"><em class="fa fa-star"></em>{{matrizHabilidad.habilidadName}}</div>
+                <div class="itemcv-descripion">{{matrizHabilidad.descripcion}}</div>
+              </div>
+              <div class="itemcv-image"><a href="javascript:void(0)" ng-click="editarHabilidades(matrizHabilidad)" class="itemcv-option edit">Editar<i></i></a><a href="javascript:void(0)" class="itemcv-option remove">Eliminar<i></i></a></div>
             </div>
           </div>
-          <div class="button-container"><a href="javascript:void(0)" ng-click="" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedHabilidad=true" class="fbtn fbtn-primary">Guardar Cambios</a></div>
         </div>
       </form>
     </div>

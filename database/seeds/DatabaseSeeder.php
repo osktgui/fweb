@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder {
 		$this->call(UsuarioTableSeeder::class );
 		$this->call(RolUsuariosTableSeeder::class );
 		$this->call(HorarioDisponibleTableSeeder::class );
+		$this->call(UbigeosTableSeeder::class );
+		$this->call(OrganizacionsTableSeeder::class );
 
 		Model::reguard();
 	}

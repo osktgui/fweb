@@ -14,6 +14,7 @@ class CreateHabilidadPersonalsTable extends Migration {
 				$table->increments('habilidadPersonalId');
 				$table->integer('personaId')->unsigned();
 				$table->integer('habilidadId');
+				$table->text('descripcion')->nullable();
 				// Auditoría
 				$table->string('created_by', 50);
 				$table->string('updated_by', 50)->nullable();

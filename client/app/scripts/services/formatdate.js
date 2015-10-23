@@ -58,6 +58,7 @@ angular.module('filiumApp')
         }
     }
     function getNumberTwoDigits(number){
+        number = parseInt(number);
         if (number <10) {return '0'+number;}
         else {return ''+number;}
     }
