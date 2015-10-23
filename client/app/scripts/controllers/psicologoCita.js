@@ -9,6 +9,7 @@
 angular.module('filiumApp')
   .controller('PsicologoCitaCtrl',function ($rootScope, $scope, $window,filiumServices) {
      //calendario
+     
     $scope.libre  ='#257e4a';
     $scope.ocupado='#555e4a';
 
@@ -16,7 +17,7 @@ angular.module('filiumApp')
     $scope.MSelected=0;
     $scope.DSelected=0;
     $scope.horariosDisponibles=[
-        {
+        /*{
             end: new Date(2015,9,22,4,45,0,0),
             hFin: "04:45 a.m.",
             hIni: "04:00 a.m.",
@@ -55,7 +56,7 @@ angular.module('filiumApp')
             start: new Date(2015,9,22,8,0,0,0),
             title: "Libre",
             color: $scope.libre
-        }
+        }*/
     ];
     $scope.eventosDia=[];
     $scope.eventSources = [];
@@ -87,8 +88,10 @@ angular.module('filiumApp')
         //eventResize: $scope.alertOnResize
       }
     };
+    
     //fin calendario
     $scope.horas=[
+      
         {id:1,text:'12:00 a.m',isinuse:true},
         {id:2,text:'01:00 a.m.',isinuse:true},
         {id:3,text:'02:00 a.m.',isinuse:true},
@@ -113,9 +116,11 @@ angular.module('filiumApp')
         {id:22,text:'09:00 p.m' ,isinuse:true},
         {id:23,text:'10:00 p.m' ,isinuse:true},
         {id:24,text:'11:00 p.m' ,isinuse:true}
+        
         ];
 
     $scope.horarios=[
+        
         { id:1  ,hIni:'12:00 a.m.', hFin:'12:45 a.m.'},
         { id:2  ,hIni:'01:00 a.m.', hFin:'01:45 a.m.'},
         { id:3  ,hIni:'02:00 a.m.', hFin:'02:45 a.m.'},
@@ -140,6 +145,7 @@ angular.module('filiumApp')
         { id:22 ,hIni:'09:00 p.m.', hFin:'09:45 p.m.'},
         { id:23 ,hIni:'10:00 p.m.', hFin:'10:45 p.m.'},
         { id:24 ,hIni:'11:00 p.m.', hFin:'11:45 p.m.'}
+        
     ];
     
     //selecciona eventos del dia para el popup
@@ -170,13 +176,14 @@ angular.module('filiumApp')
             }
         }
         selEventosDiaSel(new Date($scope.YSelected,$scope.MSelected,$scope.DSelected));
-        console.log($scope.horariosDisponibles);
+        
     };
     
     $scope.priComboSelected=function(hora){
         angular.forEach($scope.horas, function(e){
             e.isinuse=(e.id>hora.id);
         });
+
     };
     
     $scope.removeHorario=function(horarioId){
@@ -186,5 +193,7 @@ angular.module('filiumApp')
             }
         };
         selEventosDiaSel(new Date($scope.YSelected,$scope.MSelected,$scope.DSelected));
+        
     };
+  
   });
