@@ -9,16 +9,97 @@
  */
 angular.module('filiumApp')
   .service('DataMaestra', function ($http, $q, pageConfig) {
-
-
-  	function getOrganizaciones(){
-  		var request = $http({
-				method: 'get',
-				url: 'getOrganizaciones'
-  		});
-			return (request.then(handleSuccess, handleError));
-  	}
-
+    function getTipoDocumento(){
+      var request = $http({
+        method: 'get',
+        url: 'getTipoDocumento'
+      });
+      return (request.then(handleSuccess, handleError));
+    }
+    function getSexo(){
+      var request = $http({
+        method: 'get',
+        url: 'getSexo'
+      });
+      return (request.then(handleSuccess, handleError));
+    }
+    function getTipoRegistro(){
+      var request = $http({
+        method: 'get',
+        url: 'getTipoRegistro'
+      });
+      return (request.then(handleSuccess, handleError));
+    }
+    function getRoles(){
+      var request = $http({
+        method: 'get',
+        url: 'getRoles'
+      });
+      return (request.then(handleSuccess, handleError));
+    }
+    function getEstadoCitas(){
+      var request = $http({
+        method: 'get',
+        url: 'getEstadoCitas'
+      });
+      return (request.then(handleSuccess, handleError));
+    }
+    function getTipoCita(){
+      var request = $http({
+        method: 'get',
+        url: 'getTipoCita'
+      });
+      return (request.then(handleSuccess, handleError));
+    }
+    function getRubroEmpresas(){
+      var request = $http({
+        method: 'get',
+        url: 'getRubroEmpresas'
+      });
+      return (request.then(handleSuccess, handleError));
+    }
+    function getTipoCodigoEmpresa(){
+      var request = $http({
+        method: 'get',
+        url: 'getTipoCodigoEmpresa'
+      });
+      return (request.then(handleSuccess, handleError));
+    }
+    function getGradoAcademico(){
+      var request = $http({
+        method: 'get',
+        url: 'getGradoAcademico'
+      });
+      return (request.then(handleSuccess, handleError));
+    }
+    function getIdiomas(){
+      var request = $http({
+        method: 'get',
+        url: 'getIdiomas'
+      });
+      return (request.then(handleSuccess, handleError));
+    }
+    function getNivelIdiomas(){
+      var request = $http({
+        method: 'get',
+        url: 'getNivelIdiomas'
+      });
+      return (request.then(handleSuccess, handleError));
+    }
+    function getHabilidades(){
+      var request = $http({
+        method: 'get',
+        url: 'getHabilidades'
+      });
+      return (request.then(handleSuccess, handleError));
+    }
+    function getOrganizaciones(){
+      var request = $http({
+        method: 'get',
+        url: 'getOrganizaciones'
+      });
+      return (request.then(handleSuccess, handleError));
+    }
 		//Métodos privados
     function handleError( response ) {
         if (
@@ -36,6 +117,22 @@ angular.module('filiumApp')
     }
 
 		return ({
-			getOrganizaciones: getOrganizaciones
+      getTipoDocumento: getTipoDocumento,
+      getSexo: getSexo,
+      getTipoRegistro: getTipoRegistro,
+      getRoles: getRoles,
+      getEstadoCitas: getEstadoCitas,
+      getTipoCita: getTipoCita,
+      getRubroEmpresas: getRubroEmpresas,
+      getTipoCodigoEmpresa: getTipoCodigoEmpresa,
+      getGradoAcademico: getGradoAcademico,
+      getIdiomas: getIdiomas,
+      getNivelIdiomas: getNivelIdiomas,
+      getHabilidades: getHabilidades,
+      getOrganizaciones: getOrganizaciones
 		});
   });
+
+
+
+

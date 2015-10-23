@@ -474,8 +474,7 @@ module.exports = function (grunt) {
           cwd: '<%= yeoman.app %>',
           src: 'scripts/controllers/**/*',
           dest: '<%= yeoman.dist %>'
-        }
-        , {
+        }, {
           expand: true,
           cwd: '<%= yeoman.app %>',
           src: 'scripts/templates.js*',
@@ -528,8 +527,7 @@ module.exports = function (grunt) {
             filePath = filePath.replace('client/app/styles/general/', '');
             filePath = filePath.replace('client/app/styles/pages/', '');
             return '@import \'.' + filePath + '\';';
-
-            return filePath
+            return filePath;
           },
           starttag: '// injector:sass',
           endtag: '// endinjector:sass'

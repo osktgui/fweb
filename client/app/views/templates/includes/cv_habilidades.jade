@@ -1,7 +1,8 @@
 +form-header-cv("Habilidades","habilidadForm")
 	.layout-content(ng-show="mostrarForm")
 		.layout-content
-			+controlFilium-select("Habilidad","habilidad","abilityValue","{selectActive: selectChangehabilidad,success: submittedHabilidad && habilidadForm.habilidad.$valid, error: submittedHabilidad && habilidadForm.habilidad.$invalid}","submittedHabilidad && habilidadForm.habilidad.$invalid")(required)
+			+controlFilium-select-empty("Habilidad","habilidad","abilityValue","{selectActive: selectChangehabilidad,success: submittedHabilidad && habilidadForm.habilidad.$valid, error: submittedHabilidad && habilidadForm.habilidad.$invalid}","submittedHabilidad && habilidadForm.habilidad.$invalid")(required)
+				option(ng-repeat="options in abilityValueJson" value="{{options.id}}") {{options.value}}
 		.layout-content
 			+controlFilium-textarea("Descripcion","DescripcionHabilidades","abilitiesDescription","{success: submittedHabilidad && habilidadForm.DescripcionHabilidades.$valid, error: submittedHabilidad && habilidadForm.DescripcionHabilidades.$invalid}","submittedHabilidad && habilidadForm.DescripcionHabilidades.$invalid")(alphanumeric)
 		.button-container(ng-show="registrando")

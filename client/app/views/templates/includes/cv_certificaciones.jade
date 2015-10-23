@@ -5,7 +5,8 @@
 		.layout-content
 			+controlFilium-date("Fecha de Certificación","fechaCertif","certifDate","{success: submittedCertificacion && certificacionForm.fechaCertif.$valid, error: submittedCertificacion && certificacionForm.fechaCertif.$invalid}","submittedCertificacion && certificacionForm.fechaCertif.$invalid")(ng-disabled="!estudiandoActual",ng-required="estudiandoActual && !editando")
 		.layout-content
-			+controlFilium-select("Organización","organizacionCertif","certifCenter","{selectActive: selectChangeorganizacionCertif,success: submittedCertificacion && certificacionForm.organizacionCertif.$valid, error: submittedCertificacion && certificacionForm.organizacionCertif.$invalid}","submittedCertificacion && certificacionForm.organizacionCertif.$invalid")(required)
+			+controlFilium-select-empty("Organización","organizacionCertif","certifCenter","{selectActive: selectChangeorganizacionCertif,success: submittedCertificacion && certificacionForm.organizacionCertif.$valid, error: submittedCertificacion && certificacionForm.organizacionCertif.$invalid}","submittedCertificacion && certificacionForm.organizacionCertif.$invalid")(required)
+				option(ng-repeat="options in certifCenterJson" value="{{options.id}}") {{options.value}}
 		.layout-content
 			+controlFilium-textarea("Descripción","descripcionCertif","certifDescription","{success: submittedCertificacion && certificacionForm.descripcionCertif.$valid, error: submittedCertificacion && certificacionForm.descripcionCertif.$invalid}","submittedCertificacion && certificacionForm.descripcionCertif.$invalid")(alphanumeric)
 		.button-container(ng-show="registrando")

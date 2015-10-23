@@ -1,7 +1,8 @@
 +form-header-cv("Experiencia Laboral","laboralForm")
 	.container-cv(ng-show="mostrarForm")
 		.layout-content                                                        
-			+controlFilium-select("Centro Laboral","centroLaboral","workCenter","{selectActive: selectChangecentroLaboral,success: submittedLaboral && laboralForm.centroLaboral.$valid, error: submittedLaboral && laboralForm.centroLaboral.$invalid}","submittedLaboral && laboralForm.centroLaboral.$invalid")(required)
+			+controlFilium-select-empty("Centro Laboral","centroLaboral","workCenter","{selectActive: selectChangecentroLaboral,success: submittedLaboral && laboralForm.centroLaboral.$valid, error: submittedLaboral && laboralForm.centroLaboral.$invalid}","submittedLaboral && laboralForm.centroLaboral.$invalid")(required)
+				option(ng-repeat="options in workCenterJson" value="{{options.id}}") {{options.value}}
 		.layout-content
 			+controlFilium-text("Nombre del Cargo","nombreCargo","job","{success: submittedLaboral && laboralForm.nombreCargo.$valid, error: submittedLaboral && laboralForm.nombreCargo.$invalid}","submittedLaboral && laboralForm.nombreCargo.$invalid")(alphanumeric,required)
 		.layout-content
