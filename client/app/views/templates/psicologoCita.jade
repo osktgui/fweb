@@ -1,6 +1,5 @@
 include ./mixins/mixins-form.jade
 include ./includes/header-int.jade
-
 .body-container-filium.with-left-menu(ng-init="formularioActivo='CalendarioCitas'")
 	include ./includes/left-menu.jade
 	.formularioActivo(ng-show="formularioActivo=='CalendarioCitas'")
@@ -30,15 +29,17 @@ include ./includes/header-int.jade
 											th.text-center #
 											th.text-center Hora Inicio
 											th.text-center Hora Fin
+											th.text-center Estado
 											th.text-center Eliminar
 									tbody
-										tr(ng-repeat="evento in eventosDia | orderBy:'+id' track by evento.identificador")
+										tr(ng-repeat="evento in eventosDia | orderBy:'+id' track by evento.identificador",ng-class="{'ocupado':evento.state=='ocupado'}")
 											td {{ $index+1 }}
 											td {{ evento.hIni }}
 											td {{ evento.hFin }}
+											td {{ evento.title }}
 											td
 												div
-													button.btn.btn-sm.btn-danger(ng-click='removeHorario(evento.identificador)', title="Delete"): em.fa.fa-trash
+													button.btn.btn-sm.btn-danger(ng-click='removeHorario(evento.identificador)', title="Delete", ng-class="{'disabled':evento.state=='ocupado'}"): em.fa.fa-trash
 			.modal-footer
 				a.fbtn.fbtn-primary.cancel(data-dismiss="modal") Close
 			

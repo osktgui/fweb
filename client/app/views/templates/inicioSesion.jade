@@ -1,0 +1,28 @@
+include ./mixins/mixins-form.jade
+include ./includes/header-ext.jade
+.content-header
+	.cabecera-logo
+		.landing-logo
+			i
+	.cabecera-titulo
+		h2 Iniciar Sesión
+.content-body
+	.seccion.col-sm-6.section-right
+		.content-seccion-right-inicio
+			.control-container-full-amplio
+				a.fbtn.fbtn-primary.fbtn-full.btn-facebook(href="javascript:void(0)") Facebook
+			p.elemento-iniSesion Filium NO plublicara nada en su cuenta de Facebook sin su consentimiento.
+	.seccion.col-sm-6.section-left
+		.content-seccion-left-inicio
+			+form-simple("formIniciSesion")
+				+controlFilium-text-sin-label("Correo Electronico","correo","mail","{error: submittedInicioSesion && formIniciSesion.correo.$invalid}","submittedInicioSesion && formIniciSesion.correo.$invalid")(ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\\.[a-z.]{2,5}$/",required)
+				+controlFilium-password-sin-label("Contraseña","password","pass","{error: submittedInicioSesion && formIniciSesion.password.$invalid}","submittedInicioSesion && formIniciSesion.password.$invalid")(required)
+				.control-container-full-amplio
+					a.fbtn.fbtn-primary.fbtn-full(href="javascript:void(0)",ng-click="submittedInicioSesion=true;iniciarSesion(formIniciSesion);") Iniciar Sesión
+				p
+					a.olvidoPassword(href="javascript:void(0)") ¿Olvidaste tu contraseña?
+				p ¿No tienes una cuenta?
+					a(href="javascript:void(0)")  Regístrarte
+		.middle-text-line
+			p o
+			.line-vertical

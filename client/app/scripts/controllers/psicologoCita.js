@@ -10,53 +10,71 @@ angular.module('filiumApp')
   .controller('PsicologoCitaCtrl',function ($rootScope, $scope, $window,filiumServices) {
      //calendario
      
-    $scope.libre  ='#257e4a';
-    $scope.ocupado='#555e4a';
+    //$scope.libreColor  ='#257e4a';
+    //$scope.ocupadoColor='#555e4a';
+
+    $scope.state={
+        'ocupado':{
+            color: '#555e4a',
+            state: 'ocupado',
+            stateText: 'Horario Ocupado'
+        },
+        'libre':{
+            color: '#257e4a',
+            state: 'libre',
+            stateText: 'Horario Libre'
+        }
+    }
 
     $scope.YSelected=0;
     $scope.MSelected=0;
     $scope.DSelected=0;
     $scope.horariosDisponibles=[
-        /*{
-            end: new Date(2015,9,22,4,45,0,0),
+        {
+            end: new Date(2015,9,22,4,45,0),
             hFin: "04:45 a.m.",
             hIni: "04:00 a.m.",
             id: 5,
             identificador: "10/22/2015-5",
-            start: new Date(2015,9,22,4,0,0,0),
-            title: "Ocupado",
-            color: $scope.ocupado
-        },
+            start: new Date(2015,9,22,4,0,0),
+            title: $scope.state.ocupado.stateText,
+            state: $scope.state.ocupado.state,
+            color: $scope.state.ocupado.color
+        }
+        ,
         {
-            end: new Date(2015,9,22,5,45,0,0),
+            end: new Date(2015,9,22,5,45,0),
             hFin: "05:45 a.m.",
             hIni: "05:00 a.m.",
             id: 6,
             identificador: "10/22/2015-6",
-            start: new Date(2015,9,22,5,0,0,0),
-            title: "Libre",
-            color: $scope.libre
+            start: new Date(2015,9,22,5,0,0),
+            title: $scope.state.libre.stateText,
+            state: $scope.state.libre.state,
+            color: $scope.state.libre.color
         },
         {
-            end: new Date(2015,9,22,7,45,0,0),
+            end: new Date(2015,9,22,7,45,0),
             hFin: "07:45 a.m.",
             hIni: "07:00 a.m.",
             id: 8,
             identificador: "10/22/2015-8",
-            start: new Date(2015,9,22,7,0,0,0),
-            title: "Libre",
-            color: $scope.libre
+            start: new Date(2015,9,22,7,0,0),
+            title: $scope.state.ocupado.stateText,
+            state: $scope.state.ocupado.state,
+            color: $scope.state.ocupado.color
         },
         {
-            end: new Date(2015,09,22,8,45,0,0),
+            end: new Date(2015,9,22,8,45,0),
             hFin: "08:45 a.m.",
             hIni: "08:00 a.m.",
             id: 9,
             identificador: "10/22/2015-9",
-            start: new Date(2015,9,22,8,0,0,0),
-            title: "Libre",
-            color: $scope.libre
-        }*/
+            start: new Date(2015,9,22,8,0,0),
+            title: $scope.state.libre.stateText,
+            state: $scope.state.libre.state,
+            color: $scope.state.libre.color
+        }
     ];
     $scope.eventosDia=[];
     $scope.eventSources = [];
@@ -68,7 +86,7 @@ angular.module('filiumApp')
                 right: 'month,agendaWeek,agendaDay'
             },
             selectable: true,
-
+            ignoreTimezone: true,
             //selectHelper: true,
             select: function(start, end) {
                 //console.log(start, end);
@@ -150,7 +168,14 @@ angular.module('filiumApp')
     
     //selecciona eventos del dia para el popup
     function selEventosDiaSel(dia){
-        $scope.eventosDia = $.grep($scope.horariosDisponibles, function(e) { return e.start.toLocaleDateString() === (new Date(dia)).toLocaleDateString()});
+        //console.log(dia);
+        //console.log(typeof(dia));
+        //console.log(typeof(new Date(dia)));
+        //console.log(new Date(dia));
+        $scope.eventosDia = $.grep($scope.horariosDisponibles, function(e) { 
+            //e.start=new Date(e.start);
+            return e.start.toLocaleDateString() === (new Date(dia)).toLocaleDateString()
+        });
     }
 
     $scope.agregando=function(inicio,fin){
