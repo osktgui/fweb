@@ -32,6 +32,14 @@ angular
         templateUrl: 'views/landing.html',
         controller: 'LandingCtrl'
       })
+      .when('/inicioSesion', {
+        templateUrl: 'views/inicioSesion.html',
+        controller: 'inicioSesionCtrl'
+      })
+      .when('/cambiarPassword', {
+        templateUrl: 'views/cambiarPassword.html',
+        controller: 'cambiarPasswordCtrl'
+      })
       .when('/consultorio', {
         templateUrl: 'views/consultorio.html',
         controller: 'ConsultorioCtrl'

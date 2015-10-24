@@ -60,9 +60,9 @@ angular.module('filiumApp')
             id: 8,
             identificador: "10/22/2015-8",
             start: new Date(2015,9,22,7,0,0),
-            title: $scope.state.libre.stateText,
-            state: $scope.state.libre.state,
-            color: $scope.state.libre.color
+            title: $scope.state.ocupado.stateText,
+            state: $scope.state.ocupado.state,
+            color: $scope.state.ocupado.color
         },
         {
             end: new Date(2015,9,22,8,45,0),

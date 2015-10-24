@@ -1,0 +1,53 @@
+
+<nav role="navigation" ng-controller="HeaderNavController" class="navbar topnavbar header-filium">
+  <div ng-class="app.theme.brand" class="navbar-header"><a ui-sref="app.dashboard" class="navbar-brand logo-filium"><i></i></a>
+    <div class="mobile-toggles"><a href="" ng-click="toggleHeaderMenu()" class="menu-toggle pull-left"><em class="fa fa-navicon fa-fw"></em></a>
+    </div>
+  </div>
+  <div collapse="headerMenuCollapsed" style="text-align:right; padding-right: 160px" class="nav-wrapper collapse navbar-collapse">
+    <div class="menu-items-content">
+      <ul class="nav navbar-nav">
+        <li class="menu-item"><a href="javascript:void(0)">Blog</a></li>
+        <li class="menu-item"><a href="javascript:void(0)">Contáctenos</a></li>
+        <li class="menu-item"><a href="javascript:void(0)">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="content-header">
+  <div class="cabecera-logo">
+    <div class="landing-logo"><i></i></div>
+  </div>
+  <div class="cabecera-titulo">
+    <h2>Iniciar Sesión</h2>
+  </div>
+</div>
+<div class="content-body">
+  <div class="seccion col-sm-6 section-right">
+    <div class="content-seccion-right-inicio">
+      <div class="control-container-full-amplio"><a href="javascript:void(0)" class="fbtn fbtn-primary fbtn-full btn-facebook">Facebook</a></div>
+      <p class="elemento-iniSesion">Filium NO plublicara nada en su cuenta de Facebook sin su consentimiento.</p>
+    </div>
+  </div>
+  <div class="seccion col-sm-6 section-left">
+    <div class="content-seccion-left-inicio">
+      <form name="formIniciSesion">
+        <div class="control-container-full-amplio">
+          <input type="text" placeholder="Ingrese Correo Electronico" name="correo" id="correo" ng-model="mail" ng-class="{error: submittedInicioSesion &amp;&amp; formIniciSesion.correo.$invalid}" class="filium-control" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required="required"/>
+          <div ng-class="{error: submittedInicioSesion &amp;&amp; formIniciSesion.correo.$invalid}" ng-show="submittedInicioSesion &amp;&amp; formIniciSesion.correo.$invalid" class="errorMessage-comprimido">Valor no válido</div>
+        </div>
+        <div class="control-container-full-amplio">
+          <input type="password" placeholder="Ingrese Contraseña" name="password" id="password" ng-model="pass" ng-class="{error: submittedInicioSesion &amp;&amp; formIniciSesion.password.$invalid}" class="filium-control" required="required"/>
+          <div ng-class="{error: submittedInicioSesion &amp;&amp; formIniciSesion.password.$invalid}" ng-show="submittedInicioSesion &amp;&amp; formIniciSesion.password.$invalid" class="errorMessage-comprimido">Valor no válido</div>
+        </div>
+        <div class="control-container-full-amplio"><a href="javascript:void(0)" ng-click="submittedInicioSesion=true;iniciarSesion(formIniciSesion);" class="fbtn fbtn-primary fbtn-full">Iniciar Sesión</a></div>
+        <p><a href="javascript:void(0)" class="olvidoPassword">¿Olvidaste tu contraseña?</a></p>
+        <p>¿No tienes una cuenta?<a href="javascript:void(0)"> Regístrarte</a></p>
+      </form>
+    </div>
+    <div class="middle-text-line">
+      <p>o</p>
+      <div class="line-vertical"></div>
+    </div>
+  </div>
+</div>

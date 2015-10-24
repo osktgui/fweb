@@ -17,12 +17,44 @@ mixin form-header-cv(title,formName)
 				a.fbtn.fbtn-add(href="javascript:void(0)",ng-click="agregarEstudios();agregarLabores();agregarCertificados();agregarIdiomas();agregarHabilidades();") Agregar
 			.form-content
 				block
+mixin form-header-comprimido(title,formName)
+	.form-filium-container
+		form.form-filium(name=formName)
+			.form-filium-title= title
+			.form-content-comprimido
+				block
+mixin form-simple(formName)
+	form(name=formName)&attributes(attributes)
+		block
 mixin controlFilium-text(text,nameControl,modelControl,ngClass,errorMessageCondition)
 	.control-container
 		label(for=nameControl, ng-class=ngClass)= text
 		input(type="text", placeholder="Ingrese "+text,name=nameControl, id=nameControl, ng-model=modelControl, ng-class=ngClass).filium-control&attributes(attributes)
 		if errorMessageCondition
 			.errorMessage(ng-class=ngClass, ng-show=errorMessageCondition) Valor no válido
+mixin controlFilium-password(text,nameControl,modelControl,ngClass,errorMessageCondition)
+	.control-container
+		label(for=nameControl, ng-class=ngClass)= text
+		input(type="password", placeholder="Ingrese "+text,name=nameControl, id=nameControl, ng-model=modelControl, ng-class=ngClass).filium-control&attributes(attributes)
+		if errorMessageCondition
+			.errorMessage(ng-class=ngClass, ng-show=errorMessageCondition) Valor no válido
+mixin controlFilium-password-vertical(text,nameControl,modelControl,ngClass,errorMessageCondition)
+	.control-container-full
+		label(for=nameControl, ng-class=ngClass)= text
+	.control-container-full
+		input(type="password", placeholder="Ingrese "+text,name=nameControl, id=nameControl, ng-model=modelControl, ng-class=ngClass).filium-control&attributes(attributes)
+		if errorMessageCondition
+			.errorMessage-comprimido(ng-class=ngClass, ng-show=errorMessageCondition) Valor no válido
+mixin controlFilium-text-sin-label(text,nameControl,modelControl,ngClass,errorMessageCondition)
+	.control-container-full-amplio
+		input(type="text", placeholder="Ingrese "+text,name=nameControl, id=nameControl, ng-model=modelControl, ng-class=ngClass).filium-control&attributes(attributes)
+		if errorMessageCondition
+			.errorMessage-comprimido(ng-class=ngClass, ng-show=errorMessageCondition) Valor no válido
+mixin controlFilium-password-sin-label(text,nameControl,modelControl,ngClass,errorMessageCondition)
+	.control-container-full-amplio
+		input(type="password", placeholder="Ingrese "+text,name=nameControl, id=nameControl, ng-model=modelControl, ng-class=ngClass).filium-control&attributes(attributes)
+		if errorMessageCondition
+			.errorMessage-comprimido(ng-class=ngClass, ng-show=errorMessageCondition) Valor no válido
 mixin controlFilium-date(text,nameControl,modelControl,ngClass,errorMessageCondition)
 	.control-container
 		label(for=nameControl, ng-class=ngClass)= text
