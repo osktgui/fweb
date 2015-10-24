@@ -6,3 +6,27 @@ include ./includes/header-int.jade
 		include ./form_edicionCurriculum.jade
 	.formularioActivo(ng-show="formularioActivo=='RegistrarPsicologo'")
 		include ./form_registroPsicologos.jade
+
+div.modal.fade#Eliminar(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+			div.modal-dialog.modal-md(role='document')
+				div.modal-content
+					div.modal-body
+						.popup-logo
+							i
+						.popup-title Información sobre el proceso de pago
+						.popup-content
+							.dasd ¿Está seguro de que desea eliminar este item de Formación Profesional?
+
+
+							.itemcv-info
+								.itemcv-title
+									em.fa.fa-book
+									| Universidad Peruana Los Andes - Ingeniería de Sistemas y Computación
+								.itemcv-descripion(ng-show="matrizEstudio.incluirMencion") {{matrizEstudio.gradoAcademicoName}} - {{matrizEstudio.nombreCarrera}} - {{matrizEstudio.nombreMencion}}
+								.itemcv-descripion(ng-show="!matrizEstudio.incluirMencion") {{matrizEstudio.gradoAcademicoName}} - {{matrizEstudio.nombreCarrera}}
+								.itemcv-descripion(ng-show="!matrizEstudio.estudiandoActualmente") {{matrizEstudio.fechaInicio}} - {{matrizEstudio.fechaFin}}
+								.itemcv-descripion(ng-show="matrizEstudio.estudiandoActualmente") {{matrizEstudio.fechaInicio}} - Presente
+
+						//- h4#myModalLabel.modal-title.popup-header-title No se pudo reservar la cita.
+						//- | Lo sentimos, alguien más acaba de reservar el horario seleccionado, elige otro horario para continuar.
+						//- button.landing-primary-button.landing-popup-button(type="button" data-dismiss="modal") Aceptar

@@ -11,5 +11,8 @@ class FormacionProfesional extends Model {
 	public function organizacion() {
 		return $this->belongsTo('App\Organizacion', 'organizacionId', 'organizacionId');
 	}
+	public function gradoAcademico() {
+		return $this->belongsTo('App\MaestroDetalle', 'gradoAcademicoId', 'maestroDetalleId');
+	}
 }
 ;

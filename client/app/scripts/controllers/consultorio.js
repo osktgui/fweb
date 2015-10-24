@@ -62,17 +62,18 @@ angular.module('filiumApp')
     });
 
 // ============ Cargando Datos de Formación Profesional ============================
+  cargarFormacionProfesional();
+  function cargarFormacionProfesional(){
     var params={}; 
     params.personaId=1;   
-
     filiumServices.getFormacionProfesional(params).then(function(response){
       $scope.matrizEstudios=[];
       angular.forEach(response,function(item,itemId){
         $scope.matrizEstudios.push({
           formacionProfesionalId: item.formacionProfesionalId,
           personaId: item.personaId,
-          organizacionId: item.organizacionId,
-          gradoAcademicoId: item.gradoAcademicoId,
+          organizacionId: item.organizacionId+'',
+          gradoAcademicoId: item.gradoAcademicoId+'',
           nombreCarrera: item.nombreCarrera,
           incluirMencion: item.incluirMencion,
           nombreMencion: item.nombreMencion,
@@ -81,69 +82,31 @@ angular.module('filiumApp')
           fechaFin: formatDate.getCompleteDate(item.fechaFin),
           comentario: item.comentario,
           // Datos de Tabla Maestra
-          organizacionName: 'Universidad Peruana Los Andes',
-          gradoAcademicoName: 'Título Profesional'
+          organizacionName: item.organizacion.nombreComercial,
+          gradoAcademicoName: item.grado_academico.nombreMaestroDetalle
         });
       });
     });
-
-    // $scope.matrizEstudios = [{
-    //   // Datos de Tabla específica
-    //   formacionProfesionalId: '1',
-    //   personaId: '1',
-    //   organizacionId: '1',
-    //   gradoAcademicoId: '1',
-    //   nombreCarrera: 'Ingeniería de Sistemas y Computacion',
-    //   incluirMencion: false,
-    //   nombreMencion:'',
-    //   fechaInicio : formatDate.getCompleteDate('2008-04-15'),
-    //   estudiandoActualmente: true,
-    //   fechaFin: formatDate.getCompleteDate('2012-12-31'),
-    //   comentario: '',
-    //   // Datos de Tabla Maestra
-    //   organizacionName: 'Universidad Peruana Los Andes',
-    //   gradoAcademicoName: 'Título Profesional'
-    // },
-    // {
-    //   // Datos de Tabla específica
-    //   formacionProfesionalId: '2',
-    //   personaId: '1',
-    //   organizacionId: '1',
-    //   gradoAcademicoId: '1',
-    //   nombreCarrera: 'Ingeniería de Sistemas',
-    //   incluirMencion: true,
-    //   nombreMencion:'Mención en Gestión de Sistemas Empresariales',
-    //   fechaInicio : formatDate.getCompleteDate('2015-04-15'),
-    //   estudiandoActualmente: true,
-    //   fechaFin: formatDate.getCompleteDate('2016-06-30'),
-    //   comentario: '',
-    //   // Datos de Tabla Maestra
-    //   organizacionName: 'Universidad Nacional del Centro del Perú',
-    //   gradoAcademicoName: 'Maestríal'
-    // },
-    // {
-    //   // Datos de Tabla específica
-    //   formacionProfesionalId: '3',
-    //   personaId: '1',
-    //   organizacionId: '1',
-    //   gradoAcademicoId: '1',
-    //   nombreCarrera: 'Ingeniería de Sistemas',
-    //   incluirMencion: false,
-    //   nombreMencion:'',
-    //   fechaInicio : formatDate.getCompleteDate('2017-07-01'),
-    //   estudiandoActualmente: false,
-    //   fechaFin: formatDate.getCompleteDate(''),
-    //   comentario: '',
-    //   // Datos de Tabla Maestra
-    //   organizacionName: 'Hardvard University',
-    //   gradoAcademicoName: 'Doctorado'
-    // }];
-
-
-
-
+  }
 
   // ---------------- Formación Profesional -----------------------------------------------
+    function limpiarFormularios(){
+      $scope.selectChangecentroEstudios=false;
+      $scope.selectChangegradoAcademico=false;
+      $scope.submittedProfessionalEducation=false;
+      $scope.studyCenter='';
+      $scope.academicDegree='';
+      $scope.careerName='';
+      $scope.checkMen=false;$scope.vMencion=false;
+      $scope.mentionName='';
+      angular.element('#fechaInicio').val('');
+      $scope.checkEst=false;$scope.estudiandoActual=false;
+      angular.element('#fechaFin').val('');
+      angular.element('.filium-control').removeClass('selectActive');
+    }
+
+    // ID de Persona que se ha logueado como Usuario
+    var idUsuario=1;
     
     $scope.guardarEstudios = function(form){
       if(form.$invalid){
@@ -152,24 +115,49 @@ angular.module('filiumApp')
       $scope.mostrarForm=false;
       $scope.submittedProfessionalEducation=false;
       var params={};
-      params.personaId=1;
+      params.personaId=idUsuario;
       params.organizacionId=$scope.studyCenter;
       params.gradoAcademicoId=$scope.academicDegree;
       params.nombreCarrera=$scope.careerName; 
       params.incluirMencion=$scope.checkMen;
       params.nombreMencion=$scope.mentionName;
       params.fechaInicio=formatDate.getDmyToYmd(angular.element('#fechaInicio').val());
-      params.estudiandoActualmente=!$scope.checkEst;
+      params.estudiandoActualmente=$scope.checkEst;
       params.fechaFin=formatDate.getDmyToYmd(angular.element('#fechaFin').val());
       params.comentario=$scope.studyComments+' ';
       params.created_by='Usuario';
       filiumServices.registrarFormacionProfesional(params).then(function(response){
-        if (response==='success'){alert('success');}
+        if (response==='success'){cargarFormacionProfesional();limpiarFormularios();}
         else{alert('error');}
       });
-    };
-    $scope.editarEstudios = function(estudio){
+    }
+    $scope.actualizarEstudios = function(form){
+      if(form.$invalid){
+        return;
+      }
+      $scope.mostrarForm=false;
       $scope.submittedProfessionalEducation=false;
+      var params={};
+      params.formacionProfesionalId=$scope.codProfesionalEducation;
+      params.personaId=idUsuario;
+      params.organizacionId=$scope.studyCenter;
+      params.gradoAcademicoId=$scope.academicDegree;
+      params.nombreCarrera=$scope.careerName; 
+      params.incluirMencion=$scope.checkMen;
+      params.nombreMencion=$scope.mentionName;
+      params.fechaInicio=formatDate.getDmyToYmd(angular.element('#fechaInicio').val());
+      params.estudiandoActualmente=$scope.checkEst;
+      params.fechaFin=formatDate.getDmyToYmd(angular.element('#fechaFin').val());
+      params.comentario=$scope.studyComments+' ';
+      params.created_by='Usuario';
+      filiumServices.actualizarFormacionProfesional(params).then(function(response){
+        if (response==='success'){cargarFormacionProfesional();limpiarFormularios();}
+        else{alert('error');}
+      });
+    }
+    $scope.editarEstudios = function(estudio){
+      limpiarFormularios();
+      $scope.codProfesionalEducation=estudio.formacionProfesionalId;
       $scope.mostrarForm=true;
       $scope.editando=true;
       $scope.registrando=false;
@@ -179,27 +167,18 @@ angular.module('filiumApp')
       $scope.checkMen=estudio.incluirMencion;$scope.vMencion=estudio.incluirMencion;
       $scope.mentionName=estudio.nombreMencion;
       angular.element('#fechaInicio').val(formatDate.getShortDate(estudio.fechaInicio));
-      $scope.checkEst=!estudio.estudiandoActualmente;$scope.estudiandoActual=estudio.estudiandoActualmente;
+      $scope.checkEst=estudio.estudiandoActualmente;$scope.estudiandoActual=estudio.estudiandoActualmente;
       angular.element('#fechaFin').val(formatDate.getShortDate(estudio.fechaFin));
       angular.element('.filium-control').addClass('selectActive');
     };
 
     $scope.agregarEstudios = function(){
-      $scope.submittedProfessionalEducation=false;
       $scope.mostrarForm=true;
       $scope.editando=false;
       $scope.registrando=true;
-      $scope.studyCenter='';
-      $scope.academicDegree='';
-      $scope.careerName='';
-      $scope.checkMen=false;$scope.vMencion=false;
-      $scope.mentionName='';
-      angular.element('#fechaInicio').val('');
-      $scope.checkEst=false;$scope.estudiandoActual=true;
-      angular.element('#fechaFin').val('');
-      angular.element('.filium-control').removeClass('selectActive');
+      limpiarFormularios();
     };
-
+    angular.element('#Eliminar').modal();
 
 
   // ---------------- Experiencia Laboral -----------------------------------------------

@@ -46,7 +46,7 @@
     </div>
   </div>
 </nav>
-<div ng-init="tab='habilidades'" class="body-container-filium with-left-menu">
+<div ng-init="tab='estudios'" class="body-container-filium with-left-menu">
   <div ng-show="tab=='estudios'" class="aux">
     <div class="form-filium-container">
       <form name="estudiosForm" class="form-filium">
@@ -54,6 +54,7 @@
         <div class="form-filium-title">Formación Profesional<a href="javascript:void(0)" ng-click="agregarEstudios();agregarLabores();agregarCertificados();agregarIdiomas();agregarHabilidades();" class="fbtn fbtn-add">Agregar</a></div>
         <div class="form-content">
           <div ng-show="mostrarForm" class="container-cv">
+            <input type="hidden" ng-model="codProfesionalEducation"/>
             <div class="layout-content">
               <div class="control-container">
                 <label for="centroEstudios" ng-class="{selectActive: selectChangecentroEstudios,success: submittedProfessionalEducation &amp;&amp; estudiosForm.centroEstudios.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.centroEstudios.$invalid}">Centro de Estudios</label>
@@ -91,7 +92,7 @@
               </div>
               <div class="layout-dateIF-last padding-datedateIF-last">
                 <div class="checkbox c-checkbox needsclick">
-                  <label ng-init="vMencion=!vMencion" class="needsclick filium-checkbox">
+                  <label ng-init="vMencion=false" class="needsclick filium-checkbox">
                     <input type="checkbox" name="checkMencion" id="checkMencion" ng-model="checkMen" ng-click="vMencion=!vMencion" class="needsclick"/><span class="fa fa-check"></span>Incluir Mención
                   </label>
                 </div>
@@ -108,13 +109,13 @@
               <div class="layout-dateIF padding-dateIF">
                 <div class="control-container">
                   <label for="fechaFin" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid}">Fecha de Fin</label>
-                  <input type="datetime" placeholder="Seleccione Fecha de Fin" name="fechaFin" id="fechaFin" ng-model="date" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" readonly="readonly" class="filium-control" ng-disabled="!estudiandoActual" ng-required="estudiandoActual &amp;&amp; !editando"/>
+                  <input type="datetime" placeholder="Seleccione Fecha de Fin" name="fechaFin" id="fechaFin" ng-model="date" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" readonly="readonly" class="filium-control" ng-disabled="estudiandoActual" ng-required="estudiandoActual &amp;&amp; !editando"/>
                   <div ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid}" ng-show="submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid" class="errorMessage">Valor no válido</div>
                 </div>
               </div>
               <div class="layout-dateIF-last padding-datedateIF-last">
                 <div class="checkbox c-checkbox needsclick">
-                  <label ng-init="estudiandoActual=!estudiandoActual" class="needsclick filium-checkbox">
+                  <label ng-init="estudiandoActual=false" class="needsclick filium-checkbox">
                     <input type="checkbox" name="checkEstudianto" id="checkEstudianto" ng-model="checkEst" ng-click="estudiandoActual=!estudiandoActual" class="needsclick"/><span class="fa fa-check"></span>Estudiando Actualmente
                   </label>
                 </div>
@@ -128,7 +129,7 @@
               </div>
             </div>
             <div ng-show="registrando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedProfessionalEducation=true;guardarEstudios(estudiosForm)" class="fbtn fbtn-primary">Registrar</a></div>
-            <div ng-show="editando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedProfessionalEducation=true" class="fbtn fbtn-primary">Guardar Cambios</a></div>
+            <div ng-show="editando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedProfessionalEducation=true;actualizarEstudios(estudiosForm)" class="fbtn fbtn-primary">Guardar Cambios</a></div>
           </div>
           <div class="itemcv-container">
             <div ng-repeat="matrizEstudio in matrizEstudios" class="itemcv">
@@ -136,8 +137,8 @@
                 <div class="itemcv-title"><em class="fa fa-book"></em>{{matrizEstudio.organizacionName}}</div>
                 <div ng-show="matrizEstudio.incluirMencion" class="itemcv-descripion">{{matrizEstudio.gradoAcademicoName}} - {{matrizEstudio.nombreCarrera}} - {{matrizEstudio.nombreMencion}}</div>
                 <div ng-show="!matrizEstudio.incluirMencion" class="itemcv-descripion">{{matrizEstudio.gradoAcademicoName}} - {{matrizEstudio.nombreCarrera}}</div>
-                <div ng-show="matrizEstudio.estudiandoActualmente" class="itemcv-descripion">{{matrizEstudio.fechaInicio}} - {{matrizEstudio.fechaFin}}</div>
-                <div ng-show="!matrizEstudio.estudiandoActualmente" class="itemcv-descripion">{{matrizEstudio.fechaInicio}} - Presente</div>
+                <div ng-show="!matrizEstudio.estudiandoActualmente" class="itemcv-descripion">{{matrizEstudio.fechaInicio}} - {{matrizEstudio.fechaFin}}</div>
+                <div ng-show="matrizEstudio.estudiandoActualmente" class="itemcv-descripion">{{matrizEstudio.fechaInicio}} - Presente</div>
               </div>
               <div class="itemcv-image"><a href="javascript:void(0)" ng-click="editarEstudios(matrizEstudio)" class="itemcv-option edit">Editar<i></i></a><a href="javascript:void(0)" class="itemcv-option remove">Eliminar<i></i></a></div>
             </div>
@@ -194,7 +195,7 @@
               </div>
               <div class="layout-dateIF-last padding-datedateIF-last">
                 <div class="checkbox c-checkbox needsclick">
-                  <label ng-init="laborandoActual=!laborandoActual" class="needsclick filium-checkbox">
+                  <label ng-init="laborandoActual=false" class="needsclick filium-checkbox">
                     <input type="checkbox" name="checkLaborando" id="checkLaborando" ng-model="checkLab" ng-click="laborandoActual=!laborandoActual" class="needsclick"/><span class="fa fa-check"></span>Laborando Actualmente
                   </label>
                 </div>

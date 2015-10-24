@@ -38,7 +38,7 @@ mixin controlFilium-textarea(text,nameControl,modelControl,ngClass,errorMessageC
 
 mixin controlFilium-check(text,nameControl,modelControl,ngInit,ngClick,ngClass,errorMessageCondition)
 	.checkbox.c-checkbox.needsclick
-		label.needsclick.filium-checkbox(ng-init=ngClick)
+		label.needsclick.filium-checkbox(ng-init=ngInit)
 			input.needsclick(type="checkbox",name=nameControl, id=nameControl, ng-model=modelControl, ng-class=ngClass, ng-click=ngClick)
 			span.fa.fa-check
 			= text

@@ -14,6 +14,7 @@
 // Cambiar a Post
 Route::get('/registrarLead', 'Lead@registroLead');
 Route::get('/registrarFormacionProfesional', 'Psicologos@registrarFormacionProfesional');
+Route::get('/actualizarFormacionProfesional', 'Psicologos@actualizarFormacionProfesional');
 // ------------------------- Consultas a la Data Maestra ----------------------
 Route::get('/getTipoDocumento', 'DataMaestra@getTipoDocumento');
 Route::get('/getSexo', 'DataMaestra@getSexo');

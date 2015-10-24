@@ -11,7 +11,7 @@ angular.module('filiumApp')
   .service('formatDate', function () {
     // AngularJS will instantiate a singleton by calling "new" on this function
     function getCompleteDate(date){
-        if(date===null){
+        if(date==null){
             return null;
         }
     	var anio=date.substring(0, 4);
@@ -22,21 +22,25 @@ angular.module('filiumApp')
     function getCompleteMonth(month){
     	var intMonth = parseInt(month);
     	switch(intMonth){
-    		case 1: return "Enero"; break;
-    		case 2: return "Febrero"; break;
-    		case 3: return "Marzo"; break;
-    		case 4: return "Abril"; break;
-    		case 5: return "Mayo"; break;
-    		case 6: return "Junio"; break;
-    		case 7: return "Julio"; break;
-    		case 8: return "Agosto"; break;
-    		case 9: return "Setiembre"; break;
-    		case 10: return "Octubre"; break;
-    		case 11: return "Noviembre"; break;
-    		case 12: return "Diciembre"; break;
+    		case 1: return 'Enero'; break;
+    		case 2: return 'Febrero'; break;
+    		case 3: return 'Marzo'; break;
+    		case 4: return 'Abril'; break;
+    		case 5: return 'Mayo'; break;
+    		case 6: return 'Junio'; break;
+    		case 7: return 'Julio'; break;
+    		case 8: return 'Agosto'; break;
+    		case 9: return 'Setiembre'; break;
+    		case 10: return 'Octubre'; break;
+    		case 11: return 'Noviembre'; break;
+    		case 12: return 'Diciembre'; break;
     	}
     }
     function getShortDate(date){
+        if(date==null){
+            console.log('Entra');
+            return null;
+        }
         var lenDate=date.length;
         var anio=date.substring(lenDate-4,lenDate);
         var mes=getNumberTwoDigits(getShortMonth(date.slice(6,lenDate-9)));
@@ -53,18 +57,18 @@ angular.module('filiumApp')
     }
     function getShortMonth(month){
         switch(month){
-            case "Enero": return 1 ; break;
-            case "Febrero": return 2 ; break;
-            case "Marzo": return 3 ; break;
-            case "Abril": return 4 ; break;
-            case "Mayo": return 5 ; break;
-            case "Junio": return 6 ; break;
-            case "Julio": return 7 ; break;
-            case "Agosto": return 8 ; break;
-            case "Setiembre": return 9 ; break;
-            case "Octubre": return 10 ; break;
-            case "Noviembre": return 11 ; break;
-            case "Diciembre": return 12 ; break;
+            case 'Enero': return 1 ; break;
+            case 'Febrero': return 2 ; break;
+            case 'Marzo': return 3 ; break;
+            case 'Abril': return 4 ; break;
+            case 'Mayo': return 5 ; break;
+            case 'Junio': return 6 ; break;
+            case 'Julio': return 7 ; break;
+            case 'Agosto': return 8 ; break;
+            case 'Setiembre': return 9 ; break;
+            case 'Octubre': return 10 ; break;
+            case 'Noviembre': return 11 ; break;
+            case 'Diciembre': return 12 ; break;
         }
     }
 

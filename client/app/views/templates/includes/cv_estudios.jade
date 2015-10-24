@@ -1,5 +1,6 @@
 +form-header-cv("Formación Profesional","estudiosForm")
 	.container-cv(ng-show="mostrarForm")
+		input(type="hidden" ng-model="codProfesionalEducation")
 		.layout-content
 			+controlFilium-select-empty("Centro de Estudios","centroEstudios","studyCenter","{selectActive: selectChangecentroEstudios,success: submittedProfessionalEducation && estudiosForm.centroEstudios.$valid, error: submittedProfessionalEducation && estudiosForm.centroEstudios.$invalid}","submittedProfessionalEducation && estudiosForm.centroEstudios.$invalid")(required)
 				option(ng-repeat="options in studyCenterJson" value="{{options.id}}") {{options.value}}
@@ -17,7 +18,7 @@
 			.layout-dateIF.padding-dateIF
 				+controlFilium-date("Fecha de Inicio","fechaInicio","startDate","{success: submittedProfessionalEducation && estudiosForm.fechaInicio.$valid, error: submittedProfessionalEducation && estudiosForm.fechaInicio.$invalid}","submittedProfessionalEducation && estudiosForm.fechaInicio.$invalid")(ng-required="!editando")
 			.layout-dateIF.padding-dateIF
-				+controlFilium-date("Fecha de Fin","fechaFin","endDate","{success: submittedProfessionalEducation && estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation && estudiosForm.fechaFin.$invalid}","submittedProfessionalEducation && estudiosForm.fechaFin.$invalid")(ng-disabled="!estudiandoActual",ng-required="estudiandoActual && !editando")
+				+controlFilium-date("Fecha de Fin","fechaFin","endDate","{success: submittedProfessionalEducation && estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation && estudiosForm.fechaFin.$invalid}","submittedProfessionalEducation && estudiosForm.fechaFin.$invalid")(ng-disabled="estudiandoActual",ng-required="estudiandoActual && !editando")
 			.layout-dateIF-last.padding-datedateIF-last
 				+controlFilium-check("Estudiando Actualmente","checkEstudianto","checkEst","estudiandoActual=false","estudiandoActual=!estudiandoActual")
 		.layout-content
@@ -27,7 +28,7 @@
 			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedProfessionalEducation=true;guardarEstudios(estudiosForm)") Registrar
 		.button-container(ng-show="editando")
 			a.fbtn.fbtn-primary.cancel(href="javascript:void(0)",ng-click="mostrarForm=false") Cancelar
-			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedProfessionalEducation=true") Guardar Cambios
+			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedProfessionalEducation=true;actualizarEstudios(estudiosForm)") Guardar Cambios
 	.itemcv-container
 		.itemcv(ng-repeat="matrizEstudio in matrizEstudios")
 			.itemcv-info
@@ -36,13 +37,16 @@
 					| {{matrizEstudio.organizacionName}}
 				.itemcv-descripion(ng-show="matrizEstudio.incluirMencion") {{matrizEstudio.gradoAcademicoName}} - {{matrizEstudio.nombreCarrera}} - {{matrizEstudio.nombreMencion}}
 				.itemcv-descripion(ng-show="!matrizEstudio.incluirMencion") {{matrizEstudio.gradoAcademicoName}} - {{matrizEstudio.nombreCarrera}}
-				.itemcv-descripion(ng-show="matrizEstudio.estudiandoActualmente") {{matrizEstudio.fechaInicio}} - {{matrizEstudio.fechaFin}}
-				.itemcv-descripion(ng-show="!matrizEstudio.estudiandoActualmente") {{matrizEstudio.fechaInicio}} - Presente
+				.itemcv-descripion(ng-show="!matrizEstudio.estudiandoActualmente") {{matrizEstudio.fechaInicio}} - {{matrizEstudio.fechaFin}}
+				.itemcv-descripion(ng-show="matrizEstudio.estudiandoActualmente") {{matrizEstudio.fechaInicio}} - Presente
 			.itemcv-image
 				a.itemcv-option.edit(href="javascript:void(0)" ng-click="editarEstudios(matrizEstudio)") Editar
 					i
 				a.itemcv-option.remove(href="javascript:void(0)") Eliminar
 					i
+
+
+		
 
 
 

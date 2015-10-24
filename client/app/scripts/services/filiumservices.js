@@ -74,6 +74,27 @@ angular.module('filiumApp')
 			});
 			return (request.then(handleSuccess, handleError));
 		}
+		function actualizarFormacionProfesional(data){
+			var request = $http({
+				method: 'get',
+				url: 'actualizarFormacionProfesional',
+				params:{
+					formacionProfesionalId: data.formacionProfesionalId,
+					personaId: data.personaId,
+					organizacionId: data.organizacionId,
+					gradoAcademicoId: data.gradoAcademicoId,
+					nombreCarrera: data.nombreCarrera,
+					incluirMencion: data.incluirMencion,
+					nombreMencion: data.nombreMencion,
+					fechaInicio: data.fechaInicio,
+					estudiandoActualmente: data.estudiandoActualmente,
+					fechaFin: data.fechaFin,
+					comentario: data.comentario,
+					created_by: data.created_by
+				}
+			});
+			return (request.then(handleSuccess, handleError));
+		}
 		//Métodos privados
     function handleError( response ) {
         if (
@@ -94,6 +115,7 @@ angular.module('filiumApp')
 			saveCita: saveCita,
 			// Registro de CV
 			registrarFormacionProfesional: registrarFormacionProfesional,
+			actualizarFormacionProfesional: actualizarFormacionProfesional,
 			getFormacionProfesional: getFormacionProfesional
 		});
   });
