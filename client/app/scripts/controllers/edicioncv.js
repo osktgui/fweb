@@ -8,7 +8,7 @@
  * Controller of the filiumApp
  */
 angular.module('filiumApp')
-  .controller('EdicioncvCtrl', function ($scope,formatDate,DataMaestra,filiumServices) {
+  .controller('EdicioncvCtrl', function ($scope,formatDate,DataMaestra,dataCurriculumservice) {
 
 
 // ============ Cargando Datos Maestros en Combo Box ============================
@@ -62,12 +62,13 @@ angular.module('filiumApp')
       });
     });
 
+  
 // ============ Cargando Datos de Formación Profesional ============================
   cargarFormacionProfesional();
   function cargarFormacionProfesional(){
     var params={}; 
     params.personaId=1;   
-    filiumServices.getFormacionProfesional(params).then(function(response){
+    dataCurriculumservice.getFormacionProfesional(params).then(function(response){
       $scope.matrizEstudios=[];
       angular.forEach(response,function(item,itemId){
         $scope.matrizEstudios.push({
@@ -175,7 +176,7 @@ angular.module('filiumApp')
       params.fechaFin=formatDate.getDmyToYmd(angular.element('#fechaFin').val());
       params.comentario=$scope.studyComments+' ';
       params.created_by='Usuario';
-      filiumServices.registrarFormacionProfesional(params).then(function(response){
+      dataCurriculumservice.registrarFormacionProfesional(params).then(function(response){
         if (response==='success'){cargarFormacionProfesional();limpiarFormularios();}
         else{alert('error');}
       });
@@ -199,7 +200,7 @@ angular.module('filiumApp')
       params.fechaFin=formatDate.getDmyToYmd(angular.element('#fechaFin').val());
       params.comentario=$scope.studyComments+' ';
       params.created_by='Usuario';
-      filiumServices.actualizarFormacionProfesional(params).then(function(response){
+      dataCurriculumservice.actualizarFormacionProfesional(params).then(function(response){
         if (response==='success'){cargarFormacionProfesional();limpiarFormularios();}
         else{alert('error');}
       });
@@ -209,7 +210,7 @@ angular.module('filiumApp')
       $scope.mostrarForm=false;
 
       params.formacionProfesionalId=estudio.formacionProfesionalId;
-      filiumServices.eliminarFormacionProfesional(params).then(function(response){
+      dataCurriculumservice.eliminarFormacionProfesional(params).then(function(response){
         if (response==='success'){
           cargarFormacionProfesional();
           angular.element('#Eliminar').modal('hide');

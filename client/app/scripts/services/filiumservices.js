@@ -42,69 +42,8 @@ angular.module('filiumApp')
 			});
 			return (request.then(handleSuccess, handleError));
 		}
-		// Consulta CV
-		function getFormacionProfesional(data){
-			var request = $http({
-				method: 'get',
-				url: 'getFormacionProfesional',
-				params:{
-					personaId: data.personaId
-				}
-			});
-			return (request.then(handleSuccess, handleError));			
-		}
-		// Registro de CV
-		function registrarFormacionProfesional(data){
-			var request = $http({
-				method: 'get',
-				url: 'registrarFormacionProfesional',
-				params:{
-					personaId: data.personaId,
-					organizacionId: data.organizacionId,
-					gradoAcademicoId: data.gradoAcademicoId,
-					nombreCarrera: data.nombreCarrera,
-					incluirMencion: data.incluirMencion,
-					nombreMencion: data.nombreMencion,
-					fechaInicio: data.fechaInicio,
-					estudiandoActualmente: data.estudiandoActualmente,
-					fechaFin: data.fechaFin,
-					comentario: data.comentario,
-					created_by: data.created_by
-				}
-			});
-			return (request.then(handleSuccess, handleError));
-		}
-		function actualizarFormacionProfesional(data){
-			var request = $http({
-				method: 'get',
-				url: 'actualizarFormacionProfesional',
-				params:{
-					formacionProfesionalId: data.formacionProfesionalId,
-					personaId: data.personaId,
-					organizacionId: data.organizacionId,
-					gradoAcademicoId: data.gradoAcademicoId,
-					nombreCarrera: data.nombreCarrera,
-					incluirMencion: data.incluirMencion,
-					nombreMencion: data.nombreMencion,
-					fechaInicio: data.fechaInicio,
-					estudiandoActualmente: data.estudiandoActualmente,
-					fechaFin: data.fechaFin,
-					comentario: data.comentario,
-					created_by: data.created_by
-				}
-			});
-			return (request.then(handleSuccess, handleError));
-		}
-		function eliminarFormacionProfesional(data){
-			var request = $http({
-				method: 'get',
-				url: 'eliminarFormacionProfesional',
-				params:{
-					formacionProfesionalId: data.formacionProfesionalId
-				}
-			});
-			return (request.then(handleSuccess, handleError));
-		}
+
+
 		//Métodos privados
     function handleError( response ) {
         if (
@@ -123,10 +62,6 @@ angular.module('filiumApp')
 		return ({
 			getHorarios: getHorarios,
 			saveCita: saveCita,
-			// Registro de CV
-			registrarFormacionProfesional: registrarFormacionProfesional,
-			actualizarFormacionProfesional: actualizarFormacionProfesional,
-			eliminarFormacionProfesional: eliminarFormacionProfesional,
-			getFormacionProfesional: getFormacionProfesional
+			getDiasDisponibles: getDiasDisponibles
 		});
   });

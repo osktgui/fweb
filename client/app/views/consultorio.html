@@ -69,53 +69,6 @@
     </div>
   </div>
   <div ng-show="formularioActivo=='EditarCV'" ng-controller="EdicioncvCtrl" class="formularioActivo">
-    <nav role="navigation" ng-controller="HeaderNavController" class="navbar topnavbar header-filium">
-      <div class="btn-offset">
-        <button type="button" btn-layer-morph="" target="#layer-search" ripple="" class="btn btn-info btn-circle btn-lg shadow-z1"><em class="fa fa-search"></em></button>
-      </div>
-      <div ng-class="app.theme.brand" class="navbar-header"><a ui-sref="app.dashboard" class="navbar-brand logo-filium"><i></i></a>
-        <div class="mobile-toggles"><a href="" ng-click="toggleHeaderMenu()" class="menu-toggle pull-left"><em class="fa fa-navicon fa-fw"></em></a>
-        </div>
-      </div>
-      <div collapse="headerMenuCollapsed" style="text-align:center; padding-right: 160px" class="nav-wrapper collapse navbar-collapse">
-        <div class="menu-items-content">
-          <ul class="nav navbar-nav">
-            <li class="menu-item"><a href="javascript:void(0)">Blog</a></li>
-            <li class="menu-item"><a href="javascript:void(0)">Contáctenos</a></li>
-            <li class="menu-item"><a href="javascript:void(0)">Logout</a></li>
-          </ul>
-        </div>
-        <div dropdown="" class="dropdown dropdown-filium"><a href="" dropdown-toggle="" class="dropdown-toggle">José Rios<i></i></a>
-          <ul class="dropdown-menu menu-usuario">
-            <li><a href="javascript:void(0)" class="menu-usuario-items">
-                <div class="menu-usuario-icon">
-                  <j class="icon-datosusuario"></j>
-                </div>
-                <div class="menu-usuario-description">Datos de usuario</div></a></li>
-            <li><a href="javascript:void(0)" class="menu-usuario-items">
-                <div class="menu-usuario-icon">
-                  <j class="icon-perfilusuario"></j>
-                </div>
-                <div class="menu-usuario-description">Perfil de usuario</div></a></li>
-            <li><a href="javascript:void(0)" class="menu-usuario-items">
-                <div class="menu-usuario-icon">
-                  <j class="icon-calendariocitas"></j>
-                </div>
-                <div class="menu-usuario-description">Calendario de citas</div></a></li>
-            <li><a href="javascript:void(0)" class="menu-usuario-items">
-                <div class="menu-usuario-icon">
-                  <j class="icon-cambiarcontrasena"></j>
-                </div>
-                <div class="menu-usuario-description">Cambiar contraseña</div></a></li>
-            <li><a href="javascript:void(0)" class="menu-usuario-items">
-                <div class="menu-usuario-icon">
-                  <j class="icon-cerrarsesion"></j>
-                </div>
-                <div class="menu-usuario-description">Cerrar sesión</div></a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
     <div ng-init="tab='estudios'" class="body-container-filium with-left-menu">
       <div ng-show="tab=='estudios'" class="aux">
             <div class="form-filium-container">

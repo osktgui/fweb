@@ -99,11 +99,8 @@ class Psicologos extends Controller {
 
 	// ======================= Experiencia Laboral ==========================================
 	public function registrarExperienciaLaboral() {
-		$dataGet        = Input::all();
-		$experienciaLab = new ExperienciaLaboral;
-
-		$experienciaLab->objeto = $dataGet['objeto'];
-
+		$dataGet                              = Input::all();
+		$experienciaLab                       = new ExperienciaLaboral;
 		$experienciaLab->personaId            = $dataGet['personaId'];
 		$experienciaLab->organizacionId       = $dataGet['organizacionId'];
 		$experienciaLab->nombreCargo          = $dataGet['nombreCargo'];
@@ -117,7 +114,6 @@ class Psicologos extends Controller {
 		$formacionProf->save();
 		return ("success");
 	}
-
 	public function actualizarExperienciaLaboral() {
 		$dataGet = Input::all();
 		if (!filter_var($dataGet['laborandoActualmente'], FILTER_VALIDATE_BOOLEAN)) {
@@ -158,4 +154,115 @@ class Psicologos extends Controller {
 		return Response::json($experienciaLab);
 	}
 
+	// ======================= Certificaciones Obtenidas ==========================================
+	public function registrarCertificacionObtenida() {
+		$dataGet                               = Input::all();
+		$certificacionObt                      = new CertificacionObtenida;
+		$certificacionObt->personaId           = $dataGet['personaId'];
+		$certificacionObt->tituloCertificacion = $dataGet['tituloCertificacion'];
+		$certificacionObt->fechaCertificacion  = $dataGet['fechaCertificacion'];
+		$certificacionObt->organizacionId      = $dataGet['organizacionId'];
+		$certificacionObt->descripcion         = $dataGet['descripcion'];
+		$certificacionObt->created_by          = $dataGet['created_by'];
+		$certificacionObt->save();
+		return ("success");
+	}
+
+	public function actualizarCertificacionObtenida() {
+		$dataGet       = Input::all();
+		$arrayToUpdate = array(
+			'personaId'           => $dataGet['personaId'],
+			'tituloCertificacion' => $dataGet['tituloCertificacion'],
+			'fechaCertificacion'  => $dataGet['fechaCertificacion'],
+			'organizacionId'      => $dataGet['organizacionId'],
+			'descripcion'         => $dataGet['descripcion'],
+			'created_by'          => $dataGet['created_by'],
+		);
+		CertificacionObtenida::where('certificacionObtenidaId', '=', $dataGet['certificacionObtenidaId'])
+			->update($arrayToUpdate);
+		return ("success");
+	}
+	public function eliminarCertificacionObtenida() {
+		$dataGet     = Input::all();
+		$deletedRows = CertificacionObtenida::where('certificacionObtenidaId', '=', $dataGet['certificacionObtenidaId'])->delete();
+		return ("success");
+	}
+	public function getCertificacionObtenida() {
+		$dataGet        = Input::all();
+		$experienciaLab = CertificacionObtenida::where('personaId', $dataGet['personaId'])
+			->with('organizacion')	->get();
+		return Response::json($experienciaLab);
+	}
+
+	// ======================= Conocimiento Idiomas ==========================================
+	public function registrarConocimientoIdioma() {
+		$dataGet                           = Input::all();
+		$conocimientoIdioma                = new ConocimientoIdioma;
+		$conocimientoIdioma->personaId     = $dataGet['personaId'];
+		$conocimientoIdioma->idiomaId      = $dataGet['idiomaId'];
+		$conocimientoIdioma->nivelIdiomaId = $dataGet['nivelIdiomaId'];
+		$conocimientoIdioma->created_by    = $dataGet['created_by'];
+		$conocimientoIdioma->save();
+		return ("success");
+	}
+
+	public function actualizarConocimientoIdioma() {
+		$dataGet       = Input::all();
+		$arrayToUpdate = array(
+			'personaId'     => $dataGet['personaId'],
+			'idiomaId'      => $dataGet['idiomaId'],
+			'nivelIdiomaId' => $dataGet['nivelIdiomaId'],
+			'created_by'    => $dataGet['created_by'],
+		);
+		ConocimientoIdioma::where('conocimientoIdiomaId', '=', $dataGet['conocimientoIdiomaId'])
+			->update($arrayToUpdate);
+		return ("success");
+	}
+	public function eliminarConocimientoIdioma() {
+		$dataGet     = Input::all();
+		$deletedRows = ConocimientoIdioma::where('conocimientoIdiomaId', '=', $dataGet['conocimientoIdiomaId'])->delete();
+		return ("success");
+	}
+	public function getConocimientoIdioma() {
+		$dataGet        = Input::all();
+		$experienciaLab = ConocimientoIdioma::where('personaId', $dataGet['personaId'])
+			->with('idioma')	->with('nivelIdioma')	->get();
+		return Response::json($experienciaLab);
+	}
+
+	// ======================= Habilidades Personales ==========================================
+	public function registrarHabilidadPersonal() {
+		$dataGet                    = Input::all();
+		$habilidadPers              = new HabilidadPersonal;
+		$habilidadPers->personaId   = $dataGet['personaId'];
+		$habilidadPers->habilidadId = $dataGet['habilidadId'];
+		$habilidadPers->descripcion = $dataGet['descripcion'];
+		$habilidadPers->created_by  = $dataGet['created_by'];
+		$habilidadPers->save();
+		return ("success");
+	}
+
+	public function actualizarHabilidadPersonal() {
+		$dataGet       = Input::all();
+		$arrayToUpdate = array(
+			'personaId'   => $dataGet['personaId'],
+			'habilidadId' => $dataGet['habilidadId'],
+			'descripcion' => $dataGet['descripcion'],
+			'created_by'  => $dataGet['created_by'],
+		);
+		HabilidadPersonal::where('habilidadPersonalId', '=', $dataGet['habilidadPersonalId'])
+			->update($arrayToUpdate);
+		return ("success");
+	}
+	public function eliminarHabilidadPersonal() {
+		$dataGet     = Input::all();
+		$deletedRows = HabilidadPersonal::where('habilidadPersonalId', '=', $dataGet['habilidadPersonalId'])->delete();
+		return ("success");
+	}
+	public function getHabilidadPersonal() {
+		$dataGet        = Input::all();
+		$experienciaLab = HabilidadPersonal::where('personaId', $dataGet['personaId'])
+			->with('habilidad')	->with('nivelIdioma')	->get();
+		return Response::json($experienciaLab);
+	}
 }

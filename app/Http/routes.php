@@ -16,6 +16,18 @@ Route::get('/registrarLead', 'Lead@registroLead');
 Route::get('/registrarFormacionProfesional', 'Psicologos@registrarFormacionProfesional');
 Route::get('/actualizarFormacionProfesional', 'Psicologos@actualizarFormacionProfesional');
 Route::get('/eliminarFormacionProfesional', 'Psicologos@eliminarFormacionProfesional');
+Route::get('/registrarExperienciaLaboral', 'Psicologos@registrarExperienciaLaboral');
+Route::get('/actualizarExperienciaLaboral', 'Psicologos@actualizarExperienciaLaboral');
+Route::get('/eliminarExperienciaLaboral', 'Psicologos@eliminarExperienciaLaboral');
+Route::get('/registrarCertificacionObtenida', 'Psicologos@registrarCertificacionObtenida');
+Route::get('/actualizarCertificacionObtenida', 'Psicologos@actualizarCertificacionObtenida');
+Route::get('/eliminarCertificacionObtenida', 'Psicologos@eliminarCertificacionObtenida');
+Route::get('/registrarConocimientoIdioma', 'Psicologos@registrarConocimientoIdioma');
+Route::get('/actualizarConocimientoIdioma', 'Psicologos@actualizarConocimientoIdioma');
+Route::get('/eliminarConocimientoIdioma', 'Psicologos@eliminarConocimientoIdioma');
+Route::get('/registrarHabilidadPersonal', 'Psicologos@registrarHabilidadPersonal');
+Route::get('/actualizarHabilidadPersonal', 'Psicologos@actualizarHabilidadPersonal');
+Route::get('/eliminarHabilidadPersonal', 'Psicologos@eliminarHabilidadPersonal');
 // ------------------------- Consultas a la Data Maestra ----------------------
 Route::get('/getTipoDocumento', 'DataMaestra@getTipoDocumento');
 Route::get('/getSexo', 'DataMaestra@getSexo');
@@ -32,6 +44,10 @@ Route::get('/getHabilidades', 'DataMaestra@getHabilidades');
 Route::get('/getOrganizaciones', 'DataMaestra@getOrganizaciones');
 // ------------------------- Consultas CV de Psicólogos ----------------------
 Route::get('/getFormacionProfesional', 'Psicologos@getFormacionProfesional');
+Route::get('/getExperienciaLaboral', 'Psicologos@getExperienciaLaboral');
+Route::get('/getCertificacionObtenida', 'Psicologos@getCertificacionObtenida');
+Route::get('/getConocimientoIdioma', 'Psicologos@getConocimientoIdioma');
+Route::get('/getHabilidadPersonal', 'Psicologos@getHabilidadPersonal');
 
 // ----------------------------------------------------------------------------
 Route::get('/consultarCitasPsicologicas', 'Reportes@reporteCitasPsicologicas');
