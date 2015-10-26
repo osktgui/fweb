@@ -58,7 +58,7 @@
         <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='RegistrarPsicologo'}" class="icon-datosusuario"></i></div>
         <div class="user-options-item-description">Registrar Psicólogo</div></a><a href="javascript:void(0)" ng-click="formularioActivo='EditarCV'" ng-class="{active: formularioActivo=='EditarCV'}" class="user-options-item">
         <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='EditarCV'}" class="icon-perfilusuario"></i></div>
-        <div class="user-options-item-description">Editar CV</div></a><a href="/#/psicologoCita" ng-click="formularioActivo='CalendarioCitas'" ng-class="{active: formularioActivo=='CalendarioCitas'}" class="user-options-item">
+        <div class="user-options-item-description">Editar CV</div></a><a href="javascript:void(0)" ng-click="formularioActivo='CalendarioCitas'" ng-class="{active: formularioActivo=='CalendarioCitas'}" class="user-options-item">
         <div class="user-options-item-icon"><i ng-class="{active: formularioActivo=='CalendarioCitas'}" class="icon-calendariocitas"></i></div>
         <div class="user-options-item-description">Calendario de citas</div></a>
       <div class="user-options-separate"></div><a href="javascript:void(0)" ng-click="formularioActivo='CambiarContrasena'" ng-class="{active: formularioActivo=='CambiarContrasena'}" class="user-options-item">
@@ -68,7 +68,7 @@
         <div class="user-options-item-description">Cerrar sesión</div></a>
     </div>
   </div>
-  <div ng-show="formularioActivo=='EditarCV'" class="formularioActivo">
+  <div ng-show="formularioActivo=='EditarCV'" ng-controller="EdicioncvCtrl" class="formularioActivo">
     <nav role="navigation" ng-controller="HeaderNavController" class="navbar topnavbar header-filium">
       <div class="btn-offset">
         <button type="button" btn-layer-morph="" target="#layer-search" ripple="" class="btn btn-info btn-circle btn-lg shadow-z1"><em class="fa fa-search"></em></button>
@@ -179,7 +179,7 @@
                       <div class="layout-dateIF padding-dateIF">
                             <div class="control-container">
                               <label for="fechaFin" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid}">Fecha de Fin</label>
-                              <input type="datetime" placeholder="Seleccione Fecha de Fin" name="fechaFin" id="fechaFin" ng-model="date" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" readonly="readonly" class="filium-control" ng-disabled="estudiandoActual" ng-required="estudiandoActual &amp;&amp; !editando"/>
+                              <input type="datetime" placeholder="Seleccione Fecha de Fin" name="fechaFin" id="fechaFin" ng-model="date" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" readonly="readonly" class="filium-control" ng-disabled="estudiandoActual" ng-required="!estudiandoActual &amp;&amp; !editando"/>
                               <div ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid}" ng-show="submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid" class="errorMessage">Valor no válido</div>
                             </div>
                       </div>
@@ -198,8 +198,8 @@
                             <div ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.Comentarios.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.Comentarios.$invalid}" ng-show="submittedProfessionalEducation &amp;&amp; estudiosForm.Comentarios.$invalid" class="errorMessage">Valor no válido</div>
                           </div>
                     </div>
-                    <div ng-show="registrando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedProfessionalEducation=true;guardarEstudios(estudiosForm)" class="fbtn fbtn-primary">Registrar</a></div>
-                    <div ng-show="editando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedProfessionalEducation=true;actualizarEstudios(estudiosForm)" class="fbtn fbtn-primary">Guardar Cambios</a></div>
+                    <div ng-show="registrando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedProfessionalEducation=true;insertEstudios(estudiosForm)" class="fbtn fbtn-primary">Registrar</a></div>
+                    <div ng-show="editando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedProfessionalEducation=true;updateEstudios(estudiosForm)" class="fbtn fbtn-primary">Guardar Cambios</a></div>
                   </div>
                   <div class="itemcv-container">
                     <div ng-repeat="matrizEstudio in matrizEstudios" class="itemcv">
@@ -210,7 +210,7 @@
                         <div ng-show="!matrizEstudio.estudiandoActualmente" class="itemcv-descripion">{{matrizEstudio.fechaInicio}} - {{matrizEstudio.fechaFin}}</div>
                         <div ng-show="matrizEstudio.estudiandoActualmente" class="itemcv-descripion">{{matrizEstudio.fechaInicio}} - Presente</div>
                       </div>
-                      <div class="itemcv-image"><a href="javascript:void(0)" ng-click="editarEstudios(matrizEstudio)" class="itemcv-option edit">Editar<i></i></a><a href="javascript:void(0)" class="itemcv-option remove">Eliminar<i></i></a></div>
+                      <div class="itemcv-image"><a href="javascript:void(0)" ng-click="editarEstudios(matrizEstudio)" class="itemcv-option edit">Editar<i></i></a><a href="javascript:void(0)" ng-click="eliminarEstudios(matrizEstudio)" class="itemcv-option remove">Eliminar<i></i></a></div>
                     </div>
                   </div>
                 </div>
@@ -428,6 +428,30 @@
             </div>
       </div>
     </div>
+    <div id="Eliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" class="modal fade">
+      <div role="document" class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="popup-logo"><i></i></div>
+            <div class="popup-title">¿Está seguro de que desea eliminar este item de Formación Profesional?</div>
+            <div class="popup-content">
+              <div class="itemcv-container">
+                <div ng-repeat="matrizEstudio in matrizEstudiosEliminar" class="itemcv popup">
+                  <div class="itemcv-info">
+                    <div class="itemcv-title popup"><em class="fa fa-book"></em>{{matrizEstudio.organizacionName}}</div>
+                    <div ng-show="matrizEstudio.incluirMencion" class="itemcv-descripion popup">{{matrizEstudio.gradoAcademicoName}} - {{matrizEstudio.nombreCarrera}} - {{matrizEstudio.nombreMencion}}</div>
+                    <div ng-show="!matrizEstudio.incluirMencion" class="itemcv-descripion popup">{{matrizEstudio.gradoAcademicoName}} - {{matrizEstudio.nombreCarrera}}</div>
+                    <div ng-show="!matrizEstudio.estudiandoActualmente" class="itemcv-descripion popup">{{matrizEstudio.fechaInicio}} - {{matrizEstudio.fechaFin}}</div>
+                    <div ng-show="matrizEstudio.estudiandoActualmente" class="itemcv-descripion popup">{{matrizEstudio.fechaInicio}} - Presente</div>
+                  </div>
+                </div>
+              </div>
+              <div ng-repeat="matrizEstudio in matrizEstudiosEliminar" class="button-container center"><a href="javascript:void(0)" data-dismiss="modal" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="deleteEstudios(matrizEstudio)" class="fbtn fbtn-primary delete">Eliminar</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div ng-show="formularioActivo=='RegistrarPsicologo'" class="formularioActivo">
         <div class="form-filium-container">
@@ -631,22 +655,80 @@
           </form>
         </div>
   </div>
-</div>
-<div id="Eliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" class="modal fade">
-  <div role="document" class="modal-dialog modal-md">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="popup-logo"><i></i></div>
-        <div class="popup-title">Información sobre el proceso de pago</div>
-        <div class="popup-content">
-          <div class="dasd">¿Está seguro de que desea eliminar este item de Formación Profesional?</div>
-          <div class="itemcv-info">
-            <div class="itemcv-title"><em class="fa fa-book"></em>Universidad Peruana Los Andes - Ingeniería de Sistemas y Computación</div>
-            <div ng-show="matrizEstudio.incluirMencion" class="itemcv-descripion">{{matrizEstudio.gradoAcademicoName}} - {{matrizEstudio.nombreCarrera}} - {{matrizEstudio.nombreMencion}}</div>
-            <div ng-show="!matrizEstudio.incluirMencion" class="itemcv-descripion">{{matrizEstudio.gradoAcademicoName}} - {{matrizEstudio.nombreCarrera}}</div>
-            <div ng-show="!matrizEstudio.estudiandoActualmente" class="itemcv-descripion">{{matrizEstudio.fechaInicio}} - {{matrizEstudio.fechaFin}}</div>
-            <div ng-show="matrizEstudio.estudiandoActualmente" class="itemcv-descripion">{{matrizEstudio.fechaInicio}} - Presente</div>
+  <div ng-show="formularioActivo=='CalendarioCitas'" ng-controller="PsicologoCitaCtrl" class="formularioActivo">
+        <div class="form-filium-container">
+          <form name="registroForm" class="form-filium">
+            <div class="form-filium-title">Registro de Psicólogo</div>
+            <div class="form-content">
+              <div ng-show="formularioActivo=='CalendarioCitas'" class="formularioActivo">
+                <div ui-calendar="uiConfig.calendar" ng-model="eventSources"></div>
+              </div>
+            </div>
+          </form>
+        </div>
+    <div id="myModal" role="dialog" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" data-dismiss="modal" class="close">&times;</button>
+            <h4 class="modal-title">Disponibilidad - {{tituloPopup}}</h4>
           </div>
+          <div class="modal-body">
+            <form Disponibilidad="Disponibilidad" disponibilidadForm="disponibilidadForm">
+              <div class="col-lg-6">
+                    <div class="control-container">
+                      <label for="horaInicio" ng-class="{ selectActive: selectChangehoraInicio ,success: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaInicio.$valid, error: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaInicio.$invalid}">Desde</label>
+                      <select type="text" name="horaInicio" id="horaInicio" ng-model="horaInicio" ng-click="selectChangehoraInicio=true" ng-class="{ selectActive: selectChangehoraInicio ,success: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaInicio.$valid, error: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaInicio.$invalid}" class="filium-control" required="required" ng-options="hora.text for hora in horas track by hora.id" ng-change="priComboSelected(horaInicio);">
+                        <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Desde</option>
+                      </select>
+                      <div ng-class="{ selectActive: selectChangehoraInicio ,success: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaInicio.$valid, error: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaInicio.$invalid}" ng-show="submittedDisponibilidad &amp;&amp; disponibilidadForm.horaInicio.$invalid" class="errorMessage">Valor no válido</div>
+                    </div>
+              </div>
+              <div class="col-lg-6">
+                    <div class="control-container">
+                      <label for="horaFin" ng-class="{ selectActive: selectChangehoraFin ,success: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaFin.$valid, error: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaFin.$invalid}">Hasta</label>
+                      <select type="text" name="horaFin" id="horaFin" ng-model="horaFin" ng-click="selectChangehoraFin=true" ng-class="{ selectActive: selectChangehoraFin ,success: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaFin.$valid, error: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaFin.$invalid}" class="filium-control" required="required">
+                        <option value="" selectFilium="selectFilium" default="default" selected="selected" class="option-placeholder">Seleccione Hasta</option>
+                        <option ng-repeat="hora in horas track by hora.id" value="{{hora.id}}" ng-disabled="!hora.isinuse">{{hora.text}}</option>
+                      </select>
+                      <div ng-class="{ selectActive: selectChangehoraFin ,success: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaFin.$valid, error: submittedDisponibilidad &amp;&amp; disponibilidadForm.horaFin.$invalid}" ng-show="submittedDisponibilidad &amp;&amp; disponibilidadForm.horaFin.$invalid" class="errorMessage">Valor no válido</div>
+                    </div>
+              </div><a href="javascript:void(0)" ng-click="submittedDisponibilidad=true;agregando(horaInicio,horaFin);" class="fbtn fbtn-primary">Agregar</a>
+            </form>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="panel panel-default">
+                  <div class="table-responsive">
+                    <table id="table-ext-1" class="table table-bordered table-hover">
+                      <thead>
+                        <tr>
+                          <th class="text-center">#</th>
+                          <th class="text-center">Hora Inicio</th>
+                          <th class="text-center">Hora Fin</th>
+                          <th class="text-center">Estado</th>
+                          <th class="text-center">Eliminar</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="evento in eventosDia | orderBy:'+id' track by evento.identificador" ng-class="{'ocupado':evento.state=='ocupado'}">
+                          <td>{{ $index+1 }}</td>
+                          <td>{{ evento.hIni }}</td>
+                          <td>{{ evento.hFin }}</td>
+                          <td>{{ evento.title }}</td>
+                          <td>
+                            <div>
+                              <button ng-click="removeHorario(evento.identificador)" title="Delete" ng-class="{'disabled':evento.state=='ocupado'}" class="btn btn-sm btn-danger"><em class="fa fa-trash"></em></button>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer"><a data-dismiss="modal" class="fbtn fbtn-primary cancel">Close</a></div>
         </div>
       </div>
     </div>

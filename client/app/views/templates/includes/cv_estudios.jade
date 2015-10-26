@@ -18,17 +18,17 @@
 			.layout-dateIF.padding-dateIF
 				+controlFilium-date("Fecha de Inicio","fechaInicio","startDate","{success: submittedProfessionalEducation && estudiosForm.fechaInicio.$valid, error: submittedProfessionalEducation && estudiosForm.fechaInicio.$invalid}","submittedProfessionalEducation && estudiosForm.fechaInicio.$invalid")(ng-required="!editando")
 			.layout-dateIF.padding-dateIF
-				+controlFilium-date("Fecha de Fin","fechaFin","endDate","{success: submittedProfessionalEducation && estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation && estudiosForm.fechaFin.$invalid}","submittedProfessionalEducation && estudiosForm.fechaFin.$invalid")(ng-disabled="estudiandoActual",ng-required="estudiandoActual && !editando")
+				+controlFilium-date("Fecha de Fin","fechaFin","endDate","{success: submittedProfessionalEducation && estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation && estudiosForm.fechaFin.$invalid}","submittedProfessionalEducation && estudiosForm.fechaFin.$invalid")(ng-disabled="estudiandoActual",ng-required="!estudiandoActual && !editando")
 			.layout-dateIF-last.padding-datedateIF-last
 				+controlFilium-check("Estudiando Actualmente","checkEstudianto","checkEst","estudiandoActual=false","estudiandoActual=!estudiandoActual")
 		.layout-content
 			+controlFilium-textarea("Comentarios","Comentarios","studyComments","{success: submittedProfessionalEducation && estudiosForm.Comentarios.$valid, error: submittedProfessionalEducation && estudiosForm.Comentarios.$invalid}","submittedProfessionalEducation && estudiosForm.Comentarios.$invalid")(names)
 		.button-container(ng-show="registrando")
 			a.fbtn.fbtn-primary.cancel(href="javascript:void(0)",ng-click="mostrarForm=false") Cancelar
-			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedProfessionalEducation=true;guardarEstudios(estudiosForm)") Registrar
+			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedProfessionalEducation=true;insertEstudios(estudiosForm)") Registrar
 		.button-container(ng-show="editando")
 			a.fbtn.fbtn-primary.cancel(href="javascript:void(0)",ng-click="mostrarForm=false") Cancelar
-			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedProfessionalEducation=true;actualizarEstudios(estudiosForm)") Guardar Cambios
+			a.fbtn.fbtn-primary(href="javascript:void(0)",ng-click="submittedProfessionalEducation=true;updateEstudios(estudiosForm)") Guardar Cambios
 	.itemcv-container
 		.itemcv(ng-repeat="matrizEstudio in matrizEstudios")
 			.itemcv-info
@@ -42,11 +42,7 @@
 			.itemcv-image
 				a.itemcv-option.edit(href="javascript:void(0)" ng-click="editarEstudios(matrizEstudio)") Editar
 					i
-				a.itemcv-option.remove(href="javascript:void(0)") Eliminar
+				a.itemcv-option.remove(href="javascript:void(0)" ng-click="eliminarEstudios(matrizEstudio)") Eliminar
 					i
-
-
-		
-
 
 

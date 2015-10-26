@@ -1,0 +1,6 @@
+include ./mixins/mixins-form.jade
++form-header("Registro de Psicólogo","registroForm")
+	.formularioActivo(ng-show="formularioActivo=='CalendarioCitas'")
+			div(ui-calendar="uiConfig.calendar",ng-model="eventSources")
+
+			

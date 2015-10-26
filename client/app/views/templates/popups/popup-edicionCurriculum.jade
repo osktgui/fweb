@@ -1,0 +1,21 @@
+div.modal.fade#Eliminar(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+		div.modal-dialog.modal-md(role='document')
+			div.modal-content
+				div.modal-body
+					.popup-logo
+						i
+					.popup-title ¿Está seguro de que desea eliminar este item de Formación Profesional?
+					.popup-content
+						.itemcv-container
+							.itemcv.popup(ng-repeat="matrizEstudio in matrizEstudiosEliminar")
+								.itemcv-info
+									.itemcv-title.popup
+										em.fa.fa-book
+										| {{matrizEstudio.organizacionName}}
+									.itemcv-descripion.popup(ng-show="matrizEstudio.incluirMencion") {{matrizEstudio.gradoAcademicoName}} - {{matrizEstudio.nombreCarrera}} - {{matrizEstudio.nombreMencion}}
+									.itemcv-descripion.popup(ng-show="!matrizEstudio.incluirMencion") {{matrizEstudio.gradoAcademicoName}} - {{matrizEstudio.nombreCarrera}}
+									.itemcv-descripion.popup(ng-show="!matrizEstudio.estudiandoActualmente") {{matrizEstudio.fechaInicio}} - {{matrizEstudio.fechaFin}}
+									.itemcv-descripion.popup(ng-show="matrizEstudio.estudiandoActualmente") {{matrizEstudio.fechaInicio}} - Presente
+						.button-container.center(ng-repeat="matrizEstudio in matrizEstudiosEliminar")
+							a.fbtn.fbtn-primary.cancel(href="javascript:void(0)" data-dismiss="modal") Cancelar
+							a.fbtn.fbtn-primary.delete(href="javascript:void(0)" ng-click="deleteEstudios(matrizEstudio)") Eliminar

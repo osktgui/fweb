@@ -109,7 +109,7 @@
               <div class="layout-dateIF padding-dateIF">
                 <div class="control-container">
                   <label for="fechaFin" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid}">Fecha de Fin</label>
-                  <input type="datetime" placeholder="Seleccione Fecha de Fin" name="fechaFin" id="fechaFin" ng-model="date" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" readonly="readonly" class="filium-control" ng-disabled="estudiandoActual" ng-required="estudiandoActual &amp;&amp; !editando"/>
+                  <input type="datetime" placeholder="Seleccione Fecha de Fin" name="fechaFin" id="fechaFin" ng-model="date" ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid}" format="dd/MM/yyyy" min-view="date" view="date" date-time="date-time" readonly="readonly" class="filium-control" ng-disabled="estudiandoActual" ng-required="!estudiandoActual &amp;&amp; !editando"/>
                   <div ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid}" ng-show="submittedProfessionalEducation &amp;&amp; estudiosForm.fechaFin.$invalid" class="errorMessage">Valor no válido</div>
                 </div>
               </div>
@@ -128,8 +128,8 @@
                 <div ng-class="{success: submittedProfessionalEducation &amp;&amp; estudiosForm.Comentarios.$valid, error: submittedProfessionalEducation &amp;&amp; estudiosForm.Comentarios.$invalid}" ng-show="submittedProfessionalEducation &amp;&amp; estudiosForm.Comentarios.$invalid" class="errorMessage">Valor no válido</div>
               </div>
             </div>
-            <div ng-show="registrando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedProfessionalEducation=true;guardarEstudios(estudiosForm)" class="fbtn fbtn-primary">Registrar</a></div>
-            <div ng-show="editando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedProfessionalEducation=true;actualizarEstudios(estudiosForm)" class="fbtn fbtn-primary">Guardar Cambios</a></div>
+            <div ng-show="registrando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedProfessionalEducation=true;insertEstudios(estudiosForm)" class="fbtn fbtn-primary">Registrar</a></div>
+            <div ng-show="editando" class="button-container"><a href="javascript:void(0)" ng-click="mostrarForm=false" class="fbtn fbtn-primary cancel">Cancelar</a><a href="javascript:void(0)" ng-click="submittedProfessionalEducation=true;updateEstudios(estudiosForm)" class="fbtn fbtn-primary">Guardar Cambios</a></div>
           </div>
           <div class="itemcv-container">
             <div ng-repeat="matrizEstudio in matrizEstudios" class="itemcv">
@@ -140,7 +140,7 @@
                 <div ng-show="!matrizEstudio.estudiandoActualmente" class="itemcv-descripion">{{matrizEstudio.fechaInicio}} - {{matrizEstudio.fechaFin}}</div>
                 <div ng-show="matrizEstudio.estudiandoActualmente" class="itemcv-descripion">{{matrizEstudio.fechaInicio}} - Presente</div>
               </div>
-              <div class="itemcv-image"><a href="javascript:void(0)" ng-click="editarEstudios(matrizEstudio)" class="itemcv-option edit">Editar<i></i></a><a href="javascript:void(0)" class="itemcv-option remove">Eliminar<i></i></a></div>
+              <div class="itemcv-image"><a href="javascript:void(0)" ng-click="editarEstudios(matrizEstudio)" class="itemcv-option edit">Editar<i></i></a><a href="javascript:void(0)" ng-click="eliminarEstudios(matrizEstudio)" class="itemcv-option remove">Eliminar<i></i></a></div>
             </div>
           </div>
         </div>

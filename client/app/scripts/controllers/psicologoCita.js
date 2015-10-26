@@ -200,8 +200,7 @@ angular.module('filiumApp')
                 );
             }
         }
-        selEventosDiaSel(new Date($scope.YSelected,$scope.MSelected,$scope.DSelected));
-        
+        selEventosDiaSel(new Date($scope.YSelected,$scope.MSelected,$scope.DSelected));  
     };
     
     $scope.priComboSelected=function(hora){

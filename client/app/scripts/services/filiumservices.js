@@ -95,6 +95,16 @@ angular.module('filiumApp')
 			});
 			return (request.then(handleSuccess, handleError));
 		}
+		function eliminarFormacionProfesional(data){
+			var request = $http({
+				method: 'get',
+				url: 'eliminarFormacionProfesional',
+				params:{
+					formacionProfesionalId: data.formacionProfesionalId
+				}
+			});
+			return (request.then(handleSuccess, handleError));
+		}
 		//Métodos privados
     function handleError( response ) {
         if (
@@ -116,6 +126,7 @@ angular.module('filiumApp')
 			// Registro de CV
 			registrarFormacionProfesional: registrarFormacionProfesional,
 			actualizarFormacionProfesional: actualizarFormacionProfesional,
+			eliminarFormacionProfesional: eliminarFormacionProfesional,
 			getFormacionProfesional: getFormacionProfesional
 		});
   });
